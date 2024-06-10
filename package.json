@@ -14,7 +14,7 @@
   "dependencies": {
     "@nimiq/core-web": "2.0.0-alpha.21.1",
     "@nuxt/image": "^1.7.0",
-    "@nuxthub/core": "^0.5.18",
+    "@nuxthub/core": "^0.6.11",
     "@vueuse/core": "^10.10.0",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
@@ -22,17 +22,17 @@
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.19.1",
+    "@antfu/eslint-config": "^2.21.0",
     "@nuxt/eslint": "^0.3.13",
     "@nuxtjs/color-mode": "^3.4.1",
     "@pinia/nuxt": "^0.5.1",
-    "@unocss/eslint-plugin": "^0.60.3",
-    "@unocss/nuxt": "^0.60.3",
-    "@unocss/preset-rem-to-px": "^0.60.3",
-    "@unocss/reset": "^0.60.3",
-    "@unocss/transformer-directives": "^0.60.3",
+    "@unocss/eslint-plugin": "^0.60.4",
+    "@unocss/nuxt": "^0.60.4",
+    "@unocss/preset-rem-to-px": "^0.60.4",
+    "@unocss/reset": "^0.60.4",
+    "@unocss/transformer-directives": "^0.60.4",
     "@vueuse/nuxt": "^10.10.0",
-    "eslint": "^9.3.0",
+    "eslint": "^9.4.0",
     "eslint-plugin-format": "^0.1.1",
     "lint-staged": "^15.2.5",
     "nimiq-css": "^0.0.103",
@@ -40,7 +40,7 @@
     "simple-git-hooks": "^2.11.1",
     "vite-plugin-top-level-await": "^1.4.1",
     "vite-plugin-wasm": "^3.3.0",
-    "wrangler": "^3.57.2"
+    "wrangler": "^3.60.0"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
