@@ -554,7 +554,7 @@ const offset = computed(() => {
 <style>
 .identicon-container {
   position: absolute;
-  z-index: 99999;
+  z-index: 20;
 }
 
 .identicon {

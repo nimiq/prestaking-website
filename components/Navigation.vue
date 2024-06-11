@@ -47,7 +47,7 @@ onUnmounted(() => {
 <template>
   <header
     ref="root$"
-    class="fixed left-0 top-16 z-50 z-500 mt-0 w-full px-16 transition-opacity duration-400 ease-nimiq"
+    class="fixed left-0 top-16 z-50 mt-0 w-full px-16 transition-opacity duration-400 ease-nimiq"
     :class="[{
       'pointer-events-none opacity-0': localState.isScrolled,
       'pointer-events-auto !opacity-100': localState.isSticky,
