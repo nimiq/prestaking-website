@@ -1,12 +1,10 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
-const toggleDark = () => colorMode.value = colorMode.value === 'light' ? 'dark' : 'light'
 </script>
 
 <template>
   <!-- eslint-disable vue/no-multiple-template-root -->
-  <header flex="~ gap-32 col lg:row items-center" mx-auto max-h-screen max-w-700 px-32 py-40>
-    <!-- Change the color of the logo for dark mode! -->
+  <!-- Change the color of the logo for dark mode! -->
+  <!-- <header flex="~ gap-32 col lg:row items-center" mx-auto max-h-screen max-w-700 px-32 py-40>
     <div i-nimiq:logos-nimiq-vertical text-90 dark:i-nimiq:logos-nimiq-white-vertical />
 
     <div>
@@ -38,9 +36,11 @@ const toggleDark = () => colorMode.value = colorMode.value === 'light' ? 'dark' 
         </button>
       </nav>
     </div>
-  </header>
+  </header> -->
 
-  <main mx-auto max-w-700 pb-92 pt-64>
+  <Navigation />
+
+  <main>
     <slot />
   </main>
 </template>

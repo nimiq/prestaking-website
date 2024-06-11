@@ -5,6 +5,9 @@ import transformerDirectives from '@unocss/transformer-directives'
 
 
 export default defineConfig({
+  rules: [
+    ['ease-nimiq', { transitionTimingFunction: 'cubic-bezier(0.25, 0, 0, 1)' }],
+  ],
   presets: [
     presetUno({ attributifyPseudo: true }),
     presetNimiq({

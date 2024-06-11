@@ -1,19 +1,26 @@
 <script setup lang="ts">
-const { consensus, head } = storeToRefs(useNimiqNetwork())
+// const { consensus, head } = storeToRefs(useNimiqNetwork())
 
-const { share } = useShare()
-function startShare() {
-  share({
-    title: 'Hello',
-    text: 'Hello my friend!',
-    url: location.href,
-  })
-}
+// const { share } = useShare()
+// function startShare() {
+//   share({
+//     title: 'Hello',
+//     text: 'Hello my friend!',
+//     url: location.href,
+//   })
+// }
 </script>
 
 <template>
   <!-- eslint-disable vue/no-multiple-template-root -->
-  <WelcomeItem icon="i-nimiq:icons-lg-browsermesh">
+  <Clock />
+
+  <div class="relative mx-16 box-border block h-screen w-auto rounded-t-24 bg-white shadow">
+    <AutoScrollBanner>
+      June 22nd - Nimiq 2.0 Launch
+    </AutoScrollBanner>
+  </div>
+  <!-- <WelcomeItem icon="i-nimiq:icons-lg-browsermesh">
     <template #heading>
       Documentation
     </template>
@@ -76,5 +83,5 @@ function startShare() {
 
   <button mx-auto mt-32 pill-lg pill-blue @click="startShare">
     Share it
-  </button>
+  </button> -->
 </template>
