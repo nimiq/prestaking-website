@@ -69,7 +69,7 @@ onUnmounted(() => {
         class="hidden items-center gap-x-32px lg:flex"
       >
         <a href="./" class="text-16px text-neutral-700 font-bold">Who is Nimiq?</a>
-        <a href="./" class="text-16px text-neutral-700 font-bold">How to Prestake?</a>
+        <a href="/prestaking" class="text-16px text-neutral-700 font-bold">How to Prestake?</a>
         <a href="./" class="arrow pill-lg pill-blue">Contact us</a>
       </div>
       <!-- <MobileMenu

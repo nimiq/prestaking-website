@@ -23,6 +23,24 @@ h2 {
   line-height: 57.6px; /* 120% */
 }
 
+h3 {
+  /* 1440/H3 */
+  font-family: Mulish;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 36.4px */
+}
+
+.subline {
+  /* 1440/Subline */
+  font-family: Mulish;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 36px */
+}
+
 summary {
   color: var(--Dark-Blue, #1f2348);
   font-family: Mulish;
