@@ -18,20 +18,19 @@
   <div
     class="relative mx-16 mx-auto mb-40 box-border block max-w-1440 w-auto overflow-hidden rounded-24 bg-white shadow"
   >
-    <AutoScrollBanner> June 22nd - Nimiq 2.0 Launch </AutoScrollBanner>
+    <!-- <AutoScrollBanner> June 22nd - Nimiq 2.0 Launch </AutoScrollBanner> -->
+    <div class="mx-auto max-w-1168 pb-200">
+      <div class="px-80 pb-96 pt-160">
+        <h2 class="mb-32 mt-0 text-center">
+          Made for crypto payments at sub-second speed
+        </h2>
+        <p class="text-center text-22 text-darkblue/60 font-500 leading-150%">
+          Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm.
+          Your wallet and exchanges keep their addresses. No action required.
+        </p>
+      </div>
 
-    <div class="mx-auto max-w-1172 px-80 pb-96 pt-160">
-      <h1 class="mb-32 mt-0">
-        Nimiq 2.0 goes live on June 22nd
-      </h1>
-      <p class="text-32 text-neutral-600 leading-140%">
-        Switching from Proof-of-Work to the new Proof-of-Stake network. Your
-        wallet and exchanges keep their addresses. No action required.
-      </p>
-    </div>
-
-    <div class="flex items-center border-y">
-      <div class="w-1/2 flex items-center justify-between px-48 py-40">
+      <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24 pb-48 *:min-w-342">
         <StatBlock class="text-red">
           <template #icon>
             <div i-nimiq:hamburger-menu class="text-48" />
@@ -48,18 +47,18 @@
             <div i-nimiq:hamburger-menu class="text-48" />
           </template>
           <template #stat>
-            60%
+            100x
           </template>
           <template #text>
             faster transactions
           </template>
         </StatBlock>
-        <StatBlock class="text-green">
+        <StatBlock class="text-orange">
           <template #icon>
             <div i-nimiq:hamburger-menu class="text-48" />
           </template>
           <template #stat>
-            60%
+            350x
           </template>
           <template #text>
             faster transactions
@@ -67,51 +66,56 @@
         </StatBlock>
       </div>
 
-      <div
-        class="w-1/2 flex items-center justify-between gap-x-28 border-l px-48 py-40"
-      >
-        <div i-nimiq:icons-lg-seeding text-64 text-green />
-        <div class="shrink text-24 text-green">
-          and the easiest, most accessible staking ever.
-        </div>
-        <div grow>
-          <a href="./" class="arrow pill-lg pill-green">Join the prestake</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full flex flex-col items-center border-b px-80 py-160">
-      <p w-fit text-12 label>
-        MIGRATION TIMETABLE
-      </p>
-      <div class="h-380 w-full content-center border-1">
-        <h1 mx-auto w-fit>
-          Timetable
-        </h1>
-      </div>
-    </div>
-
-    <div class="w-full flex flex-col items-center px-80 py-160">
-      <div class="mb-96 max-w-1168 max-w-840 text-center">
-        <p w-full text-12 label>
-          Staking
+      <div class="w-full flex flex-col items-center justify-center gap-16 rounded-12 bg-darkblue/07 p-48 text-center">
+        <h3 class="my-0">
+          Start the process
+        </h3>
+        <p class="my-0">
+          Setup a Nimiq wallet, the most secure wallet known to mankind.
         </p>
-        <h2 my-16>
-          You’ve never got so much for so little.
-        </h2>
-        <p class="text-24 text-neutral-600 leading-140%">
-          You only need 1,000 NIM to start staking with the wallet. Get rewards
-          while securing the network. Join the prestake to be amongst the first.
-        </p>
-      </div>
-      <div class="grid grid-cols-4 grid-rows-4 h-800 w-full gap-32">
-        <div class="col-span-3 row-span-3 rounded-8 bg-green" />
-        <div class="col-span-1 row-span-3 rounded-8 bg-neutral-400" />
-        <div class="col-span-4 row-span-1 rounded-8 bg-gold" />
+        <a href="./" class="font-400 arrow pill-lg pill-blue">Join the prestake</a>
       </div>
     </div>
 
-    <div class="w-full flex flex-col items-center bg-darkblue px-80 py-160">
+    <hr>
+
+    <div class="mx-auto max-w-1168 py-200">
+      <div class="w-full flex flex-col items-center">
+        <p mb-48 w-fit text-12 label>
+          LAUNCH TIMETABLE
+        </p>
+        <div class="h-380 w-full content-center border-1 rounded-10">
+          <h1 mx-auto w-fit>
+            Timetable
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="mx-auto max-w-1168 py-200">
+      <div class="w-full flex flex-col items-center">
+        <div class="mb-96 max-w-1168 max-w-840 text-center">
+          <p w-full text-12 label>
+            Staking
+          </p>
+          <h2 mb-24 mt-16>
+            The easiest, openest staking ever
+          </h2>
+          <p class="text-24 text-neutral-600 leading-140%">
+            Start staking with as little as 1,000 NIM straight from the Nimiq Wallet. Get rewards while securing the network. Prestake and be amongst the first.
+          </p>
+        </div>
+        <div class="grid grid-cols-4 grid-rows-4 h-800 w-full gap-32">
+          <div class="col-span-3 row-span-3 rounded-8 bg-green" />
+          <div class="col-span-1 row-span-3 rounded-8 bg-neutral-400" />
+          <div class="col-span-4 row-span-1 rounded-8 bg-gold" />
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col items-center bg-darkblue py-160">
       <div class="mb-96 max-w-1168 max-w-840 text-center">
         <p w-full text-12 label>
           Albatross
@@ -403,3 +407,6 @@
     </div>
   </div>
 </template>
+
+<style>
+</style>

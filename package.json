@@ -16,6 +16,7 @@
     "@nuxt/image": "^1.7.0",
     "@nuxthub/core": "^0.6.11",
     "@vueuse/core": "^10.10.0",
+    "gsap": "^3.12.5",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
     "pixi.js": "^8.1.6",

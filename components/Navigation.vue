@@ -47,10 +47,10 @@ onUnmounted(() => {
 <template>
   <header
     ref="root$"
-    class="fixed left-0 top-16 z-50 mt-0 w-full px-16 transition-opacity duration-400 ease-nimiq"
+    class="fixed left-0 top-16 z-100 mt-0 w-full px-16 transition-opacity duration-400 ease-nimiq"
     :class="[{
       'pointer-events-none opacity-0': localState.isScrolled,
-      'pointer-events-auto !opacity-100': localState.isSticky,
+      '!pointer-events-auto !opacity-100': localState.isSticky,
     }]"
   >
     <div
@@ -68,8 +68,8 @@ onUnmounted(() => {
       <div
         class="hidden items-center gap-x-32px lg:flex"
       >
-        <a href="./" class="text-16px text-neutral-700 font-bold">Who is Nimiq?</a>
         <a href="/prestaking" class="text-16px text-neutral-700 font-bold">How to Prestake?</a>
+        <a href="/rewards" class="text-16px text-neutral-700 font-bold">Are you worthy?</a>
         <a href="./" class="arrow pill-lg pill-blue">Contact us</a>
       </div>
       <!-- <MobileMenu

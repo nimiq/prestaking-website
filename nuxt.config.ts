@@ -4,6 +4,11 @@ import topLevelAwait from "vite-plugin-top-level-await";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
+  css: [
+    './assets/css/cards.css',
+    './assets/css/base.css',
+    './assets/css/reverse-holo.css',
+  ],
   modules: [
     "@vueuse/nuxt",
     "@pinia/nuxt",
@@ -83,7 +88,7 @@ export default defineNuxtConfig({
     },
   },
 
-  colorMode: {
-    classSuffix: '',
-  }
+  // colorMode: {
+  //   classSuffix: '',
+  // }
 })
