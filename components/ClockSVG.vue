@@ -55,7 +55,7 @@ onMounted(() => {
   <svg
     id="clock-svg"
     class="z-2 w-full"
-    viewBox="0 0 1898 802"
+    viewBox="0 0 1440 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -65,11 +65,15 @@ onMounted(() => {
     <ClockSVGDigit :active-number="hour.secondDigit ? hour.secondDigit : 0" :index="3" />
     <ClockSVGDigit :active-number="minute.firstDigit ? minute.firstDigit : 0" :index="4" />
     <ClockSVGDigit :active-number="minute.secondDigit ? minute.secondDigit : 0" :index="5" />
-    <path d="M447 601.5L436.5 619L447 636H462.5L473 650.5H490L499.5 636H516.5L525 619L514 601.5H499.5L490 587H473L462.5 601.5H447Z" fill="white" />
-    <path d="M915.5 601.5L905 619L915.5 636H931L941.5 650.5H958.5L968 636H985L993.5 619L982.5 601.5H968L958.5 587H941.5L931 601.5H915.5Z" fill="white" />
-    <path d="M1383.5 601.5L1373 619L1383.5 636H1399L1409.5 650.5H1426.5L1436 636H1453L1461.5 619L1450.5 601.5H1436L1426.5 587H1409.5L1399 601.5H1383.5Z" fill="white" />
-    <text opacity="0.6" fill="#1F2348" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="0.8px"><tspan x="454.168" y="623.53">{{ day.firstDigit }}{{ day.secondDigit }} DAYS</tspan></text>
-    <text opacity="0.6" fill="#1F2348" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="0.8px"><tspan x="925.443" y="623.53">{{ hour.firstDigit }}{{ hour.secondDigit }} HRS</tspan></text>
-    <text opacity="0.6" fill="#1F2348" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="0.8px"><tspan x="1388.44" y="623.53">{{ minute.firstDigit }}{{ minute.secondDigit }} MINS</tspan></text>
+    <g
+      transform="translate(-226,-102)"
+    >
+      <path d="M447 601.5L436.5 619L447 636H462.5L473 650.5H490L499.5 636H516.5L525 619L514 601.5H499.5L490 587H473L462.5 601.5H447Z" fill="#191D3F" />
+      <path d="M915.5 601.5L905 619L915.5 636H931L941.5 650.5H958.5L968 636H985L993.5 619L982.5 601.5H968L958.5 587H941.5L931 601.5H915.5Z" fill="#191D3F" />
+      <path d="M1383.5 601.5L1373 619L1383.5 636H1399L1409.5 650.5H1426.5L1436 636H1453L1461.5 619L1450.5 601.5H1436L1426.5 587H1409.5L1399 601.5H1383.5Z" fill="#191D3F" />
+      <text fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="0.8px"><tspan x="454.168" y="623.53">{{ day.firstDigit }}{{ day.secondDigit }} DAYS</tspan></text>
+      <text fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="0.8px"><tspan x="925.443" y="623.53">{{ hour.firstDigit }}{{ hour.secondDigit }} HRS</tspan></text>
+      <text fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="12" font-weight="bold" letter-spacing="0.8px"><tspan x="1388.44" y="623.53">{{ minute.firstDigit }}{{ minute.secondDigit }} MINS</tspan></text>
+    </g>
   </svg>
 </template>

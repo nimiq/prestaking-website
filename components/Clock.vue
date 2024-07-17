@@ -7,9 +7,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="clock">
+  <div id="clock" class="">
     <canvas id="canvas" class="absolute left-0 top-0 w-screen -z-1" />
-    <div id="grid-gradient-overlay" class="absolute left-0 top-0 h-screen w-screen" />
+    <!-- <div id="grid-gradient-overlay" class="absolute left-0 top-0 h-screen w-screen" /> -->
     <ClockSVG />
   </div>
 </template>
