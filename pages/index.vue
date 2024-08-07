@@ -27,8 +27,6 @@
     />
   </Section> -->
 
-  <!-- <GodRays /> -->
-
   <Section>
     <Header
       title="Made for crypto payments at sub-second speed"
@@ -62,7 +60,8 @@
 
   <hr>
 
-  <Section>
+  <!-- timetable removed -->
+  <!-- <Section>
     <div>
       <SectionLabel text="LAUNCH TIMETABLE" />
       <div class="h-380 w-full content-center border-1 rounded-10 bg-darkblue/10">
@@ -88,7 +87,7 @@
         </div>
       </div>
     </div>
-  </Section>
+  </Section> -->
 
   <hr>
 
@@ -107,7 +106,7 @@
     </div>
   </Section>
 
-  <hr>
+  <hr class="border-darkblue">
 
   <!-- Repeated Section -->
   <TicketSection />
@@ -126,12 +125,35 @@
 .glass-card {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
+  /* background: rgba(255, 255, 255, 0.05); */
   /* opacity: 0.5; */
   display: flex;
-  padding: 48px;
+  padding: 32px;
   flex-direction: column;
   align-items: center;
   gap: 32px;
+
+  &.glass-clear {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid rgba(31, 34, 52, 0.15);
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 12px;
+      background: radial-gradient(
+          101.48% 101.48% at 50% 100%,
+          rgba(31, 35, 72, 0) 0%,
+          rgba(31, 35, 72, 0.15) 100%
+        ),
+        rgba(31, 35, 72, 0.01);
+      opacity: 0.15;
+    }
+  }
 }
 </style>

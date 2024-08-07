@@ -48,6 +48,16 @@ h4 {
   font-weight: 400;
   line-height: 150%; /* 36px */
 }
+.small-label {
+  /* 768 & 375/Small label */
+  font-family: Mulish;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 14.4px */
+  letter-spacing: 1.14px;
+  text-transform: uppercase;
+}
 
 p {
   /* 1440/Body */

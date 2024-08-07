@@ -33,6 +33,7 @@ defineProps({
 
 <style>
 .god-rays {
+  pointer-events: none;
   position: absolute;
   bottom: -20%;
   left: 50%;
