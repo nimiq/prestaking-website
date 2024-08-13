@@ -5,6 +5,11 @@
 </template>
 
 <style>
+@font-face {
+  font-family: Mulish;
+  src: url(/assets/Mulish-VariableFont_wght.ttf);
+}
+
 h1 {
   /* Promotional Desktop / H1 */
   font-family: Mulish;
@@ -75,5 +80,16 @@ summary {
   font-style: normal;
   font-weight: 600;
   line-height: 36px; /* 150% */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 </style>
