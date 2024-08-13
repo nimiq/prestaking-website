@@ -1,5 +1,5 @@
-import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
+import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -10,14 +10,14 @@ export default defineNuxtConfig({
     './assets/css/reverse-holo.css',
   ],
   modules: [
-    "@vueuse/nuxt",
-    "@pinia/nuxt",
-    "@unocss/nuxt",
-    "@nuxtjs/color-mode",
-    "@nuxthub/core",
-    "@nuxt/eslint",
-    "@nuxt/image",
-    'radix-vue/nuxt' // Includes auto-import
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@unocss/nuxt',
+    '@nuxtjs/color-mode',
+    '@nuxthub/core',
+    '@nuxt/eslint',
+    '@nuxt/image',
+    'radix-vue/nuxt', // Includes auto-import
   ],
 
   hub: {
@@ -25,11 +25,11 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: true
+    enabled: true,
   },
 
   colorMode: {
-    classSuffix: "",
+    classSuffix: '',
   },
 
   experimental: {
@@ -40,7 +40,6 @@ export default defineNuxtConfig({
     typedPages: true,
   },
 
-
   vite: {
     plugins: [
       wasm(),
@@ -48,7 +47,7 @@ export default defineNuxtConfig({
     ],
     optimizeDeps: {
       exclude: ['@nimiq/core-web'],
-    }
+    },
   },
 
   nitro: {

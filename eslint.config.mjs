@@ -7,6 +7,8 @@ export default nuxt(
     {
       unocss: true,
       formatters: true,
+      typescript: true,
+      vue: true,
     },
   ),
 )

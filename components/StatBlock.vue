@@ -4,6 +4,10 @@ defineProps({
     type: String,
     required: true,
   },
+  statSmall: {
+    type: String,
+    required: false,
+  },
   text: {
     type: String,
     required: true,
@@ -31,8 +35,9 @@ defineProps({
     class="stat-block-container relative h-full flex grow items-center justify-center border-2 rounded-8 py-48"
   >
     <div class="w-fit flex flex-col items-center justify-center gap-y-32">
-      <div class="stat gradient bg rounded-full px-32 py-24 text-48 text-white font-600 leading-100%">
+      <div class="stat gradient bg flex items-center gap-x-12 rounded-full px-32 py-24 text-44 text-white font-600 leading-100%">
         <span class="relative">{{ stat }}</span>
+        <span v-if="statSmall" class="text-18 font-600">{{ statSmall }}</span>
       </div>
       <div class="col-span-2 text-24 font-600" :class="darkMode ? 'text-white/60' : 'text-darkblue/60'">
         <span>{{ text }}</span>

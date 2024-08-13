@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable vue/no-multiple-template-root -->
-  <Section dark-mode god-rays>
+  <Section god-rays dark-mode>
     <Header
       title="Prestake, get a share of 100 Mio NIM rewards and win up to 3 Mio NIM"
       body="Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.."
@@ -11,18 +11,28 @@
       <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24 *:min-w-342">
         <StatBlock
           dark-mode
-          stat="3 Mio Nim" text="faster transactions" color="blue"
+          stat="500 k" stat-small="NIM" text="60x winners" color="blue"
         />
         <StatBlock
           dark-mode
-          stat="1.5 Mio Nim" text="faster transactions" color="red"
+          stat="1.5 Mio" stat-small="NIM" text="25x winners" color="red"
         />
         <StatBlock
           dark-mode
-          stat="500K nim" text="faster transactions" color="orange"
+          stat="3 Mio" stat-small="NIM" text="10x winners" color="orange"
         />
       </div>
     </div>
+    <Header
+      title="Rules of the competition"
+      body="Dive into all the competition rules. You'll find details on this rule and that rule to help you understand how everything works."
+      dark-mode
+      title-tag="h3"
+      button
+      button-text="Learn the rules"
+      button-link="https://google.com"
+      button-arrow
+    />
   </Section>
 
   <Section>
@@ -31,9 +41,7 @@
       title="Made for crypto payments at sub-second speed"
       body="Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm. Your wallet and exchanges keep their addresses. No action required."
     />
-    <div class="mb-44 h-125 w-full border-1 border-gray rounded-9999px">
-      <div class="h-full w-full border-4 border-white rounded-999px bg-gold" />
-    </div>
+    <GoalBar />
 
     <div>
       <span class="small-label mb-24 inline-block w-full text-center text-darkblue/60">
