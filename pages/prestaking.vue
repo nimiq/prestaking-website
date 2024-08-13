@@ -239,13 +239,12 @@
 
   <hr>
 
-  <Section>
+  <Section hexs>
     <Header
       title="Prestaking is as easy as staking"
       body="The process is the same. Go to your wallet, pick a validator pool and start staking."
     />
     <div class="flex text-left">
-      <!-- <div class="flex grow flex-col py-24"> -->
       <ul class="process-list mt-24 grow self-center p-48">
         <li>
           <h4>
@@ -289,6 +288,15 @@
         <img src="/video.png" class="h-[110%] w-full object-cover" alt="" srcset="">
       </div>
     </div>
+    <Header
+      class="mt-96"
+      title="Now start the process"
+      title-tag="h3"
+      body="The not-for-profit Nimiq Foundation funds and supports the development and progress of the Nimiq Blockchain and Ecosystem."
+      button
+      button-link="/"
+      button-text="Go to wallet"
+    />
   </Section>
 
   <TicketSection />

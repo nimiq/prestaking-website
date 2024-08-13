@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const noOfBars = 100
 const totalGoal = 7000000000
-const currentAmount = 3500000000
+const currentAmount = 3000000000
 
 const milestones = [
   {

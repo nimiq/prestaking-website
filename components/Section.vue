@@ -10,6 +10,11 @@ defineProps({
     default: false,
     required: false,
   },
+  hexs: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 })
 </script>
 
@@ -18,6 +23,9 @@ defineProps({
     <div v-if="darkMode && godRays" class="god-rays">
       <img src="~/assets/God-Rays.png" alt="">
       <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" />
+    </div>
+    <div v-if="!darkMode && hexs" class="hexs">
+      <img src="~/assets/hexs.png" alt="">
     </div>
     <div class="mx-auto max-w-1168 flex flex-col gap-96">
       <slot />
@@ -35,6 +43,20 @@ defineProps({
   height: 100%;
   transform: translateX(-50%);
   mix-blend-mode: lighten;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+  }
+}
+
+.hexs {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 1902px;
+  transform: translateX(-50%);
 
   img {
     object-fit: cover;
