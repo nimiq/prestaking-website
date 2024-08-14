@@ -64,6 +64,15 @@ h4 {
   text-transform: uppercase;
 }
 
+.small-body {
+  /* 1152/Small body */
+  font-family: Mulish;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 22.5px */
+}
+
 p {
   /* 1440/Body */
   font-family: Mulish;
@@ -91,5 +100,12 @@ summary {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 }
 </style>

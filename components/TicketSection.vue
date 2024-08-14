@@ -55,7 +55,7 @@
       title="Nimiq needs you. Pre-stake before the 24th for bigger bonuses"
       body="Prestake from the wallet, get a guaranteed reward and join the competition for even greater prizes."
     />
-    <img class="absolute bottom-0 left-1/2 -translate-x-1/2" src="~/assets/four-cards.png" alt="" srcset="">
+    <img class="absolute left-1/2 -bottom-[200px] -translate-x-1/2" src="~/assets/four-cards.png" alt="" srcset="">
   </Section>
 </template>
 

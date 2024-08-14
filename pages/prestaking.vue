@@ -6,6 +6,7 @@
       body="Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.."
       dark-mode
     />
+    <Rewards />
     <div>
       <SectionLabel dark-mode text="The prizes" />
       <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24 *:min-w-342">
