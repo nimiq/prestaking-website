@@ -31,17 +31,17 @@ defineProps({
 
 <template>
   <div
-    :class="[color, { dark: darkMode }, darkMode ? 'dark border-white/20' : 'border-darkblue/10 bg-darkblue/02']"
-    class="stat-block-container relative h-full flex grow items-center justify-center border-2 rounded-8 py-48"
+    :class="[color, darkMode ? 'dark border-white/20' : 'border-darkblue/10 bg-darkblue/02']"
+    class="stat-block-container relative h-full flex grow items-center justify-center border-2 rounded-8 py-24 md:py-48"
   >
-    <div class="w-fit flex flex-col items-center justify-center gap-y-32">
-      <div class="stat gradient bg flex items-center gap-x-12 rounded-full px-32 py-24 text-44 text-white font-600 leading-100%">
+    <div class="w-fit flex flex-col items-center justify-center gap-y-20 md:gap-y-32">
+      <div class="stat gradient bg flex items-center gap-x-12 rounded-full px-24 py-20 text-32 text-white font-600 leading-100% md:px-32 md:py-24 md:text-44">
         <span class="relative">{{ stat }}</span>
         <span v-if="statSmall" class="text-18 font-600">{{ statSmall }}</span>
       </div>
-      <div class="col-span-2 text-24 font-600" :class="darkMode ? 'text-white/60' : 'text-darkblue/60'">
-        <span>{{ text }}</span>
-      </div>
+      <h4 class="my-0 text-center !leading-[1]" :class="darkMode ? 'text-white/60' : 'text-darkblue/60'">
+        {{ text }}
+      </h4>
     </div>
   </div>
 </template>

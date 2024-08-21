@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <div
-    class="mb-32 w-full text-center text-14 font-bold leading-100% uppercase"
+    class="small-label mb-32 w-full md:text-center"
     :class="darkMode ? 'text-white/60' : 'text-darkblue/60'"
   >
     {{ text }}

@@ -43,7 +43,7 @@ const isOpen = ref(false)
 
 <template>
   <div
-    class="faqs-container relative grid grid-flow-row grid-cols-3 w-full gap-24"
+    class="faqs-container relative grid grid-flow-row grid-cols-1 w-full gap-24 md:grid-cols-3"
     :class="isOpen ? 'max-h-auto' : 'max-h-270 pb-0  overflow-hidden'"
   >
     <div

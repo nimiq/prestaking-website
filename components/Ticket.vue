@@ -4,7 +4,7 @@
 
 <template>
   <div class="relative">
-    <div class="">
+    <div class="max-h-370">
       <div class="ticket">
         <img class="relative z-5 mx-auto w-374 object-cover shadow-2xl" src="~/assets/svg/ticket-3mill.svg" alt="" srcset="">
       </div>

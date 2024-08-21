@@ -97,6 +97,9 @@ const showModal: Ref<boolean> = ref(false)
 
 <style>
 .rewards-card-container {
+  @apply max-h-430px md:max-h-none aspect-[13/20] md:aspect-auto;
+  max-width: 100%;
+
   border-radius: 6px;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   background: radial-gradient(

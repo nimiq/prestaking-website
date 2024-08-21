@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="grid grid-cols-6 grid-rows-2 gap-x-56 bg-darkblue px-136 pb-80 text-16 text-white/60">
+  <div class="grid grid-cols-6 grid-rows-2 gap-x-56 bg-darkblue pb-80 text-16 text-white/60 lg:px-136">
     <div class="col-span-3 row-span-2">
       <div class="col-span-3 row-span-2">
         <div i-nimiq:logos-nimiq-horizontal-mono class="mb-12 h-25 w-100 text-neutral-700" />

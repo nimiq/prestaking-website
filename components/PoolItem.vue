@@ -17,7 +17,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex items-center gap-12 px-32 py-24">
+  <div class="min-w-max flex items-center gap-12 px-32 py-24">
     <div class="size-42 overflow-hidden rounded-full bg-blue">
       <img class="h-full w-full object-cover object-c" src="https://fastly.picsum.photos/id/18/200/300.jpg?hmac=ey-vd9wCRyYWPf6nwCk_ciMCPRLrWvI7O5Z1Hfg2Cf0" alt="">
     </div>

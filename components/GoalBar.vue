@@ -1,5 +1,16 @@
 <script lang="ts" setup>
-const noOfBars = 100
+function calcBarsTotal() {
+  if (window.innerWidth < 600) {
+    return 75
+  }
+  else if (window.innerWidth < 1000) {
+    return 100
+  }
+  else {
+    return 125
+  }
+}
+const noOfBars: number = calcBarsTotal()
 const totalGoal = 7000000000
 const currentAmount = 3000000000
 
@@ -53,7 +64,7 @@ function roundDecimals(num: number) {
 
 <template>
   <div>
-    <div class="relative h-125 w-full border-1 border-darkblue/07 rounded-full">
+    <div class="relative h-125 w-[calc(100%+32px)] border-1 border-darkblue/07 rounded-full md:mx-0 -ml-16 -mr-16 md:w-full">
       <!-- Bars -->
       <div class="grid h-full w-full gap-x-3 overflow-hidden border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
         <div

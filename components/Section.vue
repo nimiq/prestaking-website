@@ -19,7 +19,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="relative px-16 py-200 md:px-32" :class="{ 'bg-darkblue': darkMode }">
+  <div class="relative px-32 py-160 md:py-200" :class="{ 'bg-darkblue': darkMode }">
     <div v-if="darkMode && godRays" class="god-rays short">
       <img src="~/assets/God-Rays.png" alt="">
       <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" />

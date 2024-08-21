@@ -5,81 +5,93 @@
 </template>
 
 <style>
-@font-face {
-  font-family: Mulish;
-  src: url(/assets/Mulish-VariableFont_wght.ttf);
-}
-
 h1 {
-  /* Promotional Desktop / H1 */
-  font-family: Mulish;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 76.8px; /* 120% */
+  @apply font-700 text-40 leading-[120%]
+  lg:font-700 lg:text-44 lg:leading-[120%]
+  xl:font-700 xl:text-48 xl:leading-[120%];
 }
 
 h2 {
-  /* Promotional Desktop / H2 */
-  font-family: Mulish;
-  font-size: 44px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 57.6px; /* 120% */
+  @apply font-700 text-32 leading-[120%]
+  lg:font-700 lg:text-36 lg:leading-[120%]
+  xl:font-700 xl:text-40 xl:leading-[130%];
 }
 
 h3 {
-  /* 1440/H3 */
-  font-family: Mulish;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 130%; /* 36.4px */
+  @apply font-600 text-22 leading-[130%]
+  lg:font-600 lg:text-26 lg:leading-[130%]
+  xl:font-600 xl:text-28 xl:leading-[130%];
 }
 
 h4 {
-  /* 1440/H4 */
-  font-family: Mulish;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 130%; /* 31.2px */
+  @apply font-600 text-20 leading-[130%]
+  lg:font-600 lg:text-22 lg:leading-[130%]
+  xl:font-600 xl:text-24 xl:leading-[130%];
 }
+
+.hero-subline {
+  @apply font-500 text-20 leading-[150%]
+  lg:font-500 lg:text-22 lg:leading-[150%]
+  xl:font-500 xl:text-24 xl:leading-[150%];
+}
+
 .subline {
-  /* 1440/Subline */
-  font-family: Mulish;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 36px */
+  @apply font-400 text-20 leading-[150%]
+  lg:font-400 lg:text-22 lg:leading-[150%]
+  xl:font-400 xl:text-24 xl:leading-[150%];
 }
-.small-label {
-  /* 768 & 375/Small label */
-  font-family: Mulish;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%; /* 14.4px */
-  letter-spacing: 1.14px;
-  text-transform: uppercase;
+
+.large-text {
+  @apply font-400 text-26 leading-[150%]
+  lg:font-400 lg:text-28 lg:leading-[150%]
+  xl:font-400 xl:text-32 xl:leading-[150%];
+}
+
+.bold-line {
+  @apply font-700 text-21 leading-[160%]
+  lg:font-700 lg:text-22 lg:leading-[160%]
+  xl:font-700 xl:text-24 xl:leading-[160%];
+}
+
+p,
+.body {
+  @apply font-400 text-16 leading-[150%]
+  lg:font-400 lg:text-17 lg:leading-[150%]
+  xl:font-400 xl:text-18 xl:leading-[150%];
 }
 
 .small-body {
-  /* 1152/Small body */
-  font-family: Mulish;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 22.5px */
+  @apply font-400 text-14 leading-[150%]
+  lg:font-400 lg:text-15 lg:leading-[150%]
+  xl:font-400 xl:text-16 xl:leading-[150%];
 }
 
-p {
-  /* 1440/Body */
-  font-family: Mulish;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 27px */
+.large-label {
+  @apply uppercase
+  font-700 text-14 leading-[120%]
+  lg:font-700 lg:text-16 lg:leading-[120%]
+  xl:font-700 xl:text-18 xl:leading-[120%];
+  letter-spacing: 3px;
+}
+
+.small-label {
+  @apply uppercase
+  font-700 text-12 leading-[120%]
+  lg:font-700 lg:text-13 lg:leading-[120%]
+  xl:font-700 xl:text-14 xl:leading-[120%];
+  letter-spacing: 1px;
+}
+
+.large-button {
+  @apply font-700 text-18 leading-[150%]
+  lg:font-700 lg:text-20 lg:leading-[150%]
+  xl:font-700 xl:text-20 xl:leading-[150%];
+}
+
+.small-button {
+  @apply font-700 text-14 leading-[150%]
+  lg:font-700 lg:text-15 lg:leading-[150%]
+  xl:font-700 xl:text-16 xl:leading-[150%];
 }
 
 summary {

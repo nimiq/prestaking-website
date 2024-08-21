@@ -15,6 +15,24 @@ export default defineConfig({
     presetRemToPx({ baseFontSize: 4 }),
     presetAttributify(),
   ],
+  theme: {
+    screens: {
+      sm: '375px',
+      // => @media (min-width: 640px) { ... }
+
+      md: '768px',
+      // => @media (min-width: 1024px) { ... }
+
+      lg: '1152px',
+      xl: '1440px',
+      // => @media (min-width: 1280px) { ... }
+    },
+    variants: {
+      extend: {
+        gridColumnEnd: ['last'],
+      },
+    },
+  },
   transformers: [
     transformerDirectives(),
   ],
