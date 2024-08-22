@@ -14,6 +14,9 @@ dependencies:
   '@nuxthub/core':
     specifier: ^0.6.11
     version: 0.6.11(nuxt@3.12.0)(vite@5.2.13)
+  '@nuxtjs/composition-api':
+    specifier: ^0.34.0
+    version: 0.34.0(nuxt@3.12.0)(vue@3.4.27)
   '@vueuse/core':
     specifier: ^10.10.0
     version: 10.10.0(vue@3.4.27)
@@ -2047,6 +2050,23 @@ packages:
       - rollup
       - supports-color
     dev: true
+
+  /@nuxtjs/composition-api@0.34.0(nuxt@3.12.0)(vue@3.4.27):
+    resolution: {integrity: sha512-2BWv4zmlFhu09eo8oeXk11jVdsRLh6vXwtaDADMaZ8Do8SoY2fEk3dmtAkr3aUQuSIzOD/jdWBnd0h99/YIrSA==}
+    engines: {node: '>=v14.13.0'}
+    peerDependencies:
+      nuxt: ^2.17.3
+      vue: ^2.7.16
+    dependencies:
+      defu: 6.1.4
+      estree-walker: 2.0.2
+      fs-extra: 11.2.0
+      magic-string: 0.30.10
+      nuxt: 3.12.0(@opentelemetry/api@1.8.0)(@unocss/reset@0.60.4)(eslint@9.4.0)(floating-vue@5.2.2)(typescript@5.4.5)(unocss@0.58.9)(vite@5.2.13)
+      pathe: 1.1.2
+      ufo: 1.5.3
+      vue: 3.4.27(typescript@5.4.5)
+    dev: false
 
   /@opentelemetry/api-logs@0.50.0:
     resolution: {integrity: sha512-JdZuKrhOYggqOpUljAq4WWNi5nB10PmgoF0y2CvedLGXd0kSawb/UBnWT8gg1ND3bHCNHStAIVT0ELlxJJRqrA==}
