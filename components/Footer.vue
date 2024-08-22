@@ -15,7 +15,7 @@
             <p class="mt-32 text-white">
               or follow us here
             </p>
-            <div class="mb-32 flex items-center gap-x-8 text-24 md:mb-0">
+            <div class="mb-32 mt-0 flex items-center gap-x-8 text-24 md:mb-0">
               <div class="text-white/20" i-nimiq:logos-github-mono />
               <div class="text-white/20" i-nimiq:logos-facebook-mono />
               <div class="text-white/20" i-nimiq:logos-discord-mono />
@@ -32,7 +32,7 @@
       </div>
       <div class="grid grid-rows-[repeat(3,_miin_content)] grid-cols-2 grow gap-y-40 overflow-hidden bg-darkblue text-white/60 lg:grid-cols-3 md:max-w-555 md:gap-x-24">
         <div class="[&_a]:mb-12">
-          <p mb-32 w-full text-12 label>
+          <p mb-32 mt-0 w-full text-12 label>
             Project
           </p>
           <a href="https://nimiq.com" class="block">External link</a>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="[&_a]:mb-12">
-          <p mb-32 w-full text-12 label>
+          <p mb-32 mt-0 w-full text-12 label>
             Tech
           </p>
           <a href="https://nimiq.com" class="block">External link</a>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="[&_a]:mb-12">
-          <p mb-32 w-full text-12 label>
+          <p mb-32 mt-0 w-full text-12 label>
             Apps
           </p>
           <a href="https://nimiq.com" class="block">External link</a>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="[&_a]:mb-12">
-          <p mb-32 w-full text-12 label>
+          <p mb-32 mt-0 w-full text-12 label>
             Get started
           </p>
           <a href="https://nimiq.com" class="block">External link</a>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="[&_a]:mb-12">
-          <p mb-32 w-full text-12 label>
+          <p mb-32 mt-0 w-full text-12 label>
             and more
           </p>
           <a href="https://nimiq.com" class="block">External link</a>
@@ -89,7 +89,6 @@
 <style scoped>
 .grid div {
   position: relative;
-  padding: 1em;
 }
 
 @media (min-width: 0px) {

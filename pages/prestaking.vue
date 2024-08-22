@@ -1,66 +1,13 @@
 <script setup>
-const prestakeInfoCards = [
-  {
-    title: 'Locked until the launch of PoS',
-    description: 'Get an optional upgrade of your identicon in the wallet.',
-    icon: 'lock',
-  },
-  {
-    title: 'Prestaked with a validator pool',
-    description: 'Get an optional upgrade of your identicon in the wallet.',
-    icon: 'document',
-  },
-  {
-    title: 'Earn rewards from the first block on',
-    description: 'Get an optional upgrade of your identicon in the wallet.',
-    icon: 'box',
-  },
-]
-
-const supportInfoCards = [
-  {
-    title: 'Staking as much as possible',
-    description: 'Get an optional upgrade of your identicon in the wallet.',
-    icon: 'leaf',
-  },
-  {
-    title: 'Choosing smaller validators',
-    description: 'Get an optional upgrade of your identicon in the wallet.',
-    icon: 'duck',
-  },
-  {
-    title: 'Promoting the prestake',
-    description: 'Get an optional upgrade of your identicon in the wallet.',
-    icon: 'horn',
-  },
-]
-
-const walletSetupInstructions = [
-  {
-    title: 'Go to your wallet',
-    description: 'In the wallet, click on the staking icon next to send and receive.',
-  },
-  {
-    title: 'Go to your wallet',
-    description: 'In the wallet, click on the staking icon next to send and receive.',
-  },
-  {
-    title: 'Go to your wallet',
-    description: 'In the wallet, click on the staking icon next to send and receive.',
-  },
-  {
-    title: 'Go to your wallet',
-    description: 'In the wallet, click on the staking icon next to send and receive.',
-  },
-]
+import pageContent from '@/content/prestaking'
 </script>
 
 <template>
   <!-- eslint-disable vue/no-multiple-template-root -->
   <Section god-rays dark-mode>
     <Header
-      title="Prestake, get a share of 100 Mio NIM rewards and win up to 3 Mio NIM"
-      body="Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.."
+      :title="pageContent.hero.title"
+      :body="pageContent.hero.body"
       dark-mode
     />
     <Rewards />
@@ -68,46 +15,46 @@ const walletSetupInstructions = [
       <SectionLabel dark-mode text="The prizes" />
       <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24">
         <StatBlock
+          v-for="stat in pageContent.hero.prizes"
+          :key="stat.value"
           dark-mode
-          stat="500 k" stat-small="NIM" text="60x winners" color="blue"
-        />
-        <StatBlock
-          dark-mode
-          stat="1.5 Mio" stat-small="NIM" text="25x winners" color="red"
-        />
-        <StatBlock
-          dark-mode
-          stat="3 Mio" stat-small="NIM" text="10x winners" color="orange"
+          stat-small="NIM"
+          :stat="stat.value"
+          :text="stat.text"
+          :color="stat.color"
         />
       </div>
     </div>
     <Header
-      title="Rules of the competition"
-      body="Dive into all the competition rules. You'll find details on this rule and that rule to help you understand how everything works."
+      :title="pageContent.rules.title"
+      :body="pageContent.rules.body"
       dark-mode
       title-tag="h3"
       button
-      button-text="Learn the rules"
-      button-link="https://google.com"
+      :button-text="pageContent.rules.buttonText"
+      :button-link="pageContent.rules.buttonLink"
       button-arrow
     />
   </Section>
 
   <Section>
     <Header
-      label="Community"
-      title="Made for crypto payments at sub-second speed"
-      body="Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm. Your wallet and exchanges keep their addresses. No action required."
+      :label="pageContent.communityGoals.label"
+      :title="pageContent.communityGoals.title"
+      :body="pageContent.communityGoals.body"
     />
-    <GoalBar />
+    <GoalBar
+      :total-goal="pageContent.communityGoals.goalBar.totalGoal"
+      :milestones="pageContent.communityGoals.goalBar.milestones"
+    />
 
     <div>
       <span class="small-label mb-24 inline-block w-full text-center text-darkblue/60">
-        Prestaked NIM will be:
+        {{ pageContent.prestakeInfo.label }}
       </span>
       <div class="grid grid-cols-1 w-full gap-x-24 gap-y-20 lg:grid-cols-3 md:grid-cols-2">
         <InfoCard
-          v-for="item in prestakeInfoCards"
+          v-for="item in pageContent.prestakeInfo.cards"
           :key="item.icon"
           class="lg:last:col-span-1 md:last:col-span-2"
           :title="item.title"
@@ -118,11 +65,11 @@ const walletSetupInstructions = [
     </div>
     <div>
       <span class="small-label mb-24 inline-block w-full text-center text-darkblue/60">
-        You support the network by:
+        {{ pageContent.supportInfo.label }}
       </span>
       <div class="grid grid-cols-1 w-full gap-x-24 gap-y-20 lg:grid-cols-3 md:grid-cols-2">
         <InfoCard
-          v-for="item in supportInfoCards"
+          v-for="item in pageContent.supportInfo.cards"
           :key="item.icon"
           class="lg:last:col-span-1 md:last:col-span-2"
           :title="item.title"
@@ -141,8 +88,8 @@ const walletSetupInstructions = [
         <SVG80MillionPopOut />
       </div>
       <Header
-        title="Get a guaranteed Pre-staking Reward"
-        body="Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm. Your wallet and exchanges keep their addresses. No action required."
+        :title="pageContent.prestakeReward.title"
+        :body="pageContent.prestakeReward.body"
       />
     </div>
     <div class="flex items-center justify-center gap-32">
@@ -178,13 +125,13 @@ const walletSetupInstructions = [
 
   <Section hexs>
     <Header
-      title="Prestaking is as easy as staking"
-      body="The process is the same. Go to your wallet, pick a validator pool and start staking."
+      :title="pageContent.walletSetup.title"
+      :body="pageContent.walletSetup.body"
     />
     <div class="flex flex-col text-left md:flex-row">
       <ul class="process-list mt-24 grow self-center p-32 md:p-48">
         <li
-          v-for="(item, index) in walletSetupInstructions"
+          v-for="(item, index) in pageContent.walletSetup.instructions"
           :key="index"
         >
           <h4 class="flex flex-col gap-12 text-center md:flex-row md:gap-0">
@@ -214,12 +161,30 @@ const walletSetupInstructions = [
     />
   </Section>
 
-  <TicketSection />
+  <Section god-rays dark-mode>
+    <Header
+      dark-mode
+      :label="pageContent.prestake.label"
+      :title="pageContent.prestake.title"
+      :body="pageContent.prestake.body"
+    />
+    <TicketSection />
+    <Header
+      class="my-96"
+      dark-mode
+      :title="pageContent.prestake.bottomHeader.title"
+      :body="pageContent.prestake.bottomHeader.body"
+      button
+      :button-link="pageContent.prestake.bottomHeader.buttonLink"
+      :button-text="pageContent.prestake.bottomHeader.buttonLabel"
+    />
+    <img class="absolute left-1/2 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="~/assets/four-cards.png" alt="" srcset="">
+  </Section>
 
   <Section dark-mode>
     <div>
       <SectionLabel text="What you need to know" dark-mode />
-      <Faqs />
+      <Faqs :faqs="pageContent.faqs" />
     </div>
   </Section>
 

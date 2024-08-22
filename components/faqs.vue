@@ -1,43 +1,11 @@
 <script lang="ts" setup>
-const faqs = [
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+defineProps({
+  faqs: {
+    type: Array,
+    defualt: null,
+    required: true,
   },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-  {
-    question: 'When will I receive my first reward?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-  },
-]
-
+})
 const isOpen = ref(false)
 </script>
 

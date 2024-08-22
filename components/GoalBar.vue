@@ -1,4 +1,22 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
+
+interface milestone {
+  label: string
+  text: string
+  value: number
+}
+
+const props = defineProps({
+  totalGoal: {
+    type: Number,
+    required: true,
+  },
+  milestones: {
+    type: Array as PropType<milestone[]>,
+    required: true,
+  },
+})
 function calcBarsTotal() {
   if (window.innerWidth < 600) {
     return 75
@@ -11,29 +29,16 @@ function calcBarsTotal() {
   }
 }
 const noOfBars: number = calcBarsTotal()
-const totalGoal = 7000000000
+
 const currentAmount = 3000000000
 
-const milestones = [
-  {
-    label: '3B',
-    text: 'Base Goal',
-    value: 3000000000,
-  },
-  {
-    label: '5B',
-    text: 'Stretch Goal',
-    value: 5000000000,
-  },
-]
-
-const relativeMilestones = milestones.map((x) => {
-  const percentage = (x.value / totalGoal)
+const relativeMilestones = props.milestones.map((x) => {
+  const percentage = (x.value / props.totalGoal)
   x.value = Math.floor(percentage * noOfBars)
   return x
 })
 
-const currentPercentage = (currentAmount / totalGoal)
+const currentPercentage = (currentAmount / props.totalGoal)
 const relativeBars = Math.floor(currentPercentage * noOfBars)
 
 function isBarMilestone(barIndex: number) {
