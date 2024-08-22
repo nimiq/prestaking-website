@@ -42,9 +42,9 @@ defineEmits(['close'])
     >
       <!-- Background Elements -->
       <div class="god-rays !w-full">
-        <img src="~/assets/God-Rays.png" alt="">
+        <img src="~/assets/img/God-Rays.png" alt="">
       </div>
-      <img class="absolute left-1/2 top-2/5 -translate-1/2" src="~/assets/3-cards.png" alt="">
+      <img class="absolute left-1/2 top-2/5 -translate-1/2" src="~/assets/img/3-cards.png" alt="">
       <div class="absolute bottom-0 left-0 h-3/4 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t" />
 
       <!-- Content -->

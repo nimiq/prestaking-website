@@ -12,7 +12,7 @@ onMounted(() => {
     <!-- <div id="grid-gradient-overlay" class="absolute left-0 top-0 h-screen w-screen" /> -->
   </div>
   <div class="absolute bottom-0 left-0 h-full min-h-full">
-    <img class="h-full object-cover object-b mix-blend-lighten blur-[28px]" src="~/assets/God-Rays.png" alt="">
+    <img class="h-full object-cover object-b mix-blend-lighten blur-[28px]" src="~/assets/img/God-Rays.png" alt="">
     <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" />
   </div>
   <ClockSVG />

@@ -5,7 +5,7 @@
   <div class="grid grid-rows-[repeat(5,_min-content)] grid-cols-1 w-full gap-32 md:grid-rows-[repeat(3,_min-content)] md:grid-cols-3">
     <div class="glass-card col-span-1 row-span-2 md:col-span-3">
       <!-- <Ticket /> -->
-      <img class="max-h-370" src="/assets/tickets.png" alt="" srcset="">
+      <img class="max-h-370" src="/assets/img/tickets.png" alt="" srcset="">
       <div class="mx-auto max-w-[480px]">
         <h3 class="mt-0 text-center text-white">
           Massive prizes await - for example 10 x 3,000,000 NIM
@@ -16,9 +16,8 @@
       </div>
     </div>
     <div class="glass-card col-span-1 row-span-1">
-      <!-- <SVG80Million class="h-141 w-135" /> -->
       <div class="h-136">
-        <img class="mx-auto h-full object-contain object-center" src="/assets/80.png" alt="" srcset="">
+        <img class="mx-auto h-full object-contain object-center" src="/assets/img/80.png" alt="" srcset="">
       </div>
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
@@ -29,7 +28,7 @@
     </div>
     <div class="glass-card col-span-1 row-span-1">
       <div class="h-136">
-        <img class="mx-auto h-full w-144 object-contain object-center" src="/assets/star-wreath.png" alt="" srcset="">
+        <img class="mx-auto h-full w-144 object-contain object-center" src="/assets/img/star-wreath.png" alt="" srcset="">
       </div>
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
@@ -40,7 +39,7 @@
     </div>
     <div class="glass-card col-span-1 row-span-1">
       <div class="h-136">
-        <img class="mx-auto h-full object-contain object-center" src="/assets/hex-star.png" alt="" srcset="">
+        <img class="mx-auto h-full object-contain object-center" src="/assets/img/hex-star.png" alt="" srcset="">
       </div>
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">

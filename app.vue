@@ -1,10 +1,25 @@
 <template>
   <NuxtLayout>
-    <NuxtPage />
+    <NuxtPage
+      :transition="{
+        name: 'page',
+        mode: 'out-in',
+      }"
+    />
   </NuxtLayout>
 </template>
 
 <style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
 h1 {
   @apply font-700 text-40 leading-[120%]
   lg:font-700 lg:text-44 lg:leading-[120%]

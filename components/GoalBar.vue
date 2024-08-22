@@ -34,8 +34,11 @@ const currentAmount = 3000000000
 
 const relativeMilestones = props.milestones.map((x) => {
   const percentage = (x.value / props.totalGoal)
-  x.value = Math.floor(percentage * noOfBars)
-  return x
+  return {
+    value: Math.floor(percentage * noOfBars),
+    label: x.label,
+    text: x.text,
+  }
 })
 
 const currentPercentage = (currentAmount / props.totalGoal)
@@ -65,11 +68,19 @@ function nFormatter(num: number, digits: number) {
 function roundDecimals(num: number) {
   return Math.round((num + Number.EPSILON) * 100) / 100
 }
+
+const loaded = ref(false)
+
+onMounted(() => {
+  nextTick(() => {
+    loaded.value = true
+  })
+})
 </script>
 
 <template>
   <div>
-    <div class="relative h-125 w-[calc(100%+32px)] border-1 border-darkblue/07 rounded-full md:mx-0 -ml-16 -mr-16 md:w-full">
+    <div v-if="loaded" class="relative h-125 w-[calc(100%+32px)] border-1 border-darkblue/07 rounded-full md:mx-0 -ml-16 -mr-16 md:w-full">
       <!-- Bars -->
       <div class="grid h-full w-full gap-x-3 overflow-hidden border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
         <div
@@ -94,7 +105,7 @@ function roundDecimals(num: number) {
       </div>
     </div>
     <!-- Milestone labels: based below in grid due to overflow issues when placed in the above div -->
-    <div class="grid mb-120 h-full w-full gap-x-3 border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
+    <div v-if="loaded" class="grid mb-120 h-full w-full gap-x-3 border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
       <div
         v-for="(bar, index) in noOfBars" :key="index"
         class="relative h-full w-full rounded-2"

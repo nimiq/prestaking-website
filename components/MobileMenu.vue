@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useOutsideClick } from '@/composables/useClickOutside'
+
 defineProps({
   isInverted: {
     default: false,
@@ -16,9 +18,9 @@ defineProps({
 
 const menuVisible = ref(false)
 const root$ = ref<HTMLDivElement | null>(null)
-// useOutsideClick(root$, () => {
-//   menuVisible.value = false
-// })
+useOutsideClick(root$, () => {
+  menuVisible.value = false
+})
 </script>
 
 <template>
@@ -27,15 +29,18 @@ const root$ = ref<HTMLDivElement | null>(null)
     class="relative"
   >
     <!-- Hamburger icon -->
-    <button class="hamburger" aria-label="Navigation dropdown" :class="{ active: menuVisible }" @click="menuVisible = !menuVisible">
-      <span />
-      <span />
-      <span />
-    </button>
+
+    <svg class="cursor-pointer" width="25" height="18" viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg" @click="menuVisible = !menuVisible">
+      <line y1="1.25" :x1="menuVisible ? 0 : 0" x2="25" y2="1.25" :stroke="isSticky ? 'black' : 'white'" stroke-opacity="0.25" stroke-width="1.5" />
+      <line y1="9.25" :x1="menuVisible ? 2.5 : 0" x2="25" y2="9.25" :stroke="isSticky ? 'black' : 'white'" stroke-opacity="0.25" stroke-width="1.5" />
+      <line y1="17.25" :x1="menuVisible ? 5 : 0" x2="25" y2="17.25" :stroke="isSticky ? 'black' : 'white'" stroke-opacity="0.25" stroke-width="1.5" />
+    </svg>
 
     <nav :class="{ visible: menuVisible }" class="menu-wrapper">
-      <ul class="flex flex-col gap-12 transition-opacity duration-75">
-        <a href="/prestaking" class="text-16px font-bold">Prestaking</a>
+      <ul class="flex flex-col gap-12 transition-opacity duration-75" @click="menuVisible = false">
+        <NuxtLink to="/prestaking" class="text-16px font-bold">
+          Prestaking
+        </NuxtLink>
         <div class="flex flex-col gap-x-16 lg:flex-row lg:items-center">
           <a href="https://nimiq.com" class="text-16px font-bold">Stay up to date</a>
           <div class="mt-16 flex gap-x-12">

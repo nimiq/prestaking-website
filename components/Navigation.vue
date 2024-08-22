@@ -62,7 +62,7 @@ onUnmounted(() => {
       }"
     >
       <NuxtLink
-        class="cursor-pointer opacity-100 transition-opacity focus:opacity-70 hover:opacity-70"
+        class="cursor-pointer opacity-100 transition-opacity hover:opacity-70"
         to="/"
       >
         <div v-if="localState.isSticky" i-nimiq:logos-nimiq-horizontal class="h-25px w-100px text-white" />
@@ -89,7 +89,9 @@ onUnmounted(() => {
           'text-white/60': !localState.isSticky,
         }"
       >
-        <a href="/prestaking" class="text-16px font-bold">Prestaking</a>
+        <NuxtLink to="/prestaking" class="text-16px font-bold">
+          Prestaking
+        </NuxtLink>
         <div class="flex items-center gap-x-16">
           <a href="https://nimiq.com" class="text-16px font-bold">Stay up to date</a>
           <div

@@ -37,10 +37,15 @@
       </nav>
     </div>
   </header> -->
+  <div>
+    <Navigation />
 
-  <Navigation />
+    <main>
+      <slot />
+    </main>
 
-  <main>
-    <slot />
-  </main>
+    <Footer />
+
+    <div id="modals" />
+  </div>
 </template>

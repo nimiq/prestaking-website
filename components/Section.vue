@@ -21,11 +21,11 @@ defineProps({
 <template>
   <div class="relative px-32 py-160 md:py-200" :class="{ 'bg-darkblue': darkMode }">
     <div v-if="darkMode && godRays" class="god-rays short">
-      <img src="~/assets/God-Rays.png" alt="">
+      <img src="~/assets/img/God-Rays.png" alt="">
       <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" />
     </div>
     <div v-if="!darkMode && hexs" class="hexs">
-      <img src="~/assets/hexs.png" alt="">
+      <img src="~/assets/img/hexs.png" alt="">
     </div>
     <div class="relative mx-auto max-w-1300 flex flex-col gap-96">
       <slot />
@@ -71,8 +71,9 @@ defineProps({
 
   img {
     filter: blur(24px);
-    transform: scale(1.5);
+    transform: scaleX(1.5);
     object-fit: cover;
+    background-repeat: no-repeat;
     height: 100%;
   }
 }

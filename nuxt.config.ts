@@ -74,6 +74,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#1f2348' },
       ],
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
 
   features: {
