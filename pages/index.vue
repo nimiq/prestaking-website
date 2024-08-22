@@ -14,7 +14,6 @@ const poolItemsFromApi = 5
       class="-mt-0 relative z-10 mx-auto"
       :title="pageContent.hero.title"
       :body="pageContent.hero.body"
-
       :button-link="pageContent.hero.buttonLink"
       :button-text="pageContent.hero.buttonLabel"
       button force-centered-text dark-mode

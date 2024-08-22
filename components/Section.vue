@@ -27,7 +27,7 @@ defineProps({
     <div v-if="!darkMode && hexs" class="hexs">
       <img src="~/assets/hexs.png" alt="">
     </div>
-    <div class="relative mx-auto max-w-1168 flex flex-col gap-96">
+    <div class="relative mx-auto max-w-1300 flex flex-col gap-96">
       <slot />
     </div>
   </div>

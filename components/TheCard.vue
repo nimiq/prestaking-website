@@ -4,47 +4,17 @@ defineProps({
     type: String,
     required: true,
   },
-  isVideo: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  fullScreen: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  image: {
-    type: Object,
-    required: false,
-    default: null,
-  },
-  imageUrl: {
-    type: String,
-    required: false,
-    default: null,
-  },
+  // image: {
+  //   type: Object,
+  //   required: false,
+  //   default: null,
+  // },
+  // imageUrl: {
+  //   type: String,
+  //   required: false,
+  //   default: null,
+  // },
   description: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  eventType: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  stars: {
-    type: Number,
-    required: false,
-    default: null,
-  },
-  link: {
-    type: String || null,
-    required: true,
-    default: null,
-  },
-  linkLabel: {
     type: String,
     required: false,
     default: null,
@@ -54,19 +24,13 @@ defineProps({
     required: false,
     default: null,
   },
-  footer: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  state: {
-    type: String,
-    required: false,
-    default: null,
+  options: {
+    type: Array,
+    required: true,
   },
 })
 
-// const showPlaceHolder = ref(false)
+defineEmits(['close'])
 </script>
 
 <template>
@@ -74,16 +38,22 @@ defineProps({
     class="group relative h-fit w-[clamp(508px,508px,80vw)] flex flex-col cursor-pointer border-1 border-gray rounded-6 bg-[#e9e9eb] bg-cover bg-center p-6 pb-0"
   >
     <div
-      v-if="imageUrl"
       class="relative h-414 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-55 py-48 text-center"
     >
-      <!-- style="background-image: url(https://lh3.googleusercontent.com/uUy8NY1JXe1EqNAYmxpTLv-g5gnZuWiNhYVMtQEczGPz0c-ZXStk1WLSTRwLmPk3MEaImRX-ENhYEJKujnxS3YHH=s1280-w1280-h800);" -->
-      <h3 class="mb-0 text-24 text-white font-700">
+      <!-- Background Elements -->
+      <div class="god-rays !w-full">
+        <img src="~/assets/God-Rays.png" alt="">
+      </div>
+      <img class="absolute left-1/2 top-2/5 -translate-1/2" src="~/assets/3-cards.png" alt="">
+      <div class="absolute bottom-0 left-0 h-3/4 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t" />
+
+      <!-- Content -->
+      <h3 class="z-5 mb-0 text-24 text-white font-700">
         {{ title }}
       </h3>
       <div
         v-if="description"
-        class="mt-16 text-white/60"
+        class="z-5 mt-16 text-white/60"
       >
         {{ description }}
       </div>
@@ -100,11 +70,8 @@ defineProps({
       <div v-if="label" class="inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
         {{ label }}
       </div>
-      <div class="grid grid-cols-2 grid-rows-2 gap-x-16 gap-y-24">
-        <RewardAchievement :active="false" value="10 - 99K" name="Protector" />
-        <RewardAchievement :active="false" value="100 - 999K" name="Champion" />
-        <RewardAchievement :active="false" value="1 - 10M" name="Overseer" />
-        <RewardAchievement :active="false" value=">10M" name="Paladin" />
+      <div class="flex flex-wrap gap-x-16 gap-y-24">
+        <RewardAchievement v-for="item in options" :key="item.text" :active="true" :value="item.value" :text="item.text" />
       </div>
     </div>
   </div>

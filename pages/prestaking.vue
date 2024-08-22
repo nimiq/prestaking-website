@@ -189,6 +189,7 @@ import pageContent from '@/content/prestaking'
   </Section>
 
   <Footer />
+  <div id="modals" />
 </template>
 
 <style>

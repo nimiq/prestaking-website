@@ -2,6 +2,7 @@
 import fist from '@/assets/svg/icons/fist.svg'
 import timer from '@/assets/svg/icons/timer.svg'
 import galex from '@/assets/svg/icons/galex.svg'
+import hex from '@/assets/svg/icons/hex.svg'
 
 const props = defineProps({
   ticketValue: {
@@ -33,6 +34,10 @@ const props = defineProps({
       return ['fist', 'timer', 'galex'].includes(value)
     },
   },
+  reward: {
+    type: Object,
+    required: true,
+  },
 })
 
 const iconList = [
@@ -48,13 +53,27 @@ const iconList = [
     name: 'galex',
     icon: galex,
   },
+  {
+    name: 'hex',
+    icon: hex,
+  },
 ]
 
 const showModal: Ref<boolean> = ref(false)
+
+function openModal() {
+  showModal.value = true
+  document.documentElement.style.overflow = 'hidden'
+}
+
+function closeModal() {
+  showModal.value = false
+  document.documentElement.style.overflow = 'auto'
+}
 </script>
 
 <template>
-  <div class="rewards-card-container relative mb-40 min-w-fit rounded-6 bg-white p-32 pb-40 pt-120" style="">
+  <div class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white p-32" style="">
     <!-- Lock -->
     <div v-if="locked" class="absolute left-1/2 top-0 -translate-1/2">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="44" fill="none" viewBox="0 0 32 44">
@@ -70,36 +89,44 @@ const showModal: Ref<boolean> = ref(false)
     </div>
     <!-- Icon -->
     <div class="icon-shadow h-136">
-      <img class="mx-auto h-full w-144 object-contain object-center" :src="iconList.find(x => x.name === props.icon)?.icon" alt="" srcset="">
+      <img class="mx-auto h-full w-144 object-contain object-center" :src="iconList.find(x => x.name === props.reward.card.icon)?.icon" alt="" srcset="">
     </div>
-    <div class="small-body mx-24 mb-82 text-center text-white/60">
-      Prestake early to add a<br> multiplier
+    <div class="small-body mx-24 text-center text-white/60">
+      {{ props.reward.card.title }}
     </div>
-    <div class="flex items-center justify-center gap-x-6">
-      <div v-for="item in multiplyers" :key="item" class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%">
-        <span class="small-label text-white/60">{{ item }}X</span>
+    <NuxtLink v-if="props.reward.card.link" :to="props.reward.card.link" class="mt-12 pill pill-secondary">
+      {{ props.reward.card.linkText }}
+    </NuxtLink>
+    <div v-if="props.reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
+      <div v-for="item in props.reward.multipliers" :key="item" class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%">
+        <span class="small-body text-white/60 !font-500">{{ item }}x</span>
       </div>
     </div>
-    <!-- <div class="absolute left-1/2 flex translate-y-1/2 items-center justify-center gap-x-12 rounded-full bg-[#51527E] px-32 py-16 text-14 text-white/60 leading-70% -bottom-40 -translate-x-1/2">
-      {{ ticketValue }}
-    </div> -->
-    <div onclick="showModal = true" class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/30" @click="showModal = true">
+
+    <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/30" @click="openModal">
       <svg class="absolute-center" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="8" height="1.5" rx="0.75" transform="matrix(-1 0 0 1 8.03906 10.5)" fill="white" />
         <path d="M10.8086 5.96289L10.7398 0.963364L5.74095 1.03142" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         <line x1="0.75" y1="-0.75" x2="7.73528" y2="-0.75" transform="matrix(-0.697409 0.716673 0.716673 0.697409 11 1.70898)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
-
-    <RewardModal v-if="showModal" @close-modal="showModal = false" />
+    <Teleport to="body">
+      <ModalWrapper v-if="showModal">
+        <TheCard
+          :title="props.reward.modal.title"
+          :label="props.reward.modal.label"
+          :description="props.reward.modal.body"
+          :options="props.reward.modal.options"
+          image-url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_Images&psig=AOvVaw3csExdp2KKr9y_S4z_LLg0&ust=1723643756834000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLjWnMCP8ocDFQAAAAAdAAAAABAE"
+          @close="closeModal"
+        />
+      </ModalWrapper>
+    </Teleport>
   </div>
 </template>
 
 <style>
 .rewards-card-container {
-  @apply max-h-430px md:max-h-none aspect-[13/20] md:aspect-auto;
-  max-width: 100%;
-
   border-radius: 6px;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   background: radial-gradient(

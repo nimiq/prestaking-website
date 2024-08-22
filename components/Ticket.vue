@@ -27,14 +27,14 @@
   }
 
   &:nth-child(1)::before {
+    @apply w-200 sm:w-310;
     z-index: 4;
     translate: -50% -50%;
-    width: 320px;
   }
   &:nth-child(2)::before {
+    @apply w-200 sm:w-310;
     z-index: 2;
-    translate: -50% -90%;
-    width: 250px;
+    translate: -50% -110%;
   }
   &:nth-child(3)::before {
     display: none;

@@ -50,7 +50,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="max-w-1168 md:px-80">
+  <div class="mx-auto max-w-1168 md:px-80">
     <span
       v-if="label" class="small-label mb-24 inline-block w-full md:text-center" :class="{
         'text-white/60': darkMode,
