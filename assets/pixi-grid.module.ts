@@ -96,6 +96,7 @@ export async function initGrid() {
 
         hex.anchor.set(0.4)
         hex.animationSpeed = 0.4
+        hex.alpha = Math.floor(Math.random() * 3) < 1 ? 0.5 : 1
         hex.loop = false
 
         // Remove last hex from alternate rows
@@ -113,7 +114,6 @@ export async function initGrid() {
           if (!isFlipped) {
             if (!isColliding(hex, clientX, scrolledY))
               return
-
             hex.animationSpeed = 0.8
             hex.play()
             isFlipped = true

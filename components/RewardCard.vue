@@ -5,6 +5,11 @@ import timer from '@/assets/svg/icons/timer.svg'
 import galex from '@/assets/svg/icons/galex.svg'
 import hex from '@/assets/svg/icons/hex.svg'
 
+interface Icon {
+  name: string
+  icon: string
+}
+
 interface Option {
   text: string
   value: string
@@ -63,7 +68,7 @@ const props = defineProps({
   },
 })
 
-const iconList = [
+const iconList: Icon[] = [
   {
     name: 'fist',
     icon: fist,
@@ -111,13 +116,13 @@ function closeModal() {
       </svg>
     </div>
     <!-- Icon -->
-    <div class="icon-shadow h-136">
-      <img class="mx-auto h-full w-144 object-contain object-center" :src="iconList.find(x => x.name === props.reward.card.icon)?.icon" alt="" srcset="">
+    <div class="icon-shadow mb-32 max-h-68">
+      <img class="mx-auto w-full object-contain object-center" :src="iconList.find((x: Icon) => x.name === props.reward.card.icon)?.icon" alt="" srcset="">
     </div>
     <div class="small-body mx-24 text-center text-white/60">
       {{ props.reward.card.title }}
     </div>
-    <NuxtLink v-if="props.reward.card.link" :to="props.reward.card.link" class="mt-12 pill pill-secondary">
+    <NuxtLink v-if="props.reward.card.link" :to="props.reward.card.link" class="mt-24 pill pill-secondary">
       {{ props.reward.card.linkText }}
     </NuxtLink>
     <div v-if="props.reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
@@ -134,21 +139,33 @@ function closeModal() {
       </svg>
     </div>
     <Teleport to="body">
-      <ModalWrapper v-if="showModal">
-        <TheCard
-          :title="props.reward.modal.title"
-          :label="props.reward.modal.label"
-          :description="props.reward.modal.body"
-          :options="props.reward.modal.options"
-          image-url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_Images&psig=AOvVaw3csExdp2KKr9y_S4z_LLg0&ust=1723643756834000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLjWnMCP8ocDFQAAAAAdAAAAABAE"
-          @close="closeModal"
-        />
-      </ModalWrapper>
+      <Transition name="fade" mode="out-in">
+        <ModalWrapper v-if="showModal">
+          <TheCard
+            :title="props.reward.modal.title"
+            :label="props.reward.modal.label"
+            :description="props.reward.modal.body"
+            :options="props.reward.modal.options"
+            image-url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_Images&psig=AOvVaw3csExdp2KKr9y_S4z_LLg0&ust=1723643756834000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLjWnMCP8ocDFQAAAAAdAAAAABAE"
+            @close="closeModal"
+          />
+        </ModalWrapper>
+      </Transition>
     </Teleport>
   </div>
 </template>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .rewards-card-container {
   border-radius: 6px;
   border: 1.5px solid rgba(255, 255, 255, 0.2);

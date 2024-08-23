@@ -2,10 +2,11 @@
 </script>
 
 <template>
+  <!-- eslint-disable vue/no-multiple-template-root -->
+  <Navigation />
   <div>
-    <Navigation />
     <slot />
-    <Footer />
-    <div id="modals" />
   </div>
+  <Footer />
+  <div id="modals" />
 </template>

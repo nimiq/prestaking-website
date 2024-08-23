@@ -43,7 +43,7 @@ import pageContent from '@/content/prestaking'
         :title="pageContent.communityGoals.title"
         :body="pageContent.communityGoals.body"
       />
-      <GoalBar
+      <NimiqGoalBar
         :total-goal="pageContent.communityGoals.goalBar.totalGoal"
         :milestones="pageContent.communityGoals.goalBar.milestones"
       />

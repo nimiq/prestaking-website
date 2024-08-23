@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import pageContent from '@/content/home'
-
-// TODO: Hook up pools api
-const poolItemsFromApi = 5
 </script>
 
 <template>
@@ -16,7 +13,7 @@ const poolItemsFromApi = 5
         :body="pageContent.hero.body"
         :button-link="pageContent.hero.buttonLink"
         :button-text="pageContent.hero.buttonLabel"
-        button dark-mode force-centered-text
+        button force-centered-text dark-mode
       />
     </div>
 
@@ -40,8 +37,7 @@ const poolItemsFromApi = 5
       <div>
         <SectionLabel :text="pageContent.prestakeCalculator.label" />
         <div class="grid grid-cols-3 grid-rows-5 h-493 w-full md:grid-rows-3">
-          <!-- Graph Here -->
-          <div class="z-3 col-span-3 row-span-3 rounded-8 bg-green md:col-span-2 md:row-span-3" />
+          <NimiqPrestakingCalculator />
           <!-- Side Bar -->
           <div class="relative col-span-3 row-span-2 h-fit flex flex-col md:col-span-1 md:row-span-3 md:h-auto">
             <div class="border-b-1 border-darkblue/10 p-32">
@@ -52,13 +48,7 @@ const poolItemsFromApi = 5
               <a :href="pageContent.prestakeCalculator.sidePanel.link" class="arrow-blue whitespace-nowrap text-blue font-bold arrow">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
             <div class="no-scrollbar relative max-w-full flex grow overflow-x-scroll md:block md:overflow-y-scroll">
-              <PoolItem
-                v-for="(x, i) in poolItemsFromApi"
-                :key="i"
-                :class="i !== 0 && 'border-l-1 md:border-t-1 border-darkblue/10'"
-                staked-amount="500,000"
-                company-name="Overnice"
-              />
+              <NimiqPoolsList />
             </div>
             <!-- Borders -->
             <div class="pointer-events-none absolute bottom-0 right-0 h-full w-10% rounded-br-8 from-white to-transparent bg-gradient-to-l md:h-[20%] md:w-[calc(100%+10px)] md:bg-gradient-to-t" />
@@ -98,7 +88,7 @@ const poolItemsFromApi = 5
 
         </a>
       </Header>
-      <AlbatrossDemo />
+      <NimiqAlbatrossDemo />
     </Section>
 
     <hr class="border-white/10 bg-darkblue">

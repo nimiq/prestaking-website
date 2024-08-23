@@ -17,6 +17,10 @@ const props = defineProps({
     required: true,
   },
 })
+
+// NIMIQ TODO: Get current prestaked amount
+const currentAmount = 3000000000
+
 function calcBarsTotal() {
   if (window.innerWidth < 600) {
     return 75
@@ -29,8 +33,6 @@ function calcBarsTotal() {
   }
 }
 const noOfBars: number = calcBarsTotal()
-
-const currentAmount = 3000000000
 
 const relativeMilestones = props.milestones.map((x) => {
   const percentage = (x.value / props.totalGoal)
@@ -107,18 +109,18 @@ onMounted(() => {
     <!-- Milestone labels: based below in grid due to overflow issues when placed in the above div -->
     <div v-if="loaded" class="grid mb-120 h-full w-full gap-x-3 border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
       <div
-        v-for="(bar, index) in noOfBars" :key="index"
+        v-for="barIndex in noOfBars" :key="barIndex"
         class="relative h-full w-full rounded-2"
       >
-        <div v-if="isBarMilestone(index)" class="absolute left-1/2 -translate-x-1/2">
+        <div v-if="isBarMilestone(barIndex)" class="absolute left-1/2 -translate-x-1/2">
           <div
             class="mx-auto h-0 w-0 border-b-[5px] border-l-[4px] border-r-[4px] border-b-yellow-500 border-l-transparent border-r-transparent -mb-1"
           />
           <div class="mx-auto w-fit rounded-full bg-gold px-13 py-4.5 text-14 text-white leading-[100%]">
-            {{ getRelativeMilestone(index)?.label }}
+            {{ getRelativeMilestone(barIndex)?.label }}
           </div>
           <div class="mt-4 whitespace-nowrap text-16 text-darkblue/40 leading-100%">
-            {{ getRelativeMilestone(index)?.text }}
+            {{ getRelativeMilestone(barIndex)?.text }}
           </div>
         </div>
       </div>
