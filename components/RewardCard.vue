@@ -1,8 +1,32 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
 import fist from '@/assets/svg/icons/fist.svg'
 import timer from '@/assets/svg/icons/timer.svg'
 import galex from '@/assets/svg/icons/galex.svg'
 import hex from '@/assets/svg/icons/hex.svg'
+
+interface Option {
+  text: string
+  value: string
+  color: string
+}
+
+interface Reward {
+  type: string
+  multipliers?: Array<number>
+  card: {
+    icon: string
+    title: string
+    link: string
+    linkText: string
+  }
+  modal: {
+    title: string
+    body: string
+    label: string
+    options: Option[]
+  }
+}
 
 const props = defineProps({
   ticketValue: {
@@ -16,7 +40,7 @@ const props = defineProps({
     required: false,
   },
   multiplyers: {
-    type: Array<string>,
+    type: Array as PropType<string[]>,
     default: () => [],
     required: false,
   },
@@ -29,13 +53,12 @@ const props = defineProps({
     type: String,
     default: 'fist',
     required: true,
-    validator(value) {
-      // The value must match one of these strings
+    validator(value: string) {
       return ['fist', 'timer', 'galex'].includes(value)
     },
   },
   reward: {
-    type: Object,
+    type: Object as PropType<Reward>,
     required: true,
   },
 })

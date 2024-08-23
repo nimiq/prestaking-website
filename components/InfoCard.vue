@@ -1,25 +1,11 @@
-<script lang="ts" setup>
+<!-- Declare in module scope so that iconList can be used in validator -->
+<script lang="ts">
 import lock from '@/assets/svg/icons/lock.svg'
 import document from '@/assets/svg/icons/document.svg'
 import box from '@/assets/svg/icons/box.svg'
 import leaf from '@/assets/svg/icons/leaf.svg'
 import duck from '@/assets/svg/icons/duck.svg'
 import horn from '@/assets/svg/icons/horn.svg'
-
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    required: true,
-  },
-})
 
 const iconList = [
   {
@@ -47,6 +33,27 @@ const iconList = [
     icon: horn,
   },
 ]
+export default {}
+</script>
+
+<script lang="ts" setup>
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  icon: {
+    type: String,
+    required: true,
+    validator(value: string) {
+      return iconList.some(x => x.name === value)
+    },
+  },
+})
 </script>
 
 <template>

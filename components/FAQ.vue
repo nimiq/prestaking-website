@@ -1,11 +1,19 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
+
+interface Faq {
+  question: string
+  answer: string
+}
+
 defineProps({
   faqs: {
-    type: Array,
+    type: Array as PropType<Faq[]>,
     defualt: null,
     required: true,
   },
 })
+
 const isOpen = ref(false)
 </script>
 

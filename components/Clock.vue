@@ -22,11 +22,4 @@ onMounted(() => {
 #grid-gradient-overlay {
   background: linear-gradient(to top, white 0%, transparent 20%);
 }
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  overflow-x: hidden;
-}
 </style>

@@ -21,8 +21,7 @@ defineProps({
     type: String,
     default: 'blue',
     required: true,
-    validator(value) {
-      // The value must match one of these strings
+    validator(value: string) {
       return ['blue', 'red', 'orange'].includes(value)
     },
   },

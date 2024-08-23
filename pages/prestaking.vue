@@ -84,7 +84,6 @@ import pageContent from '@/content/prestaking'
 
     <Section class="!pt-40 xl:!pt-0">
       <div class="relative w-[calc(100%+64px)] flex justify-center -ml-32 -mr-32">
-        <!-- <SVG80MillionPopOut /> -->
         <img src="~/assets/img/image.png" class="min-w-900 w-full bg-cover object-center" alt="">
       </div>
       <Header

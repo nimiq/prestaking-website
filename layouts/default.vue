@@ -2,50 +2,10 @@
 </script>
 
 <template>
-  <!-- eslint-disable vue/no-multiple-template-root -->
-  <!-- Change the color of the logo for dark mode! -->
-  <!-- <header flex="~ gap-32 col lg:row items-center" mx-auto max-h-screen max-w-700 px-32 py-40>
-    <div i-nimiq:logos-nimiq-vertical text-90 dark:i-nimiq:logos-nimiq-white-vertical />
-
-    <div>
-      <h1 text-32 font-bold>
-        You did it!
-      </h1>
-
-      <p text-18>
-        You've successfully created a project with
-        <NuxtLink to="https://nuxt.com/">
-          Vue 3
-        </NuxtLink> +
-        <NuxtLink to="https://onmax.github.io/nimiq-developer-center/">
-          Nimiq
-        </NuxtLink>.
-        What's next?
-      </p>
-
-      <nav flex="~ gap-32 wrap" mt-12>
-        <NuxtLink to="/" arrow>
-          Home
-        </NuxtLink>
-        <NuxtLink to="/about" arrow>
-          About
-        </NuxtLink>
-
-        <button pill-sm ml-auto pill-blue @click="() => toggleDark()">
-          Change theme
-        </button>
-      </nav>
-    </div>
-  </header> -->
   <div>
     <Navigation />
-
-    <main>
-      <slot />
-    </main>
-
+    <slot />
     <Footer />
-
     <div id="modals" />
   </div>
 </template>

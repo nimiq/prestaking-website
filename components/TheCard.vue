@@ -1,4 +1,12 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
+
+interface Option {
+  text: string
+  value: string
+  color: string
+}
+
 defineProps({
   title: {
     type: String,
@@ -25,7 +33,7 @@ defineProps({
     default: null,
   },
   options: {
-    type: Array,
+    type: Array as PropType<Option[]>,
     required: true,
   },
 })

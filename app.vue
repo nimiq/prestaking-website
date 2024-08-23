@@ -10,6 +10,13 @@
 </template>
 
 <style>
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;

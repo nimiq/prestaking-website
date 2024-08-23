@@ -20,10 +20,6 @@ export default defineNuxtConfig({
     'radix-vue/nuxt', // Includes auto-import
   ],
 
-  hub: {
-    // NuxtHub options. See https://hub.nuxt.com/docs/getting-started/installation
-  },
-
   devtools: {
     enabled: true,
   },
@@ -87,8 +83,4 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
-
-  // colorMode: {
-  //   classSuffix: '',
-  // }
 })

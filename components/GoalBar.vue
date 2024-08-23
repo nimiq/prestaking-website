@@ -84,13 +84,13 @@ onMounted(() => {
       <!-- Bars -->
       <div class="grid h-full w-full gap-x-3 overflow-hidden border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
         <div
-          v-for="(bar, index) in noOfBars" :key="index"
+          v-for="barIndex in noOfBars" :key="barIndex"
           class="relative h-full w-full rounded-2"
           :class="{
-            'bg-transparent !rounded-none !w-0 mx-auto border-dashed border-l-2 border-gold': isBarMilestone(index),
-            'bg-gold': !isBarMilestone(index) && index <= relativeBars && index >= relativeBars - 2,
-            'bg-gold/30': !isBarMilestone(index) && index <= relativeBars - 2,
-            'bg-darkblue/07': !isBarMilestone(index) && index > relativeBars,
+            'bg-transparent !rounded-none !w-0 mx-auto border-dashed border-l-2 border-gold': isBarMilestone(barIndex),
+            'bg-gold': !isBarMilestone(barIndex) && barIndex <= relativeBars && barIndex >= relativeBars - 2,
+            'bg-gold/30': !isBarMilestone(barIndex) && barIndex <= relativeBars - 2,
+            'bg-darkblue/07': !isBarMilestone(barIndex) && barIndex > relativeBars,
           }"
         />
       </div>

@@ -16,7 +16,7 @@ const poolItemsFromApi = 5
         :body="pageContent.hero.body"
         :button-link="pageContent.hero.buttonLink"
         :button-text="pageContent.hero.buttonLabel"
-        button force-centered-text dark-mode
+        button dark-mode force-centered-text
       />
     </div>
 
@@ -103,7 +103,6 @@ const poolItemsFromApi = 5
 
     <hr class="border-white/10 bg-darkblue">
 
-    <!-- Repeated Section -->
     <Section dark-mode god-rays>
       <Header
         dark-mode

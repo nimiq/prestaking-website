@@ -50,10 +50,10 @@ const className = computed(() => {
   }
 })
 
-const identiconImages = []
+const identiconImages: HTMLDivElement[] = []
 function addIdenticonsToPage() {
   const pathsToAddIdention = group.value.querySelectorAll(className.value)
-  pathsToAddIdention.forEach((path) => {
+  pathsToAddIdention.forEach((path: SVGPathElement) => {
     const identicon = document.createElement('div')
     const sizing = path.getBoundingClientRect()
     identicon.style.top = `${sizing.top + window.scrollY - 2.75}px`
