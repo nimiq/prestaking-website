@@ -17,7 +17,7 @@ function isoToObj(s) {
   return new Date(Date.UTC(Number.parseInt(b[0]), Number.parseInt(b[1]) - 1, Number.parseInt(b[2]), Number.parseInt(b[3]), Number.parseInt(b[4]), Number.parseInt(b[5])))
 }
 
-const futureDate = isoToObj('2024-08-24T08:00:00Z') // UTC!!!! no + 1 for summertime
+const futureDate = isoToObj('2024-09-14T08:00:00Z') // UTC!!!! no + 1 for summertime
 
 function updateTime() {
   const dateFuture = new Date(futureDate)

@@ -1,18 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-let POINTER_RADIUS = window.innerWidth * 0.01
-
-function isColliding(hex: PIXI.AnimatedSprite, clientX: number, clientY: number) {
-  if (hex.x < clientX - POINTER_RADIUS * 1.445)
-    return false
-  if (hex.x > clientX + POINTER_RADIUS * 1.445)
-    return false
-  if (hex.y < clientY - POINTER_RADIUS)
-    return false
-  if (hex.y > clientY + POINTER_RADIUS)
-    return false
-  return true
-}
+// let POINTER_RADIUS = window.innerWidth * 0.01
 
 export async function initGrid() {
   const app = new PIXI.Application()
@@ -70,7 +58,7 @@ export async function initGrid() {
     // Aspect ratio of calculated 26px equivalent to give 23.6px
     const HEIGHT = WIDTH * 0.90769230769
 
-    POINTER_RADIUS = (73.5 / 80) * WIDTH
+    // POINTER_RADIUS = (73.5 / 80) * WIDTH
     const X = -HEIGHT / 3
     const Y = 0
     const altRowOffset = WIDTH
@@ -104,31 +92,7 @@ export async function initGrid() {
           app.stage.addChild(hex)
         }
 
-        let isFlipped = false
         app.stage.eventMode = 'static'
-        app.stage.on('globalpointermove', (event) => {
-          const { clientX, clientY } = event
-
-          const scrolledY = clientY + window.scrollY
-
-          if (!isFlipped) {
-            if (!isColliding(hex, clientX, scrolledY))
-              return
-            hex.animationSpeed = 0.8
-            hex.play()
-            isFlipped = true
-          }
-          else {
-            if (isColliding(hex, clientX, scrolledY))
-              return
-
-            setTimeout(() => {
-              hex.animationSpeed = -0.4
-              hex.play()
-              isFlipped = false
-            }, 400)
-          }
-        })
       }
     }
   }
