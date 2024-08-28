@@ -3,29 +3,28 @@ import topLevelAwait from 'vite-plugin-top-level-await'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: '2024-08-27',
+  future: {
+    compatibilityVersion: 4,
+  },
   ssr: false,
   css: [
-    './assets/css/cards.css',
-    './assets/css/base.css',
-    './assets/css/reverse-holo.css',
+    '~/assets/css/cards.css',
+    '~/assets/css/base.css',
+    '~/assets/css/reverse-holo.css',
   ],
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@unocss/nuxt',
-    '@nuxtjs/color-mode',
     '@nuxthub/core',
     '@nuxt/eslint',
     '@nuxt/image',
-    'radix-vue/nuxt', // Includes auto-import
+    'radix-vue/nuxt',
   ],
 
   devtools: {
     enabled: true,
-  },
-
-  colorMode: {
-    classSuffix: '',
   },
 
   experimental: {
@@ -46,6 +45,8 @@ export default defineNuxtConfig({
     },
   },
 
+  watch: ['~/content'],
+
   nitro: {
     esbuild: {
       options: {
@@ -56,6 +57,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Nimiq Prestaking',
       viewport: 'width=device-width,initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
