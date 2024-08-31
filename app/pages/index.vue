@@ -47,11 +47,11 @@ import pageContent from '~/content/home'
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
               <a :href="pageContent.prestakeCalculator.sidePanel.link" class="whitespace-nowrap text-blue font-bold nq-arrow">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
-            <div class="no-scrollbar relative max-w-full flex grow overflow-x-scroll md:block md:overflow-y-scroll">
+            <div class="no-scrollbar relative max-w-full flex grow overflow-x-scroll pb-24 md:block md:overflow-y-scroll">
               <NimiqPoolsList />
             </div>
             <!-- Borders -->
-            <div class="pointer-events-none absolute bottom-0 right-0 h-full w-10% rounded-br-8 from-white to-transparent bg-gradient-to-l md:h-[20%] md:w-[calc(100%+10px)] md:bg-gradient-to-t" />
+            <div class="pointer-events-none absolute bottom-0 right-0 h-full w-32 rounded-br-8 from-white to-transparent bg-gradient-to-l md:h-64 md:w-[calc(100%+10px)] md:bg-gradient-to-t" />
             <div class="pointer-events-none absolute right-0 z-2 h-[calc(100%+10px)] w-full border-1 border-darkblue/10 rounded-b-8 -top-10 md:top-0 md:h-full md:w-[calc(100%+10px)] md:rounded-r-8" />
           </div>
         </div>
