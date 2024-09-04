@@ -33,7 +33,7 @@ export default {
       title: 'Stake with pools',
       body: 'The easy and secure way of staking your NIM: validator pools.',
       linkText: 'Start a validator pool',
-      link: 'https://nimiq.com',
+      link: 'https://www.nimiq.com/developers/build/set-up-your-own-node/becoming-a-validator',
     },
   },
   albatross: {

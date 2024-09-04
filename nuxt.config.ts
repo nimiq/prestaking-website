@@ -27,6 +27,12 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
+  runtimeConfig: {
+    public: {
+      validatorsApiUrl: 'https://validators-api.pages.dev/api/v1',
+    },
+  },
+
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
