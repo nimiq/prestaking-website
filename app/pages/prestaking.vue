@@ -27,7 +27,7 @@ const prestaking = true
           />
         </div>
       </div>
-      <div class="mb-200">
+      <div class="mb-20 lg:mb-200 md:mb-160">
         <SectionLabel dark-mode text="Extra Bonuses" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <div class="glass-card min-w-1/3 !flex-row">
@@ -66,6 +66,10 @@ const prestaking = true
         :button-link="pageContent.rules.buttonLink"
         button-arrow
       />
+      <Ember class="absolute bottom-240 left-25 md:bottom-323" />
+      <Ember class="hide-glow absolute bottom-223 left-325 scale-70 opacity-40" />
+      <Ember class="hide-glow absolute bottom-10 right-40 scale-60 opacity-30" />
+      <Ember class="absolute right-100 -bottom-100 md:right-290" />
     </Section>
 
     <Section>
@@ -122,11 +126,11 @@ const prestaking = true
         :title="pageContent.prestakeReward.title"
         :body="pageContent.prestakeReward.body"
       />
-      <div class="flex items-center justify-center gap-32">
+      <div class="flex flex-col items-center justify-center gap-32 sm:flex-row">
         <p>
           80 Mil. NIM will be split<br> between all prestakers
         </p>
-        <div class="i-custom:gauge-chart" />
+        <div class="i-custom:gauge-chart h-144 w-144" />
 
         <p class="text-gold">
           The more you prestake,<br> the bigger your cut

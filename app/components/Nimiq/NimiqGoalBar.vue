@@ -22,6 +22,9 @@ const props = defineProps({
 const currentAmount = 3000000000
 
 function calcBarsTotal() {
+  if (window.innerWidth < 500) {
+    return 50
+  }
   if (window.innerWidth < 600) {
     return 75
   }

@@ -10,23 +10,15 @@ defineProps({
     default: false,
     required: false,
   },
-  hexs: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
 })
 </script>
 
 <template>
   <div class="relative px-32 py-160 md:py-200" :class="{ 'bg-darkblue': darkMode }">
-    <div v-if="darkMode && godRays" class="god-rays short">
-      <NuxtImg src="/img/God-Rays.png" alt="">
-        <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" />
-      </nuxtimg>
-    </div>
-    <div v-if="!darkMode && hexs" class="hexs">
-      <NuxtImg src="/img/Hexs.png" alt="" />
+    <div v-if="darkMode && godRays" class="">
+      <NuxtImg class="absolute bottom-0 left-0 w-screen mix-blend-lighten blur-[28px] brightness-[1]" src="/img/God-Rays.png" alt="" />
+      <!-- <NuxtImg class="absolute bottom-0 left-0 h-full w-screen mix-blend-lighten blur-[28px] brightness-[1]" src="/img/God-Rays.png" alt="" /> -->
+      <!-- <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" /> -->
     </div>
     <div class="relative mx-auto max-w-1300 flex flex-col gap-96">
       <slot />
