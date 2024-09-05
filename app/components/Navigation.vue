@@ -58,9 +58,9 @@ onUnmounted(() => {
   >
     <div
       ref="root$"
-      class="transition-[border-radius,opacity,background,box-shadow] w-full flex items-center justify-between gap-x-16 rounded-8 p-16 text-left shadow duration-400 ease-nimiq"
+      class="transition-[border-radius,opacity,background,box-shadow] w-full flex items-center justify-between gap-x-16 rounded-8 p-16 text-left duration-400 ease-nimiq"
       :class="{
-        'bg-white': localState.isSticky,
+        'bg-white shadow': localState.isSticky,
         'bg-transparent': !localState.isSticky,
       }"
     >

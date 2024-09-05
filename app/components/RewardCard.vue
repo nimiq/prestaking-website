@@ -25,6 +25,11 @@ interface Reward {
 }
 
 defineProps({
+  prePreStaking: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   ticketValue: {
     type: Number,
     default: 0,
@@ -70,9 +75,9 @@ function closeModal() {
     <!-- Icon -->
     <div class="icon-shadow mx-auto mb-32 object-contain object-center" :class="reward.card.icon" />
     <div class="small-body mx-24 text-center text-white/60">
-      {{ reward.card.title }}
+      {{ prePreStaking ? 'Prestaking is starting soon. Stay tuned!' : reward.card.title }}
     </div>
-    <NuxtLink v-if="reward.card.link" :to="reward.card.link" class="mt-24 nq-pill-secondary">
+    <NuxtLink v-if="reward.card.link" :to="reward.card.link" class="mt-24 nq-pill-secondary" :disabled="prePreStaking">
       {{ reward.card.linkText }}
     </NuxtLink>
     <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">

@@ -4,7 +4,7 @@ defineProps<{ title: string, description: string, icon: string }>()
 
 <template>
   <div class="glass-card glass-clear grow !items-start">
-    <div class="size-48 object-contain object-center" :class="icon" />
+    <div class="size-48" i-custom:lock />
     <div class="flex flex-col">
       <h4 class="my-0">
         {{ title }}

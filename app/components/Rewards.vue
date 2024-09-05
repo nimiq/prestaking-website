@@ -1,6 +1,13 @@
 <script lang="ts" setup>
 import data from '@/content/rewards'
 
+defineProps({
+  prePreStaking: {
+    type: Boolean,
+    required: true,
+  },
+})
+
 const ticketAmount = 0
 </script>
 
@@ -10,7 +17,7 @@ const ticketAmount = 0
       <div class="god-rays">
         <NuxtImg src="/img/God-Rays.png" alt="" />
       </div>
-      <RewardCard :reward="data.rewards[0]" :locked="false" class="mx-auto !mb-0 !h-478 !min-w-311 !w-311" />
+      <RewardCard :pre-pre-staking="prePreStaking" :reward="data.rewards[0]" :locked="false" class="mx-auto !mb-0 !h-478 !min-w-311 !w-311" />
     </div>
     <div
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"

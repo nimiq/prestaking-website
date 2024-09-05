@@ -1,5 +1,7 @@
 <script setup>
 import pageContent from '@/content/prestaking'
+
+const prestaking = true
 </script>
 
 <template>
@@ -10,7 +12,7 @@ import pageContent from '@/content/prestaking'
         :body="pageContent.hero.body"
         dark-mode
       />
-      <Rewards />
+      <Rewards :pre-pre-staking="prestaking" />
       <div>
         <SectionLabel dark-mode text="The prizes" />
         <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24">
@@ -23,6 +25,35 @@ import pageContent from '@/content/prestaking'
             :text="stat.text"
             :color="stat.color"
           />
+        </div>
+      </div>
+      <div class="mb-200">
+        <SectionLabel dark-mode text="Extra Bonuses" />
+        <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
+          <div class="glass-card min-w-1/3 !flex-row">
+            <NuxtImg height="80" src="/img/80.png" alt="" />
+            <div class="flex flex-col">
+              <p class="text-white/80">
+                Prestake and get a piece of the 100 Mil NIM airdrop.
+              </p>
+            </div>
+          </div>
+          <div class="glass-card min-w-1/3 !flex-row">
+            <NuxtImg height="80" src="/img/star-wreath.png" alt="" />
+            <div class="flex flex-col">
+              <p class="text-white/80">
+                From Guardian to Hero of the Chain - earn a title and glory.
+              </p>
+            </div>
+          </div>
+          <div class="glass-card min-w-1/3 lg:col-span-1 md:col-span-2 !flex-row lg:justify-start md:justify-center">
+            <NuxtImg height="80" src="/img/hex-star.png" alt="" />
+            <div class="flex flex-col">
+              <p class="text-white/80">
+                Get a shiny wallet with a unique identicon.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <Header
@@ -143,12 +174,13 @@ import pageContent from '@/content/prestaking'
       />
     </Section>
 
-    <Section god-rays dark-mode>
+    <!-- <Section god-rays dark-mode>
       <Header
         dark-mode
         :label="pageContent.prestake.label"
         :title="pageContent.prestake.title"
         :body="pageContent.prestake.body"
+        :pre-pre-staking="prestaking"
       />
       <TicketSection />
       <Header
@@ -161,7 +193,7 @@ import pageContent from '@/content/prestaking'
         :button-text="pageContent.prestake.bottomHeader.buttonLabel"
       />
       <NuxtImg class="absolute left-1/2 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="/img/four-cards.png" alt="" />
-    </Section>
+    </Section> -->
 
     <Section dark-mode>
       <div>

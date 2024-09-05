@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import pageContent from '~/content/home'
+
+const prestaking = true
 </script>
 
 <template>
   <main>
-    <div id="hero" class="relative pb-200">
+    <div id="hero" class="relative overflow-hidden pb-200">
       <Clock />
 
       <Header
-        class="-mt-0 relative z-10 mx-auto"
+        class="relative z-10 mx-auto"
         :title="pageContent.hero.title"
+        title-tag="h1"
         :body="pageContent.hero.body"
         :button-link="pageContent.hero.buttonLink"
         :button-text="pageContent.hero.buttonLabel"
         button force-centered-text dark-mode
+        :pre-pre-staking="prestaking"
       />
     </div>
 
@@ -84,6 +88,7 @@ import pageContent from '~/content/home'
         :label="pageContent.prestake.label"
         :title="pageContent.prestake.title"
         :body="pageContent.prestake.body"
+        :pre-pre-staking="prestaking"
       />
       <TicketSection />
       <Header
