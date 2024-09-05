@@ -72,7 +72,7 @@ defineProps({
       </div>
     </div>
     <component
-      :is="titleTag ? titleTag : 'h2'" class="mb-24 mt-0 md:px-80 md:text-center" :class="{
+      :is="titleTag ? titleTag : 'h2'" class="mb-24 mt-0 md:px-60 md:text-center" :class="{
         'text-white': darkMode,
         'text-center': forceCenteredText,
       }"

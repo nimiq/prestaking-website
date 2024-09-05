@@ -100,7 +100,11 @@ const prestaking = true
         :button-link="pageContent.prestake.bottomHeader.buttonLink"
         :button-text="pageContent.prestake.bottomHeader.buttonLabel"
       />
-      <NuxtImg class="absolute left-1/2 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="/img/four-cards.png" alt="" />
+      <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="/img/four-cards.png" alt="" />
+      <Ember class="absolute bottom-460 left-25 md:bottom-323" />
+      <Ember class="hide-glow absolute bottom-423 left-325 scale-70 opacity-40" />
+      <Ember class="hide-glow absolute bottom-270 right-40 scale-60 opacity-30" />
+      <Ember class="absolute bottom-0 right-100 md:right-290" />
     </Section>
 
     <Section dark-mode>
