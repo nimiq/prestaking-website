@@ -1,18 +1,30 @@
-<script setup>
+<script  lang="ts" setup>
+import gsap from 'gsap'
 import pageContent from '@/content/prestaking'
 
-const prestaking = true
+const prestaking = false
+
+onMounted(() => {
+  nextTick(() => {
+    gsap.timeline()
+      .fromTo('#hero-container .rays', { opacity: 0 }, { opacity: 1, delay: 0, duration: 3 })
+      .fromTo('#hero', { opacity: 0 }, { opacity: 1, duration: 2 }, '-=3')
+      .fromTo('#rewards', { opacity: 0, translateY: '40px' }, { translateY: 0, opacity: 1, duration: 1 }, '-=2')
+      .fromTo('#reward-list', { opacity: 0, transform: 'translate(50%, 0%)' }, { opacity: 1, transform: 'translate(0%, 0%)', duration: 1 }, '-=1.5')
+  })
+})
 </script>
 
 <template>
   <main>
-    <Section god-rays dark-mode>
+    <Section id="hero-container" god-rays dark-mode>
       <Header
+        id="hero"
         :title="pageContent.hero.title"
         :body="pageContent.hero.body"
         dark-mode
       />
-      <Rewards :pre-pre-staking="prestaking" />
+      <Rewards id="rewards" :pre-pre-staking="prestaking" />
       <div>
         <SectionLabel dark-mode text="The prizes" />
         <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24">
@@ -27,11 +39,11 @@ const prestaking = true
           />
         </div>
       </div>
-      <div class="mb-20 lg:mb-200 md:mb-160">
+      <div class="mb-40 md:mb-90">
         <SectionLabel dark-mode text="Extra Bonuses" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <div class="glass-card min-w-1/3 !flex-row">
-            <NuxtImg height="80" src="/img/80.png" alt="" />
+            <NuxtImg class="h-80" src="/img/80.png" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
                 Prestake and get a piece of the 100 Mil NIM airdrop.
@@ -39,7 +51,7 @@ const prestaking = true
             </div>
           </div>
           <div class="glass-card min-w-1/3 !flex-row">
-            <NuxtImg height="80" src="/img/star-wreath.png" alt="" />
+            <NuxtImg class="h-80" src="/img/star-wreath.png" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
                 From Guardian to Hero of the Chain - earn a title and glory.
@@ -47,7 +59,7 @@ const prestaking = true
             </div>
           </div>
           <div class="glass-card min-w-1/3 lg:col-span-1 md:col-span-2 !flex-row lg:justify-start md:justify-center">
-            <NuxtImg height="80" src="/img/hex-star.png" alt="" />
+            <NuxtImg class="h-80" src="/img/hex-star.png" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
                 Get a shiny wallet with a unique identicon.
