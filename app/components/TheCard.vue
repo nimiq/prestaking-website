@@ -70,3 +70,28 @@ defineEmits(['close'])
     </div>
   </div>
 </template>
+
+<style>
+.god-rays {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  mix-blend-mode: lighten;
+
+  &.short {
+    height: 50%;
+  }
+
+  img {
+    filter: blur(24px);
+    transform: scaleX(1.5);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+}
+</style>

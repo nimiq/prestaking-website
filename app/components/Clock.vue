@@ -6,7 +6,7 @@ onMounted(() => {
     gsap.timeline({
       delay: 0,
     })
-      .fromTo('.rays', { opacity: 0 }, { opacity: 1, duration: 3 })
+      .fromTo('.rays', { opacity: 0 }, { opacity: 1, delay: 0.5, duration: 3 })
       .fromTo('#clock', {
         opacity: 0,
         translateY: '40px',
@@ -14,7 +14,7 @@ onMounted(() => {
         opacity: 1,
         duration: 0.5,
         translateY: 0,
-      }, '-=1')
+      }, '-=2')
   })
 })
 </script>

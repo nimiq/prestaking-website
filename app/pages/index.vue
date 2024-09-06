@@ -1,15 +1,24 @@
 <script setup lang="ts">
+import gsap from 'gsap'
 import pageContent from '~/content/home'
 
 const prestaking = true
+
+onMounted(() => {
+  nextTick(() => {
+    gsap.timeline()
+      .fromTo('#hero', { translateY: '-40px', opacity: 0 }, { translateY: '0', opacity: 1, delay: 0.5, duration: 0.5 })
+  })
+})
 </script>
 
 <template>
   <main>
-    <div id="hero" class="relative overflow-hidden bg-darkblue pb-200">
+    <div id="hero-container" class="relative overflow-hidden bg-darkblue pb-200">
       <Clock />
 
       <Header
+        id="hero"
         class="relative z-10 mx-auto"
         :title="pageContent.hero.title"
         title-tag="h1"

@@ -19,9 +19,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="relative px-32 py-160 md:py-200" :class="{ 'bg-darkblue': darkMode }">
+  <div class="relative px-32 py-160 md:py-200" :class="{ 'bg-white': !darkMode }">
     <div v-if="darkMode && godRays" class="">
-      <NuxtImg class="absolute bottom-0 left-0 h-70% min-w-[400vw] scale-x-120 mix-blend-lighten blur-[28px] brightness-[1] -translate-x-[37.6%]" src="/img/God-Rays.png" alt="" />
+      <NuxtImg class="rays absolute bottom-0 left-0 h-70% min-w-[400vw] scale-x-120 mix-blend-lighten blur-[28px] brightness-[1] -translate-x-[37.6%]" src="/img/God-Rays.png" alt="" />
       <!-- <NuxtImg class="absolute bottom-0 left-0 h-full w-screen mix-blend-lighten blur-[28px] brightness-[1]" src="/img/God-Rays.png" alt="" /> -->
       <!-- <div class="absolute left-0 top-0 h-100 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-b" /> -->
     </div>
@@ -47,29 +47,6 @@ defineProps({
     background: radial-gradient(50% 50% at 50% 50%, #fff 0%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
     filter: blur(25.13888931274414px);
-  }
-}
-
-.god-rays {
-  pointer-events: none;
-  position: absolute;
-  bottom: 0%;
-  left: 50%;
-  width: 100vw;
-  height: 100%;
-  transform: translateX(-50%);
-  mix-blend-mode: lighten;
-
-  &.short {
-    height: 50%;
-  }
-
-  img {
-    filter: blur(24px);
-    transform: scaleX(1.5);
-    object-fit: cover;
-    background-repeat: no-repeat;
-    height: 100%;
   }
 }
 

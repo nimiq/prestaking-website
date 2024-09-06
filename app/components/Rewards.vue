@@ -39,10 +39,10 @@ function closeLoginModal() {
       </div>
     </div>
     <div
-      class="row-start-3 h-full w-full border-r-1 border-white/10 bg-[#1F2348] lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-6"
+      class="row-start-3 h-full w-full overflow-hidden border-r-1 border-white/10 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-6"
     >
       <!-- Title -->
-      <div class="no-scrollbar w-full flex gap-x-24 overflow-auto px-32 pt-32">
+      <div id="reward-list" class="no-scrollbar w-full flex gap-x-24 overflow-auto bg-[#1F2348] px-32 pt-32">
         <RewardCard :reward="data.rewards[1]" :multiplyers="['1', '2', '3']" icon="i-custom:fist" />
         <RewardCard :reward="data.rewards[2]" :multiplyers="['5']" />
         <RewardCard :reward="data.rewards[3]" :multiplyers="['10']" />

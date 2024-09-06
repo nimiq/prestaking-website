@@ -67,7 +67,7 @@ function addIdenticonsToPage() {
   pathsToAddIdention.forEach((path: SVGPathElement) => {
     const identicon = document.createElement('div')
     const sizing = path.getBoundingClientRect()
-    identicon.style.top = `${sizing.top + window.scrollY - 2.75 + 2}px`
+    identicon.style.top = `${sizing.top + window.scrollY - 2.75 + 2 + (initialLoad.value ? 0 : -40)}px`
     identicon.style.left = `${sizing.left - 1.5}px`
     identicon.style.height = `${sizing.width + 0}px`
     identicon.style.width = `${sizing.width + 0}px`
