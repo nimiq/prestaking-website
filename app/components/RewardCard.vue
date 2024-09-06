@@ -55,6 +55,7 @@ defineProps({
   },
 })
 
+defineEmits(['linkClick'])
 const showModal: Ref<boolean> = ref(false)
 
 function openModal() {
@@ -77,9 +78,9 @@ function closeModal() {
     <div class="small-body mx-24 text-center text-white/60">
       {{ prePreStaking ? 'Prestaking is starting soon. Stay tuned!' : reward.card.title }}
     </div>
-    <NuxtLink v-if="reward.card.link" :to="reward.card.link" class="mt-24 nq-pill-secondary" :disabled="prePreStaking">
+    <div v-if="reward.card.link" class="mt-24 nq-pill-secondary" @click="$emit('linkClick')">
       {{ reward.card.linkText }}
-    </NuxtLink>
+    </div>
     <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
       <div v-for="item in reward.multipliers" :key="item" class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%">
         <span class="small-body text-white/60 !font-500">{{ item }}x</span>

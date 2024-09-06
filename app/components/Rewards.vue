@@ -9,6 +9,18 @@ defineProps({
 })
 
 const ticketAmount = 0
+
+const showLoginModal: Ref<boolean> = ref(false)
+
+function openLoginModal() {
+  showLoginModal.value = true
+  document.documentElement.style.overflow = 'hidden'
+}
+
+function closeLoginModal() {
+  showLoginModal.value = false
+  document.documentElement.style.overflow = 'auto'
+}
 </script>
 
 <template>
@@ -17,7 +29,7 @@ const ticketAmount = 0
       <div class="god-rays">
         <NuxtImg src="/img/God-Rays.png" alt="" />
       </div>
-      <RewardCard :pre-pre-staking="prePreStaking" :reward="data.rewards[0]" :locked="false" class="mx-auto !mb-0 !h-478 !min-w-311 !w-311" />
+      <RewardCard :pre-pre-staking="prePreStaking" :reward="data.rewards[0]" :locked="false" class="mx-auto !mb-0 !h-478 !min-w-311 !w-311" @link-click="openLoginModal" />
     </div>
     <div
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
@@ -44,6 +56,13 @@ const ticketAmount = 0
         {{ ticketAmount }} <span class="text-17">Tickets</span>
       </div>
     </div>
+    <Teleport to="body">
+      <Transition name="fade" mode="out-in">
+        <ModalWrapper v-if="showLoginModal">
+          <NimiqLoginModal @close="closeLoginModal" />
+        </ModalWrapper>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 

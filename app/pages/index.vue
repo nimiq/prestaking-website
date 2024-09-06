@@ -121,7 +121,6 @@ const prestaking = true
   border-radius: 6px;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
-    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.05) 179%),
     rgba(255, 255, 255, 0.05);
   background-blend-mode: normal, color-dodge, normal;
 
