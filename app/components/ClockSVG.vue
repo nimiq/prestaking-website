@@ -97,7 +97,7 @@ const offsetY = computed(() => {
 <template>
   <svg
     id="clock-svg"
-    class="z-2 w-full"
+    class="w-full"
     :viewBox="viewBox"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -109,20 +109,11 @@ const offsetY = computed(() => {
     <ClockSVGDigit :view-width="viewWidth" :active-number="minute.firstDigit ? minute.firstDigit : 0" :index="4" />
     <ClockSVGDigit :view-width="viewWidth" :active-number="minute.secondDigit ? minute.secondDigit : 0" :index="5" />
     <g
-      transform="translate(-226,-102)"
+      transform="translate(-236,-102)"
     >
-      <!-- <path class="mix-blend-darken" d="M447 601.5L436.5 619L447 636H462.5L473 650.5H490L499.5 636H516.5L525 619L514 601.5H499.5L490 587H473L462.5 601.5H447Z" fill="#191D3F" />
-      <path class="mix-blend-darken" d="M915.5 601.5L905 619L915.5 636H931L941.5 650.5H958.5L968 636H985L993.5 619L982.5 601.5H968L958.5 587H941.5L931 601.5H915.5Z" fill="#191D3F" />
-      <path class="mix-blend-darken" d="M1383.5 601.5L1373 619L1383.5 636H1399L1409.5 650.5H1426.5L1436 636H1453L1461.5 619L1450.5 601.5H1436L1426.5 587H1409.5L1399 601.5H1383.5Z" fill="#191D3F" /> -->
-      <text class="opacity-50" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="454.168" :y="offsetY">{{ day.firstDigit }}{{ day.secondDigit }} DAYS</tspan></text>
-      <text class="opacity-50" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="925.443" :y="offsetY">{{ hour.firstDigit }}{{ hour.secondDigit }} HOURS</tspan></text>
-      <text class="opacity-50" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="1388.44" :y="offsetY">{{ minute.firstDigit }}{{ minute.secondDigit }} MINUTES</tspan></text>
-
+      <text class="opacity-70" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="454.168" :y="offsetY">{{ day.firstDigit }}{{ day.secondDigit }} DAYS</tspan></text>
+      <text class="opacity-70" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="915.443" :y="offsetY">{{ hour.firstDigit }}{{ hour.secondDigit }} HOURS</tspan></text>
+      <text class="opacity-70" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="1378.44" :y="offsetY">{{ minute.firstDigit }}{{ minute.secondDigit }} MINUTES</tspan></text>
     </g>
   </svg>
 </template>
-
-<!-- v-if="viewWidth >= 975"
-v-if="viewWidth >= 975"
-v-if="viewWidth === 1440"
-v-if="viewWidth === 1440" -->

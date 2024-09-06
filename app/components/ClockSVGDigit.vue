@@ -57,7 +57,7 @@ const className = computed(() => {
   }
 })
 
-const identiconImages: HTMLDivElement[] = []
+let identiconImages: HTMLDivElement[] = []
 function addIdenticonsToPage() {
   if (!group.value) {
     console.error('ahhh it dont work')
@@ -118,6 +118,7 @@ watch(() => props.activeNumber, () => {
     identiconImages.forEach((ident) => {
       ident.remove()
     })
+    identiconImages = []
     nextTick(() => {
       addIdenticonsToPage()
     })

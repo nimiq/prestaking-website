@@ -6,7 +6,7 @@ const prestaking = true
 
 <template>
   <main>
-    <div id="hero" class="relative overflow-hidden pb-200">
+    <div id="hero" class="relative overflow-hidden bg-darkblue pb-200">
       <Clock />
 
       <Header
