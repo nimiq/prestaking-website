@@ -1,25 +1,17 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
-
-interface milestone {
+interface Milestone {
   label: string
   text: string
   value: number
 }
 
-const props = defineProps({
-  totalGoal: {
-    type: Number,
-    required: true,
-  },
-  milestones: {
-    type: Array as PropType<milestone[]>,
-    required: true,
-  },
-})
+const props = defineProps<{ totalGoal: number, milestones: Milestone[] }>()
 
-// NIMIQ TODO: Get current prestaked amount
-const currentAmount = 3000000000
+const { nimiqwatchTotalStakeUrl } = useRuntimeConfig().public
+const { data: currentAmount } = useFetch(nimiqwatchTotalStakeUrl, {
+  transform: (stake: string) => Number.parseInt(stake) / 1e5,
+  default: () => -1,
+})
 
 function calcBarsTotal() {
   if (window.innerWidth < 500) {
@@ -46,8 +38,8 @@ const relativeMilestones = props.milestones.map((x) => {
   }
 })
 
-const currentPercentage = (currentAmount / props.totalGoal)
-const relativeBars = Math.floor(currentPercentage * noOfBars)
+const currentPercentage = computed(() => currentAmount.value! / props.totalGoal)
+const relativeBars = computed(() => Math.floor(currentPercentage.value * noOfBars))
 
 function isBarMilestone(barIndex: number) {
   return relativeMilestones.some(x => x.value === barIndex)
