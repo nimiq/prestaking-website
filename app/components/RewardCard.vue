@@ -59,12 +59,10 @@ const emit = defineEmits(['login', 'galxeConnect'])
 const showModal: Ref<boolean> = ref(false)
 
 function linkClick() {
-  console.log('click')
   if (props.reward.card.link === 'login') {
     emit('login')
   }
   else if (props.reward.card.link === 'galxe') {
-    console.log('galse')
     emit('galxeConnect')
   }
 }

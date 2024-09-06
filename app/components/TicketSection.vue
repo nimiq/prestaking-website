@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg height="136" src="/img/80.png" alt="" />
+      <NuxtImg class="h-136" src="/img/80.png" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
           Airdrop for all
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg height="136" src="/img/star-wreath.png" alt="" />
+      <NuxtImg class="h-136" src="/img/star-wreath.png" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
           Earn bragging rights
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg height="136" src="/img/hex-star.png" alt="" />
+      <NuxtImg class="h-136" src="/img/hex-star.png" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
           Get a shiny wallet

@@ -60,7 +60,6 @@ const className = computed(() => {
 let identiconImages: HTMLDivElement[] = []
 function addIdenticonsToPage() {
   if (!group.value) {
-    console.error('ahhh it dont work')
     return
   }
   const pathsToAddIdention = group.value.querySelectorAll(className.value)
@@ -82,7 +81,6 @@ function addIdenticonsToPage() {
 
 function updateSizeAndPosition() {
   if (!group.value) {
-    console.error('ahhh it dont work update')
     return
   }
   const pathsToAddIdention = group.value.querySelectorAll(className.value)
