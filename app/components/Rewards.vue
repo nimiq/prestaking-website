@@ -11,6 +11,7 @@ defineProps({
 const ticketAmount = 0
 
 const showLoginModal: Ref<boolean> = ref(false)
+const showGalxeModal: Ref<boolean> = ref(false)
 
 function openLoginModal() {
   showLoginModal.value = true
@@ -21,6 +22,15 @@ function closeLoginModal() {
   showLoginModal.value = false
   document.documentElement.style.overflow = 'auto'
 }
+function openGalxeModal() {
+  showGalxeModal.value = true
+  document.documentElement.style.overflow = 'hidden'
+}
+
+function closeGalxeModal() {
+  showGalxeModal.value = false
+  document.documentElement.style.overflow = 'auto'
+}
 </script>
 
 <template>
@@ -29,7 +39,14 @@ function closeLoginModal() {
       <div class="god-rays">
         <NuxtImg src="/img/God-Rays.png" alt="" />
       </div>
-      <RewardCard :pre-pre-staking="prePreStaking" :reward="data.rewards[0]" :locked="false" class="mx-auto !mb-0 !h-478 !min-w-311 !w-311" @link-click="openLoginModal" />
+      <RewardCard
+        :pre-pre-staking="prePreStaking"
+        :reward="data.rewards[0]"
+        :locked="false"
+        class="mx-auto !mb-0 !h-478 !min-w-311 !w-311"
+        @login="openLoginModal"
+        @galxe-connect="openGalxeModal"
+      />
     </div>
     <div
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
@@ -45,7 +62,10 @@ function closeLoginModal() {
       <div id="reward-list" class="no-scrollbar w-full flex gap-x-24 overflow-auto bg-[#1F2348] px-32 pt-32">
         <RewardCard :reward="data.rewards[1]" :multiplyers="['1', '2', '3']" icon="i-custom:fist" />
         <RewardCard :reward="data.rewards[2]" :multiplyers="['5']" />
-        <RewardCard :reward="data.rewards[3]" :multiplyers="['10']" />
+        <RewardCard
+          :reward="data.rewards[3]" :multiplyers="['10']"
+          @galxe-connect="openGalxeModal"
+        />
       </div>
     </div>
     <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/10 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
@@ -56,13 +76,12 @@ function closeLoginModal() {
         {{ ticketAmount }} <span class="text-17">Tickets</span>
       </div>
     </div>
-    <Teleport to="body">
-      <Transition name="fade" mode="out-in">
-        <ModalWrapper v-if="showLoginModal">
-          <NimiqLoginModal @close="closeLoginModal" />
-        </ModalWrapper>
-      </Transition>
-    </Teleport>
+    <ModalWrapper :active="showLoginModal">
+      <NimiqLoginModal @close="closeLoginModal" />
+    </ModalWrapper>
+    <ModalWrapper :active="showGalxeModal">
+      <NimiqGalxeModal @close="closeGalxeModal" />
+    </ModalWrapper>
   </div>
 </template>
 

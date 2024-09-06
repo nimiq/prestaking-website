@@ -6,7 +6,7 @@ export default {
       card: {
         icon: 'i-custom:hex w-89 h-80',
         title: 'Prestake NIM to participate. The more you prestake, the higher your score.',
-        link: 'https://google.com',
+        link: 'login',
         linkText: 'Login and enter',
       },
       modal: {
@@ -93,8 +93,8 @@ export default {
       card: {
         icon: 'i-custom:galxe w-144 h-28',
         title: 'Prestake early to add a multiplier',
-        link: 'https://google.com',
-        linkText: 'Login to Galxe',
+        link: 'galxe',
+        linkText: 'Connect',
       },
       modal: {
         title: 'Galxe',

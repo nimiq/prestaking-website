@@ -37,6 +37,7 @@ export default defineConfig({
           'cli-docs': () => readFile('./app/assets/svg/icons/cli-docs.svg', 'utf-8'),
 
           // TODO Delete these lines and the files if they are not used
+          'galxe-dark': () => readFile('./app/assets/svg/icons/galxe-dark.svg', 'utf-8'),
           'box': () => readFile('./app/assets/svg/icons/box.svg', 'utf-8'),
           'document': () => readFile('./app/assets/svg/icons/document.svg', 'utf-8'),
           'duck': () => readFile('./app/assets/svg/icons/duck.svg', 'utf-8'),

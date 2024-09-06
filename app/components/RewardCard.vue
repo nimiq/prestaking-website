@@ -24,7 +24,7 @@ interface Reward {
   }
 }
 
-defineProps({
+const props = defineProps({
   prePreStaking: {
     type: Boolean,
     required: false,
@@ -55,9 +55,19 @@ defineProps({
   },
 })
 
-defineEmits(['linkClick'])
+const emit = defineEmits(['login', 'galxeConnect'])
 const showModal: Ref<boolean> = ref(false)
 
+function linkClick() {
+  console.log('click')
+  if (props.reward.card.link === 'login') {
+    emit('login')
+  }
+  else if (props.reward.card.link === 'galxe') {
+    console.log('galse')
+    emit('galxeConnect')
+  }
+}
 function openModal() {
   showModal.value = true
   document.documentElement.style.overflow = 'hidden'
@@ -78,7 +88,7 @@ function closeModal() {
     <div class="small-body mx-24 text-center text-white/60">
       {{ prePreStaking ? 'Prestaking is starting soon. Stay tuned!' : reward.card.title }}
     </div>
-    <div v-if="reward.card.link" class="mt-24 nq-pill-secondary" @click="$emit('linkClick')">
+    <div v-if="reward.card.link" class="mt-24 nq-pill-secondary" @click="linkClick">
       {{ reward.card.linkText }}
     </div>
     <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
