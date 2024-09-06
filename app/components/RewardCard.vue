@@ -98,20 +98,16 @@ function closeModal() {
     <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/30" @click="openModal">
       <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
     </div>
-    <Teleport to="body">
-      <Transition name="fade" mode="out-in">
-        <ModalWrapper v-if="showModal">
-          <TheCard
-            :title="reward.modal.title"
-            :label="reward.modal.label"
-            :description="reward.modal.body"
-            :options="reward.modal.options"
-            image-url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_Images&psig=AOvVaw3csExdp2KKr9y_S4z_LLg0&ust=1723643756834000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLjWnMCP8ocDFQAAAAAdAAAAABAE"
-            @close="closeModal"
-          />
-        </ModalWrapper>
-      </Transition>
-    </Teleport>
+    <ModalWrapper :active="showModal">
+      <TheCard
+        :title="reward.modal.title"
+        :label="reward.modal.label"
+        :description="reward.modal.body"
+        :options="reward.modal.options"
+        image-url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_Images&psig=AOvVaw3csExdp2KKr9y_S4z_LLg0&ust=1723643756834000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLjWnMCP8ocDFQAAAAAdAAAAABAE"
+        @close="closeModal"
+      />
+    </ModalWrapper>
   </div>
 </template>
 
