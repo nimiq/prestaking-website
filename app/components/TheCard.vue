@@ -46,7 +46,7 @@ defineEmits(['close'])
       <div class="god-rays !w-full">
         <NuxtImg src="/img/God-Rays.png" alt="" />
       </div>
-      <NuxtImg class="absolute left-1/2 top-2/5 w-full -translate-1/2" src="/img/3-cards.png" alt="" />
+      <NuxtImg class="absolute left-1/2 top-1/2 w-full -translate-1/2" src="/img/3-cards.png" alt="" />
       <div class="absolute bottom-0 left-0 h-3/4 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t" />
 
       <!-- Content -->
@@ -63,7 +63,7 @@ defineEmits(['close'])
     </div>
 
     <div
-      class="relative max-h-2/5 flex flex-col justify-between gap-24 overflow-auto p-32"
+      class="card-content relative max-h-2/5 flex flex-col justify-between gap-24 overflow-auto p-32"
     >
       <div v-if="label" class="inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
         {{ label }}
@@ -83,6 +83,9 @@ defineEmits(['close'])
 </template>
 
 <style>
+.card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
 .god-rays {
   pointer-events: none;
   position: absolute;

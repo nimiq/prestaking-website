@@ -42,7 +42,10 @@ defineProps({
       {{ label }}
     </div>
     <slot />
-    <div v-if="active && checkmark" class="i-nimiq:icons-lg-verified-filled absolute bottom-0 left-1/2 translate-y-1/2 text-purple -translate-x-1/2" />
+    <div v-if="active && checkmark" class="absolute bottom-0 left-1/2 translate-y-1/2 text-purple -translate-x-1/2">
+      <div class="absolute left-1/2 top-1/2 size-8 bg-white -translate-1/2" />
+      <div class="i-nimiq:icons-lg-verified-filled text-purple" />
+    </div>
   </div>
 </template>
 
@@ -66,18 +69,28 @@ defineProps({
   border-radius: 86px;
   overflow: hidden;
 }
-.active.orange .rw-value-container {
-  background: radial-gradient(100% 100% at 100% 100%, rgba(236, 153, 28, 0.6) 0%, rgb(233 181 19 / 60%) 100%), #fff;
+
+.rw-container.pink {
+  --bg-solid: #f45372;
+  --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(38, 93, 215, 0.6) 0%, rgba(5, 130, 202, 0.6) 100%), #fff;
+  --bg-gradient-opacity: 1;
 }
-.active.peach .rw-value-container {
-  background: radial-gradient(100% 100% at 100% 100%, rgb(236 68 28 / 60%) 0%, rgb(236 124 10 / 60%) 100%), #fff;
+.rw-container.purple {
+  --bg-solid: #ba66e0;
+  --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(204, 48, 71, 0.6) 0%, rgba(217, 68, 50, 0.6) 100%), #fff;
+  --bg-gradient-opacity: 1;
 }
-.active.pink .rw-value-container {
-  background: radial-gradient(100% 100% at 100% 100%, rgb(221 114 195 / 60%) 0%, rgb(212 45 180 / 60%) 100%), #fff;
+.rw-container.peach {
+  --bg-solid: #ff6404;
+  --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(204, 48, 71, 0.6) 0%, rgba(217, 68, 50, 0.6) 100%), #fff;
+  --bg-gradient-opacity: 0.6;
 }
-.active.purple .rw-value-container {
-  background: radial-gradient(100% 100% at 100% 100%, rgb(185 114 221 / 60%) 0%, rgb(133 74 140 / 60%) 100%), #fff;
+.rw-container.orange {
+  --bg-solid: #fc8702;
+  --bg-gradient: radial-gradient(100% 100% at 100% 100%, #fd6216 0%, #fc8701 100%);
+  --bg-gradient-opacity: 0.6;
 }
+
 .rw-value {
   position: relative;
   display: flex;
@@ -118,27 +131,47 @@ defineProps({
   .rw-value {
     color: white;
     overflow: hidden;
-    background: #d94432;
-    mix-blend-mode: overlay;
+    background: var(--bg-gradient);
+
+    &::before {
+      background: var(
+        --gradient-test,
+        linear-gradient(139deg, #cce8fe 5.7%, #cda0ff 27.03%, #8489f5 41.02%, #cdf1ff 68.68%, #b591e9 94%)
+      );
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: color;
+      opacity: var(--bg-gradient-opacity);
+    }
 
     &::after {
       content: '';
       position: absolute;
       width: 100%;
       height: 100%;
-      background: var(--bg-base);
-      mix-blend-mode: color;
-      opacity: 1;
+      background: var(--bg-solid);
+      mix-blend-mode: overlay;
     }
   }
-  &.peach .rw-value:after {
-    opacity: 0.4;
-  }
-  &.orange .rw-value:after {
-    opacity: 0.6;
-  }
+
   .rw-label {
     opacity: 1;
   }
+}
+
+.checkmark::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: #e9e9eb;
 }
 </style>

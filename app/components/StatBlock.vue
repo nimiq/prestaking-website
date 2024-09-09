@@ -58,33 +58,17 @@ defineProps({
     display: none;
   }
   &.blue {
-    --box-shadow: #249cfb;
     --bg-solid: #0582ca;
     --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(38, 93, 215, 0.6) 0%, rgba(5, 130, 202, 0.6) 100%), #fff;
   }
   &.red {
-    --box-shadow: #e764f5;
     --bg-solid: #d94432;
     --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(204, 48, 71, 0.6) 0%, rgba(217, 68, 50, 0.6) 100%), #fff;
   }
   &.orange {
-    --box-shadow: #f19d78;
     --bg-solid: #fc8702;
     --bg-gradient: radial-gradient(100% 100% at 100% 100%, #fd6216 0%, #fc8701 100%);
   }
-  /* &::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    box-shadow:
-      0px 0px 36px 0px var(--box-shadow) inset,
-      0px 0px 36px 0px rgba(31, 35, 72, 0.05) inset;
-    mix-blend-mode: color;
-    border-radius: 8px;
-  } */
 }
 
 .stat {
