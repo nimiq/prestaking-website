@@ -6,17 +6,17 @@ export default {
     prizes: [
       {
         value: '500K',
-        text: '60x winners',
+        text: '60 winners',
         color: 'blue',
       },
       {
         value: '1.5Mio',
-        text: '25x winners',
+        text: '25 winners',
         color: 'red',
       },
       {
         value: '3Mio',
-        text: '10x winners',
+        text: '10 winners',
         color: 'orange',
       },
     ],

@@ -12,12 +12,12 @@ export default {
     stats: [
       {
         value: '100x',
-        text: '10,000 TPS',
+        text: '1000 TPS',
         color: 'blue',
       },
       {
         value: '60x',
-        text: '1 sec transaction speed',
+        text: '1s transaction speed',
         color: 'red',
       },
       {
