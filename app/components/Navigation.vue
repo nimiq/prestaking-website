@@ -78,11 +78,11 @@ onUnmounted(() => {
           'text-white/60': !localState.isSticky,
         }"
       >
-        <NuxtLink to="/prestaking" class="text-16px font-bold">
+        <NuxtLink to="/prestaking" class="text-14px font-bold">
           Prestaking
         </NuxtLink>
         <div class="flex items-center gap-x-16">
-          <a href="https://nimiq.com" class="text-16px font-bold">Stay up to date</a>
+          <a href="https://nimiq.com" class="text-14px font-bold">Stay up to date</a>
           <div
             class="size-32 flex items-center justify-center rounded-full"
             :class="{

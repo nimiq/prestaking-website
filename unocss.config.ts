@@ -46,6 +46,7 @@ export default defineConfig({
           'wave': () => readFile('./app/assets/svg/icons/wave.svg', 'utf-8'),
           'ember': () => readFile('./app/assets/svg/icons/ember.svg', 'utf-8'),
           'close': () => readFile('./app/assets/svg/icons/close.svg', 'utf-8'),
+          'close-transparent': () => readFile('./app/assets/svg/icons/close-transparent.svg', 'utf-8'),
         },
       },
     }),

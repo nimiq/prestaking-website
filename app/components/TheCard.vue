@@ -33,16 +33,16 @@ defineEmits(['close'])
 
 <template>
   <div
-    class="group relative h-fit w-[clamp(508px,508px,80vw)] flex flex-col cursor-pointer border-1 border-gray rounded-6 bg-[#e9e9eb] bg-cover bg-center p-6 pb-0"
+    class="group relative h-624 w-[clamp(508px,508px,80vw)] flex flex-col cursor-pointer border-1 border-gray rounded-6 bg-[#e9e9eb] bg-cover bg-center p-6 pb-0"
   >
     <div
-      class="relative h-414 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-55 py-48 text-center"
+      class="relative flex grow flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-55 py-48 text-center"
     >
       <!-- Background Elements -->
       <div class="god-rays !w-full">
         <NuxtImg src="/img/God-Rays.png" alt="" />
       </div>
-      <NuxtImg class="absolute left-1/2 top-2/5 -translate-1/2" src="/img/3-cards.png" alt="" />
+      <NuxtImg class="absolute left-1/2 top-2/5 w-full -translate-1/2" src="/img/3-cards.png" alt="" />
       <div class="absolute bottom-0 left-0 h-3/4 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t" />
 
       <!-- Content -->
@@ -55,11 +55,11 @@ defineEmits(['close'])
       >
         {{ description }}
       </div>
-      <div i-custom:close class="absolute right-16 top-12 size-24 cursor-pointer rounded-full bg-white transition-opacity hover:opacity-80" @click="$emit('close')" />
+      <div i-custom:close-transparent class="absolute right-16 top-12 size-24 cursor-pointer rounded-full transition-opacity hover:opacity-80" @click="$emit('close')" />
     </div>
 
     <div
-      class="relative flex grow flex-col justify-between gap-24 p-32"
+      class="relative max-h-2/5 flex flex-col justify-between gap-24 overflow-auto p-32"
     >
       <div v-if="label" class="inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
         {{ label }}

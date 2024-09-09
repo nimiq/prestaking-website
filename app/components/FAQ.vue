@@ -33,7 +33,7 @@ const isOpen = ref(false)
       </p>
     </div>
     <div v-show="!isOpen" class="absolute bottom-0 left-0 h-120 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t transition-opacity" />
-    <button class="nq-pill-sm absolute left-1/2 transition-all nq-pill-blue -translate-x-1/2" :class="isOpen ? '-bottom-40' : 'bottom-20'" @click="isOpen = !isOpen">
+    <button class="nq-pill-sm absolute left-1/2 transition-all nq-pill-secondary -translate-x-1/2" :class="isOpen ? '-bottom-40' : 'bottom-20'" @click="isOpen = !isOpen">
       {{ isOpen ? 'Show less' : 'Show more' }}
     </button>
   </div>

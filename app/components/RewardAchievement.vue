@@ -51,7 +51,7 @@ defineProps({
 
 .rw-value {
   display: flex;
-  padding: 8px 24px;
+  padding: 8px 14px;
   max-height: 75vh;
   justify-content: center;
   align-items: center;

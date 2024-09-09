@@ -31,7 +31,7 @@ defineProps({
 <template>
   <div
     :class="[color, darkMode ? 'dark border-white/20' : 'border-darkblue/10 bg-darkblue/02']"
-    class="stat-block-container relative h-full flex grow items-center justify-center border-2 rounded-8 py-24 md:py-48"
+    class="stat-block-container relative h-full flex grow items-center justify-center border-2 rounded-8 py-24 md:py-32"
   >
     <div class="w-fit flex flex-col items-center justify-center gap-y-20 md:gap-y-32">
       <div class="stat gradient bg flex items-center gap-x-12 rounded-full px-24 py-20 text-32 text-white font-600 leading-100% md:px-32 md:py-24 md:text-44">
@@ -72,7 +72,7 @@ defineProps({
     --bg-solid: #fc8702;
     --bg-gradient: radial-gradient(100% 100% at 100% 100%, #fd6216 0%, #fc8701 100%);
   }
-  &::after {
+  /* &::after {
     content: '';
     position: absolute;
     top: -1px;
@@ -84,7 +84,7 @@ defineProps({
       0px 0px 36px 0px rgba(31, 35, 72, 0.05) inset;
     mix-blend-mode: color;
     border-radius: 8px;
-  }
+  } */
 }
 
 .stat {

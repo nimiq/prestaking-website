@@ -2,7 +2,7 @@
 import gsap from 'gsap'
 import pageContent from '@/content/prestaking'
 
-const prestaking = false
+const prestaking = true
 
 onMounted(() => {
   nextTick(() => {
@@ -27,11 +27,12 @@ onMounted(() => {
       <Rewards id="rewards" :pre-pre-staking="prestaking" />
       <div>
         <SectionLabel dark-mode text="The prizes" />
-        <div class="mx-auto w-full flex flex-wrap items-center justify-between gap-24">
+        <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <StatBlock
             v-for="stat in pageContent.hero.prizes"
             :key="stat.value"
             dark-mode
+            class="last:lg:col-span-1 last:md:col-span-2"
             stat-small="NIM"
             :stat="stat.value"
             :text="stat.text"

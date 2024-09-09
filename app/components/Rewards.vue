@@ -52,7 +52,7 @@ function closeGalxeModal() {
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
     >
       <div class="small-label px-32 text-white/60" style="letter-spacing: 0.8px;">
-        Mulitplyers
+        Mulitpliers
       </div>
     </div>
     <div
@@ -72,7 +72,7 @@ function closeGalxeModal() {
       <h4 class="w-full text-center text-22 text-white">
         Earn tickets based on your staked amount
       </h4>
-      <div class="absolute bottom-0 left-1/2 w-312 flex translate-y-1/2 items-center justify-center gap-x-12 border-6 border-[#26275E] rounded-full bg-[#51527E] px-32 py-24 text-32 text-white/60 leading-70% md:w-424 -translate-x-1/2 md:text-44">
+      <div class="absolute bottom-0 left-1/2 w-312 flex translate-y-1/2 items-center justify-center gap-x-12 border-1 border-white/10 rounded-full bg-[#51527E] px-32 py-24 text-32 text-white/60 leading-70% md:w-424 -translate-x-1/2 md:text-44">
         {{ ticketAmount }} <span class="text-17">Tickets</span>
       </div>
     </div>

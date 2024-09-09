@@ -58,7 +58,7 @@ onMounted(() => {
                 {{ pageContent.prestakeCalculator.sidePanel.title }}
               </h3>
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
-              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="whitespace-nowrap text-blue font-bold nq-arrow">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
+              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
             <div class="no-scrollbar relative max-w-full flex grow overflow-x-scroll pb-24 md:block md:overflow-y-scroll">
               <NimiqPoolsList />
@@ -127,6 +127,7 @@ onMounted(() => {
 
 <style>
 .glass-card {
+  @apply p-24 md:p-32;
   border-radius: 6px;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
@@ -134,7 +135,6 @@ onMounted(() => {
   background-blend-mode: normal, color-dodge, normal;
 
   display: flex;
-  padding: 32px;
   flex-direction: column;
   align-items: center;
   gap: 32px;
