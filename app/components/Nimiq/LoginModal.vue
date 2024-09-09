@@ -1,10 +1,19 @@
 <script lang="ts" setup>
-defineEmits(['close'])
+import { useUserInfo } from '@/stores/userInfo'
+
+const emit = defineEmits(['close'])
+
+const store = useUserInfo()
 
 const termsConditionsAccepted = ref(false)
 
 function acceptTC() {
   termsConditionsAccepted.value = true
+}
+
+function login() {
+  store.logIn()
+  emit('close')
 }
 </script>
 
@@ -37,6 +46,9 @@ function acceptTC() {
         <div class="relative z-1 mb-90">
           <h4>Login</h4>
           <p>{ NIMIQ LOGIN FUNCTION GOES HERE }</p>
+          <div class="mx-auto cursor-pointer nq-pill-lg nq-pill-blue" @click="login">
+            LOGIN (TEST)
+          </div>
         </div>
       </div>
     </div>

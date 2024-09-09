@@ -19,7 +19,7 @@ const x = ref(0)
 
 onMounted(() => {
   setTimeout(() => {
-    // Get user leaderboard % position
+    // Get user leaderboard % position from Galxe api
     x.value = 79
   }, 500)
 })

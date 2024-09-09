@@ -44,9 +44,10 @@ defineProps({
     left: 50%;
     top: 50%;
     translate: -50% -50%;
-    background: radial-gradient(50% 50% at 50% 50%, #fff 0%, rgba(255, 255, 255, 0) 100%);
+    background: radial-gradient(50% 50% at 50% 50%, #fff 50%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
     filter: blur(25.13888931274414px);
+    /* z-index: -1; */
   }
 }
 

@@ -15,6 +15,10 @@ defineProps({
     default: null,
     required: true,
   },
+  details: {
+    type: String,
+    default: null,
+  },
   checkmark: {
     type: Boolean,
     default: true,
@@ -38,9 +42,11 @@ defineProps({
         {{ buttonText }}
       </div>
     </div>
-    <div v-if="label" class="rw-label">
-      {{ label }}
-    </div>
+    <p class="rw-label">
+      <span v-if="details" class="text-14 font-normal leading-140% opacity-60">{{ details }}<br></span>
+
+      <span v-if="label" class="mt-6 inline-block font-bold">{{ label }}</span>
+    </p>
     <slot />
     <div v-if="active && checkmark" class="absolute bottom-0 left-1/2 translate-y-1/2 text-purple -translate-x-1/2">
       <div class="absolute left-1/2 top-1/2 size-8 bg-white -translate-1/2" />
@@ -100,7 +106,7 @@ defineProps({
   align-items: center;
   gap: 12px;
   border-radius: 86px;
-  /* background: linear-gradient(0deg, rgba(31, 35, 72, 0.06) 0%, rgba(31, 35, 72, 0.06) 100%), #fff; */
+  background: #1f234816;
 
   color: #797b91;
   text-align: center;

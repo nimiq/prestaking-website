@@ -7,6 +7,7 @@ const options = [
 ]
 
 // TODO: understand the logic for this component
+// store.user.underdogPool
 const data = {
   pool: {
     name: 'Overnice',
@@ -24,7 +25,8 @@ const data = {
       :active="data.userNIMStakedWithPool > 0"
       :color="item.color"
       :button-text="item.buttonText"
-      :label="`${data.userNIMStakedWithPool} NIM ${data.pool.name}`"
+      label="Underdog"
+      :details="`${data.userNIMStakedWithPool} NIM prestaked with an`"
     />
   </div>
 </template>

@@ -1,5 +1,44 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
+import { useUserInfo } from '@/stores/userInfo'
+
+defineProps({
+  prePreStaking: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  ticketValue: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
+  locked: {
+    type: Boolean,
+    default: true,
+    required: false,
+  },
+  multiplyers: {
+    type: Array as PropType<string[]>,
+    default: () => [],
+    required: false,
+  },
+  link: {
+    type: String,
+    default: null,
+    required: false,
+  },
+  card: {
+    type: String,
+    required: false,
+  },
+  reward: {
+    type: Object as PropType<Reward>,
+    required: true,
+  },
+})
+
+const store = useUserInfo()
 
 interface Option {
   text: string
@@ -24,48 +63,8 @@ interface Reward {
   }
 }
 
-const props = defineProps({
-  prePreStaking: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  ticketValue: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  locked: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-  multiplyers: {
-    type: Array as PropType<string[]>,
-    default: () => [],
-    required: false,
-  },
-  link: {
-    type: String,
-    required: false,
-  },
-  reward: {
-    type: Object as PropType<Reward>,
-    required: true,
-  },
-})
-
-const emit = defineEmits(['login', 'galxeConnect'])
 const showModal: Ref<boolean> = ref(false)
 
-function linkClick() {
-  if (props.reward.card.link === 'login') {
-    emit('login')
-  }
-  else if (props.reward.card.link === 'galxe') {
-    emit('galxeConnect')
-  }
-}
 function openModal() {
   showModal.value = true
   document.documentElement.style.overflow = 'hidden'
@@ -78,28 +77,35 @@ function closeModal() {
 </script>
 
 <template>
-  <div class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white p-32 transition-colors duration-400" style="">
-    <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
+  <div :class="[!card && 'p-32', card && '!border-0 !bg-none']" class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white transition-colors duration-400" style="">
+    <div v-if="!card">
+      <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
-    <!-- Icon -->
-    <div class="icon-shadow mx-auto mb-32 object-contain object-center" :class="reward.card.icon" />
-    <div class="small-body mx-24 text-center text-white/60">
-      {{ prePreStaking ? 'Prestaking is starting soon. Stay tuned!' : reward.card.title }}
-    </div>
-    <div v-if="reward.card.link" class="mt-24 nq-pill-secondary" @click="linkClick">
-      {{ reward.card.linkText }}
-    </div>
-    <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
-      <div v-for="item in reward.multipliers" :key="item" class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%">
-        <span class="small-body text-white/60 !font-500">{{ item }}x</span>
+      <!-- Icon -->
+      <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
+        <slot name="icon" />
+      </div>
+      <div class="small-body mx-24 text-center text-white/60">
+        <slot name="description" />
+      </div>
+      <slot name="link" />
+      <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
+        <div v-for="item in reward.multipliers" :key="item" class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%">
+          <span class="small-body text-white/60 !font-500">{{ item }}x</span>
+        </div>
       </div>
     </div>
 
+    <!-- SHOW REWARD CARD -->
+    <TiltCard v-else :card="card" />
+
+    <!-- OPEN MODAL -->
     <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
       <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
     </div>
+
     <ModalWrapper :active="showModal">
-      <TheCard
+      <RewardModal
         :type="reward.type"
         :title="reward.modal.title"
         :label="reward.modal.label"
@@ -113,6 +119,9 @@ function closeModal() {
 </template>
 
 <style>
+.card-identicon path:first-of-type {
+  display: none;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
