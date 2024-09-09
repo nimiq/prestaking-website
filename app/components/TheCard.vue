@@ -12,6 +12,10 @@ defineProps({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: false,
@@ -64,9 +68,16 @@ defineEmits(['close'])
       <div v-if="label" class="inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
         {{ label }}
       </div>
-      <div class="flex flex-wrap gap-x-16 gap-y-24">
+      <NimiqRewardsTickets v-if="type === 'ticket'" />
+      <NimiqRewardsTime v-if="type === 'time'" />
+      <NimiqRewardsUnderdog v-if="type === 'underdog'" />
+      <NimiqRewardsGalxe v-if="type === 'galxe'" />
+      <!-- <div v-if="type === 'ticket'" class="flex flex-wrap gap-x-16 gap-y-24">
         <RewardAchievement v-for="item in options" :key="item.text" :active="true" :value="item.value" :text="item.text" />
       </div>
+      <div v-else-if="type === 'underdog'" class="flex flex-wrap gap-x-16 gap-y-24">
+        <RewardAchievement v-for="item in options" :key="item.text" :active="true" :value="item.value" :text="item.text" />
+      </div> -->
     </div>
   </div>
 </template>

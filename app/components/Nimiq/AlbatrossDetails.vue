@@ -9,6 +9,7 @@ function openModal() {
 
 useOutsideClick(detailsModal, () => {
   showModal.value = false
+  document.documentElement.style.overflow = 'auto'
 })
 
 const steps = [

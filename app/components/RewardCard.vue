@@ -78,7 +78,7 @@ function closeModal() {
 </script>
 
 <template>
-  <div class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white p-32" style="">
+  <div class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white p-32 transition-colors duration-400" style="">
     <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
     <!-- Icon -->
@@ -95,11 +95,12 @@ function closeModal() {
       </div>
     </div>
 
-    <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/30" @click="openModal">
+    <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
       <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
     </div>
     <ModalWrapper :active="showModal">
       <TheCard
+        :type="reward.type"
         :title="reward.modal.title"
         :label="reward.modal.label"
         :description="reward.modal.body"
@@ -128,6 +129,14 @@ function closeModal() {
   background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
     radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
     rgba(255, 255, 255, 0.05);
+  background-blend-mode: normal, color-dodge, normal;
+}
+
+.rewards-card-container:hover {
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
+    rgba(255, 255, 255, 0.07);
   background-blend-mode: normal, color-dodge, normal;
 }
 </style>
