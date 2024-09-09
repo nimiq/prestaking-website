@@ -47,6 +47,14 @@ export default defineConfig({
           'ember': () => readFile('./app/assets/svg/icons/ember.svg', 'utf-8'),
           'close': () => readFile('./app/assets/svg/icons/close.svg', 'utf-8'),
           'close-transparent': () => readFile('./app/assets/svg/icons/close-transparent.svg', 'utf-8'),
+          'chevron': () => readFile('./app/assets/svg/icons/chevron.svg', 'utf-8'),
+
+          // Alabatross details svgs
+          'albatross-0': () => readFile('./app/assets/svg/icons/albatross-0.svg', 'utf-8'),
+          'albatross-1': () => readFile('./app/assets/svg/icons/albatross-1.svg', 'utf-8'),
+          'albatross-2': () => readFile('./app/assets/svg/icons/albatross-2.svg', 'utf-8'),
+          'albatross-3': () => readFile('./app/assets/svg/icons/albatross-3.svg', 'utf-8'),
+
         },
       },
     }),
