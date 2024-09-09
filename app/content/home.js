@@ -1,7 +1,7 @@
 export default {
   hero: {
     title: 'Countdown to Nimiq Proof-of-Stake',
-    body: 'Mainnet launch planned for 22nd of June 2024',
+    body: 'Mainnet launch planned for 19th of November 2024',
     buttonLabel: 'Prestaking',
     buttonLink: '/prestaking',
   },
