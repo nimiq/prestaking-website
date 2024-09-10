@@ -67,8 +67,8 @@ function leave() {
 </script>
 
 <template>
-  <div class="tilt-card-container max-w-fit rounded-8">
-    <div ref="cardContainer" class="tilt-card relative z-10 overflow-hidden rounded-8" @mouseenter="enter" @mouseleave="leave">
+  <div class="tilt-card-container h-full min-w-fit rounded-8">
+    <div ref="cardContainer" class="tilt-card relative z-10 size-full overflow-hidden rounded-8" @mouseenter="enter" @mouseleave="leave">
       <slot />
       <div ref="glow" class="glow max-h-full max-w-full rounded-12" :class="reducedMovement && 'reduced'" />
     </div>

@@ -103,7 +103,7 @@ function checkUserLevel(min: number, max: number, nim: number) {
     >
       <!-- Title -->
       <div id="reward-list" class="no-scrollbar w-full flex gap-x-24 overflow-auto bg-[#1F2348] px-32 pt-32">
-        <RewardCard type="time" :reward="data.rewards[1]" :multiplyers="['1', '2', '3']">
+        <RewardCard card-type="time" :reward="data.rewards[1]" :multiplyers="['1', '2', '3']">
           <template #icon>
             <div :class="data.rewards[1]?.card.icon" />
           </template>
@@ -111,7 +111,7 @@ function checkUserLevel(min: number, max: number, nim: number) {
             Prestake early to add a multiplier
           </template>
         </RewardCard>
-        <RewardCard type="underdog" :reward="data.rewards[2]" :multiplyers="['5']">
+        <RewardCard card-type="underdog" :reward="data.rewards[2]" :multiplyers="['5']">
           <template #icon>
             <div :class="data.rewards[2]?.card.icon" />
           </template>
@@ -121,7 +121,7 @@ function checkUserLevel(min: number, max: number, nim: number) {
         </RewardCard>
 
         <RewardCard
-          type="galxe"
+          card-type="galxe"
           :reward="data.rewards[3]" :multiplyers="['10']"
         >
           <template #icon>

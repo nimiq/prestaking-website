@@ -32,7 +32,7 @@ const props = defineProps({
     type: String,
     required: false,
   },
-  type: {
+  cardType: {
     type: String,
     required: false,
   },
@@ -45,7 +45,7 @@ const props = defineProps({
 const store = useUserInfo()
 
 const color = computed(() => {
-  switch (props.type) {
+  switch (props.cardType) {
     case 'time':
       return '#24CCA2'
     case 'underdog':
@@ -94,7 +94,7 @@ function closeModal() {
 const activateCard: Ref<boolean> = ref(true)
 const activatedMultipliers: Ref<Array<string>> = ref([])
 
-if (props.type === 'time') {
+if (props.cardType === 'time') {
   const userPrestakingAmounts = store.getUserTimeLevel
   if (!Object.values(userPrestakingAmounts).every(x => x === null)) {
     activateCard.value = true
@@ -104,11 +104,11 @@ if (props.type === 'time') {
   }
 }
 
-if (props.type === 'underdog') {
+if (props.cardType === 'underdog') {
   // WORK OUT HOW THIS IS CALCULATED
 }
 
-if (props.type === 'galxe') {
+if (props.cardType === 'galxe') {
   // WORK OUT HOW THIS IS CALCULATED
 }
 </script>
@@ -134,15 +134,14 @@ if (props.type === 'galxe') {
     </div>
 
     <!-- SHOW REWARD CARD -->
-    <TiltCardWrapper v-else reduced-movement class="relative size-full">
-      <RewardCardColor :type="type" class="absolute left-0 top-0 size-full" />
-      <img
-        class="metal-grain absolute left-0 top-0 z-6 h-full w-full opacity-60 mix-blend-multiply" src="/img/dust-texture.png" alt="" srcset=""
-      >
+    <TiltCardWrapper v-else reduced-movement class="relative min-w-full">
+      <div v-if="cardType === 'time'" i-custom:time-card class="min-h-full min-w-full w-max" />
+      <div v-else-if="cardType === 'underdog'" i-custom:underdog-card class="min-h-full min-w-full w-max" />
+      <div v-else-if="cardType === 'galxe'" i-custom:galxe-card class="min-h-full min-w-full w-max" />
       <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
         <div
-          v-for="item in reward.modal.options" :key="item"
-          class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%"
+          v-for="item in reward.modal.options" :key="item.text"
+          class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-8 leading-100%"
           :style="activatedMultipliers.includes(item.value) ? `background-color: ${color};` : ''"
         >
           <span

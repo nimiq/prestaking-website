@@ -59,6 +59,11 @@ export default defineConfig({
           'albatross-2': () => readFile('./app/assets/svg/icons/albatross-2.svg', 'utf-8'),
           'albatross-3': () => readFile('./app/assets/svg/icons/albatross-3.svg', 'utf-8'),
 
+          // Cards
+          'time-card': () => readFile('./app/assets/svg/cards/time-active.svg', 'utf-8'),
+          'underdog-card': () => readFile('./app/assets/svg/cards/underdog-active.svg', 'utf-8'),
+          'galxe-card': () => readFile('./app/assets/svg/cards/galxe-active.svg', 'utf-8'),
+
         },
       },
     }),
