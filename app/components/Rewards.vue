@@ -65,13 +65,13 @@ function checkUserLevel(min: number, max: number, nim: number) {
       <div class="god-rays !h-auto">
         <NuxtImg src="/img/God-Rays.png" alt="" />
       </div>
-      <RewardCard
+      <UserCard
         :key="userNIM"
         :pre-pre-staking="prePreStaking"
         :reward="data.rewards[0]"
         :locked="store.loggedIn === false"
         class="mx-auto !mb-0 !h-478 !min-w-311 !w-311"
-        :card="store.loggedIn && store.user.prestakedNIMAmount > 0 ? `/img/${getTicketCard}-card.png` : undefined"
+        :card="store.loggedIn && store.user.prestakedNIMAmount > 0 ? `${getTicketCard}` : undefined"
       >
         <template #icon>
           <div v-if="!store.loggedIn" :class="data.rewards[0]?.card.icon" />
@@ -90,7 +90,7 @@ function checkUserLevel(min: number, max: number, nim: number) {
             Got to wallet
           </div>
         </template>
-      </RewardCard>
+      </UserCard>
     </div>
     <div
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"

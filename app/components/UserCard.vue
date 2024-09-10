@@ -94,18 +94,28 @@ function closeModal() {
           <span class="small-body text-white/60 !font-500">{{ item }}x</span>
         </div>
       </div>
+      <!-- OPEN MODAL -->
+      <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </div>
     </div>
 
     <!-- SHOW REWARD CARD -->
-    <TiltCard v-else :card="card" />
-
-    <!-- OPEN MODAL -->
-    <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-      <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-    </div>
+    <TiltCard v-else reduced-movement :card="card" class="cursor-pointer" @click="openModal" />
 
     <ModalWrapper :active="showModal">
       <RewardModal
+        v-if="store.getUserTicketLevel === 'none'"
+        :type="reward.type"
+        :title="reward.modal.title"
+        :label="reward.modal.label"
+        :description="reward.modal.body"
+        :options="reward.modal.options"
+        image-url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_Images&psig=AOvVaw3csExdp2KKr9y_S4z_LLg0&ust=1723643756834000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLjWnMCP8ocDFQAAAAAdAAAAABAE"
+        @close="closeModal"
+      />
+      <UserCardModal
+        v-else
         :type="reward.type"
         :title="reward.modal.title"
         :label="reward.modal.label"

@@ -1,15 +1,35 @@
+import ticketRewards from '~/content/ticket-rewards'
+
+function getTicketCard(userNIM: number) {
+  let level: string = 'none'
+  ticketRewards.options.forEach((e) => {
+    if (checkUserLevel(e.min, e.max, userNIM)) {
+      level = e.level
+    }
+  })
+  return level
+}
+
+function checkUserLevel(min: number, max: number, nim: number) {
+  return nim >= min && nim < max
+}
+
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
-    loggedIn: false,
+    loggedIn: true,
     user: {
-      prestakedNIMAmount: 0,
+      prestakedNIMAmount: null,
       // NEED TO FIGURE OUT HOW TO HANDLE UNDERDOG
       underdogPool: null,
       prestakingEvents: null,
+      hasClaimed: 0,
     },
   }),
   getters: {
     // doubleCount: (state) => state.count * 2,
+    getUserTicketLevel: (state) => {
+      return getTicketCard(state.user.prestakedNIMAmount)
+    },
   },
   actions: {
     logIn() {
@@ -29,5 +49,6 @@ export const useUserInfo = defineStore('userInfo', {
         },
       ]
     },
+
   },
 })

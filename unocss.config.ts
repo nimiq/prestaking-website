@@ -48,6 +48,10 @@ export default defineConfig({
           'close': () => readFile('./app/assets/svg/icons/close.svg', 'utf-8'),
           'close-transparent': () => readFile('./app/assets/svg/icons/close-transparent.svg', 'utf-8'),
           'chevron': () => readFile('./app/assets/svg/icons/chevron.svg', 'utf-8'),
+          'tickets': () => readFile('./app/assets/svg/icons/tickets.svg', 'utf-8'),
+          'dots': () => readFile('./app/assets/svg/icons/dots.svg', 'utf-8'),
+          'code': () => readFile('./app/assets/svg/icons/code.svg', 'utf-8'),
+          'arrow': () => readFile('./app/assets/svg/icons/arrow.svg', 'utf-8'),
 
           // Alabatross details svgs
           'albatross-0': () => readFile('./app/assets/svg/icons/albatross-0.svg', 'utf-8'),
