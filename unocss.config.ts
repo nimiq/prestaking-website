@@ -52,6 +52,7 @@ export default defineConfig({
           'dots': () => readFile('./app/assets/svg/icons/dots.svg', 'utf-8'),
           'code': () => readFile('./app/assets/svg/icons/code.svg', 'utf-8'),
           'arrow': () => readFile('./app/assets/svg/icons/arrow.svg', 'utf-8'),
+          'plus': () => readFile('./app/assets/svg/icons/plus.svg', 'utf-8'),
 
           // Alabatross details svgs
           'albatross-0': () => readFile('./app/assets/svg/icons/albatross-0.svg', 'utf-8'),
