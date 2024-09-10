@@ -18,7 +18,7 @@ export const useUserInfo = defineStore('userInfo', {
   state: () => ({
     loggedIn: true,
     user: {
-      prestakedNIMAmount: 90000,
+      prestakedNIMAmount: 9000000,
       // NEED TO FIGURE OUT HOW TO HANDLE UNDERDOG
       underdogPool: null,
       prestakingEvents: null,

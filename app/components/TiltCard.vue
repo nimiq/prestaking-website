@@ -107,8 +107,8 @@ function leave() {
       <img src="/img/card-master-bg-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="">
       <div class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
       <img :src="`/img/${card}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="">
-      <IdenticonCardHex class="left-1/2 top-84 z-4 !absolute -translate-x-1/2" :type="card" :color="identiconColor" />
-      <div ref="identicon" class="absolute left-1/2 top-74 z-5 scale-70 -translate-x-1/2" />
+      <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="card" :color="identiconColor" />
+      <div ref="identicon" class="absolute left-1/2 top-74 z-5 scale-75 -translate-x-1/2" />
       <img
         class="metal-grain absolute left-0 top-0 z-6 h-full w-full" src="/img/metal-grain.png" alt="" srcset=""
       >
