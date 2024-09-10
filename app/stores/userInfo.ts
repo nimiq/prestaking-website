@@ -1,5 +1,5 @@
 import type { stakingEvent } from '~/types/rewards'
-
+import { getUserTimeLevel } from '~/composables/earlyBird'
 // Underdog
 
 function stakedWithUnderdog(stakingEvents: Array<stakingEvent>) {
@@ -21,7 +21,7 @@ export const useUserInfo = defineStore('userInfo', {
       // NEED TO FIGURE OUT HOW TO HANDLE UNDERDOG
       underdogPool: null,
       prestakingEvents: [] as Array<stakingEvent>,
-      hasClaimed: 0,
+      totalTickets: 0,
     },
   }),
   getters: {
@@ -35,6 +35,9 @@ export const useUserInfo = defineStore('userInfo', {
   actions: {
     logIn() {
       this.loggedIn = true
+    },
+    setClaimedTickets() {
+      this.user.totalTickets = this.user.prestakedNIMAmount / 1000
     },
     setPrestake() {
       this.user.prestakedNIMAmount = 500000

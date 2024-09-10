@@ -30,11 +30,14 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.getUserTimeLevel.filter(x => x.amount > 0).map(x => x.multiplier)
+  if (store.getUserTimeLevel) {
+    return store.getUserTimeLevel.filter(x => x.amount > 0).map(x => x.multiplier)
+  }
+  return []
 })
 
 const activateCard = computed(() => {
-  return activatedMultipliers.value.length > 0
+  return activatedMultipliers.value && activatedMultipliers.value.length > 0
 })
 </script>
 
@@ -84,7 +87,7 @@ const activateCard = computed(() => {
           :key="item.label"
           :active="activatedMultipliers.includes(item.multiplier)"
           :color="item.color"
-          :button-text="item.multiplier"
+          :button-text="`${item.multiplier}x`"
           :label="item.label"
         />
       </RewardModal>

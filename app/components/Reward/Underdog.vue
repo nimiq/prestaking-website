@@ -30,7 +30,7 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.loggedIn ? ['3x'] : []
+  return store.loggedIn ? [3] : []
 })
 
 const activateCard = computed(() => {
@@ -84,7 +84,7 @@ const activateCard = computed(() => {
           :key="item.label"
           :active="activatedMultipliers.includes(item.multiplier)"
           :color="item.color"
-          :button-text="item.multiplier"
+          :button-text="`${item.multiplier}x`"
           :label="item.label"
         />
       </RewardModal>

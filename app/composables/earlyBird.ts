@@ -1,4 +1,4 @@
-import earlyBirdRewards from '@/content/time-rewards'
+import rewards from '~/content/rewards'
 
 interface stakingEvent {
   date: string
@@ -22,18 +22,21 @@ export function checkUserStakingDates(min: string, max: string, date: string) {
 export function getUserTimeLevel(stakingEvents: Array<stakingEvent>) {
   const eventArray = [
     {
-      multiplier: '3x',
+      multiplier: 3,
       amount: 0,
     },
     {
-      multiplier: '2x',
+      multiplier: 2,
       amount: 0,
     },
     {
-      multiplier: '1.5x',
+      multiplier: 1.5,
       amount: 0,
     },
   ]
+  const earlyBirdRewards = rewards.rewards[1]
+  if (!earlyBirdRewards?.options)
+    return
   earlyBirdRewards.options.forEach((option) => {
     let totalNIM = 0
     stakingEvents.forEach((e) => {
@@ -42,7 +45,7 @@ export function getUserTimeLevel(stakingEvents: Array<stakingEvent>) {
       }
     })
     if (totalNIM > 0) {
-      const entry = eventArray.find(x => x.multiplier === option.level)
+      const entry = eventArray.find(x => x.multiplier === option.multiplier)
       if (entry)
         entry.amount = totalNIM
     }

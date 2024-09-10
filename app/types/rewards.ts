@@ -5,7 +5,7 @@ export interface stakingEvent {
 }
 
 export interface Option {
-  multiplier: string
+  multiplier: number
   min?: string
   max?: string
   label?: string

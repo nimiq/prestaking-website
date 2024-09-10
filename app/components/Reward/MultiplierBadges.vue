@@ -27,7 +27,7 @@ defineProps({
       <span
         class="small-body text-white/60 !font-500"
         :class="active.includes(item.multiplier) && '!text-white !font-bold'"
-      >{{ item.multiplier }}</span>
+      >{{ item.multiplier }}x</span>
     </div>
   </div>
 </template>

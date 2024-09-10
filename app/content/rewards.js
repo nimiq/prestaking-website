@@ -51,7 +51,7 @@ export default {
       },
       options: [
         {
-          multiplier: '1.5x',
+          multiplier: 1.5,
           min: '2024-09-16',
           max: '2024-09-23',
           label: 'First Week',
@@ -59,7 +59,7 @@ export default {
           color: 'orange',
         },
         {
-          multiplier: '2x',
+          multiplier: 2,
           min: '2024-09-23',
           max: '2024-09-30',
           label: 'Second Week',
@@ -67,7 +67,7 @@ export default {
           color: 'peach',
         },
         {
-          multiplier: '3x',
+          multiplier: 3,
           min: '2024-09-30',
           max: '2024-10-07',
           label: 'Third Week',
@@ -90,7 +90,7 @@ export default {
       },
       options: [
         {
-          multiplier: '3x',
+          multiplier: 3,
           label: 'First Week',
           level: '3x',
           color: 'orange',
@@ -113,22 +113,22 @@ export default {
       },
       options: [
         {
-          multiplier: '1.5',
+          multiplier: 1.5,
           label: 'First Week',
           level: '1.5',
         },
         {
-          multiplier: '2x',
+          multiplier: 2,
           label: 'First Week',
           level: '2x',
         },
         {
-          multiplier: '3x',
+          multiplier: 3,
           label: 'First Week',
           level: '3x',
         },
         {
-          multiplier: '5x',
+          multiplier: 5,
           label: 'First Week',
           level: '5x',
         },
