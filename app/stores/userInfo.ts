@@ -16,9 +16,9 @@ function checkUserLevel(min: number, max: number, nim: number) {
 
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
-    loggedIn: true,
+    loggedIn: false,
     user: {
-      prestakedNIMAmount: null,
+      prestakedNIMAmount: 0,
       // NEED TO FIGURE OUT HOW TO HANDLE UNDERDOG
       underdogPool: null,
       prestakingEvents: null,
