@@ -50,9 +50,9 @@ export default {
         label: 'Tickets (Staked NIM/1000)',
         options: [
           {
-            value: '3x',
-            text: 'First week',
-            color: 'orange',
+            value: '1.5x',
+            text: 'Overseer',
+            color: 'pink',
           },
           {
             value: '2x',
@@ -60,9 +60,9 @@ export default {
             color: 'peach',
           },
           {
-            value: '1.5x',
-            text: 'Overseer',
-            color: 'pink',
+            value: '3x',
+            text: 'First week',
+            color: 'orange',
           },
         ],
       },

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
+import { useUserInfo } from '@/stores/userInfo'
 
-defineProps({
+const props = defineProps({
   prePreStaking: {
     type: Boolean,
     required: false,
@@ -31,12 +32,30 @@ defineProps({
     type: String,
     required: false,
   },
+  type: {
+    type: String,
+    required: false,
+  },
   reward: {
     type: Object as PropType<Reward>,
     required: true,
   },
 })
 
+const store = useUserInfo()
+
+const color = computed(() => {
+  switch (props.type) {
+    case 'time':
+      return '#24CCA2'
+    case 'underdog':
+      return '#FF9900'
+    case 'galxe':
+      return '#A55AE7'
+    default:
+      return null
+  }
+})
 interface Option {
   text: string
   value: string
@@ -71,11 +90,32 @@ function closeModal() {
   showModal.value = false
   document.documentElement.style.overflow = 'auto'
 }
+
+const activateCard: Ref<boolean> = ref(true)
+const activatedMultipliers: Ref<Array<string>> = ref([])
+
+if (props.type === 'time') {
+  const userPrestakingAmounts = store.getUserTimeLevel
+  if (!Object.values(userPrestakingAmounts).every(x => x === null)) {
+    activateCard.value = true
+    activatedMultipliers.value = userPrestakingAmounts.filter(x => x.amount > 0).map(x =>
+      x.multiplier,
+    )
+  }
+}
+
+if (props.type === 'underdog') {
+  // WORK OUT HOW THIS IS CALCULATED
+}
+
+if (props.type === 'galxe') {
+  // WORK OUT HOW THIS IS CALCULATED
+}
 </script>
 
 <template>
-  <div :class="[!card && 'p-32', card && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white transition-colors duration-400" style="">
-    <div v-if="!card">
+  <div :class="[!activateCard && 'p-32', activateCard && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white transition-colors duration-400" style="">
+    <div v-if="!activateCard">
       <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
       <!-- Icon -->
@@ -94,10 +134,27 @@ function closeModal() {
     </div>
 
     <!-- SHOW REWARD CARD -->
-    <TiltCard v-else :card="card" />
+    <TiltCardWrapper v-else reduced-movement class="relative size-full">
+      <RewardCardColor :type="type" class="absolute left-0 top-0 size-full" />
+      <img
+        class="metal-grain absolute left-0 top-0 z-6 h-full w-full opacity-60 mix-blend-multiply" src="/img/dust-texture.png" alt="" srcset=""
+      >
+      <div v-if="reward.multipliers" class="absolute bottom-32 left-1/2 flex items-center justify-center gap-x-6 -translate-x-1/2">
+        <div
+          v-for="item in reward.modal.options" :key="item"
+          class="h-32 flex items-center justify-center border-1 border-white/20 rounded-full px-6 leading-100%"
+          :style="activatedMultipliers.includes(item.value) ? `background-color: ${color};` : ''"
+        >
+          <span
+            class="small-body text-white/60 !font-500"
+            :class="activatedMultipliers.includes(item.value) && '!text-white !font-bold'"
+          >{{ item.value }}</span>
+        </div>
+      </div>
+    </TiltCardWrapper>
 
     <!-- OPEN MODAL -->
-    <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+    <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
       <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
     </div>
 

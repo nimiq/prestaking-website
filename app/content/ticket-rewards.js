@@ -5,7 +5,7 @@ export default {
       min: 10000,
       max: 99000,
       label: 'Protector',
-      level: 'Bronze',
+      level: 'bronze',
       color: 'orange',
     },
     {

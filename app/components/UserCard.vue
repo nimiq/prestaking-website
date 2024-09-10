@@ -101,7 +101,9 @@ function closeModal() {
     </div>
 
     <!-- SHOW REWARD CARD -->
-    <TiltCard v-else reduced-movement :card="card" class="cursor-pointer" @click="openModal" />
+    <TiltCardWrapper v-else reduced-movement @click="openModal">
+      <TiltCard :card="card" class="cursor-pointer" />
+    </TiltCardWrapper>
 
     <ModalWrapper :active="showModal">
       <RewardModal

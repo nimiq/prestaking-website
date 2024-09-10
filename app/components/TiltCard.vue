@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   card: {
     type: String,
     required: true,
@@ -19,9 +19,6 @@ const props = defineProps({
 
 const identiconColor = ref<string | null>(null)
 const identicon = ref<HTMLDivElement | null>(null)
-const cardContainer = ref<HTMLDivElement | null>(null)
-const glow = ref<HTMLDivElement | null>(null)
-
 // TODO replace colors array and exampleSVG with api
 const colors = ['#FC8702', '#D94432', '#E9B213', '#1A5493', '#0582CA', '#5961A8', '#21BCA5', '#FA7268', '#88B04B', '#795548']
 const exampleSVGIdenticon = `<svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg">
@@ -50,70 +47,18 @@ onMounted(() => {
     })
   })
 })
-
-// Tilt functionality
-let bounds: DOMRect
-function rotateToMouse(e: MouseEvent) {
-  if (!cardContainer.value)
-    return
-  const mouseX = e.clientX
-  const mouseY = e.clientY
-  const leftX = mouseX - bounds.x
-  const topY = mouseY - bounds.y
-  const center = {
-    x: leftX - bounds.width / 2,
-    y: topY - bounds.height / 2,
-  }
-  const distance = Math.sqrt(center.x ** 2 + center.y ** 2)
-
-  cardContainer.value.style.transform = `
-  ${props.reducedMovement ? 'scale3d(1.01, 1.01, 1.01)' : 'scale3d(1.05, 1.05, 1.05)'}
-  rotate3d(
-    ${center.y / 100},
-    ${-center.x / 100},
-    0,
-    ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg
-  )
-`
-  if (glow.value) {
-    glow.value.style.backgroundImage = `
-    radial-gradient(
-      circle at
-      ${center.x * 2 + bounds.width / 2}px
-      ${center.y * 2 + bounds.height / 2}px,
-      #ffffff55,
-      #0000000f
-    )
-  `
-  }
-}
-
-// Trigger mouse events
-function enter() {
-  bounds = cardContainer.value!.getBoundingClientRect()
-  document.addEventListener('mousemove', rotateToMouse)
-}
-
-function leave() {
-  document.removeEventListener('mousemove', rotateToMouse)
-  cardContainer.value!.style.transform = ''
-  cardContainer.value!.style.background = ''
-}
 </script>
 
 <template>
-  <div class="tilt-card-container !h-478 !min-w-311 !w-311">
-    <div ref="cardContainer" :key="card" class="tilt-card relative z-10 overflow-hidden rounded-12" @mouseenter="enter" @mouseleave="leave">
-      <img src="/img/card-master-bg-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="">
-      <div class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
-      <img :src="`/img/${card}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="">
-      <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="card" :color="identiconColor" />
-      <div ref="identicon" class="absolute left-1/2 top-74 z-5 scale-75 -translate-x-1/2" />
-      <img
-        class="metal-grain absolute left-0 top-0 z-6 h-full w-full" src="/img/metal-grain.png" alt="" srcset=""
-      >
-      <div ref="glow" class="glow" :class="reducedMovement && 'reduced'" />
-    </div>
+  <div class="relative overflow-hidden rounded-12 !h-478 !min-w-311 !w-311">
+    <img src="/img/card-master-bg-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="">
+    <div class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
+    <img :src="`/img/${card}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="">
+    <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="card" :color="identiconColor" />
+    <div ref="identicon" class="absolute left-1/2 top-74 z-5 scale-75 -translate-x-1/2" />
+    <img
+      class="metal-grain absolute left-0 top-0 z-6 h-full w-full" src="/img/metal-grain.png" alt="" srcset=""
+    >
   </div>
 </template>
 

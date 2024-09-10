@@ -60,7 +60,9 @@ function logOut() {
   <div
     class="group relative flex flex-col"
   >
-    <TiltCard :card="store.getUserTicketLevel" />
+    <TiltCardWrapper class="mx-auto">
+      <TiltCard :card="store.getUserTicketLevel" />
+    </TiltCardWrapper>
     <div class="mt-32 flex items-center gap-16">
       <div class="text-48 text-white font-bold">
         {{ store.user.prestakedNIMAmount }} NIM
