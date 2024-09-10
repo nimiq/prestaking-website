@@ -2,7 +2,7 @@
 defineEmits(['close'])
 
 function connectGalxe() {
-  alert('connect galxe')
+  console.error('connect galxe')
 }
 </script>
 

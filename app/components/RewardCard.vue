@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
-import { useUserInfo } from '@/stores/userInfo'
 
 defineProps({
   prePreStaking: {
@@ -37,8 +36,6 @@ defineProps({
     required: true,
   },
 })
-
-const store = useUserInfo()
 
 interface Option {
   text: string

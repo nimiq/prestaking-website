@@ -49,10 +49,10 @@ useOutsideClick(dropdown, () => {
 })
 
 function switchAddress() {
-  alert('switchAddress')
+  console.error('switchAddress')
 }
 function logOut() {
-  alert('log out')
+  console.error('log out')
 }
 </script>
 

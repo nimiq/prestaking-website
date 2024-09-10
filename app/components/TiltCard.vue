@@ -16,18 +16,21 @@ const props = defineProps({
 // Get identicon SVG from API
 // Extract color of background <rect> element and apply to 'identiconColor' ref for use by card svg elements
 // remove <rect> element for plain identicon
+
 const identiconColor = ref<string | null>(null)
 const identicon = ref<HTMLDivElement | null>(null)
 const cardContainer = ref<HTMLDivElement | null>(null)
 const glow = ref<HTMLDivElement | null>(null)
 
+// TODO replace colors array and exampleSVG with api
+const colors = ['#FC8702', '#D94432', '#E9B213', '#1A5493', '#0582CA', '#5961A8', '#21BCA5', '#FA7268', '#88B04B', '#795548']
 const exampleSVGIdenticon = `<svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg">
 <defs><clipPath id="hexagon-clip-33">
 <path d="M251.6 17.34l63.53 110.03c5.72 9.9 5.72 22.1 0 32L251.6 269.4c-5.7 9.9-16.27 16-27.7 16H96.83c-11.43 0-22-6.1-27.7-16L5.6 159.37c-5.7-9.9-5.7-22.1 0-32L69.14 17.34c5.72-9.9 16.28-16 27.7-16H223.9c11.43 0 22 6.1 27.7 16z" transform="scale(0.5) translate(0, 16)"></path>
 </clipPath></defs>
 <g clip-path="url(#hexagon-clip-33)">
 <g color="#FC8702" fill="#795548">
-<rect fill="#0582CA" x="0" y="0" width="160" height="160"></rect>
+<rect fill="${colors[Math.floor(Math.random() * colors.length)]}" x="0" y="0" width="160" height="160"></rect>
 <circle cx="80" cy="80" r="40" fill="#FC8702"></circle>
 <g opacity=".1" fill="#010101"><path d="M119.21,80a39.46,39.46,0,0,1-67.13,28.13c10.36,2.33,36,3,49.82-14.28,10.39-12.47,8.31-33.23,4.16-43.26A39.35,39.35,0,0,1,119.21,80Z"></path></g>
 <path xmlns="http://www.w3.org/2000/svg" d="M81.1 33.8s6.7 2.4 4.4 4.8-4.9-3.8-16.7-1.2S42 42 41 72.4l16.1 3.1s-3.3-12.1 6.7-12.1V51.3s20 10.9 33.4 6 27.8-36.2 3.3-39.9-19.4 16.4-19.4 16.4z" fill="#442a16"></path><path xmlns="http://www.w3.org/2000/svg" d="M41 72.4l16.1 3.1s-3.3-12.1 6.7-12.1c0 0-10-10.9 0-12.1s20 10.9 33.4 6 27.8-36.2 3.3-39.9c9.2 13.9 6.2 21-6.1 25.9-10.9 4.4-21.4.9-33.2 5.1C46 52 41.5 67.1 41 72.4z" opacity=".1"></path><path xmlns="http://www.w3.org/2000/svg" d="M105 50.6s6 6.5 7.2 10.5 3.6 1.3 3.6-2.6c0-7.4-3-10.4-5.9-14.4" fill="#442a16"></path><path xmlns="http://www.w3.org/2000/svg" d="M105 50.6s6 6.5 7.2 10.5 3.6 1.3 3.6-2.6c1.1-5.2-5.9-14.4-5.9-14.4" opacity=".1"></path><path xmlns="http://www.w3.org/2000/svg" d="M41.3 73.9L57 77.5v2l-15.5-4zm4 4.4l11.2 2.8.2 2-11.1-3.2z" fill="#754c24"></path>
@@ -104,7 +107,7 @@ function leave() {
       <img src="/img/card-master-bg-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="">
       <div class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
       <img :src="`/img/${card}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="">
-      <IdenticonCardHex class="left-1/2 top-84 z-4 !absolute -translate-x-1/2" :color="identiconColor" />
+      <IdenticonCardHex class="left-1/2 top-84 z-4 !absolute -translate-x-1/2" :type="card" :color="identiconColor" />
       <div ref="identicon" class="absolute left-1/2 top-74 z-5 scale-70 -translate-x-1/2" />
       <img
         class="metal-grain absolute left-0 top-0 z-6 h-full w-full" src="/img/metal-grain.png" alt="" srcset=""

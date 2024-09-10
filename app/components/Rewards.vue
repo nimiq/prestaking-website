@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import rewards from '@/content/rewards'
 import data from '@/content/rewards'
 import { useUserInfo } from '@/stores/userInfo'
 import ticketRewards from '~/content/ticket-rewards'
