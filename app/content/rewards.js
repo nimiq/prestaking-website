@@ -48,24 +48,33 @@ export default {
         title: 'Timing',
         body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
         label: 'Tickets (Staked NIM/1000)',
-        options: [
-          {
-            value: '1.5x',
-            text: 'Overseer',
-            color: 'pink',
-          },
-          {
-            value: '2x',
-            text: 'Protector',
-            color: 'peach',
-          },
-          {
-            value: '3x',
-            text: 'First week',
-            color: 'orange',
-          },
-        ],
       },
+      options: [
+        {
+          multiplier: '1.5x',
+          min: '2024-09-16',
+          max: '2024-09-23',
+          label: 'First Week',
+          level: '1.5x',
+          color: 'orange',
+        },
+        {
+          multiplier: '2x',
+          min: '2024-09-23',
+          max: '2024-09-30',
+          label: 'Second Week',
+          level: '2x',
+          color: 'peach',
+        },
+        {
+          multiplier: '3x',
+          min: '2024-09-30',
+          max: '2024-10-07',
+          label: 'Third Week',
+          level: '3x',
+          color: 'pink',
+        },
+      ],
     },
     {
       type: 'underdog',
@@ -78,14 +87,15 @@ export default {
         title: 'Underdog',
         body: 'Stake with our lowest staked validator pool to receive a massive 5x bonus',
         label: 'Todays underdog',
-        options: [
-          {
-            value: '3x',
-            text: 'First week',
-            color: 'Overstake, 500k staked',
-          },
-        ],
       },
+      options: [
+        {
+          multiplier: '3x',
+          label: 'First Week',
+          level: '3x',
+          color: 'orange',
+        },
+      ],
     },
     {
       type: 'galxe',
@@ -100,14 +110,29 @@ export default {
         title: 'Galxe',
         body: 'Stake with our lowest staked validator pool to receive a massive 5x bonus',
         label: 'leadership placement',
-        options: [
-          {
-            value: '3x',
-            text: 'First week',
-            color: 'Overstake, 500k staked',
-          },
-        ],
       },
+      options: [
+        {
+          multiplier: '1.5',
+          label: 'First Week',
+          level: '1.5',
+        },
+        {
+          multiplier: '2x',
+          label: 'First Week',
+          level: '2x',
+        },
+        {
+          multiplier: '3x',
+          label: 'First Week',
+          level: '3x',
+        },
+        {
+          multiplier: '5x',
+          label: 'First Week',
+          level: '5x',
+        },
+      ],
     },
   ],
 }

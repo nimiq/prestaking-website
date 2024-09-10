@@ -1,52 +1,10 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
 import { useUserInfo } from '@/stores/userInfo'
-
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  label: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  options: {
-    type: Array as PropType<Option[]>,
-    required: true,
-  },
-})
+import { getUserPrestakeCardLevel } from '~/composables/userPrestakingTickets'
 
 defineEmits(['close'])
 
 const store = useUserInfo()
-
-interface Option {
-  text: string
-  value: string
-  color: string
-}
-
-const dropdownOpen: Ref<boolean> = ref(false)
-const dropdown: Ref<HTMLDivElement | null> = ref(null)
-
-function openDropdown() {
-  dropdownOpen.value = true
-}
-
-useOutsideClick(dropdown, () => {
-  dropdownOpen.value = false
-})
 
 function switchAddress() {
   console.error('switchAddress')
@@ -54,6 +12,15 @@ function switchAddress() {
 function logOut() {
   console.error('log out')
 }
+
+const dropdownOpen: Ref<boolean> = ref(false)
+const dropdown: Ref<HTMLDivElement | null> = ref(null)
+function openDropdown() {
+  dropdownOpen.value = true
+}
+useOutsideClick(dropdown, () => {
+  dropdownOpen.value = false
+})
 </script>
 
 <template>
@@ -61,7 +28,7 @@ function logOut() {
     class="group relative flex flex-col"
   >
     <TiltCardWrapper class="mx-auto">
-      <TiltCard :card="store.getUserTicketLevel" />
+      <TiltCard :card="getUserPrestakeCardLevel()" />
     </TiltCardWrapper>
     <div class="mt-32 flex items-center gap-16">
       <div class="text-48 text-white font-bold">
@@ -93,31 +60,3 @@ function logOut() {
     <div i-custom:close-transparent class="fixed right-16 top-12 size-24 cursor-pointer rounded-full transition-opacity hover:opacity-80" @click="$emit('close')" />
   </div>
 </template>
-
-<style>
-.card-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-.god-rays {
-  pointer-events: none;
-  position: absolute;
-  bottom: 0%;
-  left: 50%;
-  width: 100vw;
-  height: 100%;
-  transform: translateX(-50%);
-  mix-blend-mode: lighten;
-
-  &.short {
-    height: 50%;
-  }
-
-  img {
-    filter: blur(24px);
-    transform: scaleX(1.5);
-    object-fit: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-  }
-}
-</style>

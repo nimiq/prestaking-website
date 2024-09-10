@@ -334,3 +334,28 @@ Shine & Glare Effects
 .card[data-rarity$='reverse holo'][data-supertype='trainer'] .card__glare:after {
   clip-path: var(--clip-trainer);
 }
+
+.rewards-card-container {
+  @apply relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white transition-colors duration-400;
+
+  .lock {
+    @apply absolute left-1/2 top-0 text-40 -translate-1/2;
+  }
+}
+
+.rewards-card-container {
+  border-radius: 6px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
+    rgba(255, 255, 255, 0.05);
+  background-blend-mode: normal, color-dodge, normal;
+}
+
+.rewards-card-container:hover {
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
+    rgba(255, 255, 255, 0.07);
+  background-blend-mode: normal, color-dodge, normal;
+}

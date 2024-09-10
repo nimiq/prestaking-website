@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import data from '@/content/rewards'
 import { useUserInfo } from '@/stores/userInfo'
-import ticketRewards from '~/content/ticket-rewards'
+import { getUserStakedNIM } from '~/composables/userPrestakingTickets'
 
 defineProps({
   prePreStaking: {
@@ -36,31 +35,18 @@ function closeGalxeModal() {
   document.documentElement.style.overflow = 'auto'
 }
 
-function getUserWalletData() {
-  store.setPrestake()
-}
-
 const userNIM = computed(() => {
   return store.user.prestakedNIMAmount
 })
-const getTicketCard = computed(() => {
-  let level
-  ticketRewards.options.forEach((e) => {
-    if (checkUserLevel(e.min, e.max, userNIM.value)) {
-      level = e.level
-    }
-  })
-  return level
-})
 
-function checkUserLevel(min: number, max: number, nim: number) {
-  return nim >= min && nim < max
-}
 const scrollLeft: Ref<number> = ref(0)
 const rewardTickets: Ref<HTMLDivElement | null> = ref(null)
 
-function trackScroll(e) {
-  rewardTickets.value.scrollLeft = e.target.scrollLeft
+function trackScroll(e: Event) {
+  if (rewardTickets.value) {
+    const target = e.target as HTMLDivElement
+    rewardTickets.value.scrollLeft = target.scrollLeft
+  }
 }
 const getscrollLeft = computed(() => {
   return scrollLeft.value
@@ -75,32 +61,11 @@ const getscrollLeft = computed(() => {
       </div>
       <UserCard
         :key="userNIM"
-        :pre-pre-staking="prePreStaking"
-        :reward="data.rewards[0]"
         :locked="store.loggedIn === false"
-        class="mx-auto !mb-0 !h-478 !min-w-311 !w-311"
-        :card="store.loggedIn && store.user.prestakedNIMAmount > 0 ? `${getTicketCard}` : undefined"
-      >
-        <template #icon>
-          <div v-if="!store.loggedIn" :class="data.rewards[0]?.card.icon" />
-          <div v-else class="relative">
-            <img src="/img/identicon.svg" alt="">
-          </div>
-        </template>
-        <template #description>
-          {{ store.loggedIn ? 'Prestake NIM to participate.The more you prestake, the higher your score.' : 'Log in to participate!' }}
-        </template>
-        <template #link>
-          <div v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="openLoginModal">
-            {{ data.rewards[0]?.card.linkText }}
-          </div>
-          <div v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">
-            Got to wallet
-          </div>
-        </template>
-      </UserCard>
+        @open-login-modal="openLoginModal"
+      />
       <div class="absolute bottom-0 left-1/2 min-w-max flex translate-1/2 items-center justify-center gap-8 rounded-full bg-[#464A73] px-32 py-8 text-14 text-white/60 -translate-x-1/2">
-        <div>{{ store.user.prestakedNIMAmount / 1000 }} Tickets</div>
+        <div>{{ getUserStakedNIM() / 1000 }} Tickets</div>
         <div class="i-custom:tickets inline-block size-16 opacity-60" />
       </div>
       <div class="absolute bottom-0 right-0 h-fit min-w-max flex translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60">
@@ -120,39 +85,10 @@ const getscrollLeft = computed(() => {
       <div class="h-max w-full overflow-hidden">
         <!-- Title -->
         <div id="reward-list" class="no-scrollbar max-w-full w-full flex gap-x-24 overflow-auto bg-[#1F2348] px-32 pt-32" @scroll="(e) => trackScroll(e)">
-          <RewardCard card-type="time" :reward="data.rewards[1]" :multiplyers="['1', '2', '3']">
-            <template #icon>
-              <div :class="data.rewards[1]?.card.icon" />
-            </template>
-            <template #description>
-              Prestake early to add a multiplier
-            </template>
-          </RewardCard>
-          <RewardCard card-type="underdog" :reward="data.rewards[2]" :multiplyers="['5']">
-            <template #icon>
-              <div :class="data.rewards[2]?.card.icon" />
-            </template>
-            <template #description>
-              Prestake with an underdog to get multiplier
-            </template>
-          </RewardCard>
+          <RewardEarlyBird />
+          <RewardUnderdog />
 
-          <RewardCard
-            card-type="galxe"
-            :reward="data.rewards[3]" :multiplyers="['10']"
-          >
-            <template #icon>
-              <div :class="data.rewards[3]?.card.icon" />
-            </template>
-            <template #description>
-              Share the news using GalXe to get multiplier
-            </template>
-            <template #link>
-              <div class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="openGalxeModal">
-                {{ data.rewards[3]?.card.linkText }}
-              </div>
-            </template>
-          </RewardCard>
+          <RewardGalxe @open-galxe-modal="openGalxeModal" />
         </div>
       </div>
       <div ref="rewardTickets" :style="`transform: translate(-${getscrollLeft}px, 50%)`" class="no-scrollbar pointer-events-none absolute bottom-0 left-0 z-3 max-w-full flex translate-y-1/2 items-center gap-50 overflow-x-scroll">
