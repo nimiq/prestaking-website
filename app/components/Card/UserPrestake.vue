@@ -76,7 +76,7 @@ function getUserWalletData() {
       <TiltCard :card="cardType" class="cursor-pointer" />
     </TiltCardWrapper>
 
-    <ModalWrapper :active="showModal">
+    <ModalWrapper :active="showModal" :bottom-on-mobile="getUserPrestakeCardType() === 'none' ? true : false">
       <RewardModal
         v-if="getUserPrestakeCardType() === 'none'"
         :title="prestakeRewardData.modal.title"

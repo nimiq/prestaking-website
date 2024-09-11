@@ -19,7 +19,7 @@ function login() {
 
 <template>
   <Transition name="modal-switch" mode="out-in" appear>
-    <div :key="termsConditionsAccepted" class="relative max-w-420 overflow-hidden rounded-8 bg-white px-50 py-46 text-center">
+    <div :key="termsConditionsAccepted" class="relative max-w-420 overflow-hidden rounded-t-6 bg-white px-50 py-46 text-center sm:rounded-6">
       <!-- BG Elements and close -->
       <div i-custom:hex class="absolute size-500 opacity-30 -bottom-150 -left-250" />
       <div i-custom:hex class="absolute size-500 opacity-30 -right-300 -top-250" />
@@ -31,7 +31,7 @@ function login() {
           <h4>Terms and conditions</h4>
           <p>Prestaking NIM secures the network and is the quickest way to staking rewards.</p>
           <!-- TODO: Add t&c here -->
-          <a href="www.google.com" class="mt-24 w-fit flex items-center rounded-full px-16 py-6 text-darkblue ring-1.5 ring-darkblue/30 transition-colors md:mx-auto hover:bg-darkblue hover:text-white hover:ring-darkblue">
+          <a href="www.google.com" class="mx-auto mt-24 w-fit flex items-center rounded-full px-16 py-6 text-darkblue ring-1.5 ring-darkblue/30 transition-colors md:mx-auto hover:bg-darkblue hover:text-white hover:ring-darkblue">
             <span class="text-14">Terms and conditions</span>
             <div class="i-nimiq:info ml-8 text-inherit" />
           </a>

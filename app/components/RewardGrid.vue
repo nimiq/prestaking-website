@@ -57,7 +57,7 @@ function claimTickets() {
     :class="getUserPrestakeCardType()"
   >
     <div id="reward-user" class="relative z-5 w-full border-1 border-white/10 p-32 md:col-start-1 md:row-start-1 lg:col-end-2 md:col-end-2 md:col-end-2 md:row-end-4 lg:rounded-tl-16">
-      <img v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full rounded-tl-16 opacity-80 mix-blend-multiply">
+      <img v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-80 mix-blend-multiply md:rounded-tl-16">
       <CardUserPrestake
         :key="userNIM"
         :locked="store.loggedIn === false"
@@ -80,7 +80,7 @@ function claimTickets() {
       </div>
     </div>
     <div
-      class="relative row-start-3 h-max w-full border-r-1 border-white/10 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-6"
+      class="relative z-1 row-start-3 h-max w-full border-r-1 border-white/10 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-6"
     >
       <div class="h-max w-full overflow-hidden">
         <!-- Title -->

@@ -51,7 +51,7 @@ const activateCard = computed(() => {
         Prestake early to add a multiplier
       </div>
       <RewardMultiplierBadges
-        :multipliers="earlyBirdData.options.reverse()"
+        :multipliers="earlyBirdData.options"
         :active="[]"
         :color="cardColor"
       />
@@ -77,13 +77,14 @@ const activateCard = computed(() => {
         :title="earlyBirdData.modal.title"
         :label="earlyBirdData.modal.label"
         :description="earlyBirdData.modal.body"
+        image="/img/reward-cards/modals/earlybird.png"
         @close="closeModal"
       >
         <RewardAchievement
           v-for="item in earlyBirdData.options"
           :key="item.label"
           :active="activatedMultipliers.includes(item.multiplier!)"
-          :color="item.color"
+          color="#24CCA2"
           :button-text="`${item.multiplier}x`"
           :label="item.label"
         />

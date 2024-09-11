@@ -26,17 +26,13 @@ defineProps({
   },
   color: {
     type: String,
-    default: 'blue',
     required: true,
-    validator(value: string) {
-      return ['pink', 'peach', 'orange', 'purple'].includes(value)
-    },
   },
 })
 </script>
 
 <template>
-  <div :class="[active && 'active', color]" class="rw-container relative min-w-[33%]">
+  <div :class="[active && 'active']" :style="`--bg-solid: ${color};`" class="rw-container relative mb-10 inline-block min-w-200">
     <div v-if="buttonText" class="rw-value-container">
       <div class="rw-value">
         {{ buttonText }}
@@ -75,29 +71,8 @@ defineProps({
   border-radius: 86px;
   overflow: hidden;
 }
-
-.rw-container.pink {
-  --bg-solid: #f45372;
-  --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(38, 93, 215, 0.6) 0%, rgba(5, 130, 202, 0.6) 100%), #fff;
-  --bg-gradient-opacity: 1;
-}
-.rw-container.purple {
-  --bg-solid: #ba66e0;
-  --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(204, 48, 71, 0.6) 0%, rgba(217, 68, 50, 0.6) 100%), #fff;
-  --bg-gradient-opacity: 1;
-}
-.rw-container.peach {
-  --bg-solid: #ff6404;
-  --bg-gradient: radial-gradient(100% 100% at 100% 100%, rgba(204, 48, 71, 0.6) 0%, rgba(217, 68, 50, 0.6) 100%), #fff;
-  --bg-gradient-opacity: 0.6;
-}
-.rw-container.orange {
-  --bg-solid: #fc8702;
-  --bg-gradient: radial-gradient(100% 100% at 100% 100%, #fd6216 0%, #fc8701 100%);
-  --bg-gradient-opacity: 0.6;
-}
-
 .rw-value {
+  white-space: nowrap;
   position: relative;
   display: flex;
   padding: 8px 14px;
@@ -137,29 +112,7 @@ defineProps({
   .rw-value {
     color: white;
     overflow: hidden;
-    background: var(--bg-gradient);
-
-    &::before {
-      background: var(
-        --gradient-test,
-        linear-gradient(139deg, #cce8fe 5.7%, #cda0ff 27.03%, #8489f5 41.02%, #cdf1ff 68.68%, #b591e9 94%)
-      );
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      mix-blend-mode: color;
-      opacity: var(--bg-gradient-opacity);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-solid);
-      mix-blend-mode: overlay;
-    }
+    background: var(--bg-solid);
   }
 
   .rw-label {

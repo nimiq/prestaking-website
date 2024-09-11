@@ -75,13 +75,14 @@ const activateCard = computed(() => {
         :title="underdogRewardData.modal.title"
         :label="underdogRewardData.modal.label"
         :description="underdogRewardData.modal.body"
+        image="/img/reward-cards/modals/underdog.png"
         @close="closeModal"
       >
         <RewardAchievement
           v-for="item in underdogRewardData.options"
           :key="item.label"
           :active="activatedMultipliers.includes(item.multiplier!)"
-          :color="item.color"
+          color="#F33F68"
           :button-text="`${item.multiplier}x`"
           :label="item.label"
         />

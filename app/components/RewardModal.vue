@@ -14,6 +14,11 @@ defineProps({
     required: false,
     default: null,
   },
+  image: {
+    type: String,
+    required: false,
+    default: null,
+  },
 })
 
 defineEmits(['close'])
@@ -21,16 +26,12 @@ defineEmits(['close'])
 
 <template>
   <div
-    class="group relative h-624 w-[clamp(508px,508px,80vw)] flex flex-col cursor-pointer border-1 border-gray rounded-6 bg-[#e9e9eb] bg-cover bg-center p-6 pb-0"
+    class="group relative w-full cursor-pointer border-1 border-gray rounded-t-6 bg-[#e9e9eb] bg-cover bg-center sm:w-[clamp(508px,508px,80vw)] sm:rounded-6"
   >
     <div
-      class="relative flex grow flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-55 py-48 text-center"
+      class="relative m-6 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-55 pb-32 pt-150 text-center"
     >
-      <!-- Background Elements -->
-      <div class="god-rays !w-full">
-        <NuxtImg src="/img/God-Rays.png" alt="" />
-      </div>
-      <NuxtImg class="absolute left-1/2 top-1/2 w-full -translate-1/2" src="/img/3-cards.png" alt="" />
+      <NuxtImg class="absolute left-0 top-0 min-h-full min-w-full object-cover" :src="image" alt="" />
       <div class="absolute bottom-0 left-0 h-3/4 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t" />
 
       <!-- Content -->
@@ -43,23 +44,30 @@ defineEmits(['close'])
       >
         {{ description }}
       </div>
+      <slot name="link" />
       <div i-custom:close-transparent class="absolute right-16 top-12 size-24 cursor-pointer rounded-full transition-opacity hover:opacity-80" @click="$emit('close')" />
     </div>
 
     <div
-      class="card-content relative max-h-2/5 flex flex-col justify-between gap-24 overflow-auto p-32"
+      class="card-content relative pb-26 pt-26"
     >
-      <div v-if="label" class="inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
+      <div v-if="label" class="mb-24 inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
         {{ label }}
       </div>
-      <div class="flex flex-wrap gap-x-16 gap-y-24">
-        <slot />
+      <div class="no-scrollbar max-w-full w-full overflow-x-auto">
+        <div class="test w-full flex items-center justify-start gap-x-16 px-32">
+          <slot />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style>
+.test > div:last-of-type::before {
+  @apply absolute size-32 left-full top-0;
+  content: '';
+}
 .card-content::-webkit-scrollbar-track {
   background: transparent;
 }

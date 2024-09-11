@@ -22,7 +22,7 @@ export function checkUserStakingDates(min: string, max: string, date: string) {
 export function getUserTimeLevel(stakingEvents: Array<stakingEvent>) {
   const eventArray = [
     {
-      multiplier: 3,
+      multiplier: 1.5,
       amount: 0,
     },
     {
@@ -30,7 +30,7 @@ export function getUserTimeLevel(stakingEvents: Array<stakingEvent>) {
       amount: 0,
     },
     {
-      multiplier: 1.5,
+      multiplier: 3,
       amount: 0,
     },
   ]
