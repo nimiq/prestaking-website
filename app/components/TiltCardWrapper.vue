@@ -124,8 +124,8 @@ function getAccel() {
       // angleUpdate(e.gamma)
       rotateX.value = e.gamma
 
-      if (e.beta > 60 && e.beta < 120) {
-        rotateY.value = 90 - e.beta
+      if (e.beta > 30 && e.beta < 90) {
+        rotateY.value = (e.beta - 30) - 20
       }
     })
   }
@@ -179,7 +179,7 @@ const x = computed(() => {
 <template>
   <div class="tilt-card-container h-full min-w-fit" :class="`rounded-${rounding}`">
     <div
-      ref="cardContainer" :style="`transform: rotateY(${x}deg) rotateX(${-y}deg)`" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
+      ref="cardContainer" :style="`transform: rotateY(${x}deg) rotateX(${y}deg)`" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
     >
       <!-- ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg -->
       <slot />
