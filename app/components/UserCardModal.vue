@@ -6,9 +6,6 @@ const emits = defineEmits(['close'])
 
 const store = useUserInfo()
 
-function switchAddress() {
-  console.error('switchAddress')
-}
 function logOut() {
   console.error('log out')
 }
@@ -52,10 +49,6 @@ useOutsideClick(container, () => {
       <div class="relative w-fit cursor-pointer rounded-full bg-white/10 px-18 py-10" @click="openDropdown">
         <div i-custom:dots class="h-20 w-4 text-white" />
         <div v-if="dropdownOpen" ref="dropdown" class="absolute bottom-0 left-0 rounded-8 bg-white p-24" @mouseleave="dropdownOpen = false">
-          <div class="mb-24 w-max flex items-center font-600 hover:text-darkblue" @click="switchAddress">
-            <div i-custom:code class="mr-8 inline-block size-16 stroke-current" />
-            Switch Address
-          </div>
           <div class="w-max flex items-center font-600 hover:text-darkblue" @click="logOut">
             <div i-custom:arrow class="mr-8 inline-block size-16 stroke-current" />
             Log out

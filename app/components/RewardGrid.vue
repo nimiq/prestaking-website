@@ -52,13 +52,12 @@ function claimTickets() {
 </script>
 
 <template>
-  <div class="z-5 grid grid-cols-1 lg:grid-cols-[min-content_1fr_1fr] md:grid-cols-[min-content_1fr_1fr] lg:mx-0 -ml-32 -mr-32 lg:rounded-16" style="grid-template-rows: repeat(5, max-content)">
+  <div
+    class="z-5 grid grid-cols-1 lg:grid-cols-[min-content_1fr_1fr] md:grid-cols-[min-content_1fr_1fr] lg:mx-0 -ml-32 -mr-32 lg:rounded-16" style="grid-template-rows: repeat(5, max-content)"
+    :class="getUserPrestakeCardType()"
+  >
     <div id="reward-user" class="relative z-5 w-full border-1 border-white/10 p-32 md:col-start-1 md:row-start-1 lg:col-end-2 md:col-end-2 md:col-end-2 md:row-end-4 lg:rounded-tl-16">
-      <div class="absolute left-0 top-0 h-full w-full overflow-hidden">
-        <div class="god-rays">
-          <NuxtImg class="!blur-15" src="/img/God-Rays.png" alt="" />
-        </div>
-      </div>
+      <img v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full rounded-tl-16 opacity-80 mix-blend-multiply">
       <CardUserPrestake
         :key="userNIM"
         :locked="store.loggedIn === false"
@@ -68,10 +67,11 @@ function claimTickets() {
         <div>{{ getUserStakedNIM() / 1000 }}</div>
         <div class="i-custom:tickets inline-block size-16 opacity-60" />
       </div>
-      <div class="absolute bottom-0 right-0 hidden h-fit min-w-max translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60 md:flex">
-        <div i-custom:plus class="size-18" />
+      <div class="absolute right-0 hidden h-fit min-w-max translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60 -bottom-1 md:flex">
+        <div i-custom:plus class="size-19" />
       </div>
     </div>
+    <div class="radial-bg col-start-2 row-start-2 col-end-4 row-end-5 size-full" />
     <div
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
     >
@@ -84,7 +84,7 @@ function claimTickets() {
     >
       <div class="h-max w-full overflow-hidden">
         <!-- Title -->
-        <div id="reward-list" class="no-scrollbar max-w-full w-full flex gap-x-24 overflow-auto bg-[#1F2348] px-32 pt-32" @scroll="(e) => trackScroll(e)">
+        <div id="reward-list" class="no-scrollbar max-w-full w-full flex gap-x-24 overflow-auto px-32 pt-32" @scroll="(e) => trackScroll(e)">
           <CardEarlyBird />
           <CardUnderdog />
           <CardGalxe @open-galxe-modal="openGalxeModal" />
@@ -95,7 +95,7 @@ function claimTickets() {
         <RewardTicketSubtotals />
       </div>
     </div>
-    <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/10 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
+    <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/05 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
       <h4 class="w-full text-center text-22 text-white">
         Earn tickets based on your staked amount
       </h4>
@@ -151,6 +151,50 @@ function claimTickets() {
 </template>
 
 <style>
+.none {
+  #reward-user {
+    background: linear-gradient(0deg, #1f2348 0%, #1f2348 100%),
+      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+  }
+  .radial-bg {
+    border-radius: 0 16px 0 0;
+    background: radial-gradient(50% 50% at 50% 50%, #1f2348 0%, #1f2348 100%);
+    opacity: 0.5;
+  }
+}
+.bronze {
+  #reward-user {
+    background: linear-gradient(0deg, rgba(146, 88, 86, 0.6) 0%, rgba(146, 88, 86, 0.3) 100%),
+      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+  }
+  .radial-bg {
+    border-radius: 0 16px 0 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(146, 88, 86, 0.6) 0%, rgba(146, 88, 86, 0.3) 100%);
+    opacity: 0.5;
+  }
+}
+.silver {
+  #reward-user {
+    background: linear-gradient(0deg, rgba(218, 230, 236, 0.4) 0%, rgba(218, 230, 236, 0.2) 100%),
+      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+  }
+  .radial-bg {
+    border-radius: 0 16px 0 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(218, 230, 236, 0.6) 0%, rgba(218, 230, 236, 0.3) 100%);
+    opacity: 0.5;
+  }
+}
+.gold {
+  #reward-user {
+    background: linear-gradient(0deg, rgba(236, 210, 127, 0.4) 0%, rgba(236, 210, 127, 0.2) 100%),
+      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+  }
+  .radial-bg {
+    border-radius: 0 16px 0 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(236, 210, 127, 0.6) 0%, rgba(236, 210, 127, 0.3) 100%);
+    opacity: 0.5;
+  }
+}
 .tickets-pill {
   @apply flex items-center items-center w-320 md:w-424 justify-center gap-x-12 border-1 text-32 border-white/10 rounded-full bg-[#51527E] -translate-x-1/2 md:text-40;
 

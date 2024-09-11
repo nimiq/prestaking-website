@@ -42,7 +42,7 @@ function getUserWalletData() {
 </script>
 
 <template>
-  <div :class="[!cardType && 'p-32', cardType && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container !mb-0 !h-478 !min-w-311 !w-311" style="">
+  <div :class="[!cardType && 'p-32', cardType && 'active !border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container !mb-0 !h-478 !min-w-311 !w-311" style="">
     <div v-if="!cardType">
       <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
@@ -62,7 +62,7 @@ function getUserWalletData() {
         Login and enter
       </div>
       <div v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">
-        Got to wallet
+        Go to wallet
       </div>
 
       <!-- OPEN MODAL -->
@@ -72,7 +72,7 @@ function getUserWalletData() {
     </div>
 
     <!-- SHOW REWARD CARD -->
-    <TiltCardWrapper v-else reduced-movement @click="openModal">
+    <TiltCardWrapper v-else reduced-movement rounding="12" @click="openModal">
       <TiltCard :card="cardType" class="cursor-pointer" />
     </TiltCardWrapper>
 

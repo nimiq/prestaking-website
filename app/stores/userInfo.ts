@@ -41,7 +41,7 @@ export const useUserInfo = defineStore('userInfo', {
       this.user.galxeLinked = true
     },
     setPrestake() {
-      this.user.prestakedNIMAmount = 500000
+      this.user.prestakedNIMAmount = 5000000
       this.user.underdogPool = null
       this.user.prestakingEvents = [
         {

@@ -9,7 +9,7 @@ onMounted(() => {
     gsap.timeline({ })
       .fromTo('#hero-container .rays', { opacity: 0 }, { opacity: 1, delay: 0, duration: 3 })
       .fromTo('#hero', { opacity: 0 }, { opacity: 1, duration: 2 }, '-=3')
-      // .fromTo('#rewards', { opacity: 0, translateY: '40px' }, { translateY: 0, opacity: 1, duration: 1, clearProps: 'scale,left, transform, translate' }, '-=2')
+      .fromTo('#rewards', { opacity: 0, translateY: '40px' }, { translateY: 0, opacity: 1, duration: 1, clearProps: 'scale,left, transform, translate' }, '-=2')
       .fromTo('#reward-list', { opacity: 0, transform: 'translate(50%, 0%)' }, { opacity: 1, transform: 'translate(0%, 0%)', duration: 1 }, '-=1.5')
   })
 })
