@@ -3,5 +3,5 @@ const src = useRuntimeConfig().public.albatrossLiveviewUrl
 </script>
 
 <template>
-  <iframe :src w-screen h="839 sm:781 md:573" />
+  <iframe :src h="839 sm:781 md:573" mx--32 max-w-inherit w-screen />
 </template>
