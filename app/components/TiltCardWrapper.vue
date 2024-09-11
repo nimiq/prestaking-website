@@ -129,39 +129,18 @@ function getAccel() {
       }
     })
   }
-  // else {
-  //   // IOS
-  //   DeviceMotionEvent.requestPermission().then((response) => {
-  //     if (response == 'granted') {
-  //       setGyroPermissionGranted.value = true
-  //       let delta
-  //       const ratio = 300 / 20
+  else {
+    // IOS
+    DeviceMotionEvent.requestPermission().then((response) => {
+      window.addEventListener('deviceorientation', (e) => {
+        rotateX.value = e.gamma
 
-  //       window.addEventListener('deviceorientation', (e) => {
-  //         delta = Math.abs(e.gamma)
-
-  //         if (delta > 2 && delta < 20) {
-  //           const width = 400 + delta * ratio
-
-  //           const snappedWidth = snappedWidths.reduce((prev, curr) => {
-  //             return Math.abs(curr - width) < Math.abs(prev - width)
-  //               ? curr
-  //               : prev
-  //           })
-
-  //           setSnappedWidth(snappedWidth)
-  //           setCurrentWidth(width)
-  //         }
-  //         else if (delta < 2) {
-  //           setCurrentWidth(400)
-  //         }
-  //         else if (delta > 20) {
-  //           setCurrentWidth(700)
-  //         }
-  //       })
-  //     }
-  //   })
-  // }
+        if (e.beta > 30 && e.beta < 90) {
+          rotateY.value = (e.beta - 30) - 20
+        }
+      })
+    })
+  }
 }
 
 const y = computed(() => {

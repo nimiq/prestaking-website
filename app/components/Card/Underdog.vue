@@ -63,12 +63,11 @@ const activateCard = computed(() => {
         :active="activatedMultipliers"
         :color="cardColor"
       />
+      <!-- OPEN MODAL -->
+      <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </div>
     </TiltCardWrapper>
-
-    <!-- OPEN MODAL -->
-    <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-      <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-    </div>
 
     <ModalWrapper :active="showModal">
       <RewardModal
