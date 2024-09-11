@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import rewards from '~/content/rewards'
+import earlyBirdData from '~/content/rewards/earlyBird'
 import { useUserInfo } from '@/stores/userInfo'
-import type { Reward } from '~/types/rewards'
 
 defineProps({
   locked: {
@@ -12,8 +11,6 @@ defineProps({
 })
 
 const store = useUserInfo()
-
-const earlyBirdRewardData = rewards.rewards[1] as Reward
 
 const cardColor = '#24CCA2'
 
@@ -42,7 +39,7 @@ const activateCard = computed(() => {
 </script>
 
 <template>
-  <div :class="[!activateCard && 'p-32', activateCard && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white transition-colors duration-400" style="">
+  <div :class="[!activateCard && 'p-32', activateCard && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container" style="">
     <div v-if="!activateCard">
       <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
@@ -54,7 +51,7 @@ const activateCard = computed(() => {
         Prestake early to add a multiplier
       </div>
       <RewardMultiplierBadges
-        :multipliers="earlyBirdRewardData.options"
+        :multipliers="earlyBirdData.options"
         :active="[]"
         :color="cardColor"
       />
@@ -64,7 +61,7 @@ const activateCard = computed(() => {
     <TiltCardWrapper v-else reduced-movement class="relative min-w-full">
       <div i-custom:time-card class="min-h-full min-w-full w-max" />
       <RewardMultiplierBadges
-        :multipliers="earlyBirdRewardData.options"
+        :multipliers="earlyBirdData.options"
         :active="activatedMultipliers"
         :color="cardColor"
       />
@@ -77,15 +74,15 @@ const activateCard = computed(() => {
 
     <ModalWrapper :active="showModal">
       <RewardModal
-        :title="earlyBirdRewardData.modal.title"
-        :label="earlyBirdRewardData.modal.label"
-        :description="earlyBirdRewardData.modal.body"
+        :title="earlyBirdData.modal.title"
+        :label="earlyBirdData.modal.label"
+        :description="earlyBirdData.modal.body"
         @close="closeModal"
       >
         <RewardAchievement
-          v-for="item in earlyBirdRewardData.options"
+          v-for="item in earlyBirdData.options"
           :key="item.label"
-          :active="activatedMultipliers.includes(item.multiplier)"
+          :active="activatedMultipliers.includes(item.multiplier!)"
           :color="item.color"
           :button-text="`${item.multiplier}x`"
           :label="item.label"
@@ -94,35 +91,3 @@ const activateCard = computed(() => {
     </ModalWrapper>
   </div>
 </template>
-
-<style>
-.card-identicon path:first-of-type {
-  display: none;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.rewards-card-container {
-  border-radius: 6px;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
-    rgba(255, 255, 255, 0.05);
-  background-blend-mode: normal, color-dodge, normal;
-}
-
-.rewards-card-container:hover {
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
-    rgba(255, 255, 255, 0.07);
-  background-blend-mode: normal, color-dodge, normal;
-}
-</style>

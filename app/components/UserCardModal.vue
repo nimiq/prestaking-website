@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
-import { getUserPrestakeCardLevel } from '~/composables/userPrestakingTickets'
+import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 
-defineEmits(['close'])
+const emits = defineEmits(['close'])
 
 const store = useUserInfo()
 
@@ -15,24 +15,30 @@ function logOut() {
 
 const dropdownOpen: Ref<boolean> = ref(false)
 const dropdown: Ref<HTMLDivElement | null> = ref(null)
+
+const container: Ref<HTMLDivElement | null> = ref(null)
 function openDropdown() {
   dropdownOpen.value = true
 }
-useOutsideClick(dropdown, () => {
-  dropdownOpen.value = false
+
+useOutsideClick(container, () => {
+  if (!dropdownOpen.value) {
+    emits('close')
+  }
 })
 </script>
 
 <template>
   <div
+    ref="container"
     class="group relative flex flex-col"
   >
     <TiltCardWrapper class="mx-auto">
-      <TiltCard :card="getUserPrestakeCardLevel()" />
+      <TiltCard :card="getUserPrestakeCardType()" />
     </TiltCardWrapper>
-    <div class="mt-32 flex items-center gap-16">
+    <div class="mt-32 flex items-center justify-center gap-16">
       <div class="text-48 text-white font-bold">
-        {{ store.user.prestakedNIMAmount }} NIM
+        {{ store.user.totalTickets }}
       </div>
       <div i-custom:tickets class="h-35 w-40" />
     </div>
@@ -45,7 +51,7 @@ useOutsideClick(dropdown, () => {
       </div>
       <div class="relative w-fit cursor-pointer rounded-full bg-white/10 px-18 py-10" @click="openDropdown">
         <div i-custom:dots class="h-20 w-4 text-white" />
-        <div v-if="dropdownOpen" ref="dropdown" class="absolute left-0 top-0 rounded-8 bg-white p-24">
+        <div v-if="dropdownOpen" ref="dropdown" class="absolute bottom-0 left-0 rounded-8 bg-white p-24" @mouseleave="dropdownOpen = false">
           <div class="mb-24 w-max flex items-center font-600 hover:text-darkblue" @click="switchAddress">
             <div i-custom:code class="mr-8 inline-block size-16 stroke-current" />
             Switch Address

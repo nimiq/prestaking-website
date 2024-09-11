@@ -1,5 +1,5 @@
 import { useUserInfo } from '@/stores/userInfo'
-import prestakeRewards from '@/content/ticket-rewards'
+import prestakeRewardData from '~/content/rewards/userPrestake'
 
 function checkUserLevel(min: number, max: number, nim: number) {
   return nim >= min && nim < max
@@ -16,13 +16,13 @@ export function getUserPrestakeTickets() {
   return getUserStakedNIM() / 1000
 }
 
-// check level
-export function getUserPrestakeCardLevel() {
-  let level: string = 'none'
-  prestakeRewards.options.forEach((e) => {
+// check card type
+export function getUserPrestakeCardType() {
+  let cardType: string = 'none'
+  prestakeRewardData.options.forEach((e) => {
     if (checkUserLevel(e.min, e.max, getUserStakedNIM())) {
-      level = e.level
+      cardType = e.cardType
     }
   })
-  return level as string
+  return cardType as string
 }

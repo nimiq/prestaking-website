@@ -1,4 +1,4 @@
-import rewards from '~/content/rewards'
+import earlyBirdData from '~/content/rewards/earlyBird'
 
 interface stakingEvent {
   date: string
@@ -34,10 +34,9 @@ export function getUserTimeLevel(stakingEvents: Array<stakingEvent>) {
       amount: 0,
     },
   ]
-  const earlyBirdRewards = rewards.rewards[1]
-  if (!earlyBirdRewards?.options)
+  if (!earlyBirdData?.options)
     return
-  earlyBirdRewards.options.forEach((option) => {
+  earlyBirdData.options.forEach((option) => {
     let totalNIM = 0
     stakingEvents.forEach((e) => {
       if (checkUserStakingDates(option.min, option.max, e.date)) {

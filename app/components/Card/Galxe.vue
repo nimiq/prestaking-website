@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import rewards from '~/content/rewards'
+import galxeRewardData from '~/content/rewards/galxe'
 import { useUserInfo } from '@/stores/userInfo'
 import type { Reward } from '~/types/rewards'
 
@@ -14,8 +14,6 @@ defineProps({
 defineEmits(['openGalxeModal'])
 
 const store = useUserInfo()
-
-const galxeRewardData = rewards.rewards[3] as Reward
 
 const cardColor = '#A55AE7'
 
@@ -36,7 +34,7 @@ const activatedMultipliers = computed(() => {
 })
 
 const activateCard = computed(() => {
-  return activatedMultipliers.value && activatedMultipliers.value.length > 0
+  return false
 })
 
 // TODO: understand the logic for this component
@@ -62,7 +60,7 @@ const mr = computed(() => {
 </script>
 
 <template>
-  <div :class="[!activateCard && 'p-32', activateCard && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container relative mb-40 h-415 min-w-270 w-270 flex flex-col items-center justify-center rounded-6 bg-white transition-colors duration-400" style="">
+  <div :class="[!activateCard && 'p-32', activateCard && '!border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container" style="">
     <div v-if="!activateCard">
       <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
@@ -74,7 +72,7 @@ const mr = computed(() => {
         Share the news using GalXe to get multiplier
       </div>
       <div class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="$emit('openGalxeModal')">
-        {{ galxeRewardData.card.linkText }}
+        Connect
       </div>
       <RewardMultiplierBadges
         :multipliers="galxeRewardData.options"
@@ -161,35 +159,3 @@ const mr = computed(() => {
     </ModalWrapper>
   </div>
 </template>
-
-<style>
-.card-identicon path:first-of-type {
-  display: none;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.rewards-card-container {
-  border-radius: 6px;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
-    rgba(255, 255, 255, 0.05);
-  background-blend-mode: normal, color-dodge, normal;
-}
-
-.rewards-card-container:hover {
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background: radial-gradient(83.64% 49.88% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
-    rgba(255, 255, 255, 0.07);
-  background-blend-mode: normal, color-dodge, normal;
-}
-</style>

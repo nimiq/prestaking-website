@@ -1,11 +1,16 @@
 export default {
+  modal: {
+    title: 'Prestake your NIM and upgrade your Identicon',
+    body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
+    label: 'Tickets (Staked NIM/1000)',
+  },
   options: [
     {
       buttonText: '10 - 99k',
       min: 10000,
       max: 99000,
       label: 'Protector',
-      level: 'bronze',
+      cardType: 'bronze',
       color: 'orange',
     },
     {
@@ -13,7 +18,7 @@ export default {
       min: 99001,
       max: 999000,
       label: 'Protector',
-      level: 'silver',
+      cardType: 'silver',
       color: 'peach',
     },
     {
@@ -21,7 +26,7 @@ export default {
       min: 1000001,
       max: 10000000,
       label: 'Overseer',
-      level: 'gold',
+      cardType: 'gold',
       color: 'pink',
     },
     {
@@ -29,7 +34,7 @@ export default {
       min: 10000001,
       max: 100000000000000,
       label: 'Paladin',
-      level: 'platinum',
+      cardType: 'platinum',
       color: 'purple',
     },
   ],

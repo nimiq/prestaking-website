@@ -9,9 +9,7 @@ export default defineNuxtConfig({
   },
   ssr: false,
   css: [
-    '~/assets/css/cards.css',
     '~/assets/css/base.css',
-    '~/assets/css/reverse-holo.css',
   ],
   modules: [
     '@vueuse/nuxt',

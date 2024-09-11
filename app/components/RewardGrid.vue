@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
-import { getUserPrestakeCardLevel, getUserStakedNIM } from '~/composables/userPrestakingTickets'
+import { getUserPrestakeCardType, getUserStakedNIM } from '~/composables/userPrestakingTickets'
 
 defineProps({
   prePreStaking: {
@@ -46,9 +46,6 @@ function trackScroll(e: Event) {
     rewardTickets.value.scrollLeft = target.scrollLeft
   }
 }
-const getscrollLeft = computed(() => {
-  return scrollLeft.value
-})
 
 function claimTickets() {
   store.setClaimedTickets()
@@ -63,13 +60,13 @@ function claimTickets() {
           <NuxtImg class="!blur-15" src="/img/God-Rays.png" alt="" />
         </div>
       </div>
-      <UserCard
+      <CardUserPrestake
         :key="userNIM"
         :locked="store.loggedIn === false"
         @open-login-modal="openLoginModal"
       />
       <div class="absolute bottom-0 left-1/2 min-w-max flex translate-1/2 items-center justify-center gap-8 rounded-full bg-[#464A73] px-32 py-8 text-14 text-white/60 -translate-x-1/2">
-        <div>{{ getUserStakedNIM() / 1000 }} Tickets</div>
+        <div>{{ getUserStakedNIM() / 1000 }}</div>
         <div class="i-custom:tickets inline-block size-16 opacity-60" />
       </div>
       <div class="absolute bottom-0 right-0 hidden h-fit min-w-max translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60 md:flex">
@@ -89,13 +86,13 @@ function claimTickets() {
       <div class="h-max w-full overflow-hidden">
         <!-- Title -->
         <div id="reward-list" class="no-scrollbar max-w-full w-full flex gap-x-24 overflow-auto bg-[#1F2348] px-32 pt-32" @scroll="(e) => trackScroll(e)">
-          <RewardEarlyBird />
-          <RewardUnderdog />
-          <RewardGalxe @open-galxe-modal="openGalxeModal" />
+          <CardEarlyBird />
+          <CardUnderdog />
+          <CardGalxe @open-galxe-modal="openGalxeModal" />
         </div>
       </div>
 
-      <div ref="rewardTickets" :style="`transform: translate(-${getscrollLeft}px, 50%)`" class="no-scrollbar pointer-events-none absolute bottom-0 left-20 z-3 max-w-full flex translate-y-1/2 items-center gap-50 overflow-x-scroll">
+      <div ref="rewardTickets" class="no-scrollbar pointer-events-none absolute bottom-0 left-0 z-3 h-40 w-full translate-y-1/2 overflow-x-scroll">
         <RewardTicketSubtotals />
       </div>
     </div>
@@ -124,7 +121,7 @@ function claimTickets() {
 
         <NuxtLink
           v-else-if="store.user.totalTickets === store.user.prestakedNIMAmount / 1000"
-          :to="{ name: 'share', query: { tickets: store.user.totalTickets, cardLevel: getUserPrestakeCardLevel() } }"
+          :to="{ name: 'share', query: { tickets: store.user.totalTickets, cardLevel: getUserPrestakeCardType() } }"
           class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
           @click="claimTickets"
         >

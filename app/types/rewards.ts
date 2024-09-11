@@ -5,23 +5,16 @@ export interface stakingEvent {
 }
 
 export interface Option {
-  multiplier: number
+  buttonText?: string
+  multiplier?: number
   min?: string
   max?: string
-  label?: string
-  level: string
-  color: string
+  label: string
+  color?: string
 }
 
 export interface Reward {
   type: string
-  multipliers?: Array<number>
-  card: {
-    icon: string
-    title: string
-    link: string
-    linkText: string
-  }
   modal: {
     title: string
     body: string

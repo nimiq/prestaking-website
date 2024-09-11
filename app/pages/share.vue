@@ -8,6 +8,10 @@ onMounted(() => {
     router.push('/')
   }
 })
+
+const cardLevel = computed(() => {
+  return route.query.cardLevel ? route.query.cardLevel.toString() : 'none'
+})
 const dropdownOpen: Ref<boolean> = ref(false)
 const dropdown: Ref<HTMLDivElement | null> = ref(null)
 function openDropdown() {
@@ -24,7 +28,7 @@ useOutsideClick(dropdown, () => {
       class="group relative size-full flex flex-col items-center justify-center"
     >
       <TiltCardWrapper class="mx-auto !h-478 !min-w-311 !w-311">
-        <TiltCard :card="route.query.cardLevel" />
+        <TiltCard :card="cardLevel" />
       </TiltCardWrapper>
       <div class="mt-32 flex items-center gap-16">
         <div class="text-48 text-white font-bold">
