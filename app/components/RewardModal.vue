@@ -62,10 +62,6 @@ defineEmits(['close'])
 </template>
 
 <style>
-.test > div:last-of-type::before {
-  @apply absolute size-32 left-full top-0;
-  content: '';
-}
 .card-content::-webkit-scrollbar-track {
   background: transparent;
 }

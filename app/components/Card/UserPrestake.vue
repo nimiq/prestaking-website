@@ -21,6 +21,7 @@ defineEmits(['openLoginModal'])
 const store = useUserInfo()
 
 const showModal: Ref<boolean> = ref(false)
+const showDetails: Ref<boolean> = ref(false)
 
 const cardType = computed(() => {
   return store.loggedIn && store.user.prestakedNIMAmount > 0 ? getUserPrestakeCardType() : undefined
@@ -33,11 +34,16 @@ function openModal() {
 
 function closeModal() {
   showModal.value = false
+  showDetails.value = false
   document.documentElement.style.overflow = 'auto'
 }
 
 function getUserWalletData() {
   store.setPrestake()
+}
+
+function activateDetails() {
+  showDetails.value = true
 }
 </script>
 
@@ -76,15 +82,15 @@ function getUserWalletData() {
       <TiltCard :card="cardType" class="cursor-pointer" />
     </TiltCardWrapper>
 
-    <ModalWrapper :active="showModal" :bottom-on-mobile="getUserPrestakeCardType() === 'none' ? true : false">
-      <RewardModal
-        v-if="getUserPrestakeCardType() === 'none'"
+    <ModalWrapper :active="showModal" :bottom-on-mobile="getUserPrestakeCardType() === 'none' || showDetails ? true : false">
+      <AllCardsModal
+        v-if="getUserPrestakeCardType() === 'none' || showDetails"
         :title="prestakeRewardData.modal.title"
         :label="prestakeRewardData.modal.label"
         :description="prestakeRewardData.modal.body"
         @close="closeModal"
       >
-        <RewardAchievement
+        <CardAchievment
           v-for="item in prestakeRewardData.options"
           :key="item.cardType"
           :active="item.cardType === cardType"
@@ -92,18 +98,13 @@ function getUserWalletData() {
           :button-text="item.buttonText"
           :label="item.label"
         />
-      </RewardModal>
+      </AllCardsModal>
 
       <UserCardModal
         v-else
         @close="closeModal"
+        @learn-more="activateDetails"
       />
     </ModalWrapper>
   </div>
 </template>
-
-<!-- <style>
-.card-identicon path:first-of-type {
-  display: none;
-}
-</style> -->

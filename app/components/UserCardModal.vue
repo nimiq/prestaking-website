@@ -2,7 +2,7 @@
 import { useUserInfo } from '@/stores/userInfo'
 import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 
-const emits = defineEmits(['close'])
+const emits = defineEmits(['close', 'learnMore'])
 
 const store = useUserInfo()
 
@@ -43,7 +43,7 @@ useOutsideClick(container, () => {
       100000 NIM = 1000 Tickets
     </div>
     <div class="mx-auto mt-32 flex items-center gap-16">
-      <div class="h-40 scale-105 cursor-pointer nq-pill-lg nq-pill-blue">
+      <div class="h-40 scale-105 cursor-pointer nq-pill-lg nq-pill-blue" @click="$emit('learnMore')">
         Learn more <div class="i-nimiq:arrow-from-bottom-left ml-8 text-11 text-white" />
       </div>
       <div class="relative w-fit cursor-pointer rounded-full bg-white/10 px-18 py-10" @click="openDropdown">
