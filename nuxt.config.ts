@@ -1,6 +1,3 @@
-import wasm from 'vite-plugin-wasm'
-import topLevelAwait from 'vite-plugin-top-level-await'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-08-27',
@@ -28,6 +25,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       validatorsApiUrl: 'https://validators-api.pages.dev/api/v1',
+      albatrossLiveviewUrl: 'https://nimiq-marketing.nuxt.dev/iframes/albatross-liveview',
     },
   },
 
@@ -37,16 +35,6 @@ export default defineNuxtConfig({
     payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
-  },
-
-  vite: {
-    plugins: [
-      wasm(),
-      topLevelAwait(),
-    ],
-    optimizeDeps: {
-      exclude: ['@nimiq/core-web'],
-    },
   },
 
   watch: ['~/content'],

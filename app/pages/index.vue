@@ -82,7 +82,7 @@ onMounted(() => {
       >
         <NimiqAlbatrossDetails />
       </Header>
-      <NimiqAlbatrossDemo />
+      <NimiqAlbatrossLiveview />
     </Section>
 
     <hr class="border-white/10 bg-darkblue">
