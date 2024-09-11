@@ -54,10 +54,8 @@ defineEmits(['close'])
       <div v-if="label" class="mb-24 inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
         {{ label }}
       </div>
-      <div class="no-scrollbar max-w-full w-full overflow-x-auto">
-        <div class="test w-full flex items-center justify-start gap-x-16 px-32">
-          <slot />
-        </div>
+      <div class="max-w-full w-full flex flex-wrap gap-x-16 gap-y-16 px-32">
+        <slot />
       </div>
     </div>
   </div>

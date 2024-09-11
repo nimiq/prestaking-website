@@ -105,7 +105,7 @@ const mr = computed(() => {
         @close="closeModal"
       >
         <template #link>
-          <a href="www.galxe.com" class="mt-20 text-white font-bold">Visit Galxe <div class="i-nimiq:arrow-from-bottom-left ml-8 inline-block text-14 text-white" /></a>
+          <a href="https://www.galxe.com" class="mt-20 text-white font-bold">Visit Galxe <div class="i-nimiq:arrow-from-bottom-left ml-8 inline-block text-14 text-white" /></a>
         </template>
         <div>
           <RewardAchievement

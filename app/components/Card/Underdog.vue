@@ -84,7 +84,7 @@ const activateCard = computed(() => {
           :active="activatedMultipliers.includes(item.multiplier!)"
           color="#F33F68"
           :button-text="`${item.multiplier}x`"
-          :label="item.label"
+          label="{X amount} staked with { pool }"
         />
       </RewardModal>
     </ModalWrapper>

@@ -84,7 +84,7 @@ const activateCard = computed(() => {
           v-for="item in earlyBirdData.options"
           :key="item.label"
           :active="activatedMultipliers.includes(item.multiplier!)"
-          color="#24CCA2"
+          :color="item.color"
           :button-text="`${item.multiplier}x`"
           :label="item.label"
         />

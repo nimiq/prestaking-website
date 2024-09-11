@@ -32,7 +32,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="[active && 'active']" :style="`--bg-solid: ${color};`" class="rw-container relative mb-10 inline-block min-w-200">
+  <div :class="[active && 'active']" :style="`--bg-solid: ${color};`" class="rw-container relative min-w-1/3">
     <div v-if="buttonText" class="rw-value-container">
       <div class="rw-value">
         {{ buttonText }}

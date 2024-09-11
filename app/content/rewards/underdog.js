@@ -7,7 +7,7 @@ export default {
   options: [
     {
       multiplier: 3,
-      label: 'First Week',
+      label: '',
       color: 'orange',
     },
   ],
