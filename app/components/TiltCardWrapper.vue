@@ -19,7 +19,6 @@ const props = defineProps({
 
 const cardContainer = ref<HTMLDivElement | null>(null)
 const glow = ref<HTMLDivElement | null>(null)
-const setGyroPermissionGranted = ref<HTMLDivElement | null>(null)
 
 // Tilt functionality
 let bounds: DOMRect
@@ -71,6 +70,7 @@ function leave() {
 }
 
 const rotateX = ref<number>(0)
+const rotateY = ref<number>(0)
 
 function angleUpdate(angle: number) {
   if (!cardContainer.value)
@@ -121,7 +121,12 @@ onMounted(() => {
 function getAccel() {
   if (navigator.userAgent.match(/Android/i)) {
     window.addEventListener('deviceorientation', (e) => {
-      angleUpdate(e.gamma)
+      // angleUpdate(e.gamma)
+      rotateX.value = e.gamma
+
+      if (e.beta > 0 && e.beta < 70) {
+        rotateY.value = (e.beta - 70) * 0.0174533
+      }
     })
   }
   // else {
@@ -159,9 +164,12 @@ function getAccel() {
   // }
 }
 
+const y = computed(() => {
+  return rotateY.value
+})
+
 const x = computed(() => {
-  const abs = Math.abs(rotateX.value)
-  if (abs < 30 && abs > -30) {
+  if (rotateX.value > -30 && rotateX.value < 30) {
     return rotateX.value
   }
   return rotateX.value < 0 ? -30 : 30
@@ -171,7 +179,7 @@ const x = computed(() => {
 <template>
   <div class="tilt-card-container h-full min-w-fit" :class="`rounded-${rounding}`">
     <div
-      ref="cardContainer" :style="`transform: rotate3d(0,1,0,${x}deg)`" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
+      ref="cardContainer" :style="`transform: rotateX(${x}deg) rotateY(${y}deg)`" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
     >
       <!-- ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg -->
       <slot />
