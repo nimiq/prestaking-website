@@ -24,7 +24,7 @@ onMounted(() => {
         :body="pageContent.hero.body"
         dark-mode
       />
-      <Rewards id="rewards" :pre-pre-staking="prestaking" />
+      <RewardGrid id="rewards" :pre-pre-staking="prestaking" />
       <div>
         <SectionLabel dark-mode text="The prizes" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">

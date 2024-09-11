@@ -55,7 +55,6 @@ export default {
           min: '2024-09-16',
           max: '2024-09-23',
           label: 'First Week',
-          level: '1.5x',
           color: 'orange',
         },
         {
@@ -63,7 +62,6 @@ export default {
           min: '2024-09-23',
           max: '2024-09-30',
           label: 'Second Week',
-          level: '2x',
           color: 'peach',
         },
         {
@@ -71,7 +69,6 @@ export default {
           min: '2024-09-30',
           max: '2024-10-07',
           label: 'Third Week',
-          level: '3x',
           color: 'pink',
         },
       ],
@@ -92,7 +89,6 @@ export default {
         {
           multiplier: 3,
           label: 'First Week',
-          level: '3x',
           color: 'orange',
         },
       ],
@@ -115,22 +111,18 @@ export default {
         {
           multiplier: 1.5,
           label: 'First Week',
-          level: '1.5',
         },
         {
           multiplier: 2,
           label: 'First Week',
-          level: '2x',
         },
         {
           multiplier: 3,
           label: 'First Week',
-          level: '3x',
         },
         {
           multiplier: 5,
           label: 'First Week',
-          level: '5x',
         },
       ],
     },

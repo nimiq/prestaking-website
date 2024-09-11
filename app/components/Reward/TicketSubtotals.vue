@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { getUserTimeLevel } from '~/composables/earlyBird'
 import { useUserInfo } from '@/stores/userInfo'
 
 const store = useUserInfo()

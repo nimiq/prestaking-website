@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
-import { getUserStakedNIM } from '~/composables/userPrestakingTickets'
+import { getUserPrestakeCardLevel, getUserStakedNIM } from '~/composables/userPrestakingTickets'
 
 defineProps({
   prePreStaking: {
@@ -10,8 +10,6 @@ defineProps({
 })
 
 const store = useUserInfo()
-
-const ticketAmount = 0
 
 const showLoginModal: Ref<boolean> = ref(false)
 const showGalxeModal: Ref<boolean> = ref(false)
@@ -97,7 +95,7 @@ function claimTickets() {
         </div>
       </div>
 
-      <div ref="rewardTickets" :style="`transform: translate(-${getscrollLeft}px, 50%)`" class="no-scrollbar pointer-events-none absolute bottom-0 left-0 z-3 max-w-full flex translate-y-1/2 items-center gap-50 overflow-x-scroll">
+      <div ref="rewardTickets" :style="`transform: translate(-${getscrollLeft}px, 50%)`" class="no-scrollbar pointer-events-none absolute bottom-0 left-20 z-3 max-w-full flex translate-y-1/2 items-center gap-50 overflow-x-scroll">
         <RewardTicketSubtotals />
       </div>
     </div>
@@ -124,16 +122,17 @@ function claimTickets() {
           <span class="text-24 text-white">Claim tickets</span>
         </div>
 
-        <div
+        <NuxtLink
           v-else-if="store.user.totalTickets === store.user.prestakedNIMAmount / 1000"
-          class="tickets-pill px-8 py-8 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
+          :to="{ name: 'share', query: { tickets: store.user.totalTickets, cardLevel: getUserPrestakeCardLevel() } }"
+          class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
           @click="claimTickets"
         >
           <div class="flex grow items-center justify-center gap-x-12">
             {{ store.user.totalTickets }}
             <span class="text-17 text-white">Tickets</span>
           </div>
-          <svg class="cursor-pointer hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="absolute right-8 top-8 cursor-pointer hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="60" height="60" rx="30" fill="url(#paint0_radial_214_8648)" />
             <path d="M32.9 33.6979V40.0416L44.5 29.2029L32.9 18.4004V24.5629C21.6263 26.1216 17.1312 33.8429 15.5 41.6004C19.5237 36.1629 24.8525 33.6979 32.9 33.6979Z" fill="white" />
             <defs>
@@ -143,7 +142,7 @@ function claimTickets() {
               </radialGradient>
             </defs>
           </svg>
-        </div>
+        </NuxtLink>
       </div>
     </div>
     <ModalWrapper :active="showLoginModal">
