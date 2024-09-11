@@ -19,6 +19,7 @@ const props = defineProps({
 
 const cardContainer = ref<HTMLDivElement | null>(null)
 const glow = ref<HTMLDivElement | null>(null)
+const setGyroPermissionGranted = ref<HTMLDivElement | null>(null)
 
 // Tilt functionality
 let bounds: DOMRect
@@ -68,11 +69,111 @@ function leave() {
   cardContainer.value!.style.transform = ''
   cardContainer.value!.style.background = ''
 }
+
+const rotateX = ref<number>(0)
+
+function angleUpdate(angle: number) {
+  if (!cardContainer.value)
+    return
+  rotateX.value = angle
+  //   const mouseX = e.clientX
+  //   const mouseY = e.clientY
+  //   const leftX = mouseX - bounds.x
+  //   const topY = mouseY - bounds.y
+  //   const center = {
+  //     x: leftX - bounds.width / 2,
+  //     y: topY - bounds.height / 2,
+  //   }
+  //   const distance = Math.sqrt(center.x ** 2 + center.y ** 2)
+
+//   cardContainer.value.style.transform = `
+//   ${props.reducedMovement ? 'scale3d(1.01, 1.01, 1.01)' : 'scale3d(1.05, 1.05, 1.05)'}
+//   rotate3d(
+//     ${center.y / 100},
+//     ${-center.x / 100},
+//     0,
+//     ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg
+//   )
+// `
+  // if (glow.value) {
+  //   glow.value.style.backgroundImage = `
+  //   radial-gradient(
+  //     circle at
+  //     ${center.x * 2 + bounds.width / 2}px
+  //     ${center.y * 2 + bounds.height / 2}px,
+  //     #ffffff55,
+  //     #0000000f
+  //   )
+  // `
+  // }
+}
+
+onMounted(() => {
+  if (window.innerWidth < 500) {
+    setTimeout(() => {
+      nextTick(() => {
+        getAccel()
+      })
+    }, 3000)
+  }
+})
+
+function getAccel() {
+  if (navigator.userAgent.match(/Android/i)) {
+    window.addEventListener('deviceorientation', (e) => {
+      angleUpdate(e.gamma)
+    })
+  }
+  // else {
+  //   // IOS
+  //   DeviceMotionEvent.requestPermission().then((response) => {
+  //     if (response == 'granted') {
+  //       setGyroPermissionGranted.value = true
+  //       let delta
+  //       const ratio = 300 / 20
+
+  //       window.addEventListener('deviceorientation', (e) => {
+  //         delta = Math.abs(e.gamma)
+
+  //         if (delta > 2 && delta < 20) {
+  //           const width = 400 + delta * ratio
+
+  //           const snappedWidth = snappedWidths.reduce((prev, curr) => {
+  //             return Math.abs(curr - width) < Math.abs(prev - width)
+  //               ? curr
+  //               : prev
+  //           })
+
+  //           setSnappedWidth(snappedWidth)
+  //           setCurrentWidth(width)
+  //         }
+  //         else if (delta < 2) {
+  //           setCurrentWidth(400)
+  //         }
+  //         else if (delta > 20) {
+  //           setCurrentWidth(700)
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
+}
+
+const x = computed(() => {
+  const abs = Math.abs(rotateX.value)
+  if (abs < 30 && abs > -30) {
+    return rotateX.value
+  }
+  return rotateX.value < 0 ? -30 : 30
+})
 </script>
 
 <template>
   <div class="tilt-card-container h-full min-w-fit" :class="`rounded-${rounding}`">
-    <div ref="cardContainer" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave">
+    <div
+      ref="cardContainer" :style="`transform: rotate3d(0,1,0,${x}deg)`" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
+    >
+      <!-- ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg -->
       <slot />
       <div ref="glow" class="glow max-h-full max-w-full rounded-12" :class="reducedMovement && 'reduced'" />
     </div>
