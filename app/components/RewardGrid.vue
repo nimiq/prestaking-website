@@ -37,7 +37,6 @@ const userNIM = computed(() => {
   return store.user.prestakedNIMAmount
 })
 
-const scrollLeft: Ref<number> = ref(0)
 const rewardTickets: Ref<HTMLDivElement | null> = ref(null)
 
 function trackScroll(e: Event) {

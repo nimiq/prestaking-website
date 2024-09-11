@@ -6,7 +6,7 @@ export default {
   },
   options: [
     {
-      multiplier: 1.5,
+      multiplier: 3,
       min: '2024-09-16',
       max: '2024-09-23',
       label: 'First Week',
@@ -20,7 +20,7 @@ export default {
       color: 'peach',
     },
     {
-      multiplier: 3,
+      multiplier: 1.5,
       min: '2024-09-30',
       max: '2024-10-07',
       label: 'Third Week',

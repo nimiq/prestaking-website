@@ -1,35 +1,33 @@
 import type { stakingEvent } from '~/types/rewards'
 import { getUserTimeLevel } from '~/composables/earlyBird'
+
 // Underdog
 
-function stakedWithUnderdog(stakingEvents: Array<stakingEvent>) {
-  let underdogStakedAmount = 0
-  stakingEvents.forEach((event) => {
-    if (event.pool === 'an underdog pool' && event.date === 'pool was underdog at time') {
-      underdogStakedAmount += event.amount
-    }
-  })
-  underdogStakedAmount = 10
-  return underdogStakedAmount
-}
+// function stakedWithUnderdog(stakingEvents: Array<stakingEvent>) {
+//   let underdogStakedAmount = 0
+//   stakingEvents.forEach((event) => {
+//     if (event.pool === 'an underdog pool' && event.date === 'pool was underdog at time') {
+//       underdogStakedAmount += event.amount
+//     }
+//   })
+//   underdogStakedAmount = 10
+//   return underdogStakedAmount
+// }
 
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
     loggedIn: false,
     user: {
       prestakedNIMAmount: 0,
-      // NEED TO FIGURE OUT HOW TO HANDLE UNDERDOG
       underdogPool: null,
       prestakingEvents: [] as Array<stakingEvent>,
       totalTickets: 0,
+      galxeLinked: false,
     },
   }),
   getters: {
     getUserTimeLevel: (state) => {
       return getUserTimeLevel(state.user.prestakingEvents)
-    },
-    getStakedWithUnderdog: (state) => {
-      return stakedWithUnderdog(state.user.prestakingEvents)
     },
   },
   actions: {
@@ -38,6 +36,9 @@ export const useUserInfo = defineStore('userInfo', {
     },
     setClaimedTickets() {
       this.user.totalTickets = this.user.prestakedNIMAmount / 1000
+    },
+    galxeConnect() {
+      this.user.galxeLinked = true
     },
     setPrestake() {
       this.user.prestakedNIMAmount = 500000

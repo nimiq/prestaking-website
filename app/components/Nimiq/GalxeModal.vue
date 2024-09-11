@@ -1,8 +1,13 @@
 <script lang="ts" setup>
-defineEmits(['close'])
+import { useUserInfo } from '@/stores/userInfo'
+
+const emits = defineEmits(['close'])
+
+const store = useUserInfo()
 
 function connectGalxe() {
-  console.error('connect galxe')
+  store.galxeConnect()
+  emits('close')
 }
 </script>
 

@@ -30,11 +30,11 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.loggedIn && store.user.prestakedNIMAmount > 0 && ['3x']
+  return []
 })
 
 const activateCard = computed(() => {
-  return false
+  return store.loggedIn && store.user.galxeLinked
 })
 
 // TODO: understand the logic for this component

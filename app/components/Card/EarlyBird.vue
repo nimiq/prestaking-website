@@ -51,7 +51,7 @@ const activateCard = computed(() => {
         Prestake early to add a multiplier
       </div>
       <RewardMultiplierBadges
-        :multipliers="earlyBirdData.options"
+        :multipliers="earlyBirdData.options.reverse()"
         :active="[]"
         :color="cardColor"
       />
