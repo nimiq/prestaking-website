@@ -57,7 +57,7 @@ function claimTickets() {
     :class="getUserPrestakeCardType()"
   >
     <div id="reward-user" class="relative z-5 w-full border-1 border-white/10 p-32 md:col-start-1 md:row-start-1 lg:col-end-2 md:col-end-2 md:col-end-2 md:row-end-4 lg:rounded-tl-16">
-      <img v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-80 mix-blend-multiply md:rounded-tl-16">
+      <img v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-30 mix-blend-multiply md:rounded-tl-16">
       <CardUserPrestake
         :key="userNIM"
         :locked="store.loggedIn === false"
@@ -164,8 +164,8 @@ function claimTickets() {
 }
 .bronze {
   #reward-user {
-    background: linear-gradient(0deg, rgba(146, 88, 86, 0.6) 0%, rgba(146, 88, 86, 0.3) 100%),
-      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+    background: linear-gradient(180deg, rgba(146, 88, 86, 0.6) 0%, rgba(146, 88, 86, 0.3) 100%),
+      linear-gradient(180deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
   }
   .radial-bg {
     border-radius: 0 16px 0 0;
@@ -175,8 +175,8 @@ function claimTickets() {
 }
 .silver {
   #reward-user {
-    background: linear-gradient(0deg, rgba(218, 230, 236, 0.4) 0%, rgba(218, 230, 236, 0.2) 100%),
-      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+    background: linear-gradient(180deg, rgba(218, 230, 236, 0.4) 0%, rgba(218, 230, 236, 0.2) 100%),
+      linear-gradient(180deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
   }
   .radial-bg {
     border-radius: 0 16px 0 0;
@@ -186,8 +186,8 @@ function claimTickets() {
 }
 .gold {
   #reward-user {
-    background: linear-gradient(0deg, rgba(236, 210, 127, 0.4) 0%, rgba(236, 210, 127, 0.2) 100%),
-      linear-gradient(0deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+    background: linear-gradient(180deg, rgba(236, 210, 127, 0.4) 0%, rgba(236, 210, 127, 0.2) 100%),
+      linear-gradient(180deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
   }
   .radial-bg {
     border-radius: 0 16px 0 0;

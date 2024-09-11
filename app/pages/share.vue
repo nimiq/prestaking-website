@@ -1,6 +1,12 @@
 <script lang="ts" setup>
-defineEmits(['close'])
+import gsap from 'gsap'
+import Flip from 'gsap/dist/Flip'
+import earlyBirdData from '~/content/rewards/earlyBird'
+import underdogData from '~/content/rewards/underdog'
+import galxeData from '~/content/rewards/galxe'
 
+defineEmits(['close'])
+gsap.registerPlugin(Flip)
 const route = useRoute()
 const router = useRouter()
 onMounted(() => {
@@ -12,6 +18,11 @@ onMounted(() => {
 const cardLevel = computed(() => {
   return route.query.cardLevel ? route.query.cardLevel.toString() : 'none'
 })
+
+const earlyBirdActive = true
+const underdogActive = true
+const galxeActive = true
+
 const dropdownOpen: Ref<boolean> = ref(false)
 const dropdown: Ref<HTMLDivElement | null> = ref(null)
 function openDropdown() {
@@ -20,6 +31,23 @@ function openDropdown() {
 useOutsideClick(dropdown, () => {
   dropdownOpen.value = false
 })
+
+onMounted(() => {
+  gsap.from('.share-scroll', { opacity: 0, translateY: '40px', duration: 0.5, delay: 0.3 })
+  setTimeout(() => {
+    const state = Flip.getState('.share-scroll > div')
+
+    document.querySelectorAll('.share-scroll > div').forEach((el) => {
+      el.classList.toggle('initial')
+    })
+
+    Flip.from(state, {
+      duration: 0.5,
+      absolute: true,
+      delay: 0.5,
+    })
+  }, 500)
+})
 </script>
 
 <template>
@@ -27,9 +55,38 @@ useOutsideClick(dropdown, () => {
     <div
       class="group relative size-full flex flex-col items-center justify-center"
     >
-      <TiltCardWrapper class="mx-auto !h-478 !min-w-311 !w-311">
-        <TiltCard :card="cardLevel" />
-      </TiltCardWrapper>
+      <div class="no-scrollbar max-w-screen w-screen overflow-x-auto">
+        <div class="share-scroll relative flex items-center justify-start gap-x-40 py-40 pl-[calc(50vw-160px)] !h-[calc(478px+80px)]">
+          <TiltCardWrapper class="initial z-5 !h-478 !max-w-311 !min-w-311">
+            <TiltCard :card="cardLevel" />
+          </TiltCardWrapper>
+          <TiltCardWrapper v-if="earlyBirdActive" class="initial z-4 !h-478 !min-w-311 !w-311">
+            <div i-custom:time-card class="min-h-full min-w-full w-max" />
+            <RewardMultiplierBadges
+              :multipliers="earlyBirdData.options"
+              :active="[3, 2]"
+              color="#24CCA2"
+            />
+          </TiltCardWrapper>
+          <TiltCardWrapper v-if="underdogActive" class="initial z-3 !h-478 !min-w-311 !w-311">
+            <div i-custom:underdog-card class="min-h-full min-w-full w-max" />
+            <RewardMultiplierBadges
+              :multipliers="underdogData.options"
+              :active="[3]"
+              color="#F33F68"
+            />
+          </TiltCardWrapper>
+
+          <TiltCardWrapper v-if="galxeActive" class="initial z-2 !h-478 !min-w-311 !w-311">
+            <div i-custom:galxe-card class="min-h-full min-w-full w-max" />
+            <RewardMultiplierBadges
+              :multipliers="galxeData.options"
+              :active="[5]"
+              color="#A55AE7"
+            />
+          </TiltCardWrapper>
+        </div>
+      </div>
       <div class="mt-32 flex items-center gap-16">
         <div class="text-48 text-white font-bold">
           {{ route.query.tickets }} tickets
@@ -52,3 +109,13 @@ useOutsideClick(dropdown, () => {
     </div>
   </div>
 </template>
+
+<style>
+.share-scroll .initial {
+  @apply left-[calc(50vw-160px)] top-40 !absolute;
+}
+.share-scroll > div:last-of-type::before {
+  @apply absolute size-[calc(50vw-160px)] left-full top-0;
+  content: '';
+}
+</style>

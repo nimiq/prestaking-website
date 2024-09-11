@@ -78,7 +78,7 @@ function activateDetails() {
     </div>
 
     <!-- SHOW REWARD CARD -->
-    <TiltCardWrapper v-else reduced-movement rounding="12" @click="openModal">
+    <TiltCardWrapper v-else class="custom-shadow" reduced-movement rounding="12" @click="openModal">
       <TiltCard :card="cardType" class="cursor-pointer" />
     </TiltCardWrapper>
 
@@ -108,3 +108,9 @@ function activateDetails() {
     </ModalWrapper>
   </div>
 </template>
+
+<style>
+.custom-shadow {
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.11);
+}
+</style>

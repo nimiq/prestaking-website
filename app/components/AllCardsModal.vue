@@ -28,7 +28,7 @@ defineEmits(['close'])
 
 <template>
   <div
-    class="group relative w-full cursor-pointer border-1 border-gray rounded-t-6 bg-[#e9e9eb] bg-cover bg-center sm:w-[clamp(508px,508px,80vw)] sm:rounded-6"
+    class="group relative w-full cursor-pointer border-1 border-gray rounded-t-10 bg-[#e9e9eb] bg-cover bg-center sm:w-[clamp(508px,508px,80vw)] sm:rounded-10"
   >
     <div
       class="relative m-6 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-0 pb-32 pt-42 text-center"
