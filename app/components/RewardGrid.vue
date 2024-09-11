@@ -128,7 +128,7 @@ function claimTickets() {
             {{ store.user.totalTickets }}
             <span class="text-17 text-white">Tickets</span>
           </div>
-          <svg class="absolute right-8 top-8 cursor-pointer hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="60" height="60" rx="30" fill="url(#paint0_radial_214_8648)" />
             <path d="M32.9 33.6979V40.0416L44.5 29.2029L32.9 18.4004V24.5629C21.6263 26.1216 17.1312 33.8429 15.5 41.6004C19.5237 36.1629 24.8525 33.6979 32.9 33.6979Z" fill="white" />
             <defs>

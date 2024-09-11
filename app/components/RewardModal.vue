@@ -26,10 +26,10 @@ defineEmits(['close'])
 
 <template>
   <div
-    class="group relative w-full cursor-pointer border-1 border-gray rounded-t-6 bg-[#e9e9eb] bg-cover bg-center sm:w-[clamp(508px,508px,80vw)] sm:rounded-6"
+    class="group relative max-w-508 w-full cursor-pointer border-1 border-gray rounded-t-6 bg-[#e9e9eb] bg-cover bg-center sm:w-[clamp(508px,508px,80vw)] sm:rounded-6"
   >
     <div
-      class="relative m-6 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-55 pb-32 pt-150 text-center"
+      class="relative m-6 mb-0 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-18 pb-24 pt-150 text-center sm:px-55 sm:pb-32"
     >
       <NuxtImg class="absolute left-0 top-0 min-h-full min-w-full object-cover" :src="image" alt="" />
       <div class="absolute bottom-0 left-0 h-3/4 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t" />
@@ -49,12 +49,12 @@ defineEmits(['close'])
     </div>
 
     <div
-      class="card-content relative pb-26 pt-26"
+      class="card-content relative pb-20 sm:pb-26"
     >
-      <div v-if="label" class="mb-24 inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase">
+      <div v-if="label" class="my-20 inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase sm:my-24">
         {{ label }}
       </div>
-      <div class="max-w-full w-full flex flex-wrap gap-x-16 gap-y-16 px-32">
+      <div class="max-w-full w-full flex flex-wrap gap-12 px-20 sm:gap-16 sm:px-32">
         <slot />
       </div>
     </div>
