@@ -151,6 +151,7 @@ onMounted(() => {
       background: radial-gradient(101.48% 101.48% at 50% 100%, rgba(31, 35, 72, 0) 0%, rgba(31, 35, 72, 0.15) 100%),
         rgba(31, 35, 72, 0.01);
       opacity: 0.15;
+      pointer-events: none;
     }
   }
 }
