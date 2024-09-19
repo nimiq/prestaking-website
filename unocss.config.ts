@@ -12,20 +12,11 @@ export default defineConfig({
     presetUno({ attributifyPseudo: true }),
     presetNimiq({
       utilities: true,
-      icons: false,
-      fonts: {
-        fontAssetsDir: 'app/assets/fonts',
-      },
     }),
     presetRemToPx({ baseFontSize: 4 }),
     presetAttributify(),
     presetIcons({
       collections: {
-        nimiq: async () => {
-          return await fetch(
-            'https://raw.githubusercontent.com/onmax/nimiq-ui/main/packages/nimiq-icons/dist/icons.json',
-          ).then(res => res.json() as any)
-        },
         custom: {
           'fist': () => readFile('./app/assets/svg/icons/fist.svg', 'utf-8'),
           'galxe': () => readFile('./app/assets/svg/icons/galxe.svg', 'utf-8'),
