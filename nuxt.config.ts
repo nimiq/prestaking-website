@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       validatorsApiUrl: 'https://validators-api.pages.dev/api/v1',
-      albatrossLiveviewUrl: 'https://nimiq-marketing.nuxt.dev/iframes/albatross-liveview',
+      albatrossLiveviewUrl: 'https://nimiq-website.nuxt.dev/iframes/albatross-liveview',
       nimiqwatchTotalStakeUrl: 'https://v2.nimiqwatch.com/api/v2/total-prestake',
     },
   },
