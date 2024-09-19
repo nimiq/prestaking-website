@@ -1,6 +1,6 @@
 <script  lang="ts" setup>
-import gsap from 'gsap'
 import pageContent from '@/content/prestaking'
+import gsap from 'gsap'
 
 const prestaking = true
 

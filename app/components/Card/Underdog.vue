@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import underdogRewardData from '~/content/rewards/underdog'
 import { useUserInfo } from '@/stores/userInfo'
-import type { Reward } from '~/types/rewards'
+import underdogRewardData from '~/content/rewards/underdog'
 
 defineProps({
   locked: {

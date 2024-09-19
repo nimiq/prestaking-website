@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import earlyBirdData from '~/content/rewards/earlyBird'
 import { useUserInfo } from '@/stores/userInfo'
+import earlyBirdData from '~/content/rewards/earlyBird'
 
 defineProps({
   locked: {

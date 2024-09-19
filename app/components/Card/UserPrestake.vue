@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
-import prestakeRewardData from '~/content/rewards/userPrestake'
 import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
+import prestakeRewardData from '~/content/rewards/userPrestake'
 
 defineProps({
   prePreStaking: {

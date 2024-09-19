@@ -2,8 +2,8 @@
 import gsap from 'gsap'
 import Flip from 'gsap/dist/Flip'
 import earlyBirdData from '~/content/rewards/earlyBird'
-import underdogData from '~/content/rewards/underdog'
 import galxeData from '~/content/rewards/galxe'
+import underdogData from '~/content/rewards/underdog'
 
 defineEmits(['close'])
 gsap.registerPlugin(Flip)

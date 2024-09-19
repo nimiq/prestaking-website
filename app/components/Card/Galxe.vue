@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import galxeRewardData from '~/content/rewards/galxe'
 import { useUserInfo } from '@/stores/userInfo'
-import type { Reward } from '~/types/rewards'
+import galxeRewardData from '~/content/rewards/galxe'
 
 defineProps({
   locked: {

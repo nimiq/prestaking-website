@@ -72,41 +72,41 @@ function leave() {
 const rotateX = ref<number>(0)
 const rotateY = ref<number>(0)
 
-function angleUpdate(angle: number) {
-  if (!cardContainer.value)
-    return
-  rotateX.value = angle
-  //   const mouseX = e.clientX
-  //   const mouseY = e.clientY
-  //   const leftX = mouseX - bounds.x
-  //   const topY = mouseY - bounds.y
-  //   const center = {
-  //     x: leftX - bounds.width / 2,
-  //     y: topY - bounds.height / 2,
-  //   }
-  //   const distance = Math.sqrt(center.x ** 2 + center.y ** 2)
+// function angleUpdate(angle: number) {
+//   if (!cardContainer.value)
+//     return
+//   rotateX.value = angle
+//   //   const mouseX = e.clientX
+//   //   const mouseY = e.clientY
+//   //   const leftX = mouseX - bounds.x
+//   //   const topY = mouseY - bounds.y
+//   //   const center = {
+//   //     x: leftX - bounds.width / 2,
+//   //     y: topY - bounds.height / 2,
+//   //   }
+//   //   const distance = Math.sqrt(center.x ** 2 + center.y ** 2)
 
-//   cardContainer.value.style.transform = `
-//   ${props.reducedMovement ? 'scale3d(1.01, 1.01, 1.01)' : 'scale3d(1.05, 1.05, 1.05)'}
-//   rotate3d(
-//     ${center.y / 100},
-//     ${-center.x / 100},
-//     0,
-//     ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg
-//   )
-// `
-  // if (glow.value) {
-  //   glow.value.style.backgroundImage = `
-  //   radial-gradient(
-  //     circle at
-  //     ${center.x * 2 + bounds.width / 2}px
-  //     ${center.y * 2 + bounds.height / 2}px,
-  //     #ffffff55,
-  //     #0000000f
-  //   )
-  // `
-  // }
-}
+// //   cardContainer.value.style.transform = `
+// //   ${props.reducedMovement ? 'scale3d(1.01, 1.01, 1.01)' : 'scale3d(1.05, 1.05, 1.05)'}
+// //   rotate3d(
+// //     ${center.y / 100},
+// //     ${-center.x / 100},
+// //     0,
+// //     ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg
+// //   )
+// // `
+//   // if (glow.value) {
+//   //   glow.value.style.backgroundImage = `
+//   //   radial-gradient(
+//   //     circle at
+//   //     ${center.x * 2 + bounds.width / 2}px
+//   //     ${center.y * 2 + bounds.height / 2}px,
+//   //     #ffffff55,
+//   //     #0000000f
+//   //   )
+//   // `
+//   // }
+// }
 
 onMounted(() => {
   if (window.innerWidth < 500) {
@@ -131,7 +131,7 @@ function getAccel() {
   }
   else {
     // IOS
-    DeviceMotionEvent.requestPermission().then((response) => {
+    DeviceMotionEvent.requestPermission().then((_response) => {
       window.addEventListener('deviceorientation', (e) => {
         rotateX.value = e.gamma
 

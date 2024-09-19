@@ -1,5 +1,5 @@
-import type { stakingEvent } from '~/types/rewards'
 import { getUserTimeLevel } from '~/composables/earlyBird'
+import type { stakingEvent } from '~/types/rewards'
 
 // Underdog
 
