@@ -49,18 +49,18 @@ onMounted(() => {
 
       <div>
         <SectionLabel :text="pageContent.prestakeCalculator.label" />
-        <div class="grid grid-cols-3 grid-rows-5 h-493 w-full md:grid-rows-3">
-          <NimiqPrestakingCalculator />
+        <div class="grid grid-cols-3 grid-rows-6 h-1024 md:h-493 w-full md:grid-rows-3">
+          <NimiqPrestakingCalculator class="z-3 col-span-3 row-span-3 h-full w-full rounded-8 md:col-span-2 md:row-span-3" />
           <!-- Side Bar -->
-          <div class="relative col-span-3 row-span-2 h-fit flex flex-col md:col-span-1 md:row-span-3 md:h-auto">
+          <div class="relative col-span-3 row-span-3 flex flex-col md:col-span-1 md:row-span-3 md:h-auto">
             <div class="border-b-1 border-darkblue/10 p-32">
               <h3 class="mb-12 mt-0">
                 {{ pageContent.prestakeCalculator.sidePanel.title }}
               </h3>
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
-              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
+              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
-            <div class="no-scrollbar relative max-w-full flex grow overflow-x-scroll pb-24 md:block md:overflow-y-scroll">
+            <div class="relative max-w-full md:pb-24 overflow-y-scroll">
               <NimiqPoolsList />
             </div>
             <!-- Borders -->
