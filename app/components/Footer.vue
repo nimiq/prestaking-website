@@ -34,17 +34,17 @@ const copyrigthNotice = `© Nimiq Foundation 2017-${new Date().getFullYear()}`
       </div>
     </div>
 
-    <div flex="~ col" text="sm neutral-700" nq-mt-96>
-      <NuxtLink to="/" group mx-auto w-max flex>
+    <div flex="~ col" text="sm neutral-700" nq-mt-96 px-32>
+      <NuxtLink to="/" group w-max flex md:mx-auto>
         <div i-nimiq:logos-nimiq-horizontal-mono group-hocus:i-nimiq:logos-nimiq-horizontal text="28 md:30" op-80 />
       </NuxtLink>
-      <p text="sm center" mx-auto max-w-33ch nq-mt-16>
+      <p text="sm md:center left" max-w-33ch md:mx-auto nq-mt-16>
         Nimiq is an Inuit word for an object or force that binds things together.
       </p>
-      <p text="center white" nq-mt-16>
+      <p text="md:center white" nq-mt-16>
         Follow us here
       </p>
-      <ul role="list" flex="~ items-center gap-2 wrap" text="18 neutral-700" nq-mt-12 mx-auto op-60>
+      <ul role="list" flex="~ md:justify-center md:items-center gap-2 wrap" text="18 neutral-700" nq-mt-12 op-60>
         <li v-for="({ platform, icon, link }) in socialMedia" :key="platform || '123'" self-stretch justify-self-stretch aria-label="Links to some of our social media pages">
           <NuxtLink :title="platform" :field="link" focusable h-max flex rounded-4 p-8 hocus:bg-neutral-200 :aria-label="`Visit Nimiq on ${platform}`">
             <div :class="icon" />
@@ -65,7 +65,7 @@ const copyrigthNotice = `© Nimiq Foundation 2017-${new Date().getFullYear()}`
           FAQ
         </NuxtLink>
 
-        <p ml-48 text-neutral-600>
+        <p text-neutral-600 sm:ml-48>
           {{ copyrigthNotice }}
         </p>
       </div>
