@@ -88,8 +88,8 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10
       nimiq-css:
-        specifier: 0.1.80
-        version: 0.1.80(@unocss/reset@0.62.4)(@unocss/webpack@0.62.4(rollup@4.22.0)(webpack@5.94.0(esbuild@0.17.19)))(postcss@8.4.47)(rollup@4.22.0)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))
+        specifier: ^0.1.112
+        version: 0.1.112(@unocss/reset@0.62.4)(@unocss/webpack@0.62.4(rollup@4.22.0)(webpack@5.94.0(esbuild@0.17.19)))(postcss@8.4.47)(rollup@4.22.0)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))
       radix-vue:
         specifier: ^1.9.6
         version: 1.9.6(vue@3.5.6(typescript@5.6.2))
@@ -3902,8 +3902,8 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  nimiq-css@0.1.80:
-    resolution: {integrity: sha512-lFqKJEijpRfK2PAWIK9EHeqe3TTaO18scMd6CV9YDq9GomwB4SepzSsaJkkjXGwh2zQak044A9x66865Z0h53w==}
+  nimiq-css@0.1.112:
+    resolution: {integrity: sha512-DRYFlta1lkczDOwVlMd8VkSAnbi82BSGnGckseXfO5WvSimO/Ar6gcvvt9pEkWfoLEOPBtvywQft4c/7dHmgng==}
     engines: {node: '>=14'}
     peerDependencies:
       '@unocss/reset': ^0.62.3
@@ -10119,7 +10119,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  nimiq-css@0.1.80(@unocss/reset@0.62.4)(@unocss/webpack@0.62.4(rollup@4.22.0)(webpack@5.94.0(esbuild@0.17.19)))(postcss@8.4.47)(rollup@4.22.0)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0)):
+  nimiq-css@0.1.112(@unocss/reset@0.62.4)(@unocss/webpack@0.62.4(rollup@4.22.0)(webpack@5.94.0(esbuild@0.17.19)))(postcss@8.4.47)(rollup@4.22.0)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0)):
     dependencies:
       '@unocss/reset': 0.62.4
       ts-cssjson: 3.0.1

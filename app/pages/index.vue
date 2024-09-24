@@ -49,7 +49,7 @@ onMounted(() => {
 
       <div>
         <SectionLabel :text="pageContent.prestakeCalculator.label" />
-        <div class="grid grid-cols-3 grid-rows-6 h-1024 md:h-493 w-full md:grid-rows-3">
+        <div class="grid grid-cols-3 grid-rows-6 h-1024 w-full md:grid-rows-3 md:h-493">
           <NimiqPrestakingCalculator class="z-3 col-span-3 row-span-3 h-full w-full rounded-8 md:col-span-2 md:row-span-3" />
           <!-- Side Bar -->
           <div class="relative col-span-3 row-span-3 flex flex-col md:col-span-1 md:row-span-3 md:h-auto">
@@ -60,7 +60,7 @@ onMounted(() => {
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
               <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
-            <div class="relative max-w-full md:pb-24 overflow-y-scroll">
+            <div class="relative max-w-full overflow-y-scroll md:pb-24">
               <NimiqPoolsList />
             </div>
             <!-- Borders -->
@@ -112,7 +112,7 @@ onMounted(() => {
       <Ember class="absolute bottom-0 right-100 md:right-290" />
     </Section>
 
-    <Section dark-mode>
+    <Section id="faq" dark-mode>
       <div>
         <SectionLabel text="What you need to know" dark-mode />
         <FAQ :faqs="pageContent.faqs" />

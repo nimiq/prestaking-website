@@ -50,7 +50,7 @@ onUnmounted(() => {
 <template>
   <header
     ref="root$"
-    class="fixed left-0 top-16 z-100 mt-0 w-full px-16 transition-opacity duration-400 ease-nimiq"
+    class="ease-nq fixed left-0 top-16 z-100 mt-0 w-full px-16 transition-opacity duration-400"
     :class="[{
       'pointer-events-none opacity-0': localState.isScrolled,
       '!pointer-events-auto !opacity-100': localState.isSticky,
@@ -58,7 +58,7 @@ onUnmounted(() => {
   >
     <div
       ref="root$"
-      class="transition-[border-radius,opacity,background,box-shadow] w-full flex items-center justify-between gap-x-16 rounded-8 p-16 text-left duration-400 ease-nimiq"
+      class="transition-[border-radius,opacity,background,box-shadow] ease-nq w-full flex items-center justify-between gap-x-16 rounded-8 p-16 text-left duration-400"
       :class="{
         'bg-white shadow': localState.isSticky,
         'bg-transparent': !localState.isSticky,
