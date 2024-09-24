@@ -17,7 +17,7 @@ const copyrigthNotice = `© Nimiq Foundation 2017-${new Date().getFullYear()}`
 </script>
 
 <template>
-  <footer class="dark" data-section nq-no-px nq-no-max-width text-neutral-800 bg-gradient-neutral>
+  <footer class="dark" data-section nq-no-px nq-no-max-width text-neutral-800>
     <div w-full children:max-w-1172 border="y-1.5 neutral-600" p="x-32 y-40">
       <div mx-auto grid="~ cols-[auto_1px_auto_1fr] md:rows-2 gap-16 md:cols-[320px_1px_auto_auto] lg:cols-[1fr_auto_auto_auto_auto] items-center justify-center lg:rows-1">
         <span nq-label text="sm neutral-700 md:center" col-span="4" lg:hidden>Stay up to date</span>
