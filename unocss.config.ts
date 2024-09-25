@@ -9,6 +9,7 @@ export default defineConfig({
     [/^area-(.*)$/, ([, t]) => ({ 'grid-area': t })],
   ],
   shortcuts: [
+    ['text-lg', 'text-16 lg:text-18 lh-[1.3]'],
     ['text-2xl', 'text-24 lh-[1.3]'],
   ],
   presets: [

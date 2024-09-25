@@ -58,7 +58,7 @@ onMounted(() => {
                 {{ pageContent.prestakeCalculator.sidePanel.title }}
               </h3>
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
-              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
+              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold text-lg nq-arrow" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
             <div class="relative max-w-full overflow-y-scroll">
               <NimiqPoolsList />
