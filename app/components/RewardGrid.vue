@@ -97,7 +97,7 @@ function claimTickets() {
     </div>
     <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/05 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
       <h4 class="w-full text-center text-22 text-white">
-        Earn tickets based on your staked amount
+        Earn tickets based on your staked amount and earned multipliers
       </h4>
       <div
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"

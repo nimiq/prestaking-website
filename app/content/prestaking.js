@@ -71,7 +71,7 @@ export default {
   },
 
   supportInfo: {
-    label: 'Prestaked NIM will be:',
+    label: 'You support the network by:',
     cards: [
       {
         title: 'Staking as much as possible',
@@ -98,23 +98,23 @@ export default {
 
   walletSetup: {
     title: 'Prestaking is as easy as staking',
-    body: 'The process is the same. Go to your wallet, pick a validator pool and start staking.',
+    body: 'The process is the same. Go to your wallet, pick a validator pool and start staking, everyone can do it!',
     instructions: [
       {
         title: 'Go to your wallet',
         description: 'In the wallet, click on the staking icon next to send and receive.',
       },
       {
-        title: 'Go to your wallet',
-        description: 'In the wallet, click on the staking icon next to send and receive.',
+        title: 'Choose a validator pool',
+        description: 'Compare and select a validator. You can switch once the network goes live.',
       },
       {
-        title: 'Go to your wallet',
-        description: 'In the wallet, click on the staking icon next to send and receive.',
+        title: 'Select amount',
+        description: 'Set an amount. Mind, that your NIM will be locked until the launch.',
       },
       {
-        title: 'Go to your wallet',
-        description: 'In the wallet, click on the staking icon next to send and receive.',
+        title: 'Claim reward',
+        description: 'Claim your reward! Enter your address and get the upgraded identicon.',
       },
     ],
   },
@@ -133,40 +133,20 @@ export default {
 
   faqs: [
     {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+      question: 'Can I stake more than the minimum deposit of 100 NIM?​',
+      answer: 'Yes, you can. Any amount above the required 100 NIM minimum deposit will be added as additional stake to the validator of your choice.',
     },
     {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+      question: 'Can I pre-stake to a validator anytime during the transition?​',
+      answer: 'No, pre-staking is only available during the pre-staking phase. Your NIM will be added to the pre-registered validator’s deposit, contributing to the required threshold of stake needed for migration readiness. After the migration is complete, you can add more stake, re-stake to another validator, or unstake and recover your staked funds.',
     },
     {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+      question: 'Can I withdraw my NIM deposit after pre-registration?​',
+      answer: 'Withdrawals are not possible until the PoS chain is operational. You can find more details on the withdrawal process for validators here.',
     },
     {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-    },
-    {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-    },
-    {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-    },
-    {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-    },
-    {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-    },
-    {
-      question: 'When will I receive my first reward?',
-      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+      question: 'Can I switch the validator I have pre-staked my NIM to?​',
+      answer: 'Yes, you can switch the validator you have pre-staked to. We support switching validators and increasing the NIM stake. You cannot remove or decrease the pre-stake; however, if you want to remove your NIM, you can do it after the transition.',
     },
   ],
 }

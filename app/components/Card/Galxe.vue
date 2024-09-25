@@ -68,7 +68,7 @@ const mr = computed(() => {
         <div class="i-custom:galxe h-28 w-144" />
       </div>
       <div class="small-body mx-24 text-center text-white/60">
-        Share the news using GalXe to get multiplier
+        Share the news using GalXe to get a multiplier
       </div>
       <div class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="$emit('openGalxeModal')">
         Connect

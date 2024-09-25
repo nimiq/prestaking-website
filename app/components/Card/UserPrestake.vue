@@ -90,7 +90,7 @@ function activateDetails() {
         :description="prestakeRewardData.modal.body"
         @close="closeModal"
       >
-        <CardAchievment
+        <CardAchievement
           v-for="item in prestakeRewardData.options"
           :key="item.cardType"
           :active="item.cardType === cardType"
