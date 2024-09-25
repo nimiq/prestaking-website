@@ -60,11 +60,10 @@ onMounted(() => {
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
               <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
-            <div class="relative max-w-full overflow-y-scroll md:pb-24">
+            <div class="relative max-w-full overflow-y-scroll">
               <NimiqPoolsList />
             </div>
             <!-- Borders -->
-            <div class="pointer-events-none absolute bottom-0 right-0 h-full w-32 rounded-br-8 from-white to-transparent bg-gradient-to-l md:h-64 md:w-[calc(100%+10px)] md:bg-gradient-to-t" />
             <div class="pointer-events-none absolute right-0 z-2 h-[calc(100%+10px)] w-full border-1 border-darkblue/10 rounded-b-8 -top-10 md:top-0 md:h-full md:w-[calc(100%+10px)] md:rounded-r-8" />
           </div>
         </div>
