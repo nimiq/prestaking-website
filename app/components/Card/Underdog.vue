@@ -44,7 +44,7 @@ const activateCard = computed(() => {
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
         <div class="i-custom:fist h-64 w-72" />
       </div>
-      <div class="small-body mx-24 text-center text-white/60">
+      <div class="small-body text-center text-white/60">
         Support an underdog for a bonus
       </div>
       <RewardMultiplierBadges

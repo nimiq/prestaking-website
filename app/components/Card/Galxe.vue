@@ -67,7 +67,7 @@ const mr = computed(() => {
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
         <div class="i-custom:galxe h-28 w-144" />
       </div>
-      <div class="small-body mx-24 text-center text-white/60">
+      <div class="small-body text-center text-white/60">
         Share the news using GalXe to get a multiplier
       </div>
       <div class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="$emit('openGalxeModal')">

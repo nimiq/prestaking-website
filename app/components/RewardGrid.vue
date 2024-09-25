@@ -71,12 +71,12 @@ function claimTickets() {
         <div i-custom:plus class="size-19" />
       </div>
     </div>
-    <div class="radial-bg col-start-2 row-start-2 col-end-4 row-end-5 size-full" />
+    <div class="radial-bg col-start-2 row-start-2 col-end-4 row-end-5 size-full -z-1" />
     <div
       class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
     >
       <div class="small-label px-32 text-white/60" style="letter-spacing: 0.8px;">
-        Mulitpliers
+        Multipliers
       </div>
     </div>
     <div
