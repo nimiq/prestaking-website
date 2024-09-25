@@ -60,21 +60,21 @@ function activateDetails() {
         </div>
       </div>
       <!-- Description -->
-      <div class="small-body mx-24 text-center text-white/60">
-        {{ store.loggedIn ? 'Prestake NIM to participate.The more you prestake, the higher your score.' : 'Log in to participate!' }}
+      <div class="small-body text-center text-white/60">
+        Prestake NIM to participate. The more you prestake, the higher your score.
       </div>
       <!-- Buttons -->
-      <div v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="$emit('openLoginModal')">
-        Login and enter
-      </div>
-      <div v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">
+      <button v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')" disabled>
+        Login & enter
+      </button>
+      <button v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">
         Go to wallet
-      </div>
+      </button>
 
       <!-- OPEN MODAL -->
-      <div class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-      </div>
+      <button class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </button>
     </div>
 
     <!-- SHOW REWARD CARD -->

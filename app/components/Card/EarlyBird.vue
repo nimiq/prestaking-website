@@ -56,9 +56,9 @@ const activateCard = computed(() => {
         :color="cardColor"
       />
       <!-- OPEN MODAL -->
-      <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-      </div>
+      <button class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </button>
     </div>
 
     <!-- SHOW REWARD CARD -->
@@ -70,9 +70,9 @@ const activateCard = computed(() => {
         :color="cardColor"
       />
       <!-- OPEN MODAL -->
-      <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-      </div>
+      <button class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </button>
     </TiltCardWrapper>
 
     <ModalWrapper :active="showModal">

@@ -70,18 +70,18 @@ const mr = computed(() => {
       <div class="small-body text-center text-white/60">
         Share the news using GalXe to get a multiplier
       </div>
-      <div class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="$emit('openGalxeModal')">
+      <button class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="$emit('openGalxeModal')">
         Connect
-      </div>
+      </button>
       <RewardMultiplierBadges
         :multipliers="galxeRewardData.options"
         :active="[]"
         :color="cardColor"
       />
       <!-- OPEN MODAL -->
-      <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-      </div>
+      <button class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </button>
     </div>
 
     <!-- SHOW REWARD CARD -->
@@ -93,9 +93,9 @@ const mr = computed(() => {
         :color="cardColor"
       />
       <!-- OPEN MODAL -->
-      <div class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-        <div class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
-      </div>
+      <button class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </button>
     </TiltCardWrapper>
 
     <ModalWrapper :active="showModal">
