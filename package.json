@@ -40,7 +40,7 @@
     "eslint": "^9.10.0",
     "eslint-plugin-format": "^0.1.2",
     "lint-staged": "^15.2.10",
-    "nimiq-css": "^0.1.112",
+    "nimiq-css": "^0.1.113",
     "radix-vue": "^1.9.6",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2",
