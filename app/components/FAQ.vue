@@ -25,7 +25,7 @@ const isOpen = ref(false)
     <div
       v-for="(faq, index) in faqs" :key="index" class="gap-y-16 rounded-6 bg-white/06 p-16 text-18"
     >
-      <div class="text-bold text-white">
+      <div class="font-bold text-white">
         {{ faq.question }}
       </div>
       <p class="mt-16 text-white/80">

@@ -86,7 +86,7 @@ onMounted(() => {
 
     <hr class="border-white/10 bg-darkblue">
 
-    <Section dark-mode god-rays>
+    <Section dark-mode god-rays class="overflow-clip">
       <Header
         dark-mode
         :label="pageContent.prestake.label"
@@ -104,14 +104,14 @@ onMounted(() => {
         :button-link="pageContent.prestake.bottomHeader.buttonLink"
         :button-text="pageContent.prestake.bottomHeader.buttonLabel"
       />
-      <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="/img/four-cards.png" alt="" />
+      <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[160px] -translate-x-1/2 md:-bottom-[525px]" src="/img/four-cards.png" alt="" />
       <Ember class="absolute bottom-460 left-25 md:bottom-323" />
       <Ember class="hide-glow absolute bottom-423 left-325 scale-70 opacity-40" />
       <Ember class="hide-glow absolute bottom-270 right-40 scale-60 opacity-30" />
       <Ember class="absolute bottom-0 right-100 md:right-290" />
     </Section>
 
-    <Section id="faq" dark-mode>
+    <Section id="faq" dark-mode class="border-t-white/10 border-t-1">
       <div>
         <SectionLabel text="What you need to know" dark-mode />
         <FAQ :faqs="pageContent.faqs" />

@@ -54,9 +54,9 @@ h4 {
 }
 
 .hero-subline {
-  @apply font-500 text-20 leading-[150%]
-  lg:font-500 lg:text-22 lg:leading-[150%]
-  xl:font-500 xl:text-24 xl:leading-[150%];
+  @apply font-600 text-20 leading-[150%]
+  lg:text-22
+  xl:text-24;
 }
 
 .subline {

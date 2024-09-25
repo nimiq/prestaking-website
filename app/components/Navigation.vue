@@ -65,7 +65,7 @@ onUnmounted(() => {
       }"
     >
       <NuxtLink
-        class="cursor-pointer opacity-100 transition-opacity hover:opacity-70"
+        class="cursor-pointer"
         to="/"
       >
         <div :class="localState.isSticky ? 'i-nimiq:logos-nimiq-horizontal' : 'i-nimiq:logos-nimiq-white-horizontal'" class="h-25px w-100px text-white" />
@@ -78,30 +78,36 @@ onUnmounted(() => {
           'text-white/60': !localState.isSticky,
         }"
       >
-        <NuxtLink to="/prestaking" class="text-14px font-bold">
+        <NuxtLink to="/prestaking" class="text-14px font-bold transition-color" :class="{
+          'hover:text-neutral-900': localState.isSticky,
+          'hover:text-white/80': !localState.isSticky,
+        }">
           Prestaking
         </NuxtLink>
         <div class="flex items-center gap-x-16">
-          <a href="https://nimiq.com" class="text-14px font-bold">Stay up to date</a>
-          <div
-            class="size-32 flex items-center justify-center rounded-full"
+          <a href="https://nimiq.com" class="text-14px font-bold transition-color" :class="{
+          'hover:text-neutral-900': localState.isSticky,
+          'hover:text-white/80': !localState.isSticky,
+        }">Stay up to date</a>
+          <a href="https://x.com/nimiq" rel="noopener noreferrer" title="X (Twitter)"
+            class="size-32 flex items-center justify-center rounded-full transition-colors"
             :class="{
-              'bg-black/15': localState.isSticky,
-              'bg-white/15 text-white': !localState.isSticky,
+              'bg-black/15 hover:bg-black/20 text-neutral/50': localState.isSticky,
+              'bg-white/15 hover:bg-white/20 text-white': !localState.isSticky,
             }"
           >
             <div class="" i-nimiq:logos-twitter-mono />
-          </div>
+          </a>
 
-          <div
-            class="size-32 flex items-center justify-center rounded-full -ml-8"
+          <a href="https://discord.gg/cMHemg8" rel="noopener noreferrer" title="Discord"
+            class="size-32 flex items-center justify-center rounded-full transition-colors -ml-8"
             :class="{
-              'bg-black/15': localState.isSticky,
-              'bg-white/15 text-white': !localState.isSticky,
+              'bg-black/15 hover:bg-black/20 text-neutral/50': localState.isSticky,
+              'bg-white/15 hover:bg-white/20 text-white': !localState.isSticky,
             }"
           >
             <div class="" i-nimiq:logos-discord-mono />
-          </div>
+          </a>
         </div>
       </div>
       <MobileMenu

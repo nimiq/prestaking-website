@@ -10,13 +10,13 @@
         <h3 class="mt-0 text-center text-white">
           Massive prizes await - for example 10 x 3,000,000 NIM
         </h3>
-        <p class="text-center text-white/60">
+        <p class="text-center text-white/80">
           Win one of the 100 prizes by joining the prestake and the promoting the launch.
         </p>
       </div>
     </div>
     <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg class="h-136" src="/img/80.png" alt="" />
+      <NuxtImg class="h-136" src="/img/100.svg" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
           Airdrop for all
