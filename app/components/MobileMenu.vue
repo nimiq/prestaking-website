@@ -38,23 +38,21 @@ useOutsideClick(root$, () => {
 
     <nav :class="{ visible: menuVisible }" class="menu-wrapper">
       <ul class="flex flex-col gap-12 transition-opacity duration-75" @click="menuVisible = false">
+        <a href="https://nimiq.com" class="text-16px font-bold">About Nimiq</a>
         <NuxtLink to="/pre-staking" class="text-16px font-bold">
           Pre-staking
         </NuxtLink>
-        <div class="flex flex-col gap-x-16 lg:flex-row lg:items-center">
-          <a href="https://nimiq.com" class="text-16px font-bold">Stay up to date</a>
-          <div class="mt-16 flex gap-x-12">
-            <div
-              class="size-32 flex items-center justify-center rounded-full bg-black/15"
-            >
-              <div class="" i-nimiq:logos-twitter-mono />
-            </div>
+        <div class="mt-16 flex gap-x-12">
+          <div
+            class="size-32 flex items-center justify-center rounded-full bg-black/15"
+          >
+            <div class="" i-nimiq:logos-twitter-mono />
+          </div>
 
-            <div
-              class="size-32 flex items-center justify-center rounded-full bg-black/15"
-            >
-              <div class="" i-nimiq:logos-discord-mono />
-            </div>
+          <div
+            class="size-32 flex items-center justify-center rounded-full bg-black/15"
+          >
+            <div class="" i-nimiq:logos-discord-mono />
           </div>
         </div>
       </ul>

@@ -80,7 +80,7 @@ defineProps({
       {{ title }}
     </component>
     <p
-      class="hero-subline mb-0 md:text-center" :class="{
+      class="hero-subline mb-0 md:text-center text-balance" :class="{
         'text-white/60': darkMode,
         'text-darkblue/60': !darkMode,
         'text-center': forceCenteredText,

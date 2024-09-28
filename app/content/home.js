@@ -1,7 +1,7 @@
 export default {
   hero: {
     title: 'Countdown to Nimiq Proof-of-Stake',
-    body: 'The Mainnet migration is planned for November 19th, 2024',
+    body: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200,000,000 NIM giveaway.',
     buttonLabel: 'Pre-staking',
     buttonLink: '/pre-staking',
   },
@@ -11,18 +11,18 @@ export default {
     statBlockLabel: 'Adoption-GRade Performance',
     stats: [
       {
-        value: '100x',
-        text: '1000 TPS',
+        value: '1000',
+        text: 'transactions / sec',
         color: 'blue',
       },
       {
-        value: '60x',
-        text: '1s transaction speed',
+        value: '1s',
+        text: 'transaction speed',
         color: 'red',
       },
       {
-        value: '350x',
-        text: '35 watt / transaction',
+        value: '0.07 Wh',
+        text: 'energy / transaction',
         color: 'orange',
       },
     ],
@@ -43,12 +43,12 @@ export default {
     techSpecLink: '',
   },
   prestake: {
-    label: 'Prestake',
-    title: 'Join the prestake, win big and earn eternal glory',
-    body: 'Support the network. Be among the first to earn and get a unique Identicon upgrade. Also, there are 200 Mil NIM to win!',
+    label: 'Pre-stake',
+    title: 'Join the pre-stake, win big and earn eternal glory',
+    body: 'Support the network. Be among the first to earn and get a unique Identicon upgrade. Also, there are 200 Mil NIM in giveaways.',
     bottomHeader: {
-      title: 'Nimiq needs you. Pre-stake before the 24th for bigger bonuses',
-      body: 'Prestake from the wallet, get a guaranteed reward and join the competition for even greater prizes.',
+      title: 'Nimiq needs you! Pre-stake your NIM and support the migration.',
+      body: 'Pre-stake from the wallet, join the campaign and earn substantial NIM rewards.',
       buttonLabel: 'Pre-staking',
       buttonLink: '/pre-staking',
     },

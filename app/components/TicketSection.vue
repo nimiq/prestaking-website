@@ -8,10 +8,10 @@
       <NuxtImg class="max-h-370" src="/img/tickets.png" alt="" />
       <div class="mx-auto max-w-[480px]">
         <h3 class="mt-0 text-center text-white">
-          Massive prizes await - for example 10 x 3,000,000 NIM
+          Massive giveaways await - for example 10 x 3,000,000 NIM
         </h3>
         <p class="text-center text-white/80">
-          Win one of the 100 prizes by joining the prestake and the promoting the launch.
+          Win one of the 100 giveaways by joining the pre-stake and promoting the launch.
         </p>
       </div>
     </div>
@@ -19,10 +19,10 @@
       <NuxtImg class="h-136" src="/img/200.svg" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
-          Airdrop for all
+          Rewards for all
         </h4>
-        <p class="text-white/80">
-          Prestake and get a piece of the 200 Mil NIM airdrop.
+        <p class="text-white/80 mt-8 text-balance">
+          Prestake and get a piece of the 200&nbsp;Mil&nbsp;NIM rewards.
         </p>
       </div>
     </div>
@@ -32,7 +32,7 @@
         <h4 class="my-0 text-white">
           Earn bragging rights
         </h4>
-        <p class="text-white/80">
+        <p class="text-white/80 mt-8 text-balance">
           From Guardian to Hero of the Chain - earn a title and glory.
         </p>
       </div>
@@ -41,10 +41,10 @@
       <NuxtImg class="h-136" src="/img/hex-star.png" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
-          Get a shiny wallet
+          Glow up your wallet
         </h4>
-        <p class="text-white/80">
-          Get a shiny wallet with a unique identicon.
+        <p class="text-white/80 mt-8 text-balance">
+          Get an optional upgrade of your identicon in the wallet.
         </p>
       </div>
     </div>

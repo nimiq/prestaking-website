@@ -16,16 +16,15 @@ const socialMedia = [
 
 <template>
   <footer class="dark" data-section nq-no-px nq-no-max-width text-neutral-800>
-    <div w-full children:max-w-1172 border="y-1.5 white/10" p="x-32 y-40">
+    <div w-full children:max-w-690 border="y-1.5 white/10" p="x-32 y-40">
       <div mx-auto grid="~ cols-[auto_1px_auto_1fr] md:rows-2 gap-16 md:cols-[320px_1px_auto_auto] lg:cols-[1fr_auto_auto_auto_auto] items-center justify-center lg:rows-1">
-        <span nq-label text="sm neutral-700 md:center" col-span="4" lg:hidden>Stay up to date</span>
-        <span text="2xl white" lh-none max-lg:hidden font-600>Keep updated</span>
+        <span text="2xl white md:center" font-600 col-span="4" lg:hidden>Keep me updated</span>
+        <span text="28 white" lh-none max-lg:hidden font-600>Keep me updated</span>
         <NimiqNewsletterEmailInput col-span="4 md:1" relative max-h-33 max-w-7xl />
         <div hidden h-33 w-1 bg-neutral-500 md:block />
         <NuxtLink :to="socialMedia.at(0)!.link" size="36 lg:40" rounded-full transition-colors bg="white/8 hover:white/12" flex="~ items-center justify-center" title="X (Twitter)">
           <div :class="socialMedia.at(0)!.icon" text="14 white" />
         </NuxtLink>
-        <div h-33 w-1 bg-neutral-500 md:hidden />
         <NuxtLink :to="socialMedia.at(1)!.link" size="36 lg:40" rounded-full transition-colors bg="white/8 hover:white/12" flex="~ items-center justify-center" title="Discord">
           <div :class="socialMedia.at(1)!.icon" text="16 white" />
         </NuxtLink>
@@ -33,24 +32,25 @@ const socialMedia = [
     </div>
 
     <div flex="~ col" text="sm neutral-700" nq-mt-96 px-32>
-      <NuxtLink to="https://www.nimiq.com" group w-max flex md:mx-auto>
-        <div i-nimiq:logos-nimiq-horizontal-mono text="28 md:30" op-80 hover:op-100 transition-opacity />
-      </NuxtLink>
-      <p text="sm md:center left" max-w-33ch md:mx-auto nq-mt-16>
-        Nimiq is an Inuit word for an object or force that binds things together.
+      <p text="md:center 2xl white">
+        Follow us here
       </p>
-      <p text="md:center neutral-700" nq-mt-16 text-16>
-        Follow us here:
-      </p>
-      <ul role="list" flex="~ md:justify-center md:items-center gap-4 wrap" text="18 neutral-700" nq-mt-12>
+      <ul role="list" flex="~ md:justify-center md:items-center gap-16 wrap" text="18 neutral-700" nq-mt-16>
         <li v-for="({ platform, icon, link }) in socialMedia" :key="platform || '123'" self-stretch justify-self-stretch aria-label="Links to some of our social media pages">
-          <NuxtLink :title="platform" :to="link" focusable h-max flex rounded-full p-8 bg="white/10 hocus:white/15" class="text-white/50 hover:text-white/75" transition-colors :aria-label="`Visit Nimiq on ${platform}`">
-            <div :class="icon" />
+          <NuxtLink :title="platform" :to="link" focusable h-40 w-40 flex rounded-full p-10 bg="white/15 hocus:white/25" class="text-white" transition-colors :aria-label="`Visit Nimiq on ${platform}`">
+            <div :class="icon" class="w-full h-full" />
           </NuxtLink>
         </li>
       </ul>
 
-      <div mt-72 transition-colors flex="~ gap-16 wrap items-center" pb="32 md:64">
+      <NuxtLink to="https://www.nimiq.com" group w-max flex mt-72 md:mx-auto>
+        <div i-nimiq:logos-nimiq-horizontal-mono text="28 md:30 white/50 hover:white" transition-color />
+      </NuxtLink>
+      <p text="sm md:center left white/50" max-w-33ch md:mx-auto nq-mt-16>
+        Nimiq is an Inuit word for an object or force that binds things together.
+      </p>
+
+      <div mt-16 flex="~ gap-16 wrap items-center" pb="32 md:64">
         <!-- <NuxtLink to="https://nimiq.com" font-semibold un-text="neutral-800 hocus:neutral-900" transition-colors>
           Imprint
         </NuxtLink>
@@ -59,11 +59,11 @@ const socialMedia = [
           Policy
         </NuxtLink>
         <div aria-hidden size-4 rounded-full bg-current op-40 /> -->
-        <NuxtLink to="/#faq" font-semibold un-text="neutral-800 hocus:neutral-900" transition-colors>
+        <!-- <NuxtLink to="/#faq" font-semibold un-text="neutral-800 hocus:neutral-900" transition-colors>
           FAQ
-        </NuxtLink>
+        </NuxtLink> -->
 
-        <p sm:ml-48>
+        <p mx-auto>
           © Nimiq Foundation 2024
         </p>
       </div>
