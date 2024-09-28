@@ -1,70 +1,70 @@
 export default {
   hero: {
-    title: 'Prestake, get a share of 100 Mio NIM rewards and win up to 3 Mio NIM',
+    title: 'Pre-stake to earn your share of 200 million NIM in rewards and bonus giveaways!',
     body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
 
     prizes: [
       {
-        value: '500K',
-        text: '60 winners',
-        color: 'blue',
+        value: '3 Mil',
+        text: '10 winners',
+        color: 'orange',
       },
       {
-        value: '1.5Mio',
+        value: '1.5 Mil',
         text: '25 winners',
         color: 'red',
       },
       {
-        value: '3Mio',
-        text: '10 winners',
-        color: 'orange',
+        value: '500 k',
+        text: '60 winners',
+        color: 'blue',
       },
     ],
   },
   rules: {
     title: 'Rules of the competition',
-    body: 'Dive into all the competition rules. You\'ll find details on this rule and that rule to help you understand how everything works.',
+    body: 'Read up on the rules of participation. Reach out to the community if anything remains unclear.',
     buttonText: 'Learn the rules',
-    buttonLink: 'https://nimiq.com',
+    buttonLink: '/Nimiq_Pre-staking_Campaign_ToS.pdf',
   },
 
   communityGoals: {
     label: 'Community',
-    title: 'Made for crypto payments at sub-second speed',
-    body: 'Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm. Your wallet and exchanges keep their addresses. No action required.',
+    title: 'Join in and help secure the network',
+    body: 'The more people pre-stake, the more secure will the young network be. Join in, help reach the base goal and let’s smash the stretch goal right after.',
     goalBar: {
-      totalGoal: 7000000000,
+      totalGoal: 10000000000,
       milestones: [
         {
-          label: '3B',
+          label: '2B',
           text: 'Base Goal',
-          value: 3000000000,
+          value: 2000000000,
         },
         {
-          label: '5B',
+          label: '6B',
           text: 'Stretch Goal',
-          value: 5000000000,
+          value: 6000000000,
         },
       ],
     },
   },
 
   prestakeInfo: {
-    label: 'Prestaked NIM will be:',
+    label: 'About Pre-staked NIM:',
     cards: [
       {
         title: 'Locked until the launch of PoS',
-        description: 'Get an optional upgrade of your identicon in the wallet.',
+        description: 'Your NIM will remain immovable until the network migration is complete.',
         icon: 'lock',
       },
       {
-        title: 'Prestaked with a validator pool',
-        description: 'Get an optional upgrade of your identicon in the wallet.',
+        title: 'Pre-stake with a validator pool',
+        description: 'Unless you’re really good with tech, it’s easiest to stake with a pool.',
         icon: 'document',
       },
       {
-        title: 'Earn rewards from the first block on',
-        description: 'Get an optional upgrade of your identicon in the wallet.',
+        title: 'Earn rewards off the first block',
+        description: 'You will be first in line and start receiving staking rewards from the first block. ',
         icon: 'box',
       },
     ],
@@ -75,30 +75,30 @@ export default {
     cards: [
       {
         title: 'Staking as much as possible',
-        description: 'Get an optional upgrade of your identicon in the wallet.',
+        description: 'The more NIM are pre-staked, the more secure the new network. ',
         icon: 'leaf',
       },
       {
         title: 'Choosing smaller validators',
-        description: 'Get an optional upgrade of your identicon in the wallet.',
+        description: 'Help create an even distribution of staked NIM by choosing smaller validators. ',
         icon: 'duck',
       },
       {
         title: 'Promoting the prestake',
-        description: 'Get an optional upgrade of your identicon in the wallet.',
+        description: 'Spread the word about the launch and the pre-staking campaign. ',
         icon: 'horn',
       },
     ],
   },
 
   prestakeReward: {
-    title: 'Get a guaranteed Pre-staking Reward',
-    body: 'Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm. Your wallet and exchanges keep their addresses. No action required.',
+    title: 'Everyone wins with Nimiq pre-staking',
+    body: 'Even if you’re out of luck, every pre-staker receives a cut of the whooping 100 Mil NIM pre-staking reward, just pre-stake and claim your points.',
   },
 
   walletSetup: {
-    title: 'Pre-staking is as easy as staking',
-    body: 'The process is the same. Go to your wallet, pick a validator pool and start staking, everyone can do it!',
+    title: 'Pre-staking is as easy as staking will be',
+    body: 'The process is the same. Go to your wallet, pick a validator pool and start staking.',
     instructions: [
       {
         title: 'Go to your wallet',
@@ -110,7 +110,7 @@ export default {
       },
       {
         title: 'Select amount',
-        description: 'Set an amount. Mind, that your NIM will be locked until the launch.',
+        description: 'Set an amount. Mind, that your NIM will be locked until the migration.',
       },
       {
         title: 'Claim reward',

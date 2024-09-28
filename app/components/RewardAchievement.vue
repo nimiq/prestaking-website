@@ -32,7 +32,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="[active && 'active']" :style="`--bg-solid: ${color};`" class="rw-container relative min-w-1/3">
+  <div :style="`--bg-solid: ${color};`" class="rw-container active relative min-w-1/3">
     <div v-if="buttonText" class="rw-value-container">
       <div class="rw-value">
         {{ buttonText }}
@@ -41,7 +41,7 @@ defineProps({
     <p class="rw-label">
       <span v-if="details" class="text-14 font-normal leading-140% opacity-60">{{ details }}<br></span>
 
-      <span v-if="label" class="mt-6 inline-block font-bold">{{ label }}</span>
+      <span v-if="label" class="mt-6 inline-block font-600">{{ label }}</span>
     </p>
     <slot />
     <div v-if="active && checkmark" class="absolute bottom-0 left-1/2 translate-y-1/2 text-purple -translate-x-1/2">
@@ -51,7 +51,7 @@ defineProps({
   </div>
 </template>
 
-<style>
+<style scoped>
 .rw-container {
   --bg-base: linear-gradient(139deg, #cce8fe 5.7%, #cda0ff 27.03%, #8489f5 41.02%, #cdf1ff 68.68%, #b591e9 94%);
 
@@ -105,9 +105,9 @@ defineProps({
 }
 
 .active {
-  &.rw-container {
+  /* &.rw-container {
     border: 1.5px solid #604c8b !important;
-  }
+  } */
 
   .rw-value {
     color: white;

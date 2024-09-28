@@ -96,8 +96,8 @@ function claimTickets() {
       </div>
     </div>
     <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/05 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
-      <h4 class="w-full text-center text-22 text-white">
-        Earn tickets based on your staked amount and earned multipliers
+      <h4 class="w-full text-center text-28 text-white">
+        Earn points by pre-staking NIM
       </h4>
       <div
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"
@@ -105,17 +105,17 @@ function claimTickets() {
         <!-- :class="store.loggedIn" -->
         <div v-if="!store.loggedIn" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           0
-          <span class="text-17">Tickets</span>
+          <span class="text-17 font-600">Points</span>
         </div>
         <div v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
-          <span class="text-24">Claim tickets</span>
+          <span class="text-24">Claim points</span>
         </div>
         <div
           v-else-if="store.loggedIn && store.user.prestakedNIMAmount > 0 && store.user.totalTickets !== store.user.prestakedNIMAmount / 1000"
           class="tickets-pill active px-32 py-24 text-white/60 leading-70%"
           @click="claimTickets"
         >
-          <span class="text-24 text-white">Claim tickets</span>
+          <span class="text-24 text-white">Claim points</span>
         </div>
 
         <NuxtLink
@@ -126,7 +126,7 @@ function claimTickets() {
         >
           <div class="flex grow items-center justify-center gap-x-12">
             {{ store.user.totalTickets }}
-            <span class="text-17 text-white">Tickets</span>
+            <span class="text-17 text-white font-600">Points</span>
           </div>
           <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="60" height="60" rx="30" fill="url(#paint0_radial_214_8648)" />

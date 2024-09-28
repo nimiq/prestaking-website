@@ -51,7 +51,7 @@ defineProps({
   </div>
 </template>
 
-<style>
+<style scoped>
 .rw-container {
   --bg-base: linear-gradient(139deg, #cce8fe 5.7%, #cda0ff 27.03%, #8489f5 41.02%, #cdf1ff 68.68%, #b591e9 94%);
 
@@ -105,9 +105,9 @@ defineProps({
 }
 
 .active {
-  &.rw-container {
+  /* &.rw-container {
     border: 1.5px solid #604c8b !important;
-  }
+  } */
 
   .rw-value {
     color: white;

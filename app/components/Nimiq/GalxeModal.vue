@@ -22,7 +22,7 @@ function connectGalxe() {
       <div>
         <div i-custom:galxe-dark class="relative z-1 mx-auto mb-56 mt-60 h-50 w-200 -translate-x-10" />
         <div class="relative z-1 mb-90">
-          <h4>Connct to Galxe</h4>
+          <h4>Connect to Galxe</h4>
           <p>{ FUNCTIONALITY NEEDS TO BE ADDED}</p>
         </div>
         <button class="mx-auto mb-20 scale-150 nq-pill-lg nq-pill-blue" @click="connectGalxe">

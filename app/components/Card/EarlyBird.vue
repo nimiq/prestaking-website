@@ -48,7 +48,7 @@ const activateCard = computed(() => {
         <div class="i-custom:timer h-68 w-51" />
       </div>
       <div class="small-body text-center text-white/60">
-        Prestake early to add a multiplier
+        Prestake early to multiply your points
       </div>
       <RewardMultiplierBadges
         :multipliers="earlyBirdData.options"

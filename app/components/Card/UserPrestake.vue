@@ -60,11 +60,11 @@ function activateDetails() {
         </div>
       </div>
       <!-- Description -->
-      <div class="small-body text-center text-white/60">
-        Prestake NIM to participate. The more you prestake, the higher your score.
+      <div class="small-body text-center text-white">
+        Pre-staking is starting soon.<br>Stay tuned!
       </div>
       <!-- Buttons -->
-      <button v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')" disabled>
+      <button v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-blue" disabled><!-- @click="$emit('openLoginModal')" -->
         Login & enter
       </button>
       <button v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">

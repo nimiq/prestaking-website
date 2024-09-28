@@ -1,6 +1,6 @@
 export default {
   modal: {
-    title: 'Prestake your NIM and upgrade your Identicon',
+    title: 'Pre-stake your NIM and upgrade your Identicon',
     body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
     label: 'Tickets (Staked NIM/1000)',
   },

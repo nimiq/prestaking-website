@@ -42,7 +42,7 @@ defineEmits(['close'])
         </h3>
         <div
           v-if="description"
-          class="z-5 mt-16 text-white/60"
+          class="z-5 mt-16 text-white/80 font-500"
         >
           {{ description }}
         </div>

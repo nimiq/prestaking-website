@@ -1,22 +1,22 @@
 export default {
   modal: {
     title: 'Timing',
-    body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
-    label: 'Tickets (Staked NIM/1000)',
+    body: 'The earlier, the better. Pre-stake in the first weeks of the pre-staking phase to get a bonus.',
+    label: 'Week pre-staked',
   },
   options: [
     {
       multiplier: 3,
-      min: '2024-09-16',
-      max: '2024-09-23',
-      label: 'First Week',
+      min: '2024-10-07',
+      max: '2024-10-13',
+      label: 'First week',
       color: '#24CCA2',
     },
     {
       multiplier: 2,
-      min: '2024-09-23',
-      max: '2024-09-30',
-      label: 'Second Week',
+      min: '2024-10-14',
+      max: '2024-10-20',
+      label: 'Second week',
       color: '#239987',
     },
     // {

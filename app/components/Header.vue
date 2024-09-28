@@ -89,14 +89,18 @@ defineProps({
       {{ body }}
     </p>
     <nuxt-link
-      v-if="button" :to="buttonLink" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
+      v-if="button && !buttonLink.endsWith('.pdf')" :to="buttonLink" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
       :class="{
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
       }"
-    >
-      {{ buttonText }}
-    </nuxt-link>
+    >{{ buttonText }}</nuxt-link>
+    <a
+      v-else-if="button" :href="buttonLink" target="_blank" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
+      :class="{
+        'arrow': buttonArrow,
+        'mx-auto': forceCenteredText,
+      }">{{ buttonText }}</a>
     <slot />
   </div>
 </template>

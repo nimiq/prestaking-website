@@ -3,9 +3,10 @@ defineProps<{ title: string, description: string, icon: string }>()
 </script>
 
 <template>
-  <div class="glass-card glass-clear grow !items-start">
+  <div class="glass-card glass-clear grow !items-start !gap-16">
     <div v-if="icon === 'lock'" class="size-48" i-custom:lock />
     <div v-if="icon === 'document'" class="size-48" i-custom:document />
+    <div v-if="icon === 'waves'" class="size-48" i-custom:waves />
     <div v-if="icon === 'box'" class="size-48" i-custom:box />
     <div v-if="icon === 'horn'" class="size-48" i-custom:horn />
     <div v-if="icon === 'duck'" class="size-48" i-custom:duck />
@@ -14,7 +15,7 @@ defineProps<{ title: string, description: string, icon: string }>()
       <h4 class="my-0">
         {{ title }}
       </h4>
-      <p>{{ description }}</p>
+      <p class="mt-12">{{ description }}</p>
     </div>
   </div>
 </template>

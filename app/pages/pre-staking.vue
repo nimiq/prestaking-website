@@ -26,7 +26,7 @@ onMounted(() => {
       />
       <RewardGrid id="rewards" :pre-pre-staking="prestaking" />
       <div>
-        <SectionLabel dark-mode text="The prizes" />
+        <SectionLabel dark-mode text="The giveaways" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <StatBlock
             v-for="stat in pageContent.hero.prizes"
@@ -41,13 +41,13 @@ onMounted(() => {
         </div>
       </div>
       <div class="mb-40 md:mb-90">
-        <SectionLabel dark-mode text="Extra Bonuses" />
+        <SectionLabel dark-mode text="Extras" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <div class="glass-card min-w-1/3 !flex-row">
-            <NuxtImg class="h-80" src="/img/100.svg" alt="" />
+            <NuxtImg class="h-80" src="/img/200.svg" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
-                Prestake and get a piece of the 100 Mil NIM airdrop.
+                Pre-stake and get a piece of the 200 Mil NIM rewards.
               </p>
             </div>
           </div>
@@ -63,7 +63,7 @@ onMounted(() => {
             <NuxtImg class="h-80" src="/img/hex-star.png" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
-                Get a shiny wallet with a unique identicon.
+                Get an optional upgrade of your identicon in the wallet.
               </p>
             </div>
           </div>
@@ -140,13 +140,13 @@ onMounted(() => {
         :body="pageContent.prestakeReward.body"
       />
       <div class="flex flex-col items-center justify-center gap-32 sm:flex-row">
-        <p>
-          200 Mil. NIM will be split<br> between all prestakers
+        <p class="text-right">
+          100 Mil NIM will be split<br>betweenall participating<br>pre-stakers
         </p>
-        <div class="i-custom:gauge-chart h-144 w-144" />
+        <div class="i-custom:gauge-chart h-144 w-144 flex-shrink-0" />
 
-        <p class="text-gold">
-          The more you prestake,<br> the bigger your cut
+        <p class="text-gold font-bold">
+          The more you pre-stake,<br> the bigger your cut
         </p>
       </div>
     </Section>
@@ -182,9 +182,9 @@ onMounted(() => {
       </div>
       <Header
         class="mt-96"
-        title="Now start the process"
+        title="Let's get going!"
         title-tag="h3"
-        body="The not-for-profit Nimiq Foundation funds and supports the development and progress of the Nimiq Blockchain and Ecosystem."
+        body="What are you waiting for? Go to the wallet and join the pre-stake!"
         button
         button-link="https://wallet.nimiq.com"
         button-text="Go to wallet"

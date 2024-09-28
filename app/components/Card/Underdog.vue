@@ -45,13 +45,17 @@ const activateCard = computed(() => {
         <div class="i-custom:fist h-64 w-72" />
       </div>
       <div class="small-body text-center text-white/60">
-        Support an underdog for a bonus
+        Prestake with an underdog to multiply your points
       </div>
       <RewardMultiplierBadges
         :multipliers="underdogRewardData.options"
         :active="[]"
         :color="cardColor"
       />
+      <!-- OPEN MODAL -->
+      <button class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
+      </button>
     </div>
 
     <!-- SHOW REWARD CARD -->
@@ -82,7 +86,7 @@ const activateCard = computed(() => {
           :active="activatedMultipliers.includes(item.multiplier!)"
           color="#F33F68"
           :button-text="`${item.multiplier}x`"
-          label="{X amount} staked with { pool }"
+          label=""
         />
       </RewardModal>
     </ModalWrapper>

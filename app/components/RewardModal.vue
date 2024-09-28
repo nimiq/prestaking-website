@@ -40,7 +40,7 @@ defineEmits(['close'])
       </h3>
       <div
         v-if="description"
-        class="z-5 mt-16 text-white/60"
+        class="z-5 mt-16 text-white/80 font-500"
       >
         {{ description }}
       </div>
@@ -51,7 +51,7 @@ defineEmits(['close'])
     <div
       class="card-content relative pb-20 sm:pb-26"
     >
-      <div v-if="label" class="my-20 inline-block w-full text-center text-14 text-darkblue/60' font-bold leading-100% uppercase sm:my-24">
+      <div v-if="label" class="my-20 inline-block w-full text-center text-12 text-darkblue/60' font-bold leading-100% tracking-widest uppercase sm:my-24">
         {{ label }}
       </div>
       <div class="max-w-full w-full flex flex-wrap gap-12 px-20 sm:gap-16 sm:px-32">
