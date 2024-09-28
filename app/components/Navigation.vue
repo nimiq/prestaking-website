@@ -78,12 +78,10 @@ onUnmounted(() => {
           'text-white/60': !localState.isSticky,
         }"
       >
-        <NuxtLink to="/prestaking" class="text-14px font-bold transition-color" :class="{
+        <NuxtLink to="/pre-staking" class="text-14px font-bold transition-color" :class="{
           'hover:text-neutral-900': localState.isSticky,
           'hover:text-white/80': !localState.isSticky,
-        }">
-          Prestaking
-        </NuxtLink>
+        }">Pre-staking</NuxtLink>
         <div class="flex items-center gap-x-16">
           <a href="https://nimiq.com" class="text-14px font-bold transition-color" :class="{
           'hover:text-neutral-900': localState.isSticky,

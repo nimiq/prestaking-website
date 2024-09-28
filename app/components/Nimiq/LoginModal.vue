@@ -29,7 +29,7 @@ function login() {
         <div i-custom:document class="relative z-1 mx-auto mb-56 mt-60 size-120" />
         <div class="relative z-1 mb-90">
           <h4>Terms and conditions</h4>
-          <p>Prestaking NIM secures the network and is the quickest way to staking rewards.</p>
+          <p>Pre-staking NIM secures the network and is the quickest way to staking rewards.</p>
           <!-- TODO: Add t&c here -->
           <a href="www.google.com" class="mx-auto mt-24 w-fit flex items-center rounded-full px-16 py-6 text-darkblue ring-1.5 ring-darkblue/30 transition-colors md:mx-auto hover:bg-darkblue hover:text-white hover:ring-darkblue">
             <span class="text-14">Terms and conditions</span>

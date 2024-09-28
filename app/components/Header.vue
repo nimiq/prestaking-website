@@ -68,7 +68,7 @@ defineProps({
         <path d="M6.75949 10.9246L9.69773 10.8765L9.79406 5" stroke="white" stroke-width="2.11943" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       <div>
-        Prestaking available soon
+        Pre-staking available soon
       </div>
     </div>
     <component

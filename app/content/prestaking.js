@@ -97,7 +97,7 @@ export default {
   },
 
   walletSetup: {
-    title: 'Prestaking is as easy as staking',
+    title: 'Pre-staking is as easy as staking',
     body: 'The process is the same. Go to your wallet, pick a validator pool and start staking, everyone can do it!',
     instructions: [
       {
@@ -126,8 +126,8 @@ export default {
     bottomHeader: {
       title: 'Nimiq needs you. Pre-stake before the 24th for bigger bonuses',
       body: 'Prestake from the wallet, get a guaranteed reward and join the competition for even greater prizes.',
-      buttonLabel: 'Prestaking',
-      buttonLink: '/prestaking',
+      buttonLabel: 'Pre-staking',
+      buttonLink: '/pre-staking',
     },
   },
 

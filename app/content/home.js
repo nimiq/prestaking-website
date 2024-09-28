@@ -2,8 +2,8 @@ export default {
   hero: {
     title: 'Countdown to Nimiq Proof-of-Stake',
     body: 'The Mainnet migration is planned for November 19th, 2024',
-    buttonLabel: 'Prestaking',
-    buttonLink: '/prestaking',
+    buttonLabel: 'Pre-staking',
+    buttonLink: '/pre-staking',
   },
   cryptoStats: {
     title: 'Made for crypto payments at sub-second speed',
@@ -49,8 +49,8 @@ export default {
     bottomHeader: {
       title: 'Nimiq needs you. Pre-stake before the 24th for bigger bonuses',
       body: 'Prestake from the wallet, get a guaranteed reward and join the competition for even greater prizes.',
-      buttonLabel: 'Prestaking',
-      buttonLink: '/prestaking',
+      buttonLabel: 'Pre-staking',
+      buttonLink: '/pre-staking',
     },
   },
   faqs: [
