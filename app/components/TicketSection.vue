@@ -16,13 +16,13 @@
       </div>
     </div>
     <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg class="h-136" src="/img/100.svg" alt="" />
+      <NuxtImg class="h-136" src="/img/200.svg" alt="" />
       <div class="flex flex-col text-center">
         <h4 class="my-0 text-white">
           Airdrop for all
         </h4>
         <p class="text-white/80">
-          Prestake and get a piece of the 100 Mil NIM airdrop.
+          Prestake and get a piece of the 200 Mil NIM airdrop.
         </p>
       </div>
     </div>

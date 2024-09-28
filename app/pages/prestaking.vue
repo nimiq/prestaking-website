@@ -132,7 +132,7 @@ onMounted(() => {
 
     <Section class="!pt-40 xl:!pt-0">
       <div class="relative w-[calc(100%+64px)] flex justify-center -ml-32 -mr-32">
-        <NuxtImg src="/img/100M.png" class="min-w-900 w-full bg-cover object-center" alt="" />
+        <NuxtImg src="/img/200M.png" class="min-w-900 w-full bg-cover object-center" alt="" />
       </div>
       <Header
         class="z-5 -mt-160"
@@ -141,7 +141,7 @@ onMounted(() => {
       />
       <div class="flex flex-col items-center justify-center gap-32 sm:flex-row">
         <p>
-          100 Mil. NIM will be split<br> between all prestakers
+          200 Mil. NIM will be split<br> between all prestakers
         </p>
         <div class="i-custom:gauge-chart h-144 w-144" />
 
