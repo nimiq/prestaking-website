@@ -16,7 +16,7 @@ import type { stakingEvent } from '~/types/rewards'
 
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
-    loggedIn: false,
+    loggedIn: true,
     user: {
       prestakedNIMAmount: 0,
       underdogPool: null,
