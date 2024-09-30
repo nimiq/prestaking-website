@@ -11,20 +11,20 @@ export default {
     statBlockLabel: 'Adoption-GRade Performance',
     stats: [
       {
-        value: '1000',
+        value: '1000+',
         text: 'transactions / sec',
         color: 'blue',
       },
       {
-        value: '1s',
-        text: 'transaction speed',
+        value: '1 sec',
+        text: 'block time',
         color: 'red',
       },
-      {
-        value: '0.07 Wh',
-        text: 'energy / transaction',
-        color: 'orange',
-      },
+      // {
+      //   value: '0.07 Wh',
+      //   text: 'energy / transaction',
+      //   color: 'orange',
+      // },
     ],
   },
   prestakeCalculator: {
