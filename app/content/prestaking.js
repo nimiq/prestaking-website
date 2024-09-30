@@ -31,7 +31,7 @@ export default {
   communityGoals: {
     label: 'Community',
     title: 'Join in and help secure the network',
-    body: 'The more people pre-stake, the more secure will the young network be. Join in, help reach the base goal and let’s smash the stretch goal right after.',
+    body: 'The more people pre-stake, the more secure the young network will be. Join in, help reach the base goal and let’s smash the stretch goal right after.',
     goalBar: {
       totalGoal: 11_800_000_000, // Chosen for visual balance (so that the 6B stretch goal is in the middle)
       milestones: [

@@ -1,4 +1,4 @@
-export interface stakingEvent {
+export interface StakingEvent {
   date: string
   amount: number
   pool: string

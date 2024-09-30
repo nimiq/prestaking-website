@@ -5,15 +5,8 @@ function checkUserLevel(min: number, max: number, nim: number) {
   return nim >= min && nim < max
 }
 
-// get user staked nim
 export function getUserStakedNIM() {
-  const store = useUserInfo()
-  return store.user.prestakedNIMAmount
-}
-
-// calculate total with multipliers
-export function getUserPrestakeTickets() {
-  return getUserStakedNIM() / 1000
+  return useUserInfo().stake
 }
 
 // check card type

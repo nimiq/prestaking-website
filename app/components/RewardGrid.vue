@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
-import { getUserPrestakeCardType, getUserStakedNIM } from '~/composables/userPrestakingTickets'
+import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 
 defineProps({
   prePreStaking: {
@@ -33,10 +33,6 @@ function closeGalxeModal() {
   document.documentElement.style.overflow = 'auto'
 }
 
-const userNIM = computed(() => {
-  return store.user.prestakedNIMAmount
-})
-
 const rewardTickets: Ref<HTMLDivElement | null> = ref(null)
 
 function trackScroll(e: Event) {
@@ -47,7 +43,7 @@ function trackScroll(e: Event) {
 }
 
 function claimTickets() {
-  store.setClaimedTickets()
+  // TODO
 }
 </script>
 
@@ -59,12 +55,12 @@ function claimTickets() {
     <div id="reward-user" class="relative z-5 w-full border-1 border-white/10 p-32 md:col-start-1 md:row-start-1 lg:col-end-2 md:col-end-2 md:col-end-2 md:row-end-4 lg:rounded-tl-16">
       <NuxtImg v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-30 mix-blend-multiply md:rounded-tl-16" />
       <CardUserPrestake
-        :key="userNIM"
-        :locked="store.loggedIn === false"
+        :key="store.stake"
+        :locked="!store.address"
         @open-login-modal="openLoginModal"
       />
       <div class="absolute bottom-0 left-1/2 min-w-max flex translate-1/2 items-center justify-center gap-8 rounded-full bg-[#464A73] px-32 py-8 text-14 text-white/60 -translate-x-1/2">
-        <div>{{ getUserStakedNIM() / 1000 }}</div>
+        <div>{{ Math.floor(store.stake / 1000e5) }}</div>
         <div class="i-custom:tickets inline-block size-16 opacity-60" />
       </div>
       <div class="absolute right-0 hidden h-fit min-w-max translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60 -bottom-1 md:flex">
@@ -103,15 +99,15 @@ function claimTickets() {
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"
       >
         <!-- :class="store.loggedIn" -->
-        <div v-if="!store.loggedIn" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+        <div v-if="!store.address" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           0
           <span class="text-17 font-600">Points</span>
         </div>
-        <div v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+        <div v-else-if="store.address && store.stake === 0" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           <span class="text-24">Claim points</span>
         </div>
         <div
-          v-else-if="store.loggedIn && store.user.prestakedNIMAmount > 0 && store.user.totalTickets !== store.user.prestakedNIMAmount / 1000"
+          v-else-if="store.address && store.stake > 0 && store.totalPoints !== store.stake / 1000"
           class="tickets-pill active px-32 py-24 text-white/60 leading-70%"
           @click="claimTickets"
         >
@@ -119,13 +115,13 @@ function claimTickets() {
         </div>
 
         <NuxtLink
-          v-else-if="store.user.totalTickets === store.user.prestakedNIMAmount / 1000"
-          :to="{ name: 'share', query: { tickets: store.user.totalTickets, cardLevel: getUserPrestakeCardType() } }"
+          v-else-if="store.totalPoints === store.stake / 1000"
+          :to="{ name: 'share', query: { tickets: store.totalPoints, cardLevel: getUserPrestakeCardType() } }"
           class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
           @click="claimTickets"
         >
           <div class="flex grow items-center justify-center gap-x-12">
-            {{ store.user.totalTickets }}
+            {{ store.totalPoints }}
             <span class="text-17 text-white font-600">Points</span>
           </div>
           <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">

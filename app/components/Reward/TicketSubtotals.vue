@@ -1,17 +1,11 @@
 <script lang="ts" setup>
-import { useUserInfo } from '@/stores/userInfo'
+// import { useUserInfo } from '@/stores/userInfo'
 
-const store = useUserInfo()
+// const store = useUserInfo()
 
 const earlyBirdTotal = computed(() => {
-  const levels = store.getUserTimeLevel
-  let total = 0
-  if (levels) {
-    levels.forEach((x) => {
-      total += x.amount * x.multiplier
-    })
-  }
-  return total
+  // TODO
+  return 0
 })
 
 const underdogTotal = computed(() => {

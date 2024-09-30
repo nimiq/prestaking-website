@@ -27,7 +27,7 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.loggedIn && store.user.prestakedNIMAmount > 0 ? [3] : []
+  return store.address && store.stake > 0 ? [3] : []
 })
 
 const activateCard = computed(() => {

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
+import { Identicon } from '@nimiq/vue3-components'
 import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 import prestakeRewardData from '~/content/rewards/userPrestake'
 
@@ -24,7 +25,7 @@ const showModal: Ref<boolean> = ref(false)
 const showDetails: Ref<boolean> = ref(false)
 
 const cardType = computed(() => {
-  return store.loggedIn && store.user.prestakedNIMAmount > 0 ? getUserPrestakeCardType() : undefined
+  return store.address && store.stake > 0 ? getUserPrestakeCardType() : undefined
 })
 
 function openModal() {
@@ -36,10 +37,6 @@ function closeModal() {
   showModal.value = false
   showDetails.value = false
   document.documentElement.style.overflow = 'auto'
-}
-
-function getUserWalletData() {
-  store.setPrestake()
 }
 
 function activateDetails() {
@@ -54,9 +51,9 @@ function activateDetails() {
 
       <!-- Icon -->
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
-        <div v-if="!store.loggedIn" class="i-custom:hex h-80 w-89" />
+        <div v-if="!store.address" class="i-custom:hex h-80 w-89" />
         <div v-else class="relative">
-          <NuxtImg src="/img/identicon.svg" alt="" />
+          <Identicon :address="store.address" class="h-80 w-80" />
         </div>
       </div>
       <!-- Description -->
@@ -64,13 +61,12 @@ function activateDetails() {
         Pre-staking is starting soon.<br>Stay tuned!
       </div>
       <!-- Buttons -->
-      <button v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-blue" disabled>
-        <!-- @click="$emit('openLoginModal')" -->
+      <button v-if="!store.address" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')">
         Login & enter
       </button>
-      <button v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">
+      <a v-else-if="store.address && store.stake === 0" href="https://wallet.nimiq.com" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
         Go to wallet
-      </button>
+      </a>
 
       <!-- OPEN MODAL -->
       <button class="absolute right-16 top-16 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">

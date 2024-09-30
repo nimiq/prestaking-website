@@ -33,7 +33,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .custom-radial-dark-blue {
   background: radial-gradient(transparent 0%, rgb(31 35 72) 70%);
 }

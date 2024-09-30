@@ -17,6 +17,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'radix-vue/nuxt',
     '@nuxtjs/seo',
+    'nuxt-auth-utils',
+    'nuxt-security',
   ],
 
   devtools: {
@@ -44,6 +46,20 @@ export default defineNuxtConfig({
     name: 'Nimiq Prestaking',
     description: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200,000,000 NIM giveaway!',
     defaultLocale: 'en',
+  },
+
+  hub: {
+    kv: true,
+  },
+
+  security: {
+    // headers: {
+    //   crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp', // To work with Nuxt DevTools
+    // },
+    headers: {
+      // The default value is 'same-origin', but that prevents the Hub popup from being communicated with.
+      crossOriginOpenerPolicy: 'same-origin-allow-popups',
+    },
   },
 
   watch: ['~/content'],

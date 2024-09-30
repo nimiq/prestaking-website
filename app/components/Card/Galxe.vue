@@ -33,7 +33,7 @@ const activatedMultipliers = computed(() => {
 })
 
 const activateCard = computed(() => {
-  return store.loggedIn && store.user.galxeLinked
+  return Boolean(store.address && store.galxeAddress)
 })
 
 // TODO: understand the logic for this component

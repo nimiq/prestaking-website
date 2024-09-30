@@ -1,5 +1,4 @@
-import { getUserTimeLevel } from '~/composables/earlyBird'
-import type { stakingEvent } from '~/types/rewards'
+import type { StakingEvent } from '~/types/rewards'
 
 // Underdog
 
@@ -16,46 +15,21 @@ import type { stakingEvent } from '~/types/rewards'
 
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
-    loggedIn: false,
-    user: {
-      prestakedNIMAmount: 0,
-      underdogPool: null,
-      prestakingEvents: [] as Array<stakingEvent>,
-      totalTickets: 0,
-      galxeLinked: false,
-    },
+    address: null as string | null,
+    stake: 0,
+    underdogPool: null as string | null,
+    prestakeEvents: [] as StakingEvent[],
+    totalPoints: 0,
+    galxeAddress: null as string | null,
   }),
-  getters: {
-    getUserTimeLevel: (state) => {
-      return getUserTimeLevel(state.user.prestakingEvents)
-    },
-  },
   actions: {
-    logIn() {
-      this.loggedIn = true
+    logout() {
+      this.address = null
+      this.stake = 0
+      this.underdogPool = null
+      this.prestakeEvents = []
+      this.totalPoints = 0
+      this.galxeAddress = null
     },
-    setClaimedTickets() {
-      this.user.totalTickets = this.user.prestakedNIMAmount / 1000
-    },
-    galxeConnect() {
-      this.user.galxeLinked = true
-    },
-    setPrestake() {
-      this.user.prestakedNIMAmount = 50000
-      this.user.underdogPool = null
-      this.user.prestakingEvents = [
-        {
-          date: '2024-09-18',
-          amount: 30000,
-          pool: 'pool-address-1',
-        },
-        {
-          date: '2024-09-26',
-          amount: 20000,
-          pool: 'pool-address-2',
-        },
-      ] as Array<stakingEvent>
-    },
-
   },
 })
