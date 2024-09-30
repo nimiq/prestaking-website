@@ -10,6 +10,15 @@ onMounted(() => {
       .fromTo('#hero', { translateY: '-40px', opacity: 0 }, { translateY: '0', opacity: 1, delay: 0.5, duration: 0.5 })
   })
 })
+
+useHead({
+  title: pageContent.hero.title,
+  meta: [
+    { name: 'description', content: pageContent.hero.body },
+  ],
+})
+
+defineOgImage({ url: '/img/open-graph/index.jpg' })
 </script>
 
 <template>
@@ -58,7 +67,7 @@ onMounted(() => {
                 {{ pageContent.prestakeCalculator.sidePanel.title }}
               </h3>
               <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
-              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold text-lg nq-arrow" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
+              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow text-lg" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
             </div>
             <div class="relative max-w-full overflow-y-scroll">
               <NimiqPoolsList />
@@ -104,15 +113,15 @@ onMounted(() => {
         :button-link="pageContent.prestake.bottomHeader.buttonLink"
         :button-text="pageContent.prestake.bottomHeader.buttonLabel"
       />
-      <div class="lg:h-35"></div>
-      <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[250px] sm:-bottom-[320px] -translate-x-1/2 md:-bottom-[425px]" src="/img/four-cards.png" alt="" />
+      <div class="lg:h-35" />
+      <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[250px] -translate-x-1/2 md:-bottom-[425px] sm:-bottom-[320px]" src="/img/four-cards.png" alt="" />
       <Ember class="absolute bottom-460 left-25 md:bottom-323" />
       <Ember class="hide-glow absolute bottom-423 left-325 scale-70 opacity-40" />
       <Ember class="hide-glow absolute bottom-270 right-40 scale-60 opacity-30" />
       <Ember class="absolute bottom-0 right-100 md:right-290" />
     </Section>
 
-    <Section id="faq" dark-mode class="border-t-white/10 border-t-1">
+    <Section id="faq" dark-mode class="border-t-1 border-t-white/10">
       <div>
         <SectionLabel text="What you need to know" dark-mode />
         <FAQ :faqs="pageContent.faqs" />

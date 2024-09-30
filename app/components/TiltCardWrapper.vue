@@ -108,8 +108,10 @@ const rotateY = ref<number>(0)
 //   // }
 // }
 
+const { width: windowWidth } = useWindowSize()
+
 onMounted(() => {
-  if (window.innerWidth < 500) {
+  if (windowWidth.value < 500) {
     setTimeout(() => {
       nextTick(() => {
         getAccel()

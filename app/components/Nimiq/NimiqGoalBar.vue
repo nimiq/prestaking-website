@@ -13,14 +13,16 @@ const { data: currentAmount } = useFetch(nimiqwatchTotalStakeUrl, {
   default: () => -1,
 })
 
+const { width: windowWidth } = useWindowSize()
+
 function calcBarsTotal() {
-  if (window.innerWidth < 500) {
+  if (windowWidth.value < 500) {
     return 50
   }
-  if (window.innerWidth < 600) {
+  if (windowWidth.value < 600) {
     return 75
   }
-  else if (window.innerWidth < 1000) {
+  else if (windowWidth.value < 1000) {
     return 100
   }
   else {
