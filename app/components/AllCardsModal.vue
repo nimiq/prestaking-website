@@ -33,7 +33,7 @@ defineEmits(['close'])
     <div
       class="relative m-6 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-0 pb-32 pt-42 text-center"
     >
-      <img class="pointer-events-none absolute left-1/2 h-150% min-w-300% blur-10 brightness-120 -bottom-70% -translate-x-1/2" src="/img/God-Rays.png" alt="">
+      <NuxtImg class="pointer-events-none absolute left-1/2 h-150% min-w-300% blur-10 brightness-120 -bottom-70% -translate-x-1/2" src="/img/God-Rays.png" alt="" />
 
       <!-- Content -->
       <div class="px-32 pb-32">
@@ -68,7 +68,7 @@ defineEmits(['close'])
           <div
             v-for="card in userPrestake.options" :key="card.cardType" class="relative mb-10 h-358 min-w-248"
           >
-            <img class="relative block h-358 w-248" :src="`/img/reward-cards/modals/${card.cardType}.png`" :class="getUserStakedNIM() > card.min && getUserStakedNIM() < card.max && 'border-2 border-[#A55AE7] rounded-8'" alt="">
+            <NuxtImg class="relative block h-358 w-248" :src="`/img/reward-cards/modals/${card.cardType}.png`" :class="getUserStakedNIM() > card.min && getUserStakedNIM() < card.max && 'border-2 border-[#A55AE7] rounded-8'" alt="" />
             <div v-if="getUserStakedNIM() > card.min && getUserStakedNIM() < card.max" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
               <div class="absolute left-1/2 top-1/2 size-8 bg-white -translate-1/2" />
               <div class="i-nimiq:icons-lg-verified-filled text-20 text-[#A55AE7]" />
