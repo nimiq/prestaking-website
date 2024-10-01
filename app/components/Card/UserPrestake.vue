@@ -56,7 +56,7 @@ function activateDetails() {
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
         <div v-if="!store.loggedIn" class="i-custom:hex h-80 w-89" />
         <div v-else class="relative">
-          <img src="/img/identicon.svg" alt="">
+          <NuxtImg src="/img/identicon.svg" alt="" />
         </div>
       </div>
       <!-- Description -->

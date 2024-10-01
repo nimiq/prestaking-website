@@ -103,18 +103,22 @@ export default {
       {
         title: 'Go to your wallet',
         description: 'In the wallet, click on the staking icon next to send and receive.',
+        img: '/img/wallet-setup/go-to-your-wallet.jpg',
       },
       {
         title: 'Choose a validator pool',
         description: 'Compare and select a validator. You can switch once the network goes live.',
+        img: '/img/wallet-setup/choose-validator-pool.jpg',
       },
       {
         title: 'Select amount',
         description: 'Set an amount. Mind, that your NIM will be locked until the migration.',
+        img: '/img/wallet-setup/select-amount.jpg',
       },
       {
         title: 'Claim reward',
         description: 'Claim your reward! Enter your address and get the upgraded identicon.',
+        img: '/img/wallet-setup/claim-reward.jpg',
       },
     ],
   },

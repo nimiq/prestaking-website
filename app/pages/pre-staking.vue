@@ -158,28 +158,7 @@ onMounted(() => {
         :title="pageContent.walletSetup.title"
         :body="pageContent.walletSetup.body"
       />
-      <div class="flex flex-col text-left md:flex-row">
-        <ul class="process-list mt-24 grow self-center p-32 md:p-48">
-          <li
-            v-for="(item, index) in pageContent.walletSetup.instructions"
-            :key="index"
-          >
-            <h4 class="flex flex-col gap-12 text-center md:flex-row md:gap-0">
-              <span class="mr-10 inline-block aspect-[1/1] w-fit rounded-full bg-darkblue/10 px-8 py-4 text-17 text-darkblue leading-100%">
-                {{ index + 1 }}
-              </span>
-              {{ item.title }}
-            </h4>
-            <p class="text-center md:text-left">
-              {{ item.description }}
-            </p>
-          </li>
-        </ul>
-        <!-- </div> -->
-        <div class="z-2 aspect-[3/4] w-[calc(100%+48px)] overflow-hidden rounded-12 md:m-0 -mx-24 -mt-2 md:h-fit md:max-w-440 md:w-unset md:rounded-16">
-          <NuxtImg src="/img/video.png" width="874" height="1120" class="h-[110%] object-cover" alt="" />
-        </div>
-      </div>
+      <WalletSetup :items="pageContent.walletSetup.instructions" />
       <Header
         class="mt-96"
         title="Let's get going!"
@@ -221,37 +200,5 @@ onMounted(() => {
 .full-bleed {
   width: 100%;
   grid-column: 1 / 4;
-}
-
-.process-list {
-  @apply w-full;
-  position: relative;
-  li {
-    @apply border-b-1 border-darkblue/10;
-    padding-block: 24px;
-  }
-  p {
-    margin: 0;
-  }
-  h4 {
-    display: flex;
-    align-items: center;
-    margin-top: 0;
-    margin-bottom: 12px;
-  }
-  &::before {
-    @apply absolute pointer-events-none top-0 left-0 h-full w-full md:w-110% border-1 border-darkblue/10 rounded-b-0 rounded-12 md:rounded-b-16 md:rounded-16;
-    content: '';
-  }
-}
-
-.process-list li:first-child {
-  padding-top: 0;
-  padding-bottom: 24px;
-}
-.process-list li:last-child {
-  border: none;
-  padding-top: 24px;
-  padding-bottom: 0px;
 }
 </style>

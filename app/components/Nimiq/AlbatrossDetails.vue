@@ -66,10 +66,10 @@ const activeStep = ref(0)
           <h3 class="!font-bold">
             {{ steps[activeStep].title }}
           </h3>
-          <div v-if="activeStep === 0" i-custom:albatross-0 class="mx-auto mt-24 h-200 w-160" />
-          <div v-if="activeStep === 1" i-custom:albatross-1 class="mx-auto mt-24 h-200 w-160" />
-          <div v-if="activeStep === 2" i-custom:albatross-2 class="mx-auto mt-24 h-200 w-160" />
-          <div v-if="activeStep === 3" i-custom:albatross-3 class="mx-auto mt-24 h-200 w-160" />
+          <NuxtImg v-if="activeStep === 0" src="/img/albatross-technical-details/micro-block.webp" class="mx-auto mt-24 w-160" alt="Representation of a Albatross' Micro block" />
+          <NuxtImg v-if="activeStep === 1" src="/img/albatross-technical-details/skip-block.webp" class="mx-auto mt-24 w-160" alt="Representation of a Albatross' Micro block" />
+          <NuxtImg v-if="activeStep === 2" src="/img/albatross-technical-details/macro-block.webp" class="mx-auto mt-24 w-160" alt="Representation of a Albatross' Macro block" />
+          <NuxtImg v-if="activeStep === 3" src="/img/albatross-technical-details/batch-and-epoch.webp" class="mx-auto mt-24 w-160" alt="Representation of an Albatross' Batch and Epochs" />
           <div class="mt-24 overflow-auto">
             {{ steps[activeStep].text }}
           </div>
