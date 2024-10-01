@@ -1,7 +1,11 @@
 <script setup lang="ts">
 const { items } = defineProps<{ items: { title: string, description: string, img: string }[] }>()
 
-const activeIndex = ref(0)
+const { activeIndex, scroller, slideTo } = useCarousel({
+  onStepChanged: (_i) => {
+    // You can add any necessary logic here without using console.log
+  },
+})
 
 const value = ref(0)
 const startedAt = ref(Date.now())
@@ -10,6 +14,7 @@ const SECONDS_PER_SLIDE = 7
 watch(activeIndex, () => {
   startedAt.value = Date.now()
   value.value = 0
+  slideTo(activeIndex.value)
 })
 
 const { pause, resume, isActive: isProgressActive } = useRafFn(() => {
@@ -37,13 +42,13 @@ function handleClick(i: number) {
 </script>
 
 <template>
-  <div ref="root" flex="~" rounded-l-16 border="1 neutral/20" bg="neutral/2" p="$p" pr-0 style="--p: 48px">
-    <div relative flex-1>
-      <div inset-y="[calc(var(--p)*-1)]" pointer-events-none absolute right-0 w-315 bg-gradient="to-l from-[#e9e9eb] to-transparent" />
+  <div ref="root" flex="~ col lg:row" style="--p: 48px">
+    <div relative flex-1 lg:p="$p r-0" lg:border="1 r-0 neutral/20" w="[calc(100%+64px)]" lg:bg="neutral/2" lg:rounded-l-16>
+      <div pointer-events-none absolute inset-y-0 right-0 hidden w-315 lg:block bg-gradient="to-l from-[#e9e9eb] to-transparent" />
 
-      <ul flex="~ col gap-24" relative z-1 pr-48>
-        <li v-for="({ title, description }, i) in items" :key="i" w-full :data-state="i === activeIndex && isProgressActive ? 'active' : undefined">
-          <button bg-transparent @click="handleClick(i)">
+      <ul ref="scroller" flex="~ lg:col gap-y-24" snap="x mandatory" w-full scroll-pl-32 of-x-auto nq-scrollbar-hide max-lg:mx--32>
+        <li v-for="({ title, description }, i) in items" :key="i" snap="start always" :data-state="i === activeIndex ? 'active' : undefined" max-lg:bg="neutral/2" max-lg:border="y-1 first:l-1 last:r-1 neutral/20" w="[calc(100%+64px)]" max-lg:rounded="first:l-16 last:r-16" max-lg:max-w="[calc(100vw-126px)]" data-slide relative w-full shrink-0 max-lg:p-24 max-lg:first:ml-32 max-lg:last:mr-32>
+          <button bg-transparent transition-opacity max-lg:op="10 data-active:100" @click="handleClick(i)">
             <div flex="~ gap-16">
               <div text="18 neutral center" size-30 shrink-0 rounded-full bg-neutral-400 flex="~ items-center justify-center" font-semibold>
                 {{ i + 1 }}
@@ -56,13 +61,16 @@ function handleClick(i: number) {
               {{ description }}
             </p>
           </button>
-          <progress :value h="0 data-active:4" op="0 data-active:100" transition="[opacity,height]" w-full appearance-none rounded-full bg-amber />
+          <progress :value h="0 data-active:4" op="0 data-active:100" :class="{ '!op-0': !isProgressActive }" transition="[opacity,height]" w-full appearance-none rounded-full />
+          <div v-if="activeIndex < items.length - 1" :class="activeIndex > i ? 'op-0' : 'op-100'" absolute inset-b-40 inset-t-24 right-0 w-1 bg-neutral-400 transition-opacity lg:hidden />
         </li>
       </ul>
     </div>
     <transition mode="out-in" enter-active-class="transition-[opacity,filter] duration-400" enter-from-class="op-0 blur-2" enter-to-class="op-100 blur-0" leave-active-class="transition-[opacity,filter] duration-150 blur-0" leave-from-class="op-100" leave-to-class="op-0 blur-2">
-      <div :key="activeIndex" border="1 neutral/20" my="[calc((var(--p)+32px)*-1)]" w-437 of-hidden rounded-16 bg-neutral-200 shadow>
+      <div :key="activeIndex" border="1 neutral/20" my="-8 lg:-32" w="[calc(100vw-16px)] lg:437" relative z-1 aspect-0.78039 of-hidden rounded-16 bg-neutral-200 shadow max-lg:mx--24>
         <NuxtImg :src="items[activeIndex]?.img" size-full object-cover />
+        <div v-if="activeIndex > 0" absolute inset-y-0 left-0 z-1 w-200 @click="slideTo(activeIndex - 1)" />
+        <div v-if="activeIndex + 1 < items.length" absolute inset-y-0 right-0 z-1 w-200 @click="slideTo(activeIndex + 1)" />
       </div>
     </transition>
   </div>

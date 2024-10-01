@@ -158,7 +158,7 @@ onMounted(() => {
         :title="pageContent.walletSetup.title"
         :body="pageContent.walletSetup.body"
       />
-      <WalletSetupDesktop :items="pageContent.walletSetup.instructions" />
+      <WalletSetup :items="pageContent.walletSetup.instructions" />
       <Header
         class="mt-96"
         title="Let's get going!"
