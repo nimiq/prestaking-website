@@ -32,7 +32,7 @@ const socialMedia = [
     </div>
 
     <div class="disclaimer mx-32 md:text-center">
-      <SectionLabel text="Legal Disclaimer" dark-mode class="mb-16 mt-48" />
+      <SectionLabel text="Legal Disclaimer" dark-mode class="mb-16 mt-48 text-left md:text-center" />
       <p text="22 white balance" class="max-w-[700px]">
         The content on this website must not be considered financial advice and does not constitute any offer or solicitation to offer or recommendation of any investment product.
       </p>
@@ -70,7 +70,7 @@ const socialMedia = [
           FAQ
         </NuxtLink> -->
 
-        <p mx-auto>
+        <p md:mx-auto>
           © Nimiq Foundation 2024
         </p>
       </div>

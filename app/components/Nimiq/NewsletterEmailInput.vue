@@ -22,8 +22,8 @@ function submitForm() {
 
 <template>
   <form relative max-w-32em w-full @submit.prevent="submitForm">
-    <input v-model="email" type="email" name="email" required relative rounded-full nq-input-box placeholder="Enter email address...">
-    <button type="submit" :disabled="!email" group absolute right-0.1875em top-2 aspect-1 h-29 rounded-full transition-colors not-disabled:cursor-pointer bg="not-disabled:gradient-blue hocus:not-disabled:gradient-blue-darkened disabled:!neutral-300" flex="~ items-center justify-center">
+    <input v-model="email" type="email" name="email" required relative rounded-full pr-36 nq-input-box placeholder="Enter email address...">
+    <button type="submit" :disabled="!email" group absolute right-0.1875em top-2 aspect-1 h-29 rounded-full transition-colors not-disabled:cursor-pointer bg="not-disabled:gradient-blue hocus:not-disabled:gradient-blue-darkened disabled:!white/10" flex="~ items-center justify-center">
       <div i-nimiq:arrow-right text="0.6875em white group-disabled:neutral-600" />
     </button>
     <!-- The following div is always on the dom to avoid CLS -->

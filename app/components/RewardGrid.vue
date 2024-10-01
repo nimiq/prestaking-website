@@ -96,7 +96,7 @@ function claimTickets() {
       </div>
     </div>
     <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/05 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
-      <h4 class="w-full text-center text-28 text-white">
+      <h4 class="w-full px-16 text-center text-28 text-white">
         Earn points by pre-staking NIM
       </h4>
       <div

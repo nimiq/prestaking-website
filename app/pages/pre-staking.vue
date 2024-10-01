@@ -17,7 +17,7 @@ onMounted(() => {
 
 <template>
   <main>
-    <Section id="hero-container" god-rays dark-mode>
+    <Section id="hero-container" dark-mode god-rays>
       <Header
         id="hero"
         :title="pageContent.hero.title"
@@ -26,7 +26,7 @@ onMounted(() => {
       />
       <RewardGrid id="rewards" :pre-pre-staking="prestaking" />
       <div>
-        <SectionLabel dark-mode text="The giveaways" />
+        <SectionLabel dark-mode text="The giveaways" class="mt-32" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <StatBlock
             v-for="stat in pageContent.hero.prizes"
@@ -140,12 +140,12 @@ onMounted(() => {
         :body="pageContent.prestakeReward.body"
       />
       <div class="flex flex-col items-center justify-center gap-32 sm:flex-row">
-        <p class="text-right">
+        <p class="text-center md:text-right">
           100 Million NIM will be split<br>between all participating<br>pre-stakers
         </p>
         <div class="i-custom:gauge-chart h-144 w-144 flex-shrink-0" />
 
-        <p class="text-gold font-bold">
+        <p class="text-center text-gold font-bold md:text-left">
           The more you pre-stake,<br> the bigger your cut
         </p>
       </div>
