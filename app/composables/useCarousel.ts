@@ -1,27 +1,13 @@
-import { useIntersectionObserver } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
 interface UseCarouselOptionsInterface {
-  onStepChanged?: (index: number) => void
+  // onStepChanged?: (index: number) => void
 }
 
-export function useCarousel(options: UseCarouselOptionsInterface = {}) {
+export function useCarousel(_options: UseCarouselOptionsInterface = {}) {
   const activeIndex = ref(0)
   const scroller = ref<HTMLDivElement>()
   const slides = computed<HTMLElement[]>(() => Array.from(scroller.value?.querySelectorAll('[data-slide]') || []))
-
-  useIntersectionObserver(slides, (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const slide = entry.target as HTMLElement
-        const slideIndex = slides.value.indexOf(slide)
-        if (slideIndex !== -1) {
-          activeIndex.value = slideIndex
-          options?.onStepChanged?.(slideIndex)
-        }
-      }
-    })
-  }, { threshold: 0.5 })
 
   function slideTo(index: number) {
     scroller.value?.scrollTo({
