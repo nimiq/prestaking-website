@@ -9,6 +9,7 @@ export default nuxt(
       formatters: true,
       typescript: true,
       vue: true,
+      ignores: ['public/staking-calculator'],
     },
   ),
 )

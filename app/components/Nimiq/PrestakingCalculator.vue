@@ -4,7 +4,7 @@
 
 <template>
   <iframe
-    src="https://www.nimiq.com/staking-calculator/?layout=prestaking-embed"
+    src="/staking-calculator/?layout=prestaking-embed"
   />
 </template>
 
