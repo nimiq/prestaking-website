@@ -43,11 +43,11 @@ function handleClick(i: number) {
 
 <template>
   <div ref="root" flex="~ col lg:row" style="--p: 48px">
-    <div relative flex-1 lg:p="$p r-0" lg:border="1 r-0 neutral/20" w="[calc(100%+64px)]" lg:bg="neutral/2" lg:rounded-l-16>
-      <div pointer-events-none absolute inset-y-0 right-0 hidden w-315 lg:block bg-gradient="to-l from-[#e9e9eb] to-transparent" />
+    <div relative flex-1 lg:p="$p r-0" lg:border="1 r-0 neutral/10" w="[calc(100%+64px)]" lg:bg="neutral/1" lg:rounded-l-16>
+      <div pointer-events-none absolute inset-y-0 right-0 hidden w-315 lg:block bg-gradient="to-l from-[#f9f9fa] to-transparent" />
 
-      <ul ref="scroller" flex="~ lg:col gap-y-24" snap="x mandatory" w-full scroll-pl-32 of-x-auto nq-scrollbar-hide max-lg:mx--32>
-        <li v-for="({ title, description }, i) in items" :key="i" snap="start always" :data-state="i === activeIndex ? 'active' : undefined" max-lg:bg="neutral/2" max-lg:border="y-1 first:l-1 last:r-1 neutral/20" w="[calc(100%+64px)]" max-lg:rounded="first:l-16 last:r-16" max-lg:max-w="[calc(100vw-126px)]" data-slide relative w-full shrink-0 max-lg:p-24 max-lg:first:ml-32 max-lg:last:mr-32>
+      <ul ref="scroller" flex="~ lg:col gap-y-24" snap="x mandatory" w-full scroll-pl-32 of-x-auto nq-scrollbar-hide max-lg:mx--32 lg:pr-32>
+        <li v-for="({ title, description }, i) in items" :key="i" snap="start always" :data-state="i === activeIndex ? 'active' : undefined" max-lg:bg="neutral/1" max-lg:border="y-1 first:l-1 last:r-1 neutral/10" w="[calc(100%+64px)]" max-lg:rounded="first:l-16 last:r-16" max-lg:max-w="[calc(100vw-126px)]" data-slide relative w-full shrink-0 max-lg:p-24 max-lg:first:ml-32 max-lg:last:mr-32>
           <button bg-transparent transition-opacity max-lg:op="10 data-active:100" @click="handleClick(i)">
             <div flex="~ gap-16">
               <div text="18 neutral center" size-30 shrink-0 rounded-full bg-neutral-400 flex="~ items-center justify-center" font-semibold>
