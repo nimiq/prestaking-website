@@ -34,7 +34,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
         :body="pageContent.hero.body"
         :button-link="pageContent.hero.buttonLink"
         :button-text="pageContent.hero.buttonLabel"
-        button force-centered-text dark-mode
+        dark-mode button force-centered-text
         :pre-pre-staking="prestaking"
       />
     </div>
@@ -121,10 +121,14 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
       <Ember class="absolute bottom-0 right-100 md:right-290" />
     </Section>
 
-    <Section id="faq" dark-mode class="border-t-1 border-t-white/10">
-      <div>
-        <SectionLabel text="What you need to know" dark-mode />
-        <FAQ :faqs="pageContent.faqs" />
+    <Section id="faq" dark-mode class="border-t-1 border-t-white/10 !pb-0">
+      <Header
+        dark-mode
+        title="What you need to know"
+      />
+      <div v-for="topic in pageContent.faqs" :key="topic.label">
+        <SectionLabel :text="topic.label" dark-mode />
+        <FAQ :faqs="topic.faqs" />
       </div>
     </Section>
   </main>

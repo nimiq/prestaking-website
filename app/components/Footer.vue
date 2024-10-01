@@ -19,7 +19,7 @@ const socialMedia = [
     <div w-full children:max-w-690 border="y-1.5 white/10" p="x-32 y-40">
       <div mx-auto grid="~ cols-[auto_1px_auto_1fr] md:rows-2 gap-16 md:cols-[320px_1px_auto_auto] lg:cols-[1fr_auto_auto_auto_auto] items-center justify-center lg:rows-1">
         <span text="2xl white md:center" font-600 col-span="4" lg:hidden>Keep me updated</span>
-        <span text="28 white" lh-none max-lg:hidden font-600>Keep me updated</span>
+        <span text="28 white" font-600 lh-none max-lg:hidden>Keep me updated</span>
         <NimiqNewsletterEmailInput col-span="4 md:1" relative max-h-33 max-w-7xl />
         <div hidden h-33 w-1 bg-neutral-500 md:block />
         <NuxtLink :to="socialMedia.at(0)!.link" size="36 lg:40" rounded-full transition-colors bg="white/8 hover:white/12" flex="~ items-center justify-center" title="X (Twitter)">
@@ -31,19 +31,26 @@ const socialMedia = [
       </div>
     </div>
 
-    <div flex="~ col" text="sm neutral-700" nq-mt-96 px-32>
+    <div class="disclaimer mx-32 md:text-center">
+      <SectionLabel text="Legal Disclaimer" dark-mode class="mb-16 mt-48 text-left md:text-center" />
+      <p text="22 white balance" class="max-w-[700px]">
+        The content on this website must not be considered financial advice and does not constitute any offer or solicitation to offer or recommendation of any investment product.
+      </p>
+    </div>
+
+    <div flex="~ col" text="sm neutral-700" px-32 nq-mt-96>
       <p text="md:center 2xl white">
         Follow us here
       </p>
       <ul role="list" flex="~ md:justify-center md:items-center gap-16 wrap" text="18 neutral-700" nq-mt-16>
         <li v-for="({ platform, icon, link }) in socialMedia" :key="platform || '123'" self-stretch justify-self-stretch aria-label="Links to some of our social media pages">
           <NuxtLink :title="platform" :to="link" focusable h-40 w-40 flex rounded-full p-10 bg="white/15 hocus:white/25" class="text-white" transition-colors :aria-label="`Visit Nimiq on ${platform}`">
-            <div :class="icon" class="w-full h-full" />
+            <div :class="icon" class="h-full w-full" />
           </NuxtLink>
         </li>
       </ul>
 
-      <NuxtLink to="https://www.nimiq.com" group w-max flex mt-72 md:mx-auto>
+      <NuxtLink to="https://www.nimiq.com" group mt-72 w-max flex md:mx-auto>
         <div i-nimiq:logos-nimiq-horizontal-mono text="28 md:30 white/50 hover:white" transition-color />
       </NuxtLink>
       <p text="sm md:center left white/50" max-w-33ch md:mx-auto nq-mt-16>
@@ -63,7 +70,7 @@ const socialMedia = [
           FAQ
         </NuxtLink> -->
 
-        <p mx-auto>
+        <p md:mx-auto>
           © Nimiq Foundation 2024
         </p>
       </div>

@@ -26,7 +26,7 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
 
 <template>
   <main>
-    <Section id="hero-container" god-rays dark-mode>
+    <Section id="hero-container" dark-mode god-rays>
       <Header
         id="hero"
         :title="pageContent.hero.title"
@@ -35,7 +35,7 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
       />
       <RewardGrid id="rewards" :pre-pre-staking="prestaking" />
       <div>
-        <SectionLabel dark-mode text="The giveaways" />
+        <SectionLabel dark-mode text="The giveaways" class="mt-32" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
           <StatBlock
             v-for="stat in pageContent.hero.prizes"
@@ -56,7 +56,7 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
             <NuxtImg class="h-80" src="/img/200.svg" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
-                Pre-stake and get a piece of the 200 Mil NIM rewards.
+                Pre-stake and get a piece of the 200 Million NIM rewards.
               </p>
             </div>
           </div>
@@ -141,7 +141,7 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
 
     <Section class="!pt-40 xl:!pt-0">
       <div class="relative w-[calc(100%+64px)] flex justify-center -ml-32 -mr-32">
-        <NuxtImg src="/img/200M.png" class="min-w-900 w-full bg-cover object-center" alt="" />
+        <NuxtImg src="/img/100M.png" class="min-w-900 w-full bg-cover object-center" alt="" />
       </div>
       <Header
         class="z-5 -mt-160"
@@ -149,12 +149,12 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
         :body="pageContent.prestakeReward.body"
       />
       <div class="flex flex-col items-center justify-center gap-32 sm:flex-row">
-        <p class="text-right">
-          100 Mil NIM will be split<br>betweenall participating<br>pre-stakers
+        <p class="text-center md:text-right">
+          100 Million NIM will be split<br>between all participating<br>pre-stakers
         </p>
         <div class="i-custom:gauge-chart h-144 w-144 flex-shrink-0" />
 
-        <p class="text-gold font-bold">
+        <p class="text-center text-gold font-bold md:text-left">
           The more you pre-stake,<br> the bigger your cut
         </p>
       </div>
@@ -200,33 +200,12 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
       />
     </Section>
 
-    <!-- <Section god-rays dark-mode>
-      <Header
-        dark-mode
-        :label="pageContent.prestake.label"
-        :title="pageContent.prestake.title"
-        :body="pageContent.prestake.body"
-        :pre-pre-staking="prestaking"
-      />
-      <TicketSection />
-      <Header
-        class="my-96"
-        dark-mode
-        :title="pageContent.prestake.bottomHeader.title"
-        :body="pageContent.prestake.bottomHeader.body"
-        button
-        :button-link="pageContent.prestake.bottomHeader.buttonLink"
-        :button-text="pageContent.prestake.bottomHeader.buttonLabel"
-      />
-      <NuxtImg class="absolute left-1/2 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="/img/four-cards.png" alt="" />
-    </Section> -->
-
-    <Section dark-mode>
+    <!-- <Section dark-mode>
       <div>
         <SectionLabel text="What you need to know" dark-mode />
         <FAQ :faqs="pageContent.faqs" />
       </div>
-    </Section>
+    </Section> -->
   </main>
 </template>
 

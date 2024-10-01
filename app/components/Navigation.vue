@@ -50,7 +50,7 @@ onUnmounted(() => {
 <template>
   <header
     ref="root$"
-    class="ease-nq fixed left-0 top-16 z-100 mt-0 w-full px-16 transition-opacity duration-400"
+    class="fixed left-0 top-16 z-100 mt-0 w-full px-16 transition-opacity duration-400 ease-nq"
     :class="[{
       'pointer-events-none opacity-0': localState.isScrolled,
       '!pointer-events-auto !opacity-100': localState.isSticky,
@@ -58,7 +58,7 @@ onUnmounted(() => {
   >
     <div
       ref="root$"
-      class="transition-[border-radius,opacity,background,box-shadow] ease-nq w-full flex items-center justify-between gap-x-16 rounded-8 p-16 text-left duration-400"
+      class="transition-[border-radius,opacity,background,box-shadow] w-full flex items-center justify-between gap-x-16 rounded-8 p-16 text-left duration-400 ease-nq"
       :class="{
         'bg-white shadow': localState.isSticky,
         'bg-transparent': !localState.isSticky,
@@ -78,16 +78,23 @@ onUnmounted(() => {
           'text-white/60': !localState.isSticky,
         }"
       >
-        <a href="https://nimiq.com" class="text-16 font-bold transition-color" :class="{
-          'hover:text-neutral-900': localState.isSticky,
-          'hover:text-white/80': !localState.isSticky,
-        }">About Nimiq</a>
-        <NuxtLink to="/pre-staking" class="text-16 font-bold transition-color" :class="{
-          'hover:text-neutral-900': localState.isSticky,
-          'hover:text-white/80': !localState.isSticky,
-        }">Pre-staking</NuxtLink>
+        <a
+          href="https://nimiq.com" class="text-16 font-bold transition-color" :class="{
+            'hover:text-neutral-900': localState.isSticky,
+            'hover:text-white/80': !localState.isSticky,
+          }"
+        >About Nimiq</a>
+        <NuxtLink
+          to="/pre-staking" class="text-16 font-bold transition-color" :class="{
+            'hover:text-neutral-900': localState.isSticky,
+            'hover:text-white/80': !localState.isSticky,
+          }"
+        >
+          Pre-staking
+        </NuxtLink>
         <div class="flex items-center gap-x-16">
-          <a href="https://x.com/nimiq" rel="noopener noreferrer" title="X (Twitter)"
+          <a
+            href="https://x.com/nimiq" rel="noopener noreferrer" title="X (Twitter)"
             class="size-32 flex items-center justify-center rounded-full transition-colors"
             :class="{
               'bg-black/15 hover:bg-black/20 text-neutral/50': localState.isSticky,
@@ -95,7 +102,8 @@ onUnmounted(() => {
             }"
           ><div class="" i-nimiq:logos-twitter-mono /></a>
 
-          <a href="https://discord.gg/cMHemg8" rel="noopener noreferrer" title="Discord"
+          <a
+            href="https://discord.gg/cMHemg8" rel="noopener noreferrer" title="Discord"
             class="size-32 flex items-center justify-center rounded-full transition-colors"
             :class="{
               'bg-black/15 hover:bg-black/20 text-neutral/50': localState.isSticky,

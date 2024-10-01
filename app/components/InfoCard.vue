@@ -15,7 +15,9 @@ defineProps<{ title: string, description: string, icon: string }>()
       <h4 class="my-0">
         {{ title }}
       </h4>
-      <p class="mt-12">{{ description }}</p>
+      <p class="mt-12">
+        {{ description }}
+      </p>
     </div>
   </div>
 </template>

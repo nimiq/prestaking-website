@@ -14,7 +14,7 @@ defineProps({
   },
   body: {
     type: String,
-    required: true,
+    required: false,
   },
   darkMode: {
     type: Boolean,
@@ -62,7 +62,7 @@ defineProps({
         'text-center': forceCenteredText,
       }"
     >{{ label }}</span>
-    <div v-if="prePreStaking" class="mx-auto mb-32 w-max flex items-center gap-x-8 rounded-full bg-green/20 px-15 py-4 text-18px text-green font-bold">
+    <div v-if="prePreStaking" :class="{ 'mx-auto': forceCenteredText }" class="mb-32 w-max flex items-center gap-x-8 rounded-full bg-green/20 px-15 py-4 text-18px text-green font-bold md:mx-auto">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="9" cy="9" r="9" fill="#13B59D" />
         <path d="M6.75949 10.9246L9.69773 10.8765L9.79406 5" stroke="white" stroke-width="2.11943" stroke-linecap="round" stroke-linejoin="round" />
@@ -80,7 +80,8 @@ defineProps({
       {{ title }}
     </component>
     <p
-      class="hero-subline mb-0 md:text-center text-balance" :class="{
+      v-if="body"
+      class="hero-subline mb-0 text-balance md:text-center" :class="{
         'text-white/60': darkMode,
         'text-darkblue/60': !darkMode,
         'text-center': forceCenteredText,
@@ -94,13 +95,16 @@ defineProps({
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
       }"
-    >{{ buttonText }}</nuxt-link>
+    >
+      {{ buttonText }}
+    </nuxt-link>
     <a
       v-else-if="button" :href="buttonLink" target="_blank" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
       :class="{
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
-      }">{{ buttonText }}</a>
+      }"
+    >{{ buttonText }}</a>
     <slot />
   </div>
 </template>

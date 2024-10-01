@@ -46,7 +46,6 @@ const activeStep = ref(0)
   <div class="mt-24 w-fit flex cursor-pointer items-center rounded-full px-20 py-10 text-white font-bold ring-1.5 ring-white/30 transition-colors md:mx-auto hover:bg-white/10" @click="openModal">
     <div class="i-custom:cli-docs mr-12 text-20" />
     <span>Technical details</span>
-    <div class="i-nimiq:info ml-8 text-white op-40" />
   </div>
   <ModalWrapper :active="showModal">
     <div
