@@ -1,16 +1,16 @@
 export default {
   hero: {
-    title: 'Pre-stake to earn your share of 200 million NIM in rewards and bonus giveaways!',
+    title: 'Pre-stake to earn your share of 200 Million NIM in rewards and bonus giveaways!',
     body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
 
     prizes: [
       {
-        value: '3 Mil',
+        value: '3 Mio',
         text: '10 winners',
         color: 'orange',
       },
       {
-        value: '1.5 Mil',
+        value: '1.5 Mio',
         text: '25 winners',
         color: 'red',
       },
@@ -33,17 +33,17 @@ export default {
     title: 'Join in and help secure the network',
     body: 'The more people pre-stake, the more secure will the young network be. Join in, help reach the base goal and let’s smash the stretch goal right after.',
     goalBar: {
-      totalGoal: 10000000000,
+      totalGoal: 11_800_000_000, // Chosen for visual balance (so that the 6B stretch goal is in the middle)
       milestones: [
         {
           label: '2B',
           text: 'Base Goal',
-          value: 2000000000,
+          value: 2_000_000_000,
         },
         {
           label: '6B',
           text: 'Stretch Goal',
-          value: 6000000000,
+          value: 6_000_000_000,
         },
       ],
     },
@@ -93,7 +93,7 @@ export default {
 
   prestakeReward: {
     title: 'Everyone wins with Nimiq pre-staking',
-    body: 'Even if you’re out of luck, every pre-staker receives a cut of the whooping 100 Mil NIM pre-staking reward, just pre-stake and claim your points.',
+    body: 'Even if you’re out of luck, every pre-staker receives a cut of the whooping 100 Million NIM pre-staking reward, just pre-stake and claim your points.',
   },
 
   walletSetup: {
@@ -121,8 +121,8 @@ export default {
 
   prestake: {
     label: 'Prestake',
-    title: 'Join the prestake, win big and earn eternal glory',
-    body: 'Support the network. Be among the first to earn and get a unique Identicon upgrade. Also, there is 200 Mil NIM to win.',
+    title: 'Join the prestake, win big and make history',
+    body: 'Support the network, win a share of a 200 Million NIM giveaway and get a unique Identicon upgrade.',
     bottomHeader: {
       title: 'Nimiq needs you. Pre-stake before the 24th for bigger bonuses',
       body: 'Prestake from the wallet, get a guaranteed reward and join the competition for even greater prizes.',

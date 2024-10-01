@@ -1,7 +1,7 @@
 export default {
   hero: {
     title: 'Countdown to Nimiq Proof-of-Stake',
-    body: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200,000,000 NIM giveaway.',
+    body: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200\'000\'000 NIM giveaway.',
     buttonLabel: 'Pre-staking',
     buttonLink: '/pre-staking',
   },
@@ -20,11 +20,11 @@ export default {
         text: 'block time',
         color: 'red',
       },
-      // {
-      //   value: '0.07 Wh',
-      //   text: 'energy / transaction',
-      //   color: 'orange',
-      // },
+      {
+        value: 'Energy-efficient',
+        text: 'Sending a transaction takes less energy than an email!',
+        color: 'orange',
+      },
     ],
   },
   prestakeCalculator: {
@@ -38,14 +38,14 @@ export default {
   },
   albatross: {
     label: 'Albatross',
-    title: 'The powerhouse behind',
+    title: 'The powerhouse underneath',
     body: 'Take a deep dive into Albatross, the optimistic consensus algo, developed by Nimiq and designed for single-chain performance and easy staking.',
     techSpecLink: '',
   },
   prestake: {
     label: 'Pre-stake',
-    title: 'Join the pre-stake, win big and earn eternal glory',
-    body: 'Support the network. Be among the first to earn and get a unique Identicon upgrade. Also, there are 200 Mil NIM in giveaways.',
+    title: 'Join the pre-stake, win big and make history',
+    body: 'Support the network, win a share of a 200 Million NIM giveaway and get a unique Identicon upgrade.',
     bottomHeader: {
       title: 'Nimiq needs you! Pre-stake your NIM and support the migration.',
       body: 'Pre-stake from the wallet, join the campaign and earn substantial NIM rewards.',
