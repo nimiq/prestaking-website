@@ -64,7 +64,8 @@ function activateDetails() {
         Pre-staking is starting soon.<br>Stay tuned!
       </div>
       <!-- Buttons -->
-      <button v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-blue" disabled><!-- @click="$emit('openLoginModal')" -->
+      <button v-if="!store.loggedIn" class="mx-auto mt-24 cursor-pointer nq-pill-blue" disabled>
+        <!-- @click="$emit('openLoginModal')" -->
         Login & enter
       </button>
       <button v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="mx-auto mt-24 cursor-pointer nq-pill-secondary" @click="getUserWalletData">

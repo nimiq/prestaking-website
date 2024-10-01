@@ -25,7 +25,7 @@ onMounted(() => {
         :body="pageContent.hero.body"
         :button-link="pageContent.hero.buttonLink"
         :button-text="pageContent.hero.buttonLabel"
-        button force-centered-text dark-mode
+        dark-mode button force-centered-text
         :pre-pre-staking="prestaking"
       />
     </div>
