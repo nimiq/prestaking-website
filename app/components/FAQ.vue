@@ -25,7 +25,7 @@ const isOpen = ref(false)
     <div
       v-for="(faq, index) in faqs" :key="index" class="gap-y-16 rounded-6 bg-white/06 p-16 text-18"
     >
-      <div class="font-bold text-white">
+      <div class="text-white font-bold">
         {{ faq.question }}
       </div>
       <p class="mt-16 text-white/80">
@@ -33,7 +33,7 @@ const isOpen = ref(false)
       </p>
     </div>
     <div v-show="!isOpen" class="absolute bottom-0 left-0 h-120 w-full bg-gradient-from-darkblue bg-gradient-to-transparent bg-gradient-to-t transition-opacity" />
-    <button class="absolute left-1/2 transition-all nq-pill-secondary -translate-x-1/2" :class="isOpen ? '-bottom-40' : 'bottom-20'" @click="isOpen = !isOpen">
+    <button class="absolute left-1/2 cursor-pointer transition-all nq-pill-secondary -translate-x-1/2" :class="isOpen ? '-bottom-40' : 'bottom-20'" @click="isOpen = !isOpen">
       {{ isOpen ? 'Show less' : 'Show more' }}
     </button>
   </div>

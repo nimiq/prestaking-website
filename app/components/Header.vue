@@ -14,7 +14,7 @@ defineProps({
   },
   body: {
     type: String,
-    required: true,
+    required: false,
   },
   darkMode: {
     type: Boolean,
@@ -80,7 +80,8 @@ defineProps({
       {{ title }}
     </component>
     <p
-      class="hero-subline mb-0 md:text-center text-balance" :class="{
+      v-if="body"
+      class="hero-subline mb-0 text-balance md:text-center" :class="{
         'text-white/60': darkMode,
         'text-darkblue/60': !darkMode,
         'text-center': forceCenteredText,
@@ -94,13 +95,16 @@ defineProps({
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
       }"
-    >{{ buttonText }}</nuxt-link>
+    >
+      {{ buttonText }}
+    </nuxt-link>
     <a
       v-else-if="button" :href="buttonLink" target="_blank" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
       :class="{
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
-      }">{{ buttonText }}</a>
+      }"
+    >{{ buttonText }}</a>
     <slot />
   </div>
 </template>

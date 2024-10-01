@@ -191,33 +191,12 @@ onMounted(() => {
       />
     </Section>
 
-    <!-- <Section god-rays dark-mode>
-      <Header
-        dark-mode
-        :label="pageContent.prestake.label"
-        :title="pageContent.prestake.title"
-        :body="pageContent.prestake.body"
-        :pre-pre-staking="prestaking"
-      />
-      <TicketSection />
-      <Header
-        class="my-96"
-        dark-mode
-        :title="pageContent.prestake.bottomHeader.title"
-        :body="pageContent.prestake.bottomHeader.body"
-        button
-        :button-link="pageContent.prestake.bottomHeader.buttonLink"
-        :button-text="pageContent.prestake.bottomHeader.buttonLabel"
-      />
-      <NuxtImg class="absolute left-1/2 -bottom-[160px] -translate-x-1/2 md:-bottom-[200px]" src="/img/four-cards.png" alt="" />
-    </Section> -->
-
-    <Section dark-mode>
+    <!-- <Section dark-mode>
       <div>
         <SectionLabel text="What you need to know" dark-mode />
         <FAQ :faqs="pageContent.faqs" />
       </div>
-    </Section>
+    </Section> -->
   </main>
 </template>
 
