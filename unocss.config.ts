@@ -52,12 +52,6 @@ export default defineConfig({
           'arrow': () => readFile('./app/assets/svg/icons/arrow.svg', 'utf-8'),
           'plus': () => readFile('./app/assets/svg/icons/plus.svg', 'utf-8'),
 
-          // Alabatross details svgs
-          'albatross-0': () => readFile('./app/assets/svg/icons/albatross-0.svg', 'utf-8'),
-          'albatross-1': () => readFile('./app/assets/svg/icons/albatross-1.svg', 'utf-8'),
-          'albatross-2': () => readFile('./app/assets/svg/icons/albatross-2.svg', 'utf-8'),
-          'albatross-3': () => readFile('./app/assets/svg/icons/albatross-3.svg', 'utf-8'),
-
           // Cards
           'time-card': () => readFile('./app/assets/svg/cards/time-active.svg', 'utf-8'),
           'underdog-card': () => readFile('./app/assets/svg/cards/underdog-active.svg', 'utf-8'),
