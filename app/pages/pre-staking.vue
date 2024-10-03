@@ -13,6 +13,15 @@ onMounted(() => {
       .fromTo('#reward-list', { opacity: 0, transform: 'translate(50%, 0%)' }, { opacity: 1, transform: 'translate(0%, 0%)', duration: 1 }, '-=1.5')
   })
 })
+
+useHead({
+  title: pageContent.hero.title,
+  meta: [
+    { name: 'description', content: pageContent.hero.body },
+  ],
+})
+
+defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
 </script>
 
 <template>

@@ -45,23 +45,22 @@ function updateTime() {
   minute.value.secondDigit = Number.parseInt(minutesAsString[1] as string)
 }
 
+useEventListener('resize', updateViewBoxWidth)
+
 onMounted(() => {
   updateViewBoxWidth()
   updateTime()
   setInterval(updateTime, 1000 * 60)
-  window.addEventListener('resize', updateViewBoxWidth)
 })
 
-onUnmounted(() => {
-  document.removeEventListener('resize', updateViewBoxWidth)
-})
+const { width: windowWidth } = useWindowSize()
 
 const viewWidth = ref(1440)
 function updateViewBoxWidth() {
-  if (window.innerWidth > 1024) {
+  if (windowWidth.value > 1024) {
     viewWidth.value = 1440
   }
-  else if (window.innerWidth > 640) {
+  else if (windowWidth.value > 640) {
     viewWidth.value = 975
   }
   else {
@@ -70,10 +69,10 @@ function updateViewBoxWidth() {
 }
 
 const viewBox = computed(() => {
-  if (window.innerWidth > 1024) {
+  if (windowWidth.value > 1024) {
     return `0 0 ${viewWidth.value} 600`
   }
-  else if (window.innerWidth > 640) {
+  else if (windowWidth.value > 640) {
     return `0 0 ${viewWidth.value} 600`
   }
   else {

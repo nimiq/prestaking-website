@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  ssr: false,
+  // ssr: false,
   css: [
     '~/assets/css/base.css',
   ],
@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     'radix-vue/nuxt',
+    '@nuxtjs/seo',
   ],
 
   devtools: {
@@ -36,6 +37,13 @@ export default defineNuxtConfig({
     payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
+  },
+
+  site: {
+    url: 'https://prestaking.nimiq.network/',
+    name: 'Nimiq Prestaking',
+    description: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200,000,000 NIM giveaway!',
+    defaultLocale: 'en',
   },
 
   watch: ['~/content'],

@@ -10,6 +10,15 @@ onMounted(() => {
       .fromTo('#hero', { translateY: '-40px', opacity: 0 }, { translateY: '0', opacity: 1, delay: 0.5, duration: 0.5 })
   })
 })
+
+useHead({
+  title: pageContent.hero.title,
+  meta: [
+    { name: 'description', content: pageContent.hero.body },
+  ],
+})
+
+defineOgImage({ url: '/img/open-graph/index.jpg' })
 </script>
 
 <template>
