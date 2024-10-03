@@ -1,7 +1,7 @@
 export default {
   hero: {
     title: 'Countdown to Nimiq Proof-of-Stake',
-    body: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200\'000\'000 NIM giveaway.',
+    body: 'Pre-stake now to participate for a share of 200 million NIM in rewards. Ends November 10.',
     buttonLabel: 'Pre-staking',
     buttonLink: '/pre-staking',
   },
