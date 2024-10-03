@@ -60,7 +60,7 @@ function claimTickets() {
         @open-login-modal="openLoginModal"
       />
       <div class="absolute bottom-0 left-1/2 min-w-max flex translate-1/2 items-center justify-center gap-8 rounded-full bg-[#464A73] px-32 py-8 text-14 text-white/60 -translate-x-1/2">
-        <div>{{ Math.floor(store.stake / 1000e5) }}</div>
+        <div>{{ store.basePoints }}</div>
         <div class="i-custom:tickets inline-block size-16 opacity-60" />
       </div>
       <div class="absolute right-0 hidden h-fit min-w-max translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60 -bottom-1 md:flex">
@@ -103,11 +103,11 @@ function claimTickets() {
           0
           <span class="text-17 font-600">Points</span>
         </div>
-        <div v-else-if="store.address && store.stake === 0" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+        <div v-else-if="!store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           <span class="text-24">Claim points</span>
         </div>
         <div
-          v-else-if="store.address && store.stake > 0 && store.totalPoints !== store.stake / 1000"
+          v-else-if="!store.hasClaimed"
           class="tickets-pill active px-32 py-24 text-white/60 leading-70%"
           @click="claimTickets"
         >
@@ -115,10 +115,9 @@ function claimTickets() {
         </div>
 
         <NuxtLink
-          v-else-if="store.totalPoints === store.stake / 1000"
+          v-else
           :to="{ name: 'share', query: { tickets: store.totalPoints, cardLevel: getUserPrestakeCardType() } }"
           class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
-          @click="claimTickets"
         >
           <div class="flex grow items-center justify-center gap-x-12">
             {{ store.totalPoints }}

@@ -27,10 +27,7 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  if (store.getUserTimeLevel) {
-    return store.getUserTimeLevel.filter(x => x.amount > 0).map(x => x.multiplier)
-  }
-  return []
+  return store.earlyBirdMultipliers
 })
 
 const activateCard = computed(() => {
@@ -57,7 +54,7 @@ const activateCard = computed(() => {
       />
       <!-- OPEN MODAL -->
       <button class="absolute right-16 top-16 z-10 size-32 cursor-pointer rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openModal">
-        <i class="i-nimiq:arrow-from-bottom-left absolute-center text-11 text-white" />
+        <i class="absolute-center i-nimiq:arrow-from-bottom-left text-11 text-white" />
       </button>
     </div>
 

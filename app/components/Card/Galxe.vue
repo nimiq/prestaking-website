@@ -29,11 +29,11 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return []
+  return store.galxeMultiplier > 0 ? [store.galxeMultiplier] : []
 })
 
 const activateCard = computed(() => {
-  return Boolean(store.address && store.galxeAddress)
+  return activatedMultipliers.value && activatedMultipliers.value.length > 0
 })
 
 // TODO: understand the logic for this component

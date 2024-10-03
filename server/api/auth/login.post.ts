@@ -9,6 +9,8 @@ const requestSchema = z.object({
 export type LoginRequest = z.infer<typeof requestSchema>
 
 export default defineEventHandler(async (event): Promise<User> => {
+  // TODO: Exclude users from sanctioned countries and US
+
   const { address } = requestSchema.parse(await readBody(event))
 
   let user = await userDb.get(address)

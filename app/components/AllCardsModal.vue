@@ -52,24 +52,11 @@ defineEmits(['close'])
 
       <div class="no-scrollbar z-5 max-w-full w-full overflow-auto">
         <div class="cards-scroll flex gap-16 px-32">
-          <!-- <img class="block h-358 w-248" src="/img/reward-cards/modals/bronze.png" alt=""> -->
-          <!-- <div class="relative h-358 w-248">
-            <div class="absolute bottom-0 left-1/2 w-full w-max -translate-x-1/2">
-              <div class="bg-[#B2684D] text-24 text-white font-600">
-                {{ userPrestake.options[0]?.buttonText }}
-              </div>
-              <div class="mt-16">
-                Guardian
-              </div>
-            </div>
-          </div> -->
-          <!-- <img class="block h-358 w-248" src="/img/reward-cards/modals/silver.png" alt="">
-          <img class="block h-358 w-248" src="/img/reward-cards/modals/gold.png" alt=""> -->
           <div
             v-for="card in userPrestake.options" :key="card.cardType" class="relative mb-10 h-358 min-w-248"
           >
-            <NuxtImg class="relative block h-358 w-248" :src="`/img/reward-cards/modals/${card.cardType}.png`" :class="getUserStakedNIM() > card.min && getUserStakedNIM() < card.max && 'border-2 border-[#A55AE7] rounded-8'" alt="" />
-            <div v-if="getUserStakedNIM() > card.min && getUserStakedNIM() < card.max" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
+            <NuxtImg class="relative block h-358 w-248" :src="`/img/reward-cards/modals/${card.cardType}.png`" :class="getUserStakedNIM() >= card.min && getUserStakedNIM() < card.max && 'border-2 border-[#A55AE7] rounded-8'" alt="" />
+            <div v-if="getUserStakedNIM() >= card.min && getUserStakedNIM() < card.max" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
               <div class="absolute left-1/2 top-1/2 size-8 bg-white -translate-1/2" />
               <div class="i-nimiq:icons-lg-verified-filled text-20 text-[#A55AE7]" />
             </div>

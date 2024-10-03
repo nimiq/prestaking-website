@@ -11,6 +11,9 @@ importers:
       '@nimiq/hub-api':
         specifier: ^1.8.0
         version: 1.8.0(typescript@5.6.2)(zod@3.23.8)
+      '@nimiq/identicons':
+        specifier: ^1.6.2
+        version: 1.6.2
       '@nimiq/utils':
         specifier: ^0.11.3
         version: 0.11.3

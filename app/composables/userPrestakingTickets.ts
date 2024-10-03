@@ -11,11 +11,9 @@ export function getUserStakedNIM() {
 
 // check card type
 export function getUserPrestakeCardType() {
-  let cardType: string = 'none'
-  prestakeRewardData.options.forEach((e) => {
-    if (checkUserLevel(e.min, e.max, getUserStakedNIM())) {
-      cardType = e.cardType
+  for (const option of prestakeRewardData.options) {
+    if (checkUserLevel(option.min, option.max, getUserStakedNIM())) {
+      return option.cardType
     }
-  })
-  return cardType as string
+  }
 }

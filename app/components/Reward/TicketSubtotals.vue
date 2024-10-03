@@ -1,42 +1,27 @@
 <script lang="ts" setup>
-// import { useUserInfo } from '@/stores/userInfo'
+import { useUserInfo } from '@/stores/userInfo'
 
-// const store = useUserInfo()
-
-const earlyBirdTotal = computed(() => {
-  // TODO
-  return 0
-})
-
-const underdogTotal = computed(() => {
-  // TODO
-  return 0
-})
-
-const galxeTotal = computed(() => {
-  // TODO
-  return 0
-})
+const store = useUserInfo()
 </script>
 
 <template>
   <div class="relative h-40 min-w-300vw">
     <div class="subtotal-item ticket left-175">
-      <div>{{ earlyBirdTotal }}</div>
+      <div>{{ store.earlyBirdPoints }}</div>
       <div class="i-custom:tickets inline-block size-16 opacity-60" />
     </div>
     <div class="subtotal-item plus left-315">
       <div i-custom:plus class="size-11" />
     </div>
     <div class="subtotal-item ticket left-460">
-      <div>{{ underdogTotal }}</div>
+      <div>{{ store.underdogPoints }}</div>
       <div class="i-custom:tickets inline-block size-16 opacity-60" />
     </div>
     <div class="subtotal-item plus left-608">
       <div i-custom:plus class="size-11" />
     </div>
     <div class="subtotal-item ticket left-755">
-      <div>{{ galxeTotal }}</div>
+      <div>{{ store.galxePoints }}</div>
       <div class="i-custom:tickets inline-block size-16 opacity-60" />
     </div>
   </div>

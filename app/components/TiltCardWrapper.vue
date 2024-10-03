@@ -160,7 +160,7 @@ const x = computed(() => {
 <template>
   <div class="tilt-card-container h-full min-w-fit" :class="`rounded-${rounding}`">
     <div
-      ref="cardContainer" :style="`transform: rotateY(${x}deg) rotateX(${-y}deg)`" class="tilt-card relative z-10 size-full overflow-hidden" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
+      ref="cardContainer" :style="`transform: rotateY(${x}deg) rotateX(${-y}deg)`" class="tilt-card relative z-10 size-full overflow-hidden will-change-transform" :class="`rounded-${rounding}`" @mouseenter="enter" @mouseleave="leave"
     >
       <!-- ${Math.log(distance) * (props.reducedMovement ? 0.15 : 2)}deg -->
       <slot />
@@ -169,7 +169,7 @@ const x = computed(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .tilt-card-container {
   position: relative;
   perspective: 1500px;

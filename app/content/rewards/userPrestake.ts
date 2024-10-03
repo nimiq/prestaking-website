@@ -7,33 +7,33 @@ export default {
   options: [
     {
       buttonText: '10 - 99k',
-      min: 10_000e5,
-      max: 99_999e5,
-      label: 'Protector',
+      min: 10_000e5, // Inclusive
+      max: 100_000e5, // Exclusive
+      label: 'Guardian',
       cardType: 'bronze',
       color: 'orange',
     },
     {
       buttonText: '100 - 999k',
-      min: 100_000e5,
-      max: 999_999e5,
+      min: 100_000e5, // Inclusive
+      max: 1_000_000e5, // Exclusive
       label: 'Protector',
       cardType: 'silver',
       color: 'peach',
     },
     {
       buttonText: '1 - 10M',
-      min: 1_000_000e5,
-      max: 10_000_000e5,
-      label: 'Overseer',
+      min: 1_000_000e5, // Inclusive
+      max: 10_000_000e5, // Exclusive
+      label: 'Hero',
       cardType: 'gold',
       color: 'pink',
     },
     {
       buttonText: '>10M',
-      min: 10_000_001e5,
-      max: Infinity,
-      label: 'Paladin',
+      min: 10_000_000e5, // Inclusive
+      max: Infinity, // Exclusive
+      label: 'Champion',
       cardType: 'platinum',
       color: 'purple',
     },

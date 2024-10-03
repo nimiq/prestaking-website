@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nimiq/hub-api": "^1.8.0",
+    "@nimiq/identicons": "^1.6.2",
     "@nimiq/utils": "^0.11.3",
     "@nimiq/vue3-components": "github:nimiq/vue3-components#9b9a07a295ba0f980ca5acfe350c3ff119035015",
     "@nuxt/image": "^1.8.0",

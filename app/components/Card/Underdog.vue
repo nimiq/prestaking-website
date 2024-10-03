@@ -27,7 +27,7 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.address && store.stake > 0 ? [3] : []
+  return store.underdogMultiplier > 0 ? [store.underdogMultiplier] : []
 })
 
 const activateCard = computed(() => {

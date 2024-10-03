@@ -18,15 +18,25 @@ async function acceptTC() {
     body: { address },
   }) // TODO: Error handling
 
-  const stats = await $fetch('/api/stats') // TODO: Error handling
+  const stats = await $fetch('/api/update-stats', {
+    method: 'POST',
+  }) // TODO: Error handling
 
   useUserInfo().$patch({
     address: user.address,
-    stake: stats.stake,
+    stake: stats.stake * 10,
     totalPoints: stats.totalPoints,
-    // underdogPool: null,
-    // prestakeEvents: [],
-    // galxeAddress: null,
+    // galxeAddress: stats.galxeAddress,
+    hasClaimed: stats.hasClaimed,
+
+    basePoints: stats.basePoints,
+    earlyBirdPoints: stats.earlyBirdPoints,
+    underdogPoints: stats.underdogPoints,
+    galxePoints: stats.galxePoints,
+
+    earlyBirdMultipliers: stats.earlyBirdMultipliers,
+    underdogMultiplier: stats.underdogMultiplier,
+    galxeMultiplier: stats.galxeMultiplier,
   })
 
   emit('close')
