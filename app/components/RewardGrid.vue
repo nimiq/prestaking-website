@@ -11,6 +11,8 @@ defineProps({
 
 const store = useUserInfo()
 
+const _loggedIn = await store.tryFetch()
+
 const showLoginModal: Ref<boolean> = ref(false)
 const showGalxeModal: Ref<boolean> = ref(false)
 

@@ -29,6 +29,36 @@ export const useUserInfo = defineStore('userInfo', {
     galxeMultiplier: 0,
   }),
   actions: {
+    async tryFetch() {
+      const user = await $fetch('/api/address').catch(() => null)
+      if (!user)
+        return false
+
+      await this.updateStats(user.address)
+      return true
+    },
+    async updateStats(address: string) {
+      const stats = await $fetch('/api/update-stats', {
+        method: 'POST',
+      }) // TODO: Error handling
+
+      useUserInfo().$patch({
+        address,
+        stake: stats.stake,
+        totalPoints: stats.totalPoints,
+        // galxeAddress: stats.galxeAddress,
+        hasClaimed: stats.hasClaimed,
+
+        basePoints: stats.basePoints,
+        earlyBirdPoints: stats.earlyBirdPoints,
+        underdogPoints: stats.underdogPoints,
+        galxePoints: stats.galxePoints,
+
+        earlyBirdMultipliers: stats.earlyBirdMultipliers,
+        underdogMultiplier: stats.underdogMultiplier,
+        galxeMultiplier: stats.galxeMultiplier,
+      })
+    },
     logout() {
       this.address = null
       this.stake = 0

@@ -13,32 +13,14 @@ async function acceptTC() {
     disableContracts: true,
   })
 
+  // TODO: Set loading indicator
+
   const user = await $fetch('/api/auth/login', {
     method: 'POST',
     body: { address },
   }) // TODO: Error handling
 
-  const stats = await $fetch('/api/update-stats', {
-    method: 'POST',
-  }) // TODO: Error handling
-
-  useUserInfo().$patch({
-    address: user.address,
-    stake: stats.stake * 10,
-    totalPoints: stats.totalPoints,
-    // galxeAddress: stats.galxeAddress,
-    hasClaimed: stats.hasClaimed,
-
-    basePoints: stats.basePoints,
-    earlyBirdPoints: stats.earlyBirdPoints,
-    underdogPoints: stats.underdogPoints,
-    galxePoints: stats.galxePoints,
-
-    earlyBirdMultipliers: stats.earlyBirdMultipliers,
-    underdogMultiplier: stats.underdogMultiplier,
-    galxeMultiplier: stats.galxeMultiplier,
-  })
-
+  await useUserInfo().updateStats(user.address) // TODO: Error handling
   emit('close')
 }
 </script>
