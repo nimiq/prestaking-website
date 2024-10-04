@@ -60,8 +60,5 @@ export default defineEventHandler(async (event) => {
 
   await userDb.set(user.address, user)
 
-  // TODO: Instead redirect to app page
-  return {
-    galxeId: galxeUser.GalxeUserID,
-  }
+  return sendRedirect(event, '/pre-staking')
 })

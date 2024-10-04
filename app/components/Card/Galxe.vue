@@ -60,10 +60,13 @@ const mr = computed(() => {
       <div class="small-body text-center text-white/60">
         Share the news with Galxe to multiply your points
       </div>
-      <a v-if="store.hasClaimed" href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
-      <button v-else disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
+      <button v-if="!store.hasClaimed" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
         Connect
       </button>
+      <a v-else-if="!store.galxeId" href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
+      <p v-else class="mt-16 text-center text-14 text-white">
+        Galxe points are coming soon, check back in a few days!
+      </p>
       <RewardMultiplierBadges
         :multipliers="galxeRewardData.options"
         :active="[]"

@@ -74,5 +74,6 @@ export default defineEventHandler(async (event) => {
     delegation: user.delegation,
     hasClaimed: user.hasClaimed,
     totalPoints: user.totalPoints,
+    galxeId: user.galxeId,
   }
 })

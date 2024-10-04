@@ -16,7 +16,7 @@ export const useUserInfo = defineStore('userInfo', {
     address: null as string | null,
     stake: 0,
     totalPoints: 0,
-    galxeAddress: null as string | null,
+    galxeId: null as string | null,
     hasClaimed: false,
 
     basePoints: 0,
@@ -51,7 +51,7 @@ export const useUserInfo = defineStore('userInfo', {
         address,
         stake: stats.stake,
         totalPoints: stats.totalPoints,
-        // galxeAddress: stats.galxeAddress,
+        galxeId: stats.galxeId || null,
         hasClaimed: stats.hasClaimed,
 
         basePoints: stats.basePoints,
@@ -68,7 +68,7 @@ export const useUserInfo = defineStore('userInfo', {
       this.address = null
       this.stake = 0
       this.totalPoints = 0
-      this.galxeAddress = null
+      this.galxeId = null
       this.hasClaimed = false
 
       this.basePoints = 0
