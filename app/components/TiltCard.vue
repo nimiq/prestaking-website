@@ -33,8 +33,13 @@ onMounted(() => {
 
 <template>
   <div class="relative overflow-hidden rounded-12 !h-478 !min-w-311 !w-311">
-    <NuxtImg v-if="cardType !== 'platinum'" src="/img/card-master-bg-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="" />
-    <div v-if="cardType !== 'platinum'" class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
+    <template v-if="cardType === 'platinum'">
+      <NuxtImg src="/img/cards/platinum-card-backdrop.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="" />
+    </template>
+    <template v-else>
+      <NuxtImg src="/img/cards/card-backdrop-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="" />
+      <div class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
+    </template>
     <NuxtImg :src="`/img/cards/${cardType}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="" />
     <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="cardType" :color="identiconColor" />
     <div ref="$identicon" class="absolute left-1/2 top-74 z-5 scale-75 -translate-x-1/2" />
