@@ -2,6 +2,7 @@
   "name": "nimiq-2.0-launch",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -14,7 +15,6 @@
   "dependencies": {
     "@nuxt/image": "^1.8.0",
     "@nuxthub/core": "^0.7.19",
-    "@nuxtjs/composition-api": "^0.34.0",
     "@nuxtjs/seo": "2.0.0-rc.23",
     "@vueuse/core": "^11.1.0",
     "gsap": "^3.12.5",
@@ -53,6 +53,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
+  }
 }
