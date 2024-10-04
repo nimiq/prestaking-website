@@ -24,6 +24,8 @@ defineProps({
 })
 
 defineEmits(['close'])
+
+const store = useUserInfo()
 </script>
 
 <template>
@@ -55,8 +57,13 @@ defineEmits(['close'])
           <div
             v-for="card in userPrestake.options" :key="card.cardType" class="relative mb-10 h-358 min-w-248"
           >
-            <NuxtImg class="relative block h-358 w-248" :src="`/img/reward-cards/modals/${card.cardType}.png`" :class="getUserStakedNIM() >= card.min && getUserStakedNIM() < card.max && 'border-2 border-[#A55AE7] rounded-8'" alt="" />
-            <div v-if="getUserStakedNIM() >= card.min && getUserStakedNIM() < card.max" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
+            <NuxtImg
+              class="relative block h-358 w-248"
+              :src="`/img/reward-cards/modals/${card.cardType}.png`"
+              :class="{ 'border-2 border-[#A55AE7] rounded-8': store.stake >= card.min && store.stake < card.max }"
+              alt=""
+            />
+            <div v-if="store.stake >= card.min && store.stake < card.max" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
               <div class="absolute left-1/2 top-1/2 size-8 bg-white -translate-1/2" />
               <div class="i-nimiq:icons-lg-verified-filled text-20 text-[#A55AE7]" />
             </div>

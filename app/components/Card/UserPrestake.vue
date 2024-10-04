@@ -10,11 +10,6 @@ defineProps({
     required: false,
     default: false,
   },
-  locked: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
 })
 
 defineEmits(['openLoginModal'])
@@ -47,7 +42,7 @@ function activateDetails() {
 <template>
   <div :class="[!cardType && 'p-32', cardType && 'active !border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container !mb-0 !h-478 !min-w-311 !w-311" style="">
     <div v-if="!cardType">
-      <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
+      <div v-if="!store.address" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
 
       <!-- Icon -->
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
@@ -79,9 +74,9 @@ function activateDetails() {
       <TiltCard :card="cardType" class="cursor-pointer" />
     </TiltCardWrapper>
 
-    <ModalWrapper :active="showModal" :bottom-on-mobile="getUserPrestakeCardType() === 'none' || showDetails ? true : false">
+    <ModalWrapper :active="showModal" :bottom-on-mobile="!cardType || showDetails ? true : false">
       <AllCardsModal
-        v-if="getUserPrestakeCardType() === 'none' || showDetails"
+        v-if="!cardType || showDetails"
         :title="prestakeRewardData.modal.title"
         :label="prestakeRewardData.modal.label"
         :description="prestakeRewardData.modal.body"

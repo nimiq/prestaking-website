@@ -1,18 +1,10 @@
 import { useUserInfo } from '@/stores/userInfo'
 import prestakeRewardData from '~/content/rewards/userPrestake'
 
-function checkUserLevel(min: number, max: number, nim: number) {
-  return nim >= min && nim < max
-}
-
-export function getUserStakedNIM() {
-  return useUserInfo().stake
-}
-
-// check card type
 export function getUserPrestakeCardType() {
+  const stake = useUserInfo().stake
   for (const option of prestakeRewardData.options) {
-    if (checkUserLevel(option.min, option.max, getUserStakedNIM())) {
+    if (stake >= option.min && stake < option.max) {
       return option.cardType
     }
   }

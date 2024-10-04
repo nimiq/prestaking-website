@@ -13,6 +13,10 @@ const store = useUserInfo()
 
 const _loggedIn = await store.tryFetch()
 
+const cardType = computed(() => {
+  return store.address && store.stake > 0 ? getUserPrestakeCardType() : undefined
+})
+
 const showLoginModal: Ref<boolean> = ref(false)
 const showGalxeModal: Ref<boolean> = ref(false)
 
@@ -52,13 +56,12 @@ function claimTickets() {
 <template>
   <div
     class="z-5 grid grid-cols-1 lg:grid-cols-[min-content_1fr_1fr] md:grid-cols-[min-content_1fr_1fr] lg:mx-0 -ml-32 -mr-32 lg:rounded-16" style="grid-template-rows: repeat(5, max-content)"
-    :class="getUserPrestakeCardType()"
+    :class="cardType"
   >
     <div id="reward-user" class="relative z-5 w-full border-1 border-white/10 p-32 md:col-start-1 md:row-start-1 lg:col-end-2 md:col-end-2 md:col-end-2 md:row-end-4 lg:rounded-tl-16">
-      <NuxtImg v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-30 mix-blend-multiply md:rounded-tl-16" />
+      <NuxtImg v-if="cardType" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-30 mix-blend-multiply md:rounded-tl-16" />
       <CardUserPrestake
         :key="store.stake"
-        :locked="!store.address"
         @open-login-modal="openLoginModal"
       />
       <div class="absolute bottom-0 left-1/2 min-w-max flex translate-1/2 items-center justify-center gap-8 rounded-full bg-[#464A73] px-32 py-8 text-14 text-white/60 -translate-x-1/2">
@@ -118,7 +121,7 @@ function claimTickets() {
 
         <NuxtLink
           v-else
-          :to="{ name: 'share', query: { tickets: store.totalPoints, cardLevel: getUserPrestakeCardType() } }"
+          :to="{ name: 'share', query: { tickets: store.totalPoints, cardLevel: cardType } }"
           class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
         >
           <div class="flex grow items-center justify-center gap-x-12">
