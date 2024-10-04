@@ -2,14 +2,6 @@
 import { useUserInfo } from '@/stores/userInfo'
 import underdogRewardData from '~/content/rewards/underdog'
 
-defineProps({
-  locked: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-})
-
 const store = useUserInfo()
 
 const cardColor = '#F33F68'
@@ -27,7 +19,7 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.underdogMultiplier > 0 ? [store.underdogMultiplier] : []
+  return store.hasClaimed && store.underdogMultiplier > 0 ? [store.underdogMultiplier] : []
 })
 
 const activateCard = computed(() => {
@@ -38,7 +30,7 @@ const activateCard = computed(() => {
 <template>
   <div :class="[!activateCard && 'p-32', activateCard && 'active !border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container" style="">
     <div v-if="!activateCard">
-      <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
+      <div v-if="!store.hasClaimed" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" title="Claim your points to unlock this card" />
 
       <!-- Icon -->
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">

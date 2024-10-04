@@ -9,6 +9,9 @@ const store = useUserInfo()
 async function logOut() {
   await $fetch('/api/auth/logout', {
     method: 'POST',
+  }).catch((err: Error) => {
+    window.alert(err.message) // eslint-disable-line no-alert
+    throw err
   })
   store.logout()
   emits('close')
@@ -35,7 +38,7 @@ useOutsideClick(container, () => {
     class="group relative flex flex-col"
   >
     <TiltCardWrapper class="mx-auto">
-      <TiltCard :card="getUserPrestakeCardType()" />
+      <TiltCard :card-type="getUserPrestakeCardType()" />
     </TiltCardWrapper>
     <div class="mt-32 flex items-center justify-center gap-16">
       <div class="text-48 text-white font-bold">

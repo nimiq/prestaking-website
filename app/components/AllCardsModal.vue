@@ -26,6 +26,10 @@ defineProps({
 defineEmits(['close'])
 
 const store = useUserInfo()
+
+const cardType = computed(() => {
+  return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
+})
 </script>
 
 <template>
@@ -60,10 +64,10 @@ const store = useUserInfo()
             <NuxtImg
               class="relative block h-358 w-248"
               :src="`/img/reward-cards/modals/${card.cardType}.png`"
-              :class="{ 'border-2 border-[#A55AE7] rounded-8': store.stake >= card.min && store.stake < card.max }"
+              :class="{ 'border-2 border-[#A55AE7] rounded-8': card.cardType === cardType }"
               alt=""
             />
-            <div v-if="store.stake >= card.min && store.stake < card.max" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
+            <div v-if="card.cardType === cardType" class="absolute bottom-0 left-1/2 translate-y-1/2 text-[#A55AE7] -translate-x-1/2">
               <div class="absolute left-1/2 top-1/2 size-8 bg-white -translate-1/2" />
               <div class="i-nimiq:icons-lg-verified-filled text-20 text-[#A55AE7]" />
             </div>

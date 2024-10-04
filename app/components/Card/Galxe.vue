@@ -2,16 +2,6 @@
 import { useUserInfo } from '@/stores/userInfo'
 import galxeRewardData from '~/content/rewards/galxe'
 
-defineProps({
-  locked: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-})
-
-defineEmits(['openGalxeModal'])
-
 const store = useUserInfo()
 
 const cardColor = '#A55AE7'
@@ -29,7 +19,7 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return store.galxeMultiplier > 0 ? [store.galxeMultiplier] : []
+  return store.hasClaimed && store.galxeMultiplier > 0 ? [store.galxeMultiplier] : []
 })
 
 const activateCard = computed(() => {
@@ -61,7 +51,7 @@ const mr = computed(() => {
 <template>
   <div :class="[!activateCard && 'p-32', activateCard && 'active !border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container" style="">
     <div v-if="!activateCard">
-      <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
+      <div v-if="!store.hasClaimed" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" title="Claim your points to unlock this card" />
 
       <!-- Icon -->
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
@@ -70,8 +60,8 @@ const mr = computed(() => {
       <div class="small-body text-center text-white/60">
         Share the news with Galxe to multiply your points
       </div>
-      <button class="mx-auto mt-24 cursor-pointer nq-pill-secondary" disabled>
-        <!-- @click="$emit('openGalxeModal')" -->
+      <a v-if="store.hasClaimed" href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
+      <button v-else disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
         Connect
       </button>
       <RewardMultiplierBadges

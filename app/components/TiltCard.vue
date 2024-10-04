@@ -2,10 +2,7 @@
 import Identicons from '@nimiq/identicons/dist/identicons.bundle.min.js'
 
 defineProps({
-  card: {
-    type: String,
-    required: true,
-  },
+  cardType: String,
   reducedMovement: {
     type: Boolean,
     required: false,
@@ -17,8 +14,6 @@ const identiconColor = ref<string>()
 const $identicon = ref<HTMLDivElement>()
 
 const store = useUserInfo()
-
-const cardType = computed(() => getUserPrestakeCardType())
 
 onMounted(() => {
   // Render card with Identicon
@@ -40,8 +35,8 @@ onMounted(() => {
   <div class="relative overflow-hidden rounded-12 !h-478 !min-w-311 !w-311">
     <NuxtImg v-if="cardType !== 'platinum'" src="/img/card-master-bg-rays.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="" />
     <div v-if="cardType !== 'platinum'" class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
-    <NuxtImg :src="`/img/cards/${card}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="" />
-    <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="card" :color="identiconColor" />
+    <NuxtImg :src="`/img/cards/${cardType}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="" />
+    <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="cardType" :color="identiconColor" />
     <div ref="$identicon" class="absolute left-1/2 top-74 z-5 scale-75 -translate-x-1/2" />
     <NuxtImg
       class="metal-grain absolute left-0 top-0 z-6 h-full w-full" src="/img/metal-grain.png" alt="" srcset=""

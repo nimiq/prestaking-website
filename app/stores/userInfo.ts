@@ -40,7 +40,12 @@ export const useUserInfo = defineStore('userInfo', {
     async updateStats(address: string) {
       const stats = await $fetch('/api/update-stats', {
         method: 'POST',
-      }) // TODO: Error handling
+      }).catch(() => null)
+
+      if (!stats) {
+        useUserInfo().address = address
+        return
+      }
 
       useUserInfo().$patch({
         address,

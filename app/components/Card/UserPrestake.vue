@@ -4,14 +4,6 @@ import { Identicon } from '@nimiq/vue3-components'
 import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 import prestakeRewardData from '~/content/rewards/userPrestake'
 
-defineProps({
-  prePreStaking: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-})
-
 defineEmits(['openLoginModal'])
 
 const store = useUserInfo()
@@ -20,7 +12,7 @@ const showModal: Ref<boolean> = ref(false)
 const showDetails: Ref<boolean> = ref(false)
 
 const cardType = computed(() => {
-  return store.address && store.stake > 0 ? getUserPrestakeCardType() : undefined
+  return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
 })
 
 function openModal() {
@@ -37,6 +29,16 @@ function closeModal() {
 function activateDetails() {
   showDetails.value = true
 }
+
+async function logOut() {
+  await $fetch('/api/auth/logout', {
+    method: 'POST',
+  }).catch((err: Error) => {
+    window.alert(err.message) // eslint-disable-line no-alert
+    throw err
+  })
+  store.logout()
+}
 </script>
 
 <template>
@@ -46,21 +48,25 @@ function activateDetails() {
 
       <!-- Icon -->
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
-        <div v-if="!store.address" class="i-custom:hex h-80 w-89" />
+        <div v-if="!store.address" class="i-custom:hex h-100 w-100" />
         <div v-else class="relative">
-          <Identicon :address="store.address" class="h-80 w-80" />
+          <ClientOnly><Identicon :address="store.address" class="h-100 w-100" /></ClientOnly>
         </div>
       </div>
       <!-- Description -->
       <div class="small-body text-center text-white">
-        Pre-staking is starting soon.<br>Stay tuned!
+        Pre-stake NIM to participate.<br>The more you pre-stake, the higher your score.
+        <!-- Pre-staking is starting soon.<br>Stay tuned! -->
       </div>
       <!-- Buttons -->
       <button v-if="!store.address" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')">
         Login & enter
       </button>
-      <a v-else-if="store.address && store.stake === 0" href="https://wallet.nimiq.com" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
-        Go to wallet
+      <a v-if="store.address && !store.stake" href="https://wallet.nimiq.com" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
+        Open Nimiq Wallet
+      </a>
+      <a v-if="store.address && !store.stake" href="#" class="mx-auto mt-12 block w-fit font-600 transition-color hover:text-white/80" @click.prevent="logOut">
+        Logout
       </a>
 
       <!-- OPEN MODAL -->
@@ -71,7 +77,7 @@ function activateDetails() {
 
     <!-- SHOW REWARD CARD -->
     <TiltCardWrapper v-else reduced-movement rounding="12" @click="openModal">
-      <TiltCard :card="cardType" class="cursor-pointer" />
+      <TiltCard :card-type="cardType" class="cursor-pointer" />
     </TiltCardWrapper>
 
     <ModalWrapper :active="showModal" :bottom-on-mobile="!cardType || showDetails ? true : false">
@@ -81,16 +87,7 @@ function activateDetails() {
         :label="prestakeRewardData.modal.label"
         :description="prestakeRewardData.modal.body"
         @close="closeModal"
-      >
-        <CardAchievement
-          v-for="item in prestakeRewardData.options"
-          :key="item.cardType"
-          :active="item.cardType === cardType"
-          :color="item.color"
-          :button-text="item.buttonText"
-          :label="item.label"
-        />
-      </AllCardsModal>
+      />
 
       <UserCardModal
         v-else

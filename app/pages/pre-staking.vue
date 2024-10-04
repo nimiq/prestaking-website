@@ -2,8 +2,6 @@
 import pageContent from '@/content/prestaking'
 import gsap from 'gsap'
 
-const prestaking = true
-
 onMounted(() => {
   nextTick(() => {
     gsap.timeline({ })
@@ -26,14 +24,14 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
 
 <template>
   <main>
-    <Section id="hero-container" dark-mode god-rays>
+    <Section id="hero-container" god-rays dark-mode>
       <Header
         id="hero"
         :title="pageContent.hero.title"
         :body="pageContent.hero.body"
         dark-mode
       />
-      <RewardGrid id="rewards" :pre-pre-staking="prestaking" />
+      <RewardGrid id="rewards" />
       <div>
         <SectionLabel dark-mode text="The giveaways" class="mt-32" />
         <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">

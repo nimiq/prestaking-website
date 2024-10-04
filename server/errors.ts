@@ -7,6 +7,15 @@ export function forbiddenError(message?: string, cause?: Error) {
   })
 }
 
+export function notFoundError(message?: string, cause?: Error) {
+  return createError({
+    message,
+    statusCode: 404,
+    statusMessage: 'Not Found',
+    cause,
+  })
+}
+
 export function notAcceptableError(message?: string, cause?: Error) {
   return createError({
     message,

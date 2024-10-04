@@ -18,7 +18,10 @@ async function acceptTC() {
   const user = await $fetch('/api/auth/login', {
     method: 'POST',
     body: { address },
-  }) // TODO: Error handling
+  }).catch((err: Error) => {
+    window.alert(err.message) // eslint-disable-line no-alert
+    throw err
+  })
 
   await useUserInfo().updateStats(user.address) // TODO: Error handling
   emit('close')
@@ -36,11 +39,13 @@ async function acceptTC() {
       <div>
         <div i-custom:document class="relative z-1 mx-auto mb-56 mt-60 size-120" />
         <div class="relative z-1 mb-90">
-          <h4>Terms and conditions</h4>
-          <p>Pre-staking NIM secures the network and is the quickest way to staking rewards.</p>
+          <h4>Terms and Conditions</h4>
+          <p mt-16>
+            Read and accept the rules of the campaign to continue.
+          </p>
           <!-- TODO: Add t&c here -->
-          <a href="www.google.com" class="mx-auto mt-24 w-fit flex items-center rounded-full px-16 py-6 text-darkblue ring-1.5 ring-darkblue/30 transition-colors md:mx-auto hover:bg-darkblue hover:text-white hover:ring-darkblue">
-            <span class="text-14">Terms and conditions</span>
+          <a href="/Nimiq_Pre-staking_Campaign_ToS.pdf" target="_blank" class="mx-auto mt-24 w-fit flex items-center rounded-full px-16 py-6 text-darkblue ring-1.5 ring-darkblue/30 transition-colors md:mx-auto hover:bg-darkblue hover:text-white hover:ring-darkblue">
+            <span class="text-14">Terms and Conditions</span>
             <div class="i-nimiq:info ml-8 text-inherit" />
           </a>
         </div>
