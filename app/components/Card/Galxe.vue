@@ -58,9 +58,9 @@ const mr = computed(() => {
         <div class="i-custom:galxe h-28 w-144" />
       </div>
       <div class="small-body text-center text-white/60">
-        Share the news with Galxe to multiply your points
+        Share the news with Galxe to multiply your points. Coming soon!
       </div>
-      <button v-if="!store.hasClaimed" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
+      <button v-if="true || !store.hasClaimed" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
         Connect
       </button>
       <a v-else-if="!store.galxeId" href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
