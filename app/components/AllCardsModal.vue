@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import userPrestake from '~/content/rewards/userPrestake'
+import prestakeRewardData from '~/content/rewards/userPrestake'
 
 defineProps({
   title: {
@@ -30,6 +30,21 @@ const store = useUserInfo()
 const cardType = computed(() => {
   return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
 })
+
+const $cards = ref<HTMLDivElement[]>([])
+watch($cards, () => {
+}, { immediate: true })
+
+onMounted(() => {
+  if (!cardType.value)
+    return
+  const index = prestakeRewardData.options.findIndex(option => option.cardType === cardType.value)
+  $cards.value[index]?.scrollIntoView({
+    block: 'end', // Do not scroll vertically (stay at the bottom)
+    inline: 'center', // Center the user's card horizontally
+    behavior: 'smooth', // Scroll smoothly
+  })
+})
 </script>
 
 <template>
@@ -37,7 +52,7 @@ const cardType = computed(() => {
     class="group relative w-full border-1 border-gray rounded-t-10 bg-[#e9e9eb] bg-cover bg-center sm:w-[clamp(508px,508px,80vw)] sm:rounded-10"
   >
     <div
-      class="relative m-6 flex flex-col items-center justify-end overflow-hidden rounded-4 bg-darkblue px-0 pb-32 pt-42 text-center"
+      class="relative m-6 flex flex-col items-center justify-end overflow-clip rounded-4 bg-darkblue px-0 pb-32 pt-42 text-center"
     >
       <NuxtImg class="pointer-events-none absolute left-1/2 h-150% min-w-300% blur-10 brightness-120 -bottom-70% -translate-x-1/2" src="/img/God-Rays.png" alt="" />
 
@@ -59,7 +74,7 @@ const cardType = computed(() => {
       <div class="no-scrollbar z-5 max-w-full w-full overflow-auto">
         <div class="cards-scroll flex gap-16 px-32">
           <div
-            v-for="card in userPrestake.options" :key="card.cardType" class="relative mb-10 h-358 min-w-248"
+            v-for="card in prestakeRewardData.options" :key="card.cardType" ref="$cards" class="relative mb-10 h-358 min-w-248"
           >
             <NuxtImg
               class="relative block h-358 w-248"
