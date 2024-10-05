@@ -23,3 +23,5 @@ export const UNDERDOG_MULTIPLIER = {
   maxStakeRatio: 0.1, // The stake ratio must be LESS THAN this value
   multiplier: 5,
 }
+
+export const RESTRICTED_TERRITORY_ERROR = 'Restricted territory'
