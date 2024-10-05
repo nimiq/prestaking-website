@@ -6,16 +6,16 @@ export default defineEventHandler(async (event) => {
 
   const { code, state } = getQuery(event)
   if (typeof code !== 'string' || typeof state !== 'string') {
-    return notAcceptableError('Invalid query parameters: not strings')
+    throw notAcceptableError('Invalid query parameters: not strings')
   }
 
   const challenge = await oauthChallengeDb.get(state)
   if (!challenge) {
-    return notAcceptableError('Invalid challenge')
+    throw notAcceptableError('Invalid challenge')
   }
 
   if (challenge.userId !== user.address) {
-    return notAcceptableError('Invalid challenge for user')
+    throw notAcceptableError('Invalid challenge for user')
   }
 
   await oauthChallengeDb.remove(state)
@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
   }).catch((e: Error) => e)
 
   if (tokens instanceof Error) {
-    return notAcceptableError(`Failed to exchange code for tokens: ${tokens.message}`)
+    throw notAcceptableError(`Failed to exchange code for tokens: ${tokens.message}`)
   }
 
   const galxeUser = await $fetch<{
@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
   }).catch((e: Error) => e)
 
   if (galxeUser instanceof Error) {
-    return notAcceptableError(`Failed to fetch Galxe user: ${galxeUser.message}`)
+    throw notAcceptableError(`Failed to fetch Galxe user: ${galxeUser.message}`)
   }
 
   console.log({ galxeUser }) // eslint-disable-line no-console
