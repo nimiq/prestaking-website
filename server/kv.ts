@@ -9,6 +9,8 @@ export interface User {
   hasClaimed: boolean
   totalPoints: number
   galxeId?: string
+  createdAt: string
+  updatedAt: string
 }
 
 // Stored with the challenge as the key

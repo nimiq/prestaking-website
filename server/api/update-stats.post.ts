@@ -57,6 +57,7 @@ export default defineEventHandler(async (event) => {
   user.delegation = staker.delegation
   user.stake = stake
   user.totalPoints = basePoints + earlyBirdPoints + underdogPoints + galxePoints
+  user.updatedAt = new Date().toJSON()
 
   await userDb.set(user.address, user)
 
