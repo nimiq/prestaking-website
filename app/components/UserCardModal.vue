@@ -2,12 +2,19 @@
 import { useUserInfo } from '@/stores/userInfo'
 import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 
-const emits = defineEmits(['close', 'learnMore'])
+const emits = defineEmits(['close', 'learnMore', 'logout'])
 
 const store = useUserInfo()
 
-function logOut() {
-  console.error('log out')
+async function logOut() {
+  await $fetch('/api/auth/logout', {
+    method: 'POST',
+  }).catch((err: Error) => {
+    window.alert(err.message) // eslint-disable-line no-alert
+    throw err
+  })
+  store.logout()
+  emits('close')
 }
 
 const dropdownOpen: Ref<boolean> = ref(false)
@@ -31,17 +38,17 @@ useOutsideClick(container, () => {
     class="group relative flex flex-col"
   >
     <TiltCardWrapper class="mx-auto">
-      <TiltCard :card="getUserPrestakeCardType()" />
+      <TiltCard :card-type="getUserPrestakeCardType()" />
     </TiltCardWrapper>
     <div class="mt-32 flex items-center justify-center gap-16">
       <div class="text-48 text-white font-bold">
-        {{ store.user.totalTickets }}
+        {{ store.totalPoints }}
       </div>
       <div i-custom:tickets class="h-35 w-40" />
     </div>
-    <div class="mx-auto text-white/80">
+    <!-- <div class="mx-auto text-white/80">
       100000 NIM = 1000 Tickets
-    </div>
+    </div> -->
     <div class="mx-auto mt-32 flex items-center gap-16">
       <div class="h-40 scale-105 cursor-pointer nq-pill-lg nq-pill-blue" @click="$emit('learnMore')">
         Learn more <div class="i-nimiq:arrow-from-bottom-left ml-8 text-11 text-white" />

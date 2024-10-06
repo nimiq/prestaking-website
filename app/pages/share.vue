@@ -58,7 +58,7 @@ onMounted(() => {
       <div class="no-scrollbar max-w-screen w-screen overflow-x-auto">
         <div class="share-scroll relative flex items-center justify-start gap-x-40 py-40 pl-[calc(50vw-160px)] !h-[calc(478px+80px)]">
           <TiltCardWrapper class="initial z-5 !h-478 !max-w-311 !min-w-311">
-            <TiltCard :card="cardLevel" />
+            <TiltCard :card-type="cardLevel" />
           </TiltCardWrapper>
           <TiltCardWrapper v-if="earlyBirdActive" class="initial z-4 !h-478 !min-w-311 !w-311">
             <div i-custom:time-card class="min-h-full min-w-full w-max" />

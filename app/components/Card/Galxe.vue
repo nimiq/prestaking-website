@@ -2,16 +2,6 @@
 import { useUserInfo } from '@/stores/userInfo'
 import galxeRewardData from '~/content/rewards/galxe'
 
-defineProps({
-  locked: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-})
-
-defineEmits(['openGalxeModal'])
-
 const store = useUserInfo()
 
 const cardColor = '#A55AE7'
@@ -29,11 +19,11 @@ function closeModal() {
 }
 
 const activatedMultipliers = computed(() => {
-  return []
+  return store.hasClaimed && store.galxeMultiplier > 0 ? [store.galxeMultiplier] : []
 })
 
 const activateCard = computed(() => {
-  return store.loggedIn && store.user.galxeLinked
+  return activatedMultipliers.value && activatedMultipliers.value.length > 0
 })
 
 // TODO: understand the logic for this component
@@ -61,19 +51,22 @@ const mr = computed(() => {
 <template>
   <div :class="[!activateCard && 'p-32', activateCard && 'active !border-0 !bg-transparent !bg-none !bg-blend-normal']" class="rewards-card-container" style="">
     <div v-if="!activateCard">
-      <div v-if="locked" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" />
+      <div v-if="!store.hasClaimed" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" title="Claim your points to unlock this card" />
 
       <!-- Icon -->
       <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
         <div class="i-custom:galxe h-28 w-144" />
       </div>
       <div class="small-body text-center text-white/60">
-        Share the news with Galxe to multiply your points
+        Share the news with Galxe to multiply your points. Coming soon!
       </div>
-      <button class="mx-auto mt-24 cursor-pointer nq-pill-secondary" disabled>
-        <!-- @click="$emit('openGalxeModal')" -->
+      <button v-if="true || !store.hasClaimed" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
         Connect
       </button>
+      <a v-else-if="!store.galxeId" href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
+      <p v-else class="mt-16 text-center text-14 text-white">
+        Galxe points are coming soon, check back in a few days!
+      </p>
       <RewardMultiplierBadges
         :multipliers="galxeRewardData.options"
         :active="[]"

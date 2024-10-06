@@ -70,8 +70,8 @@ function addIdenticonsToPage() {
     identicon.style.left = `${sizing.left - 1.5}px`
     identicon.style.height = `${sizing.width + 0}px`
     identicon.style.width = `${sizing.width + 0}px`
-    identicon.classList.add('identicon-container')
-    identicon.innerHTML = `<img class="identicon imageReveal" src="${
+    identicon.classList.add('clock-identicon-container')
+    identicon.innerHTML = `<img class="clock-identicon imageReveal" src="${
       identicons[Math.floor(Math.random() * 7)]
     }">`
     document.getElementById('clock')?.append(identicon)
@@ -92,7 +92,7 @@ function updateSizeAndPosition() {
       identicon.style.left = `${sizing.left - 1.5}px`
       identicon.style.height = `${sizing.width + 1}px`
       identicon.style.width = `${sizing.width + 1}px`
-      identicon.classList.add('identicon-container')
+      identicon.classList.add('clock-identicon-container')
     }
   })
 }
@@ -486,19 +486,21 @@ const offsetY = computed(() => {
 </template>
 
 <style>
-.identicon-container {
+.clock-identicon-container {
   position: absolute;
   z-index: 20;
 }
 
-.identicon {
+.clock-identicon {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
+</style>
 
+<style scoped>
 g.hex-digit-group path {
   position: relative;
   transform-box: fill-box;

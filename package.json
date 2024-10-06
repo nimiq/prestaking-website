@@ -13,18 +13,26 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@nimiq/hub-api": "^1.8.0",
+    "@nimiq/identicons": "^1.6.2",
+    "@nimiq/utils": "^0.11.3",
+    "@nimiq/vue3-components": "github:nimiq/vue3-components#9b9a07a295ba0f980ca5acfe350c3ff119035015",
     "@nuxt/image": "^1.8.0",
-    "@nuxthub/core": "^0.7.19",
+    "@nuxthub/core": "^0.7.20",
     "@nuxtjs/seo": "2.0.0-rc.23",
     "@vueuse/core": "^11.1.0",
+    "chalk": "^5.3.0",
     "gsap": "^3.12.5",
     "nuxt": "^3.13.2",
+    "nuxt-auth-utils": "^0.3.9",
+    "nuxt-security": "^2.0.0",
     "pinia": "^2.2.2",
     "pixi.js": "^8.4.1",
     "three": "^0.168.0",
     "valibot": "^0.42.0",
     "vue": "^3.5.6",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.2",
@@ -46,7 +54,7 @@
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2",
     "unocss": "^0.62.4",
-    "wrangler": "^3.78.5"
+    "wrangler": "^3.78.12"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

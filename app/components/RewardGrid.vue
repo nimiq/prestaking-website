@@ -1,18 +1,21 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
-import { getUserPrestakeCardType, getUserStakedNIM } from '~/composables/userPrestakingTickets'
-
-defineProps({
-  prePreStaking: {
-    type: Boolean,
-    required: true,
-  },
-})
+import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
 
 const store = useUserInfo()
 
+const isVisible = ref(false)
+onMounted(() => {
+  store.tryFetch().finally(() => {
+    isVisible.value = true
+  })
+})
+
+const cardType = computed(() => {
+  return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
+})
+
 const showLoginModal: Ref<boolean> = ref(false)
-const showGalxeModal: Ref<boolean> = ref(false)
 
 function openLoginModal() {
   showLoginModal.value = true
@@ -23,19 +26,6 @@ function closeLoginModal() {
   showLoginModal.value = false
   document.documentElement.style.overflow = 'auto'
 }
-function openGalxeModal() {
-  showGalxeModal.value = true
-  document.documentElement.style.overflow = 'hidden'
-}
-
-function closeGalxeModal() {
-  showGalxeModal.value = false
-  document.documentElement.style.overflow = 'auto'
-}
-
-const userNIM = computed(() => {
-  return store.user.prestakedNIMAmount
-})
 
 const rewardTickets: Ref<HTMLDivElement | null> = ref(null)
 
@@ -46,25 +36,31 @@ function trackScroll(e: Event) {
   }
 }
 
-function claimTickets() {
-  store.setClaimedTickets()
+async function claimPoints() {
+  const { hasClaimed } = await $fetch('/api/claim-points', {
+    method: 'POST',
+  }).catch((err: Error) => {
+    window.alert(err.message) // eslint-disable-line no-alert
+    throw err
+  })
+
+  store.hasClaimed = hasClaimed
 }
 </script>
 
 <template>
   <div
     class="z-5 grid grid-cols-1 lg:grid-cols-[min-content_1fr_1fr] md:grid-cols-[min-content_1fr_1fr] lg:mx-0 -ml-32 -mr-32 lg:rounded-16" style="grid-template-rows: repeat(5, max-content)"
-    :class="getUserPrestakeCardType()"
+    :class="[cardType || 'none', { invisible: !isVisible }]"
   >
     <div id="reward-user" class="relative z-5 w-full border-1 border-white/10 p-32 md:col-start-1 md:row-start-1 lg:col-end-2 md:col-end-2 md:col-end-2 md:row-end-4 lg:rounded-tl-16">
-      <NuxtImg v-if="getUserPrestakeCardType() !== 'none'" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-30 mix-blend-multiply md:rounded-tl-16" />
+      <NuxtImg v-if="cardType" src="/img/metal-grain.png" class="absolute left-0.5 top-0.5 size-full opacity-30 mix-blend-multiply md:rounded-tl-16" />
       <CardUserPrestake
-        :key="userNIM"
-        :locked="store.loggedIn === false"
+        :key="store.stake"
         @open-login-modal="openLoginModal"
       />
       <div class="absolute bottom-0 left-1/2 min-w-max flex translate-1/2 items-center justify-center gap-8 rounded-full bg-[#464A73] px-32 py-8 text-14 text-white/60 -translate-x-1/2">
-        <div>{{ getUserStakedNIM() / 1000 }}</div>
+        <div>{{ store.basePoints }}</div>
         <div class="i-custom:tickets inline-block size-16 opacity-60" />
       </div>
       <div class="absolute right-0 hidden h-fit min-w-max translate-1/2 items-center justify-center gap-8 border-1 border-white/10 rounded-full bg-[#2E3361] p-8 text-14 text-white/60 -bottom-1 md:flex">
@@ -73,7 +69,7 @@ function claimTickets() {
     </div>
     <div class="radial-bg col-start-2 row-start-2 col-end-4 row-end-5 size-full -z-1" />
     <div
-      class="row-start-2 border-r-1 border-t-1 border-white/10 bg-[#1F2348] pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
+      class="row-start-2 border-r-1 border-t-1 border-white/10 pt-48 lg:col-start-2 md:col-start-2 lg:col-end-4 md:col-end-4 lg:rounded-tr-16"
     >
       <div class="small-label px-32 text-white/60" style="letter-spacing: 0.8px;">
         Multipliers
@@ -87,7 +83,7 @@ function claimTickets() {
         <div id="reward-list" class="no-scrollbar max-w-full w-full flex gap-x-24 overflow-auto px-32 pt-32" @scroll="(e) => trackScroll(e)">
           <CardEarlyBird />
           <CardUnderdog />
-          <CardGalxe @open-galxe-modal="openGalxeModal" />
+          <CardGalxe />
         </div>
       </div>
 
@@ -103,29 +99,35 @@ function claimTickets() {
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"
       >
         <!-- :class="store.loggedIn" -->
-        <div v-if="!store.loggedIn" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+        <div v-if="!store.address || !store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           0
           <span class="text-17 font-600">Points</span>
         </div>
-        <div v-else-if="store.loggedIn && store.user.prestakedNIMAmount === 0" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
-          <span class="text-24">Claim points</span>
-        </div>
         <div
-          v-else-if="store.loggedIn && store.user.prestakedNIMAmount > 0 && store.user.totalTickets !== store.user.prestakedNIMAmount / 1000"
+          v-else-if="!store.hasClaimed"
           class="tickets-pill active px-32 py-24 text-white/60 leading-70%"
-          @click="claimTickets"
+          @click="claimPoints"
         >
-          <span class="text-24 text-white">Claim points</span>
+          <span class="text-24 text-white">Claim {{ store.totalPoints }} points</span>
         </div>
 
-        <NuxtLink
-          v-else-if="store.user.totalTickets === store.user.prestakedNIMAmount / 1000"
-          :to="{ name: 'share', query: { tickets: store.user.totalTickets, cardLevel: getUserPrestakeCardType() } }"
+        <div
+          v-else
           class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
-          @click="claimTickets"
         >
           <div class="flex grow items-center justify-center gap-x-12">
-            {{ store.user.totalTickets }}
+            {{ store.totalPoints }}
+            <span class="text-17 text-white font-600">Points</span>
+          </div>
+        </div>
+
+        <!-- TODO: Sharing -->
+        <!-- <NuxtLink v-else
+          :to="{ name: 'share', query: { tickets: store.totalPoints, cardLevel: cardType } }"
+          class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
+        >
+          <div class="flex grow items-center justify-center gap-x-12">
+            {{ store.totalPoints }}
             <span class="text-17 text-white font-600">Points</span>
           </div>
           <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,14 +140,11 @@ function claimTickets() {
               </radialGradient>
             </defs>
           </svg>
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
     </div>
     <ModalWrapper :active="showLoginModal">
       <NimiqLoginModal @close="closeLoginModal" />
-    </ModalWrapper>
-    <ModalWrapper :active="showGalxeModal">
-      <NimiqGalxeModal @close="closeGalxeModal" />
     </ModalWrapper>
   </div>
 </template>
@@ -192,6 +191,17 @@ function claimTickets() {
   .radial-bg {
     border-radius: 0 16px 0 0;
     background: radial-gradient(50% 50% at 50% 50%, rgba(236, 210, 127, 0.6) 0%, rgba(236, 210, 127, 0.3) 100%);
+    opacity: 0.5;
+  }
+}
+.platinum {
+  #reward-user {
+    background: linear-gradient(180deg, rgba(218, 230, 236, 0.4) 0%, rgba(218, 230, 236, 0.2) 100%),
+      linear-gradient(180deg, #1f2348 22.32%, rgba(31, 35, 72, 0) 100%);
+  }
+  .radial-bg {
+    border-radius: 0 16px 0 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(236, 238, 255, 0.6) 0%, rgba(242, 238, 255, 0.3) 100%);
     opacity: 0.5;
   }
 }

@@ -18,9 +18,10 @@ const rimColors = computed(() => {
       return ['#ECF5FC', '#BEC8D3']
     case 'gold':
       return ['#FFD767', '#BB9B25']
-
+    case 'platinum':
+      return ['#ECEEFF', '#F2EEFF']
     default:
-      return ['#FCD1BE', '#9E6262']
+      return ['#FFFFFF', '#FFFFFF']
   }
 })
 </script>
@@ -28,7 +29,7 @@ const rimColors = computed(() => {
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" width="172" height="156" fill="none" viewBox="0 0 172 156">
     <g class="Identicon">
-      <g class="Shadow" filter="url(#a)" opacity=".54" style="mix-blend-mode:overlay">
+      <g class="Shadow" filter="url(#a)" opacity=".2" style="mix-blend-mode:overlay">
         <path fill="#000" fill-rule="evenodd" d="m6.852 84.733 33.673 58.489a13.461 13.461 0 0 0 11.674 6.748h67.349c4.716 0 9.205-2.475 11.674-6.748l33.673-58.489c2.469-4.276 2.469-9.223 0-13.496l-33.673-58.49A13.46 13.46 0 0 0 119.548 6h-67.35a13.469 13.469 0 0 0-11.673 6.748L6.852 71.238c-2.47 4.275-2.47 9.223 0 13.495Zm151.11-9.504.007.011c1.037 1.795 1.038 3.691-.002 5.493l-33.671 58.486-.004.007a5.468 5.468 0 0 1-4.744 2.744h-67.35a5.462 5.462 0 0 1-4.743-2.745l-.002-.003-33.668-58.48-.007-.012c-1.037-1.794-1.039-3.69.002-5.492L47.45 16.75l.003-.005A5.469 5.469 0 0 1 52.2 14h67.349c1.92 0 3.735 1 4.744 2.744l.002.005 33.668 58.48Z" clip-rule="evenodd" />
       </g>
       <g class="Neutral">

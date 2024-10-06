@@ -32,7 +32,7 @@ defineProps({
 </script>
 
 <template>
-  <div :style="`--bg-solid: ${color};`" class="rw-container active relative min-w-1/3">
+  <div :style="`--bg-solid: ${color};`" class="rw-container relative min-w-1/3" :class="{ active }">
     <div v-if="buttonText" class="rw-value-container">
       <div class="rw-value">
         {{ buttonText }}
@@ -105,9 +105,9 @@ defineProps({
 }
 
 .active {
-  /* &.rw-container {
+  &.rw-container {
     border: 1.5px solid #604c8b !important;
-  } */
+  }
 
   .rw-value {
     color: white;

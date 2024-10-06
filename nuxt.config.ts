@@ -17,6 +17,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'radix-vue/nuxt',
     '@nuxtjs/seo',
+    'nuxt-auth-utils',
+    'nuxt-security',
   ],
 
   devtools: {
@@ -24,10 +26,12 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    galxeClientId: '', // Replaced by NUXT_GALXE_CLIENT_ID
+    galxeClientSecret: '', // Replaced by NUXT_GALXE_CLIENT_SECRET
     public: {
-      validatorsApiUrl: 'https://validators-api.pages.dev/api/v1',
-      albatrossLiveviewUrl: 'https://nimiq-website-onmax.nuxt.dev/iframes/albatross-liveview',
-      nimiqwatchTotalStakeUrl: 'https://v2.nimiqwatch.com/api/v2/total-prestake',
+      validatorsApiUrl: 'https://validators-api.pages.dev/api/v1', // Replaced by NUXT_PUBLIC_VALIDATORS_API_URL
+      albatrossLiveviewUrl: 'https://nimiq-website-nimiq.nuxt.dev/iframes/albatross-liveview', // Replaced by NUXT_PUBLIC_ALBATROSS_LIVEVIEW_URL
+      nimiqwatchTotalStakeUrl: 'https://v2.nimiqwatch.com/api/v2/total-prestake', // Replaced by NUXT_PUBLIC_NIMIQWATCH_TOTAL_STAKE_URL
     },
   },
 
@@ -44,6 +48,20 @@ export default defineNuxtConfig({
     name: 'Nimiq Prestaking',
     description: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200,000,000 NIM giveaway!',
     defaultLocale: 'en',
+  },
+
+  hub: {
+    kv: true,
+  },
+
+  security: {
+    // headers: {
+    //   crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp', // To work with Nuxt DevTools
+    // },
+    headers: {
+      // The default value is 'same-origin', but that prevents the Hub popup from being communicated with.
+      crossOriginOpenerPolicy: 'same-origin-allow-popups',
+    },
   },
 
   watch: ['~/content'],
