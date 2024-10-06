@@ -32,8 +32,6 @@ const cardType = computed(() => {
 })
 
 const $cards = ref<HTMLDivElement[]>([])
-watch($cards, () => {
-}, { immediate: true })
 
 onMounted(() => {
   if (!cardType.value)
