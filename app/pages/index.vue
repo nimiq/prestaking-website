@@ -115,7 +115,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
       />
       <div class="lg:h-35" />
       <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[250px] -translate-x-1/2 md:-bottom-[425px] sm:-bottom-[320px]" src="/img/four-cards.png" alt="" />
-      <Ember class="absolute bottom-460 left-25 md:bottom-323" />
+      <Ember class="absolute bottom-575 left-25 md:bottom-323 sm:bottom-460" />
       <Ember class="hide-glow absolute bottom-423 left-325 scale-70 opacity-40" />
       <Ember class="hide-glow absolute bottom-270 right-40 scale-60 opacity-30" />
       <Ember class="absolute bottom-0 right-100 md:right-290" />
