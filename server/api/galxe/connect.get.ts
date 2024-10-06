@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const user = event.context.user
 
   const challenge = createRandomString(32)
-  await oauthChallengeDb.set(challenge, { userId: user.address }, { ttl: 60 * 60 }) // Delete after 1 hour
+  await oauthChallengeDb.set(challenge, { userId: user.id }, { ttl: 60 * 60 }) // Delete after 1 hour
 
   const { galxeClientId } = useRuntimeConfig()
   const redirectUrl = [

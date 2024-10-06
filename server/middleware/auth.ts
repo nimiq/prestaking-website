@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     return
 
   const { user } = await requireUserSession(event)
-  const userObj = await userDb.get(user.address)
+  const userObj = await userDb.get(user.id)
   if (!userObj)
     throw forbiddenError('User does not exist')
 

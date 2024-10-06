@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
     throw notAcceptableError('Invalid challenge')
   }
 
-  if (challenge.userId !== user.address) {
+  if (challenge.userId !== user.id) {
     throw notAcceptableError('Invalid challenge for user')
   }
 
@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
   console.log({ galxeUser }) // eslint-disable-line no-console
   user.galxeId = galxeUser.GalxeUserID
 
-  await userDb.set(user.address, user)
+  await userDb.set(user.id, user)
 
   return sendRedirect(event, '/pre-staking')
 })

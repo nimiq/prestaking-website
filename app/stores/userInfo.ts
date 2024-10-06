@@ -13,6 +13,7 @@
 
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
+    userId: null as string | null,
     address: null as string | null,
     stake: 0,
     totalPoints: 0,
@@ -34,20 +35,24 @@ export const useUserInfo = defineStore('userInfo', {
       if (!user)
         return false
 
-      await this.updateStats(user.address)
+      await this.updateStats(user.id, user.address)
       return true
     },
-    async updateStats(address: string) {
+    async updateStats(id: string, address: string) {
       const stats = await $fetch('/api/update-stats', {
         method: 'POST',
       }).catch(() => null)
 
       if (!stats) {
-        useUserInfo().address = address
+        useUserInfo().$patch({
+          userId: id,
+          address,
+        })
         return
       }
 
       useUserInfo().$patch({
+        userId: id,
         address,
         stake: stats.stake,
         totalPoints: stats.totalPoints,
@@ -65,6 +70,7 @@ export const useUserInfo = defineStore('userInfo', {
       })
     },
     logout() {
+      this.userId = null
       this.address = null
       this.stake = 0
       this.totalPoints = 0

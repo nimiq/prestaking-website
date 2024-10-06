@@ -34,10 +34,15 @@ export default defineEventHandler(async (event): Promise<User> => {
 
   const { address } = requestSchema.parse(await readBody(event))
 
-  let user = await userDb.get(address)
+  const userId = new Uint8Array(
+    await crypto.subtle.digest('SHA-256', new TextEncoder().encode(address)),
+  ).reduce((t, x) => t + x.toString(16).padStart(2, '0'), '')
+
+  let user = await userDb.get(userId)
   if (!user) {
     // Register user
     user = {
+      id: userId,
       address,
       stake: 0,
       delegation: null,
@@ -46,11 +51,11 @@ export default defineEventHandler(async (event): Promise<User> => {
       createdAt: new Date().toJSON(),
       updatedAt: new Date().toJSON(),
     }
-    await userDb.set(address, user)
+    await userDb.set(userId, user)
   }
 
   await setUserSession(event, { user: {
-    address: user.address,
+    id: userId,
   } })
 
   return user
@@ -58,7 +63,7 @@ export default defineEventHandler(async (event): Promise<User> => {
 
 declare module '#auth-utils' {
   interface User {
-    address: string
+    id: string
   }
 
   // interface UserSession {

@@ -3,6 +3,7 @@ export type Luna = number
 
 // Stored with the userId (currently the address) as the key
 export interface User {
+  id: string
   address: Address
   stake: Luna
   delegation: Address | null

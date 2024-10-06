@@ -36,7 +36,7 @@ async function acceptTC() {
     throw err
   })
 
-  await useUserInfo().updateStats(user.address) // TODO: Error handling
+  await useUserInfo().updateStats(user.id, user.address) // TODO: Error handling
   emit('close')
 }
 </script>

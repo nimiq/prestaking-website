@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
   user.totalPoints = basePoints + earlyBirdPoints + underdogPoints + galxePoints
   user.updatedAt = new Date().toJSON()
 
-  await userDb.set(user.address, user)
+  await userDb.set(user.id, user)
 
   return {
     stake,

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   user.hasClaimed = true
 
-  await userDb.set(user.address, user)
+  await userDb.set(user.id, user)
 
   return {
     hasClaimed: user.hasClaimed,
