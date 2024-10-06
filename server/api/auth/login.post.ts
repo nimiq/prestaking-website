@@ -56,7 +56,9 @@ export default defineEventHandler(async (event): Promise<User> => {
 
   await setUserSession(event, { user: {
     id: userId,
-  } })
+  } }, {
+    maxAge: 60 * 60 * 24 * 30, // 1 month
+  })
 
   return user
 })
