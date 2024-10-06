@@ -30,6 +30,8 @@ function activateDetails() {
   showDetails.value = true
 }
 
+const prestakingHasStarted = new Date() >= new Date('2024-10-07T00:00:00Z')
+
 async function logOut() {
   await $fetch('/api/auth/logout', {
     method: 'POST',
@@ -54,12 +56,14 @@ async function logOut() {
         </div>
       </div>
       <!-- Description -->
-      <div class="small-body text-center text-white">
+      <div v-if="prestakingHasStarted" class="small-body text-center text-white">
         Pre-stake NIM to participate.<br>The more you pre-stake, the higher your score.
-        <!-- Pre-staking is starting soon.<br>Stay tuned! -->
+      </div>
+      <div v-else class="small-body text-center text-white">
+        Pre-staking is starting soon.<br>Stay tuned!
       </div>
       <!-- Buttons -->
-      <button v-if="!store.address" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')">
+      <button v-if="!store.address" :disabled="!prestakingHasStarted" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')">
         Login & enter
       </button>
       <a v-if="store.address && !store.stake" href="https://wallet.nimiq.com" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
