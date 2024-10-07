@@ -2,7 +2,7 @@
 import gsap from 'gsap'
 import pageContent from '~/content/home'
 
-const prestaking = true
+const prestaking = false
 
 onMounted(() => {
   nextTick(() => {
