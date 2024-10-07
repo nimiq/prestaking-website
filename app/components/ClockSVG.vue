@@ -12,18 +12,10 @@ const day = ref({
   secondDigit: 0,
 })
 
-function isoToObj(s: string) {
-  const b = s.split(/[-TZ:]/i) as Array<string>
-  return new Date(Date.UTC(Number.parseInt(b[0]), Number.parseInt(b[1]) - 1, Number.parseInt(b[2]), Number.parseInt(b[3]), Number.parseInt(b[4]), Number.parseInt(b[5])))
-}
-
-const futureDate = isoToObj('2024-11-19T07:00:00Z') // UTC!!!! no + 1 for summertime
+const transitionDate = new Date('2024-11-19T07:00:00Z') // UTC!!!! no + 1 for summertime
 
 function updateTime() {
-  const dateFuture = new Date(futureDate)
-  const dateNow = new Date()
-
-  const seconds = Math.floor((dateFuture.getTime() - dateNow.getTime()) / 1000)
+  const seconds = Math.floor((transitionDate.getTime() - Date.now()) / 1000)
   let minutes = Math.floor(seconds / 60)
   let hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
@@ -31,16 +23,15 @@ function updateTime() {
   hours = Math.floor((hours - (days * 24)))
   minutes = (minutes - (days * 24 * 60) - (hours * 60))
 
-  const daysAsString = days.toString().length < 2 ? `0${days.toString()}` : days.toString()
-  const hoursAsString = hours.toString().length < 2 ? `0${hours.toString()}` : hours.toString()
-  const minutesAsString = minutes.toString().length < 2 ? `0${minutes.toString()}` : minutes.toString()
-
+  const daysAsString = days.toString(10).padStart(2, '0')
   day.value.firstDigit = Number.parseInt(daysAsString[0] as string)
   day.value.secondDigit = Number.parseInt(daysAsString[1] as string)
 
+  const hoursAsString = hours.toString(10).padStart(2, '0')
   hour.value.firstDigit = Number.parseInt(hoursAsString[0] as string)
   hour.value.secondDigit = Number.parseInt(hoursAsString[1] as string)
 
+  const minutesAsString = minutes.toString(10).padStart(2, '0')
   minute.value.firstDigit = Number.parseInt(minutesAsString[0] as string)
   minute.value.secondDigit = Number.parseInt(minutesAsString[1] as string)
 }
@@ -103,10 +94,10 @@ const offsetY = computed(() => {
   >
     <ClockSVGDigit :view-width="viewWidth" :active-number="day.firstDigit ? day.firstDigit : 0" :index="0" />
     <ClockSVGDigit :view-width="viewWidth" :active-number="day.secondDigit ? day.secondDigit : 0" :index="1" />
-    <ClockSVGDigit :view-width="viewWidth" :active-number="hour.firstDigit ? hour.firstDigit : 0" :index="2" />
-    <ClockSVGDigit :view-width="viewWidth" :active-number="hour.secondDigit ? hour.secondDigit : 0" :index="3" />
-    <ClockSVGDigit :view-width="viewWidth" :active-number="minute.firstDigit ? minute.firstDigit : 0" :index="4" />
-    <ClockSVGDigit :view-width="viewWidth" :active-number="minute.secondDigit ? minute.secondDigit : 0" :index="5" />
+    <ClockSVGDigit v-if="viewWidth >= 975" :view-width="viewWidth" :active-number="hour.firstDigit ? hour.firstDigit : 0" :index="2" />
+    <ClockSVGDigit v-if="viewWidth >= 975" :view-width="viewWidth" :active-number="hour.secondDigit ? hour.secondDigit : 0" :index="3" />
+    <ClockSVGDigit v-if="viewWidth >= 1440" :view-width="viewWidth" :active-number="minute.firstDigit ? minute.firstDigit : 0" :index="4" />
+    <ClockSVGDigit v-if="viewWidth >= 1440" :view-width="viewWidth" :active-number="minute.secondDigit ? minute.secondDigit : 0" :index="5" />
     <g
       transform="translate(-236,-102)"
     >

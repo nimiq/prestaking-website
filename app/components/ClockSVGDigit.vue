@@ -99,16 +99,22 @@ function updateSizeAndPosition() {
 
 onMounted(() => {
   nextTick(() => {
-    setTimeout(() => {
-      addIdenticonsToPage()
-      initialLoad.value = true
-    }, 1000)
+    addIdenticonsToPage()
+    initialLoad.value = true
   })
   window.addEventListener('resize', () => {
     nextTick(() => {
       updateSizeAndPosition()
     })
   })
+})
+
+onUnmounted(() => {
+  // Clean up externally rendered DOM elements (important for hot-reloading during dev)
+  for (const identicon of identiconImages) {
+    identicon.remove()
+    identiconImages = []
+  }
 })
 
 watch(() => props.activeNumber, () => {
@@ -123,22 +129,29 @@ watch(() => props.activeNumber, () => {
   }
 })
 
+const leftOffset = 58.5
+const digitWidth = 156
+const innerDigitGap = 52
+const interDigitGap = 104
+
 const offsetX = computed(() => {
-  switch (props.index) {
-    case 0:
-      return 58.5
-    case 1:
-      return 58.5 + props.index * (156 + 52)
-    case 2:
-      return 58.5 + (props.index * 156) + 52 + 104
-    case 3:
-      return 58.5 + (props.index * 156) + (2 * 52) + 104
-    case 4:
-      return 58.5 + (props.index * 156) + (2 * 52) + 208
-    case 5:
-      return 58.5 + (props.index * 156) + (3 * 52) + 208
-    default: return 0
-  }
+  let offset = leftOffset
+  if (props.index < 1)
+    return offset
+  offset += digitWidth + innerDigitGap
+  if (props.index < 2)
+    return offset
+  offset += digitWidth + interDigitGap
+  if (props.index < 3)
+    return offset
+  offset += digitWidth + innerDigitGap
+  if (props.index < 4)
+    return offset
+  offset += digitWidth + interDigitGap
+  if (props.index < 5)
+    return offset
+  offset += digitWidth + innerDigitGap
+  return offset
 })
 
 const offsetY = computed(() => {
