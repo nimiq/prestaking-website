@@ -61,6 +61,12 @@ export default defineNuxtConfig({
     headers: {
       // The default value is 'same-origin', but that prevents the Hub popup from being communicated with.
       crossOriginOpenerPolicy: 'same-origin-allow-popups',
+      contentSecurityPolicy: {
+        'frame-src': ['\'self\''],
+        'frame-ancestors': ['\'self\''],
+      },
+      xFrameOptions: 'SAMEORIGIN',
+      crossOriginEmbedderPolicy: 'unsafe-none',
     },
   },
 
