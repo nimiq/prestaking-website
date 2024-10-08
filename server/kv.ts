@@ -9,7 +9,11 @@ export interface User {
   delegation: Address | null
   hasClaimed: boolean
   totalPoints: number
-  galxeId?: string
+  galxeUser: {
+    Avatar: string // URL
+    GalxeID: string
+    Name: string
+  } | null
   createdAt: string
   updatedAt: string
 }

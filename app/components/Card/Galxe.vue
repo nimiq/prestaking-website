@@ -37,11 +37,18 @@ const data = {
 
 const x = ref(0)
 
+const galxeEnabled = ref(false)
+
 onMounted(() => {
   setTimeout(() => {
     // Get user leaderboard % position from Galxe api
     x.value = 51
   }, 500)
+
+  // @ts-expect-error enableGalxe is not a property on window
+  window.enableGalxe = () => {
+    galxeEnabled.value = true
+  }
 })
 const mr = computed(() => {
   return (x.value / 100) * 49
@@ -54,19 +61,30 @@ const mr = computed(() => {
       <div v-if="!store.hasClaimed" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" title="Claim your points to unlock this card" />
 
       <!-- Icon -->
-      <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
-        <div class="i-custom:galxe h-28 w-144" />
-      </div>
-      <div class="small-body text-center text-white/60">
-        Share the news with Galxe to multiply your points. Coming soon!
-      </div>
-      <button v-if="true || !store.hasClaimed" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
-        Connect
-      </button>
-      <a v-else-if="!store.galxeId" href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
-      <p v-else class="mt-16 text-center text-14 text-white">
-        Galxe points are coming soon, check back in a few days!
-      </p>
+      <template v-if="!store.galxeUser">
+        <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
+          <div class="i-custom:galxe h-28 w-144" />
+        </div>
+        <div class="small-body text-center text-white/60">
+          Share the news with Galxe to multiply your points. Coming soon!
+        </div>
+        <button v-if="!galxeEnabled" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
+          Connect
+        </button>
+        <a v-else href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
+      </template>
+      <template v-else>
+        <div class="icon-shadow mx-auto mb-8 w-fit object-contain object-center">
+          <img :src="store.galxeUser.Avatar" class="relative h-64 w-64 rounded-full">
+        </div>
+        <div class="small-body text-center text-white">
+          {{ store.galxeUser.Name }}
+        </div>
+        <p class="mt-16 text-center text-14 text-white/60">
+          Galxe points are coming soon, check back in a few days!
+        </p>
+      </template>
+
       <RewardMultiplierBadges
         :multipliers="galxeRewardData.options"
         :active="[]"

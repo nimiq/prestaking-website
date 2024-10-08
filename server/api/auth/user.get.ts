@@ -4,5 +4,6 @@ export default defineEventHandler(async (event) => {
   return {
     id: user.id,
     address: user.address,
+    galxeUser: user.galxeUser,
   }
 })

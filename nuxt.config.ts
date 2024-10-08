@@ -26,8 +26,10 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    galxeClientId: '', // Replaced by NUXT_GALXE_CLIENT_ID
-    galxeClientSecret: '', // Replaced by NUXT_GALXE_CLIENT_SECRET
+    // eslint-disable-next-line node/prefer-global/process
+    galxeClientId: process.env.NUXT_GALXE_CLIENT_ID, // Replaced by NUXT_GALXE_CLIENT_ID
+    // eslint-disable-next-line node/prefer-global/process
+    galxeClientSecret: process.env.NUXT_GALXE_CLIENT_SECRET, // Replaced by NUXT_GALXE_CLIENT_SECRET
     public: {
       validatorsApiUrl: 'https://validators-api.pages.dev/api/v1', // Replaced by NUXT_PUBLIC_VALIDATORS_API_URL
       albatrossLiveviewUrl: 'https://nimiq-website-nimiq.nuxt.dev/iframes/albatross-liveview', // Replaced by NUXT_PUBLIC_ALBATROSS_LIVEVIEW_URL
@@ -64,6 +66,7 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         'frame-src': ['\'self\''],
         'frame-ancestors': ['\'self\''],
+        'img-src': false,
       },
       xFrameOptions: 'SAMEORIGIN',
       crossOriginEmbedderPolicy: 'unsafe-none',

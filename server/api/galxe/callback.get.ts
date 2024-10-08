@@ -44,7 +44,9 @@ export default defineEventHandler(async (event) => {
   }
 
   const galxeUser = await $fetch<{
-    GalxeUserID: string
+    Avatar: string // URL
+    GalxeID: string
+    Name: string
   }>('https://api.galxe.com/oauth/api/2/user?scope=GalxeID', {
     headers: {
       Authorization: `${tokens.token_type} ${tokens.access_token}`,
@@ -55,9 +57,7 @@ export default defineEventHandler(async (event) => {
     throw notAcceptableError(`Failed to fetch Galxe user: ${galxeUser.message}`)
   }
 
-  console.log({ galxeUser }) // eslint-disable-line no-console
-  user.galxeId = galxeUser.GalxeUserID
-
+  user.galxeUser = galxeUser
   await userDb.set(user.id, user)
 
   return sendRedirect(event, '/pre-staking')
