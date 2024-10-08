@@ -51,18 +51,8 @@ function getRelativeMilestone(barIndex: number) {
   return relativeMilestones.find(x => x.value === barIndex)
 }
 
-function nFormatter(num: number, digits: number) {
-  const lookup = [
-    { value: 1, symbol: '' },
-    { value: 1e3, symbol: 'k' },
-    { value: 1e6, symbol: 'M' },
-    { value: 1e9, symbol: 'B' },
-    { value: 1e12, symbol: 'T' },
-  ]
-  const regexp = /\.0+$|(?<=\.\d*[1-9])0+$/
-  const item = lookup.findLast(item => num >= item.value)
-  return item ? (num / item.value).toFixed(digits).replace(regexp, '').concat(item.symbol) : '0'
-}
+const { language } = useNavigatorLanguage()
+const formatter = new Intl.NumberFormat(language.value, { notation: 'compact', maximumFractionDigits: 2 })
 
 function roundDecimals(num: number) {
   return Math.round((num + Number.EPSILON) * 100) / 100
@@ -97,7 +87,7 @@ onMounted(() => {
       <!-- Info bubble -->
       <div class="absolute left-20 top-1/2 -translate-y-1/2">
         <div class="flex items-center gap-x-8 rounded-full bg-white px-32 py-24 text-44 color-gold font-600 leading-70% shadow">
-          {{ nFormatter(currentAmount, 1) }}
+          {{ formatter.format(currentAmount) }}
           <span class="text-18 color-darkblue/20 font-bold">/</span>
           <span class="text-18 color-darkblue/40 font-bold"> {{ roundDecimals(currentPercentage * 100) }}%</span>
         </div>
