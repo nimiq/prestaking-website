@@ -43,7 +43,7 @@ defineProps({
     position: absolute;
     left: 50%;
     top: 50%;
-    translate: -50% -50%;
+    transform: translate3D(-50%, -50%, 0);
     background: radial-gradient(50% 50% at 50% 50%, #fff 50%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
     filter: blur(25.13888931274414px);

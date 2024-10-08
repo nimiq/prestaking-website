@@ -13,6 +13,7 @@
   position: absolute;
   background: radial-gradient(#fff 0%, #ffffff00 100%);
   border-radius: 9999px;
+  transform: translate3d(0, 0, 0);
 }
 
 .ember::before {
