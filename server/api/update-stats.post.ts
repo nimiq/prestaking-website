@@ -8,6 +8,7 @@ interface Staker {
     date: string
     value: number
     validatorStakeRatio: number
+    isUnderdogPool: boolean | null
   }[]
 }
 
@@ -46,7 +47,7 @@ export default defineEventHandler(async (event) => {
     earlyBirdMultipliers.add(earlyBirdMultiplier)
 
     // Calculate underdog multiplier for this event
-    if (event.validatorStakeRatio < UNDERDOG_MULTIPLIER.maxStakeRatio) {
+    if (event.validatorStakeRatio < UNDERDOG_MULTIPLIER.maxStakeRatio || event.isUnderdogPool) {
       underdogMultiplier = UNDERDOG_MULTIPLIER.multiplier
       underdogPoints += points * underdogMultiplier
     }
