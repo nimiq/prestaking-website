@@ -40,7 +40,10 @@ const activateCard = computed(() => {
         <div class="small-body text-center text-white/60">
           Share the news with Galxe to multiply your points.
         </div>
-        <a href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
+        <button v-if="!store.address" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
+          Connect
+        </button>
+        <a v-else href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
       </template>
       <template v-else>
         <div class="icon-shadow mx-auto mb-8 w-fit object-contain object-center">
@@ -49,7 +52,7 @@ const activateCard = computed(() => {
         <div class="small-body text-center text-white">
           {{ store.galxeUser.Name }}
         </div>
-        <p class="mt-16 text-center text-14 text-white/60">
+        <p class="small-body mt-16 text-center text-white/60">
           Earn points by participating in Galxe quests.
         </p>
       </template>

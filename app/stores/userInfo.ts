@@ -54,7 +54,11 @@ export const useUserInfo = defineStore('userInfo', {
       }).catch(() => null)
 
       if (!stats) {
-        this.$patch(user)
+        this.$patch({
+          userId: user.id,
+          address: user.address,
+          galxeUser: user.galxeUser,
+        })
         return
       }
 
