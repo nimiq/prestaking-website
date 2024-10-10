@@ -47,7 +47,7 @@ const activateCard = computed(() => {
       </template>
       <template v-else>
         <div class="icon-shadow mx-auto mb-8 w-fit object-contain object-center">
-          <img :src="store.galxeUser.Avatar" class="relative h-64 w-64 rounded-full">
+          <img :src="store.galxeUser.Avatar || `https://api.galxe.com/v1/avatar?size=128&variant=marble&name=${store.galxeUser.EVMAddress}`" class="relative h-64 w-64 rounded-full">
         </div>
         <div class="small-body text-center text-white">
           {{ store.galxeUser.Name }}
