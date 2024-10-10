@@ -61,7 +61,7 @@ const mr = computed(() => {
       <div v-if="!store.hasClaimed" class="i-custom:lock-outline absolute left-1/2 top-0 text-40 -translate-1/2" title="Claim your points to unlock this card" />
 
       <!-- Icon -->
-      <template v-if="!store.galxeUser">
+      <template v-if="!store.galxeUser || !('Avatar' in store.galxeUser) || !('EVMAddress' in store.galxeUser)">
         <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
           <div class="i-custom:galxe h-28 w-144" />
         </div>

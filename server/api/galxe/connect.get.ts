@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     '/api/galxe/callback',
   ].join('')
 
-  return sendRedirect(event, `https://app.galxe.com/oauth?client_id=${galxeClientId}&scope=GalxeID&redirect_uri=${redirectUrl}&state=${challenge}`, 302) // 302 = Found (moved temporarily)
+  return sendRedirect(event, `https://app.galxe.com/oauth?client_id=${galxeClientId}&scope=GalxeID%20EVMAddress&redirect_uri=${redirectUrl}&state=${challenge}`, 302) // 302 = Found (moved temporarily)
 })
 
 function createRandomString(length: number) {

@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     access_token: string
     expires_in: number
     refresh_token: string
-    scope: 'GalxeID'
+    scope: 'GalxeID EVMAddress'
     token_type: 'Bearer'
   }>('https://api.galxe.com/oauth/auth/2/token', {
     method: 'POST',
@@ -45,9 +45,10 @@ export default defineEventHandler(async (event) => {
 
   const galxeUser = await $fetch<{
     Avatar: string // URL
+    EVMAddress: string
     GalxeID: string
     Name: string
-  }>('https://api.galxe.com/oauth/api/2/user?scope=GalxeID', {
+  }>('https://api.galxe.com/oauth/api/2/user?scope=GalxeID%20EVMAddress', {
     headers: {
       Authorization: `${tokens.token_type} ${tokens.access_token}`,
     },

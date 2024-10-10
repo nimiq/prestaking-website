@@ -11,6 +11,7 @@ export interface User {
   totalPoints: number
   galxeUser: {
     Avatar: string // URL
+    EVMAddress: string
     GalxeID: string
     Name: string
   } | null

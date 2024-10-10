@@ -11,15 +11,18 @@
 //   return underdogStakedAmount
 // }
 
+export interface GalxeUser {
+  Avatar: string // URL
+  EVMAddress: string
+  GalxeID: string
+  Name: string
+}
+
 export const useUserInfo = defineStore('userInfo', {
   state: () => ({
     userId: null as string | null,
     address: null as string | null,
-    galxeUser: null as {
-      Avatar: string // URL
-      GalxeID: string
-      Name: string
-    } | null,
+    galxeUser: null as GalxeUser | null,
 
     stake: 0,
     totalPoints: 0,
@@ -43,7 +46,7 @@ export const useUserInfo = defineStore('userInfo', {
       await this.updateStats(user)
       return true
     },
-    async updateStats(user: { id: string, address: string, galxeUser: { Avatar: string, GalxeID: string, Name: string } | null }) {
+    async updateStats(user: { id: string, address: string, galxeUser: GalxeUser | null }) {
       const stats = await $fetch('/api/update-stats', {
         method: 'POST',
       }).catch(() => null)
