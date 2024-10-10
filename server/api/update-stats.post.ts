@@ -27,6 +27,7 @@ export default defineEventHandler(async (event) => {
   let underdogMultiplier = 0
   let galxePoints = 0
   let galxeMultiplier = 0
+  let galxePercentile = 1
 
   // Calculate early-bird and underdog points
   for (const event of staker.events) {
@@ -115,10 +116,10 @@ export default defineEventHandler(async (event) => {
         throw new Error(`Galxe ID mismatch: have ${user.galxeUser.GalxeID}, got ${address.id}`)
       }
 
-      const percentile = points ? (rank - 1) / (totalCount - 1) : 1
+      galxePercentile = points ? (rank - 1) / (totalCount - 1) : 1
 
       galxeMultiplier = GALXE_MULTIPLIERS.find((cfg) => {
-        return percentile > cfg.from && percentile <= cfg.to
+        return galxePercentile > cfg.from && galxePercentile <= cfg.to
       })?.multiplier || 0
       galxePoints = basePoints * galxeMultiplier
     }
@@ -144,6 +145,7 @@ export default defineEventHandler(async (event) => {
     earlyBirdMultipliers: Array.from(earlyBirdMultipliers),
     underdogMultiplier,
     galxeMultiplier,
+    galxePercentile,
 
     delegation: user.delegation,
     hasClaimed: user.hasClaimed,

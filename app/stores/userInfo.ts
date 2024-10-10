@@ -36,6 +36,8 @@ export const useUserInfo = defineStore('userInfo', {
     earlyBirdMultipliers: [] as number[],
     underdogMultiplier: 0,
     galxeMultiplier: 0,
+
+    galxePercentile: 0.5,
   }),
   actions: {
     async tryFetch() {
@@ -52,11 +54,11 @@ export const useUserInfo = defineStore('userInfo', {
       }).catch(() => null)
 
       if (!stats) {
-        useUserInfo().$patch(user)
+        this.$patch(user)
         return
       }
 
-      useUserInfo().$patch({
+      this.$patch({
         userId: user.id,
         address: user.address,
         galxeUser: user.galxeUser || null,
@@ -72,6 +74,8 @@ export const useUserInfo = defineStore('userInfo', {
         earlyBirdMultipliers: stats.earlyBirdMultipliers,
         underdogMultiplier: stats.underdogMultiplier,
         galxeMultiplier: stats.galxeMultiplier,
+
+        galxePercentile: stats.galxePercentile,
       })
     },
     logout() {
@@ -91,6 +95,8 @@ export const useUserInfo = defineStore('userInfo', {
       this.earlyBirdMultipliers = []
       this.underdogMultiplier = 0
       this.galxeMultiplier = 0
+
+      this.galxePercentile = 0.5
     },
   },
 })

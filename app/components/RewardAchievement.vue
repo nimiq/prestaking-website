@@ -8,12 +8,10 @@ defineProps({
   buttonText: {
     type: String,
     default: null,
-    required: true,
   },
   label: {
     type: String,
     default: null,
-    required: true,
   },
   details: {
     type: String,
