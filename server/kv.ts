@@ -24,15 +24,18 @@ export interface OAuthChallenge {
   userId: string // Currently the user's address
 }
 
-type Namespace = 'user' | 'oauth-challenge' // | 'wallet' | 'signing_process' | 'signed_transaction' | 'email_verification'
+export interface GalxeLeaderboard {
+  totalCount: number
+  updatedAt: string
+}
+
+type Namespace = 'user' | 'oauth-challenge' | 'galxe-leaderboard'
 
 type ObjectType<NS> =
     NS extends 'user' ? User :
       NS extends 'oauth-challenge' ? OAuthChallenge :
-      // P extends 'signing_process' ? SigningProcess :
-      // P extends 'signed_transaction' ? SignedTransaction :
-      // P extends 'email_verification' ? EmailVerification :
-        never
+        NS extends 'galxe-leaderboard' ? GalxeLeaderboard :
+          never
 
 class TypedDatabase<NS extends Namespace> {
   private namespace: string
@@ -68,10 +71,7 @@ class TypedDatabase<NS extends Namespace> {
 
 export const userDb = new TypedDatabase('user')
 export const oauthChallengeDb = new TypedDatabase('oauth-challenge')
-// export const walletDb = new TypedDatabase('wallet')
-// export const signingProcessDb = new TypedDatabase('signing_process')
-// export const signedTransactionDb = new TypedDatabase('signed_transaction')
-// export const emailVerificationDb = new TypedDatabase('email_verification')
+export const galxeLeaderboardDb = new TypedDatabase('galxe-leaderboard')
 
 export async function batch(ops: Promise<void>[]): Promise<void> {
   return Promise.all(ops).then(() => {})

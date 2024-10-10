@@ -1,5 +1,5 @@
-import { BASE_POINT_LIMIT, EARLY_BIRD_MULTIPLIERS, NIM_PER_POINT, UNDERDOG_MULTIPLIER } from '../config'
-import { userDb } from '../kv'
+import { BASE_POINT_LIMIT, EARLY_BIRD_MULTIPLIERS, GALXE_MULTIPLIERS, GALXE_SPACE_ID, NIM_PER_POINT, UNDERDOG_MULTIPLIER } from '../config'
+import { galxeLeaderboardDb, userDb } from '../kv'
 
 interface Staker {
   address: string
@@ -25,9 +25,10 @@ export default defineEventHandler(async (event) => {
   const earlyBirdMultipliers = new Set<number>()
   let underdogPoints = 0
   let underdogMultiplier = 0
-  const galxePoints = 0
-  const galxeMultiplier = 0
+  let galxePoints = 0
+  let galxeMultiplier = 0
 
+  // Calculate early-bird and underdog points
   for (const event of staker.events) {
     // Add up the total stake
     stake += event.value
@@ -43,16 +44,87 @@ export default defineEventHandler(async (event) => {
     const earlyBirdMultiplier = EARLY_BIRD_MULTIPLIERS.find((cfg) => {
       return new Date(event.date) >= cfg.start && new Date(event.date) < cfg.end
     })?.multiplier || 0
-    earlyBirdPoints += points * earlyBirdMultiplier
     earlyBirdMultipliers.add(earlyBirdMultiplier)
+    earlyBirdPoints += points * earlyBirdMultiplier
 
     // Calculate underdog multiplier for this event
     if (event.validatorStakeRatio < UNDERDOG_MULTIPLIER.maxStakeRatio || event.isUnderdogPool) {
       underdogMultiplier = UNDERDOG_MULTIPLIER.multiplier
       underdogPoints += points * underdogMultiplier
     }
+  }
 
-    // TODO: Get Galxe stats
+  // Calculate Galxe points
+  if (user.galxeUser?.EVMAddress) {
+    try {
+      const galxeLeaderboard = await galxeLeaderboardDb.get(`${GALXE_SPACE_ID}`)
+      if (!galxeLeaderboard) {
+        throw new Error('Galxe leaderboard not available from database')
+      }
+
+      // Fetch Galxe rank from the Galxe GraphQL API
+      const { data } = await $fetch<{
+        data: {
+          space: {
+            addressLoyaltyPoints: {
+              points: number
+              rank: number
+              address: {
+                id: string
+              }
+            }
+            loyaltyPointsRanks: {
+              totalCount: number
+            }
+          }
+        }
+      }>('https://graphigo.prd.galaxy.eco/query', {
+        method: 'POST',
+        body: JSON.stringify({
+          query: `{
+            space(id: ${GALXE_SPACE_ID}) {
+              addressLoyaltyPoints(address: "${user.galxeUser.EVMAddress}") {
+                points
+                rank
+                address {
+                  id
+                }
+              }
+              loyaltyPointsRanks {
+                totalCount
+              }
+            }
+          }`,
+        }),
+      })
+
+      const { addressLoyaltyPoints, loyaltyPointsRanks } = data.space
+
+      const apiTotalCount = loyaltyPointsRanks.totalCount
+      if (apiTotalCount) {
+        await galxeLeaderboardDb.set(`${GALXE_SPACE_ID}`, {
+          totalCount: apiTotalCount,
+          updatedAt: new Date().toJSON(),
+        })
+      }
+      const totalCount = apiTotalCount || galxeLeaderboard.totalCount
+
+      const { address, points, rank } = addressLoyaltyPoints
+
+      if (user.galxeUser.GalxeID !== address.id) {
+        throw new Error(`Galxe ID mismatch: have ${user.galxeUser.GalxeID}, got ${address.id}`)
+      }
+
+      const percentile = points ? (rank - 1) / (totalCount - 1) : 1
+
+      galxeMultiplier = GALXE_MULTIPLIERS.find((cfg) => {
+        return percentile > cfg.from && percentile <= cfg.to
+      })?.multiplier || 0
+      galxePoints = basePoints * galxeMultiplier
+    }
+    catch (e) {
+      console.error('Failed to fetch Galxe points:', e)
+    }
   }
 
   user.delegation = staker.delegation

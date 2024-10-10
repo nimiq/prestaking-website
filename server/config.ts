@@ -25,3 +25,22 @@ export const UNDERDOG_MULTIPLIER = {
 }
 
 export const RESTRICTED_TERRITORY_ERROR = 'Restricted territory'
+
+export const GALXE_SPACE_ID = 68465 // Nimiq
+export const GALXE_MULTIPLIERS = [{
+  from: -0.1, // Exclusive
+  to: 0.1, // Inclusive
+  multiplier: 5,
+}, {
+  from: 0.1, // Exclusive
+  to: 0.25, // Inclusive
+  multiplier: 3,
+}, {
+  from: 0.25, // Exclusive
+  to: 0.5, // Inclusive
+  multiplier: 2,
+}, {
+  from: 0.5, // Exclusive
+  to: 0.75, // Inclusive
+  multiplier: 1,
+}]

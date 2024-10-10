@@ -32,7 +32,7 @@ export default defineEventHandler(async (event): Promise<User> => {
     console.log('AUTH: Skipping OFAC check in dev mode') // eslint-disable-line no-console
   }
 
-  const { address } = requestSchema.parse(await readBody(event))
+  const { address } = await readValidatedBody(event, requestSchema.parse)
 
   const userId = new Uint8Array(
     await crypto.subtle.digest('SHA-256', new TextEncoder().encode(address)),
