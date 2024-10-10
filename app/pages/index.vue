@@ -5,10 +5,8 @@ import pageContent from '~/content/home'
 const prestaking = false
 
 onMounted(() => {
-  nextTick(() => {
-    gsap.timeline()
-      .fromTo('#hero', { translateY: '-40px', opacity: 0 }, { translateY: '0', opacity: 1, delay: 0.5, duration: 0.5 })
-  })
+  gsap.timeline()
+    .fromTo('#hero', { translateY: '-40px', opacity: 0 }, { translateY: '0', opacity: 1, delay: 0.5, duration: 0.5 })
 })
 
 useHead({
@@ -135,6 +133,9 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
 </template>
 
 <style>
+#hero {
+  opacity: 0;
+}
 .glass-card {
   @apply p-24 md:p-32;
   border-radius: 6px;
