@@ -60,7 +60,7 @@ export default {
       {
         title: 'Pre-stake with a validator pool',
         description: 'Unless you’re really good with tech, it’s easiest to stake with a pool.',
-        icon: 'document',
+        icon: 'waves',
       },
       {
         title: 'Earn rewards off the first block',

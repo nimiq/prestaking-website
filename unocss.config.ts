@@ -41,7 +41,7 @@ export default defineConfig({
           'duck': () => readFile('./app/assets/svg/icons/duck.svg', 'utf-8'),
           'horn': () => readFile('./app/assets/svg/icons/horn.svg', 'utf-8'),
           'leaf': () => readFile('./app/assets/svg/icons/leaf.svg', 'utf-8'),
-          'wave': () => readFile('./app/assets/svg/icons/wave.svg', 'utf-8'),
+          'waves': () => readFile('./app/assets/svg/icons/wave.svg', 'utf-8'),
           'ember': () => readFile('./app/assets/svg/icons/ember.svg', 'utf-8'),
           'close': () => readFile('./app/assets/svg/icons/close.svg', 'utf-8'),
           'close-transparent': () => readFile('./app/assets/svg/icons/close-transparent.svg', 'utf-8'),
