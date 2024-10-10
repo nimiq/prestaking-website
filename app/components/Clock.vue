@@ -6,7 +6,7 @@ onMounted(() => {
     gsap.timeline({
       delay: 0,
     })
-      .fromTo('.rays', { opacity: 0 }, { opacity: 1, delay: 0.5, duration: 3 })
+      .fromTo(['.clock-hex-bg', '.rays'], { opacity: 0 }, { opacity: 1, delay: 0.5, duration: 3 })
       .fromTo('#clock', {
         opacity: 0,
         translateY: '40px',
@@ -26,7 +26,7 @@ onMounted(() => {
   <!-- Border edge fade out -->
   <div class="custom-radial-dark-blue absolute left-0 top-0 z-2 h-full w-full" />
   <!-- Hexagon Background -->
-  <NuxtImg src="/img/hex-bg.png" class="lg-bg absolute left-0 top-0 z-10 w-screen opacity-100 mix-blend-overlay" />
+  <NuxtImg src="/img/clock-bg.png" class="clock-hex-bg absolute top-1 z-10 w-[200vw] mix-blend-multiply -left-3 lg:w-screen" />
   <!-- Hexagon clock -->
   <div id="clock" class="relative z-20">
     <ClockSVG class="z-20" />
@@ -34,14 +34,18 @@ onMounted(() => {
 </template>
 
 <style scoped>
+#clock,
+.rays {
+  opacity: 0;
+}
 .custom-radial-dark-blue {
   background: radial-gradient(transparent 0%, rgb(31 35 72) 70%);
 }
 
 /* Classes to make hex background line up with the hex digits */
-.lg-bg {
-  @apply -top-7 left-1 min-w-[287vw]
-  sm:-top-5 sm:left-2.5 sm:min-w-[148.5vw]
-  lg:-top-10.5 lg:left-0 lg:min-w-[101vw];
+.clock-hex-bg {
+  @apply top-9 left-0 min-w-[284vw]
+  sm:top-6 sm:-left-2 sm:min-w-[147.5vw]
+  lg:top-1 lg:-left-3 lg:w-[100vw];
 }
 </style>
