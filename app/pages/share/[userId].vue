@@ -11,15 +11,19 @@ const userId = useRoute().params.userId
 if (typeof userId !== 'string')
   throw new Error('Invalid userId')
 
-const user = await $fetch('/api/share', {
+const { data, error } = await useFetch('/api/share', {
   params: { userId },
 })
+if (!data.value || error.value) {
+  throw error.value || new Error('Fetch failed')
+}
+const user = data.value
 
 const cardLevel = getUserPrestakeCardType(user.stake)
 
-const earlyBirdActive = false
-const underdogActive = false
-const galxeActive = false
+const earlyBirdActive = user.stats.earlyBirdMultipliers.length > 0
+const underdogActive = user.stats.underdogMultiplier > 0
+const galxeActive = user.stats.galxeMultiplier > 0
 
 // const dropdownOpen: Ref<boolean> = ref(false)
 // const dropdown: Ref<HTMLDivElement | null> = ref(null)
@@ -67,7 +71,7 @@ onMounted(() => {
             <div i-custom:time-card class="min-h-full min-w-full w-max" />
             <RewardMultiplierBadges
               :multipliers="earlyBirdData.options"
-              :active="[3, 2]"
+              :active="user.stats.earlyBirdMultipliers"
               color="#24CCA2"
             />
           </TiltCardWrapper>
@@ -75,7 +79,7 @@ onMounted(() => {
             <div i-custom:underdog-card class="min-h-full min-w-full w-max" />
             <RewardMultiplierBadges
               :multipliers="underdogData.options"
-              :active="[3]"
+              :active="[user.stats.underdogMultiplier]"
               color="#F33F68"
             />
           </TiltCardWrapper>
@@ -84,10 +88,12 @@ onMounted(() => {
             <div i-custom:galxe-card class="min-h-full min-w-full w-max" />
             <RewardMultiplierBadges
               :multipliers="galxeData.options"
-              :active="[5]"
+              :active="[user.stats.galxeMultiplier]"
               color="#A55AE7"
             />
           </TiltCardWrapper>
+
+          <div class="initial tilt-card-container z-1 !h-478 !min-w-[calc(50vw-200px)]" />
         </div>
       </div>
       <div class="mt-32 flex items-center gap-16">

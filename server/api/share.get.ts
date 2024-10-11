@@ -2,6 +2,7 @@
 import Identicons from '@nimiq/identicons'
 import { notAcceptableError, notFoundError } from '../errors'
 import { userDb } from '../kv'
+import { updateStats } from '../lib/update-stats'
 
 export default defineEventHandler(async (event) => {
   const { userId } = getQuery(event)
@@ -21,12 +22,19 @@ export default defineEventHandler(async (event) => {
 
   const identicon: string = await Identicons.default.svg(user.address)
 
+  if (!user.stats) {
+    const res = await updateStats(user)
+    user.stats = {
+      earlyBirdMultipliers: res.earlyBirdMultipliers,
+      underdogMultiplier: res.underdogMultiplier,
+      galxeMultiplier: res.galxeMultiplier,
+    }
+  }
+
   return {
     stake: user.stake,
     totalPoints: user.totalPoints,
     identicon,
-    // earlyBirdMultipliers: user.stats.earlyBirdMultipliers,
-    // underdogMultiplier: user.stats.underdogMultiplier,
-    // galxeMultiplier: user.stats.galxeMultiplier,
+    stats: user.stats,
   }
 })

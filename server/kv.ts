@@ -15,6 +15,11 @@ export interface User {
     GalxeID: string
     Name: string
   } | null
+  stats?: {
+    earlyBirdMultipliers: number[]
+    underdogMultiplier: number
+    galxeMultiplier: number
+  }
   createdAt: string
   updatedAt: string
 }
