@@ -38,7 +38,7 @@ useOutsideClick(container, () => {
     class="group relative flex flex-col"
   >
     <TiltCardWrapper class="mx-auto">
-      <TiltCard :card-type="getUserPrestakeCardType()" />
+      <TiltCard :card-type="getUserPrestakeCardType(store.stake)" :address="store.address!" />
     </TiltCardWrapper>
     <div class="mt-32 flex items-center justify-center gap-16">
       <div class="text-48 text-white font-bold">

@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import Identicons from '@nimiq/identicons/dist/identicons.bundle.min.js'
 
-defineProps({
+const props = defineProps({
   cardType: String,
+  address: String,
+  identiconSvg: String,
   reducedMovement: {
     type: Boolean,
     required: false,
@@ -10,15 +12,17 @@ defineProps({
   },
 })
 
+if (!props.address && !props.identiconSvg) {
+  throw new Error('TiltCard requires either :address or :identiconSvg')
+}
+
 const identiconColor = ref<string>()
 const $identicon = ref<HTMLDivElement>()
-
-const store = useUserInfo()
 
 onMounted(() => {
   // Render card with Identicon
   nextTick(async () => {
-    const svg = await Identicons.svg(store.address)
+    const svg: string = props.identiconSvg || await Identicons.svg(props.address)
     $identicon.value!.innerHTML = svg
     nextTick(() => {
       // Extract color of background <rect> element and apply to 'identiconColor' ref for use by card svg elements

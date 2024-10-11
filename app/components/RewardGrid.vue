@@ -12,7 +12,7 @@ onMounted(() => {
 })
 
 const cardType = computed(() => {
-  return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
+  return store.hasClaimed ? getUserPrestakeCardType(store.stake) : undefined
 })
 
 const showLoginModal: Ref<boolean> = ref(false)
@@ -106,44 +106,35 @@ async function claimPoints() {
           0
           <span class="text-17 font-600">Points</span>
         </div>
-        <div
-          v-else-if="!store.hasClaimed"
-          class="tickets-pill active px-32 py-24 text-white/60 leading-70%"
-          @click="claimPoints"
-        >
+        <div v-else-if="!store.hasClaimed" class="tickets-pill active px-32 py-24 text-white/60 leading-70%" @click="claimPoints">
           <span class="text-24 text-white">Claim {{ store.totalPoints }} points</span>
         </div>
 
-        <div
-          v-else
-          class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
-        >
-          <div class="flex grow items-center justify-center gap-x-12">
-            {{ store.totalPoints }}
-            <span class="text-17 text-white font-600">Points</span>
+        <template v-else>
+          <div v-if="store.stake < 10_000 * 1e5" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">
+            <div class="flex grow items-center justify-center gap-x-12">
+              {{ store.totalPoints }}
+              <span class="text-17 text-white font-600">Points</span>
+            </div>
           </div>
-        </div>
 
-        <!-- TODO: Sharing -->
-        <!-- <NuxtLink v-else
-          :to="{ name: 'share', query: { tickets: store.totalPoints, cardLevel: cardType } }"
-          class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32"
-        >
-          <div class="flex grow items-center justify-center gap-x-12">
-            {{ store.totalPoints }}
-            <span class="text-17 text-white font-600">Points</span>
-          </div>
-          <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="60" height="60" rx="30" fill="url(#paint0_radial_214_8648)" />
-            <path d="M32.9 33.6979V40.0416L44.5 29.2029L32.9 18.4004V24.5629C21.6263 26.1216 17.1312 33.8429 15.5 41.6004C19.5237 36.1629 24.8525 33.6979 32.9 33.6979Z" fill="white" />
-            <defs>
-              <radialGradient id="paint0_radial_214_8648" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(-180) scale(60)">
-                <stop stop-color="#0B7FF2" />
-                <stop offset="1" stop-color="#0CA6FE" />
-              </radialGradient>
-            </defs>
-          </svg>
-        </NuxtLink> -->
+          <a v-else :href="`/share/${store.userId}`" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">
+            <div class="flex grow items-center justify-center gap-x-12">
+              {{ store.totalPoints }}
+              <span class="text-17 text-white font-600">Points</span>
+            </div>
+            <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="60" height="60" rx="30" fill="url(#paint0_radial_214_8648)" />
+              <path d="M32.9 33.6979V40.0416L44.5 29.2029L32.9 18.4004V24.5629C21.6263 26.1216 17.1312 33.8429 15.5 41.6004C19.5237 36.1629 24.8525 33.6979 32.9 33.6979Z" fill="white" />
+              <defs>
+                <radialGradient id="paint0_radial_214_8648" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(-180) scale(60)">
+                  <stop stop-color="#0B7FF2" />
+                  <stop offset="1" stop-color="#0CA6FE" />
+                </radialGradient>
+              </defs>
+            </svg>
+          </a>
+        </template>
       </div>
     </div>
     <ModalWrapper :active="showLoginModal">

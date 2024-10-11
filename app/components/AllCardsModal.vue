@@ -28,7 +28,7 @@ defineEmits(['close'])
 const store = useUserInfo()
 
 const cardType = computed(() => {
-  return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
+  return store.hasClaimed ? getUserPrestakeCardType(store.stake) : undefined
 })
 
 const $cards = ref<HTMLDivElement[]>([])

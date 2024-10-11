@@ -5,6 +5,7 @@ const OPEN_URLS = [
   '/api/healthcheck',
   '/api/auth/login',
   '/api/auth/logout',
+  '/api/share',
 ]
 
 export default defineEventHandler(async (event) => {
@@ -12,7 +13,7 @@ export default defineEventHandler(async (event) => {
     throw notAcceptableError('Invalid URL')
 
   // Only authenticate /api routes, but still allow certain endpoints
-  if (!event.node.req.url.startsWith('/api') || OPEN_URLS.includes(event.node.req.url))
+  if (!event.node.req.url.startsWith('/api') || OPEN_URLS.includes(event.node.req.url.split('?')[0]))
     return
 
   const { user } = await requireUserSession(event)

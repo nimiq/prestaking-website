@@ -12,7 +12,7 @@ const showModal: Ref<boolean> = ref(false)
 const showDetails: Ref<boolean> = ref(false)
 
 const cardType = computed(() => {
-  return store.hasClaimed && store.stake ? getUserPrestakeCardType() : undefined
+  return store.hasClaimed ? getUserPrestakeCardType(store.stake) : undefined
 })
 
 function openModal() {
@@ -81,7 +81,7 @@ async function logOut() {
 
     <!-- SHOW REWARD CARD -->
     <TiltCardWrapper v-else reduced-movement rounding="12" @click="openModal">
-      <TiltCard :card-type="cardType" class="cursor-pointer" />
+      <TiltCard :card-type="cardType" :address="store.address!" class="cursor-pointer" />
     </TiltCardWrapper>
 
     <ModalWrapper :active="showModal" :bottom-on-mobile="!cardType || showDetails ? true : false">
