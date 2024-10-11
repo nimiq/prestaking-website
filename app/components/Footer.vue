@@ -15,7 +15,7 @@ const socialMedia = [
 </script>
 
 <template>
-  <footer class="dark" data-section nq-no-px nq-no-max-width text-neutral-800>
+  <footer class="dark !pt-0" data-section nq-no-px nq-no-max-width text-neutral-800>
     <!-- <div w-full children:max-w-690 border="y-1.5 white/10" p="x-32 y-40">
       <div mx-auto grid="~ cols-[auto_1px_auto_1fr] md:rows-2 gap-16 md:cols-[320px_1px_auto_auto] lg:cols-[1fr_auto_auto_auto_auto] items-center justify-center lg:rows-1">
         <span text="2xl white md:center" font-600 col-span="4" lg:hidden>Keep me updated</span>
@@ -31,9 +31,9 @@ const socialMedia = [
       </div>
     </div> -->
 
-    <div class="disclaimer mx-32 md:text-center" border="t-1.5 white/10" w-full>
+    <div class="disclaimer px-32 pt-80 md:text-center" border="t-1.5 white/10" md:w-full>
       <SectionLabel text="Legal Disclaimer" dark-mode class="mb-16 mt-48 text-left md:text-center" />
-      <p text="22 white balance center" mx-auto class="max-w-[700px]">
+      <p text="22 white balance md:center" mx-auto class="max-w-[700px]">
         The content on this website must not be considered financial advice and does not constitute any offer or solicitation to offer or recommendation of any investment product.
       </p>
     </div>
