@@ -49,8 +49,8 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://prestaking.nimiq.network/',
-    name: 'Nimiq Prestaking',
-    description: 'Launch scheduled for Nov. 19th, 2024. Pre-stake and join the launch campaign with a huge 200,000,000 NIM giveaway!',
+    name: 'Nimiq Pre-staking',
+    description: 'Pre-stake now to participate for a share of 200 million NIM in rewards. Ends November 10.',
     defaultLocale: 'en',
   },
 

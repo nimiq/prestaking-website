@@ -34,6 +34,13 @@ const galxeActive = user.stats.galxeMultiplier > 0
 //   dropdownOpen.value = false
 // })
 
+useHead({
+  title: `I already have ${user.totalPoints} points for the giveaway`,
+  meta: [
+    { name: 'description', content: `Join the pre-stake for Nimiq's migration to Proof of Stake and win a share of 200 million NIM in rewards!` },
+  ],
+})
+
 onMounted(() => {
   gsap.fromTo(
     '.share-scroll',
