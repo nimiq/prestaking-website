@@ -63,8 +63,8 @@ async function logOut() {
         Pre-staking is starting soon.<br>Stay tuned!
       </div>
       <!-- Buttons -->
-      <button v-if="!store.address" :disabled="!prestakingHasStarted" class="mx-auto mt-24 cursor-pointer nq-pill-blue" @click="$emit('openLoginModal')">
-        Login & enter
+      <button v-if="!store.address" :disabled="!prestakingHasStarted" class="mx-auto mt-24 cursor-pointer nq-pill-xl nq-pill-blue" @click="$emit('openLoginModal')">
+        Login & claim
       </button>
       <a v-if="store.address && !store.stake" href="https://wallet.nimiq.com" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
         Open Nimiq Wallet

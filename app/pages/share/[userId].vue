@@ -4,6 +4,7 @@ import Flip from 'gsap/dist/Flip'
 import earlyBirdData from '~/content/rewards/earlyBird'
 import galxeData from '~/content/rewards/galxe'
 import underdogData from '~/content/rewards/underdog'
+import { formatNumber } from '../../lib/number-formatting'
 
 gsap.registerPlugin(Flip)
 
@@ -35,7 +36,7 @@ const galxeActive = user.stats.galxeMultiplier > 0
 // })
 
 useHead({
-  title: `I already have ${user.totalPoints} points for the giveaway`,
+  title: `I already have ${formatNumber(user.totalPoints)} points for the giveaway`,
   meta: [
     { name: 'description', content: `Join the pre-stake for Nimiq's migration to Proof of Stake and win a share of 200 million NIM in rewards!` },
   ],
@@ -105,7 +106,7 @@ onMounted(() => {
       </div>
       <div class="mt-32 flex items-center gap-16">
         <div class="text-48 text-white font-bold">
-          {{ user.totalPoints }} Points
+          {{ formatNumber(user.totalPoints) }} Points
         </div>
         <div i-custom:tickets class="h-35 w-40" />
       </div>

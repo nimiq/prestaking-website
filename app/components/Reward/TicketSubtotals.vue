@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
+import { formatNumber } from '../../lib/number-formatting'
 
 const store = useUserInfo()
 </script>
@@ -7,21 +8,21 @@ const store = useUserInfo()
 <template>
   <div class="relative h-40 min-w-300vw">
     <div class="subtotal-item ticket left-175">
-      <div>{{ store.earlyBirdPoints }}</div>
+      <div>{{ formatNumber(store.earlyBirdPoints) }}</div>
       <div class="i-custom:tickets inline-block size-16 opacity-60" />
     </div>
     <div class="subtotal-item plus left-315">
       <div i-custom:plus class="size-11" />
     </div>
     <div class="subtotal-item ticket left-460">
-      <div>{{ store.underdogPoints }}</div>
+      <div>{{ formatNumber(store.underdogPoints) }}</div>
       <div class="i-custom:tickets inline-block size-16 opacity-60" />
     </div>
     <div class="subtotal-item plus left-608">
       <div i-custom:plus class="size-11" />
     </div>
     <div class="subtotal-item ticket left-755">
-      <div>{{ store.galxePoints }}</div>
+      <div>{{ formatNumber(store.galxePoints) }}</div>
       <div class="i-custom:tickets inline-block size-16 opacity-60" />
     </div>
   </div>

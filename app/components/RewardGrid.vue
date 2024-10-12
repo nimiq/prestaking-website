@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@/stores/userInfo'
 import { getUserPrestakeCardType } from '~/composables/userPrestakingTickets'
+import { formatNumber } from '../lib/number-formatting'
 
 const store = useUserInfo()
 
@@ -107,20 +108,20 @@ async function claimPoints() {
           <span class="text-17 font-600">Points</span>
         </div>
         <div v-else-if="!store.hasClaimed" class="tickets-pill active px-32 py-24 text-white/60 leading-70%" @click="claimPoints">
-          <span class="text-24 text-white">Claim {{ store.totalPoints }} points</span>
+          <span class="text-24 text-white">Claim {{ formatNumber(store.totalPoints) }} points</span>
         </div>
 
         <template v-else>
           <div v-if="store.stake < 10_000 * 1e5" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">
             <div class="flex grow items-center justify-center gap-x-12">
-              {{ store.totalPoints }}
+              {{ formatNumber(store.totalPoints) }}
               <span class="text-17 text-white font-600">Points</span>
             </div>
           </div>
 
           <a v-else :href="`/share/${store.userId}`" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">
             <div class="flex grow items-center justify-center gap-x-12">
-              {{ store.totalPoints }}
+              {{ formatNumber(store.totalPoints) }}
               <span class="text-17 text-white font-600">Points</span>
             </div>
             <svg class="absolute right-5 top-5 cursor-pointer sm:right-8 sm:top-8 hover:opacity-80" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
