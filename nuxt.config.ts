@@ -83,6 +83,9 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
+    routeRules: {
+      '/prestaking': { redirect: { to: '/pre-staking', statusCode: 301 } },
+    },
   },
 
   app: {
