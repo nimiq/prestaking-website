@@ -124,21 +124,27 @@ function getAccel() {
   if (navigator.userAgent.match(/Android/i)) {
     window.addEventListener('deviceorientation', (e) => {
       // angleUpdate(e.gamma)
-      rotateX.value = e.gamma
+      const gamma = e.gamma || 0
+      const beta = e.beta || 0
 
-      if (e.beta > 30 && e.beta < 90) {
-        rotateY.value = (e.beta - 30) - 20
+      rotateX.value = -gamma
+
+      if (beta > 30 && beta < 90) {
+        rotateY.value = -((beta - 30) - 20)
       }
     })
   }
   else {
     // IOS
-    DeviceMotionEvent.requestPermission().then((_response) => {
+    DeviceMotionEvent.requestPermission().then((_response: any) => {
       window.addEventListener('deviceorientation', (e) => {
-        rotateX.value = e.gamma
+        const gamma = e.gamma || 0
+        const beta = e.beta || 0
 
-        if (e.beta > 30 && e.beta < 90) {
-          rotateY.value = (e.beta - 30) - 20
+        rotateX.value = -gamma
+
+        if (beta > 30 && beta < 90) {
+          rotateY.value = -((beta - 30) - 20)
         }
       })
     })
