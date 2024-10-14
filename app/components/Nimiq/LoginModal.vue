@@ -19,7 +19,7 @@ async function acceptTC() {
 
   const user = await $fetch('/api/auth/login', {
     method: 'POST',
-    body: { address },
+    body: { address: useRuntimeConfig().public.previewTestingAddress || address },
   }).catch((err: FetchError) => {
     if (err.data.statusCode === 500) {
       window.alert(err.data.message) // eslint-disable-line no-alert
