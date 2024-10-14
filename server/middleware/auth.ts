@@ -6,6 +6,7 @@ const OPEN_URLS = [
   '/api/auth/login',
   '/api/auth/logout',
   '/api/share',
+  '/api/_hub',
 ]
 
 export default defineEventHandler(async (event) => {
