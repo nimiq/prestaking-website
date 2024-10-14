@@ -12,7 +12,7 @@ const day = ref({
   secondDigit: 0,
 })
 
-const transitionDate = new Date('2024-11-19T07:00:00Z') // UTC
+const transitionDate = new Date('2024-11-19T12:00:00Z') // UTC
 
 let timeout: number
 
