@@ -245,7 +245,7 @@ function preparePositionUpdate(referenceCoords: DOMRect) {
 function positionIdenticon(identicon: HTMLDivElement, index: number, referenceCoords: DOMRect) {
   const coords = iconPosition(index)
   identicon.style.left = `${referenceCoords.left + coords[0] - 2}px`
-  identicon.style.top = `${referenceCoords.top + coords[1] - 2}px`
+  identicon.style.top = `${referenceCoords.top + window.scrollY + coords[1] - 2}px`
   identicon.style.width = `${iconWidth.value + 4}px`
   identicon.style.height = `${iconHeight.value + 4}px`
 
