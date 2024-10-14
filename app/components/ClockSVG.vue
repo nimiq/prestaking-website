@@ -14,6 +14,8 @@ const day = ref({
 
 const transitionDate = new Date('2024-11-19T07:00:00Z') // UTC
 
+let timeout: number
+
 function updateTime() {
   const seconds = Math.floor((transitionDate.getTime() - Date.now()) / 1000)
   let minutes = Math.floor(seconds / 60)
@@ -34,6 +36,9 @@ function updateTime() {
   const minutesAsString = minutes.toString(10).padStart(2, '0')
   minute.value.firstDigit = Number.parseInt(minutesAsString[0] as string)
   minute.value.secondDigit = Number.parseInt(minutesAsString[1] as string)
+
+  // Run again when the minute changes
+  timeout = window.setTimeout(updateTime, 60000 - (Date.now() % 60000))
 }
 
 useEventListener('resize', updateViewBoxWidth)
@@ -41,7 +46,10 @@ useEventListener('resize', updateViewBoxWidth)
 onMounted(() => {
   updateViewBoxWidth()
   updateTime()
-  setInterval(updateTime, 1000 * 60)
+})
+
+onUnmounted(() => {
+  clearTimeout(timeout)
 })
 
 const { width: windowWidth } = useWindowSize()
