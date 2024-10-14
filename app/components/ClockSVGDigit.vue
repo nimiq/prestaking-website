@@ -17,7 +17,164 @@ const props = defineProps({
   },
 })
 
-const group = ref()
+/**
+ * Array of grid cells where each cell specifies for which numbers it must be filled
+ */
+const GRID = [
+  '3457',
+  '23567890',
+  '123567890',
+  '3457',
+  '235678904',
+  '123567890',
+  '235678904',
+  '235678904',
+  '123567890',
+  '123567890',
+  '235678904',
+  '1235678904',
+  '1',
+  '25678904',
+  '2568904',
+  '1',
+  '1',
+  '23678904',
+  '1568904',
+  '1',
+  '2378904',
+  '56904',
+  '256894',
+  '123567894',
+  '27904',
+  '2568904',
+  '12567894',
+  '235678904',
+  '2680',
+  '2567894',
+  '123567894',
+  '3568904',
+  '2680',
+  '17',
+  '3568904',
+  '2356890',
+  '7',
+  '1',
+  '3568904',
+  '12356890',
+  '17',
+  '123568904',
+  '2356890',
+  '123567890',
+  '12356890',
+  '123568904',
+  '12356890',
+  '123567890',
+  '123456890',
+  '2',
+  '123568907',
+  '12356890',
+  '124',
+]
+
+const iconWidth = ref(10)
+const iconHeight = ref(8)
+const iconUnevenOffsetX = computed(() => iconWidth.value)
+const iconUnevenOffsetY = computed(() => iconHeight.value / 3 * 2)
+const iconGapX = computed(() => iconWidth.value)
+const iconGapY = computed(() => iconHeight.value / 3)
+
+function iconPosition(index: number): [number, number] {
+  if (index <= 3) { // 1st row (4 slots)
+    return [
+      index * iconWidth.value + index * iconGapX.value,
+      0,
+    ]
+  }
+  if (index <= 6) { // 2nd row (3 slots)
+    return [
+      (index - 4) * iconWidth.value + (index - 4) * iconGapX.value + iconUnevenOffsetX.value,
+      iconUnevenOffsetY.value,
+    ]
+  }
+  if (index <= 10) { // 3rd row (4 slots)
+    return [
+      (index - 7) * iconWidth.value + (index - 7) * iconGapX.value,
+      (iconHeight.value + iconGapY.value) * 1,
+    ]
+  }
+  if (index <= 13) { // 4th row (3 slots)
+    return [
+      (index - 11) * iconWidth.value + (index - 11) * iconGapX.value + iconUnevenOffsetX.value,
+      (iconHeight.value + iconGapY.value) * 1 + iconUnevenOffsetY.value,
+    ]
+  }
+  if (index <= 17) { // 5th row (4 slots)
+    return [
+      (index - 14) * iconWidth.value + (index - 14) * iconGapX.value,
+      (iconHeight.value + iconGapY.value) * 2,
+    ]
+  }
+  if (index <= 20) { // 6th row (3 slots)
+    return [
+      (index - 18) * iconWidth.value + (index - 18) * iconGapX.value + iconUnevenOffsetX.value,
+      (iconHeight.value + iconGapY.value) * 2 + iconUnevenOffsetY.value,
+    ]
+  }
+  if (index <= 24) { // 7th row (4 slots)
+    return [
+      (index - 21) * iconWidth.value + (index - 21) * iconGapX.value,
+      (iconHeight.value + iconGapY.value) * 3,
+    ]
+  }
+  if (index <= 27) { // 8th row (3 slots)
+    return [
+      (index - 25) * iconWidth.value + (index - 25) * iconGapX.value + iconUnevenOffsetX.value,
+      (iconHeight.value + iconGapY.value) * 3 + iconUnevenOffsetY.value,
+    ]
+  }
+  if (index <= 31) { // 9th row (4 slots)
+    return [
+      (index - 28) * iconWidth.value + (index - 28) * iconGapX.value,
+      (iconHeight.value + iconGapY.value) * 4,
+    ]
+  }
+  if (index <= 34) { // 10th row (3 slots)
+    return [
+      (index - 32) * iconWidth.value + (index - 32) * iconGapX.value + iconUnevenOffsetX.value,
+      (iconHeight.value + iconGapY.value) * 4 + iconUnevenOffsetY.value,
+    ]
+  }
+  if (index <= 38) { // 11th row (4 slots)
+    return [
+      (index - 35) * iconWidth.value + (index - 35) * iconGapX.value,
+      (iconHeight.value + iconGapY.value) * 5,
+    ]
+  }
+  if (index <= 41) { // 12th row (3 slots)
+    return [
+      (index - 39) * iconWidth.value + (index - 39) * iconGapX.value + iconUnevenOffsetX.value,
+      (iconHeight.value + iconGapY.value) * 5 + iconUnevenOffsetY.value,
+    ]
+  }
+  if (index <= 45) { // 13th row (4 slots)
+    return [
+      (index - 42) * iconWidth.value + (index - 42) * iconGapX.value,
+      (iconHeight.value + iconGapY.value) * 6,
+    ]
+  }
+  if (index <= 48) { // 14th row (3 slots)
+    return [
+      (index - 46) * iconWidth.value + (index - 46) * iconGapX.value + iconUnevenOffsetX.value,
+      (iconHeight.value + iconGapY.value) * 6 + iconUnevenOffsetY.value,
+    ]
+  }
+  return [ // 15th row (4 slots)
+    (index - 49) * iconWidth.value + (index - 49) * iconGapX.value,
+    (iconHeight.value + iconGapY.value) * 7,
+  ]
+}
+
+const referenceHex = ref<SVGPathElement>()
 const initialLoad = ref(false)
 
 const identicons = [
@@ -30,49 +187,18 @@ const identicons = [
   'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYwIDE2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPjxjbGlwUGF0aCBpZD0iaGV4YWdvbi1jbGlwLTgzIj4KPHBhdGggZD0iTTI1MS42IDE3LjM0bDYzLjUzIDExMC4wM2M1LjcyIDkuOSA1LjcyIDIyLjEgMCAzMkwyNTEuNiAyNjkuNGMtNS43IDkuOS0xNi4yNyAxNi0yNy43IDE2SDk2LjgzYy0xMS40MyAwLTIyLTYuMS0yNy43LTE2TDUuNiAxNTkuMzdjLTUuNy05LjktNS43LTIyLjEgMC0zMkw2OS4xNCAxNy4zNGM1LjcyLTkuOSAxNi4yOC0xNiAyNy43LTE2SDIyMy45YzExLjQzIDAgMjIgNi4xIDI3LjcgMTZ6IiB0cmFuc2Zvcm09InNjYWxlKDAuNSkgdHJhbnNsYXRlKDAsIDE2KSIvPgo8L2NsaXBQYXRoPjwvZGVmcz4KPGcgY2xpcC1wYXRoPSJ1cmwoI2hleGFnb24tY2xpcC04MykiPgo8ZyBjb2xvcj0iI0ZBNzI2OCIgZmlsbD0iIzU5NjFBOCI+CjxyZWN0IGZpbGw9IiM4OEIwNEIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMTYwIi8+CjxjaXJjbGUgY3g9IjgwIiBjeT0iODAiIHI9IjQwIiBmaWxsPSIjRkE3MjY4Ii8+CjxnIG9wYWNpdHk9Ii4xIiBmaWxsPSIjMDEwMTAxIj48cGF0aCBkPSJNMTE5LjIxLDgwYTM5LjQ2LDM5LjQ2LDAsMCwxLTY3LjEzLDI4LjEzYzEwLjM2LDIuMzMsMzYsMyw0OS44Mi0xNC4yOCwxMC4zOS0xMi40Nyw4LjMxLTMzLjIzLDQuMTYtNDMuMjZBMzkuMzUsMzkuMzUsMCwwLDEsMTE5LjIxLDgwWiIvPjwvZz4KPHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNNDMuOCA2Mi4zYy0yLjguNy0zLjUtMS42LjItNS4zYTU1LjQgNTUuNCAwIDAxMzktMTRjMjQgMSAzMSAxMCAzMSAxMHM0IDUtMi40IDMuN2MwIDAtMzEtMTQuMS02Ny44IDUuNnoiIGZpbGw9IiM3NDNhNGIiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik00NS41IDYwLjJBNDguMiA0OC4yIDAgMDE2OCA1MGMxOC00IDM5LjEgMS42IDM5LjEgMS42czUuOSAxLjEgNS45IDMuMy0zIC4yLTMgLjJjLTI0LjMtNS4zLTQ3LjctNS42LTY2IDggMC0uMS0xLS43IDEuNS0yLjl6IiBvcGFjaXR5PSIuMiIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTcxLjUgNTAuMmMxLTIuNy42LTkuNS0uOS0xMy41LS4yLS41LS45IDEuNC0xLjEgMS0xLjctNi41LTMuNy02LjktNS03LjJsLTEuMSAyYy44LTYuMS01LjItOS41LTUuMi05LjVsLjQgMS42Yy0xLjktMi00LjEtMy42LTYuNS01LS4zLS4zLS4zLS4zLS4yLjIuMiAyLjcuOCA1LjQgMS44IDcuOWwtMS4yLTFzLjUgNi45IDYuNSA4LjdsLTIuMy4yYy40IDQuNiA1IDYuNiA1IDYuNnMtMi41LS4zLTIuMi4xYzMuMSAzLjggNy4zIDYuNiAxMiA3Ljl6Ii8+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNNzEuNSA1MC4yYzEtMi43LjYtOS41LS45LTEzLjUtLjItLjUtLjkgMS40LTEuMSAxLTEuNy02LjUtMy43LTYuOS01LTcuMmwtMS4xIDJjLjgtNi4xLTUuMi05LjUtNS4yLTkuNWwuNCAxLjZjLTEuOS0yLTQuMS0zLjYtNi41LTUtLjMtLjMtLjMtLjMtLjIuMmwxOS42IDMwLjR6IiBmaWxsPSIjMDEwMTAxIiBvcGFjaXR5PSIuMSIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTYyLjkgNTAuN2MtLjMtMi4xLTIuOS02LjctNS4yLTguOS0uMy0uMy0uMSAxLjMtLjQgMS0zLjQtMy45LTQuOS0zLjUtNS45LTMuMmwtLjEgMS44Yy0xLjUtNC41LTYuOC00LjctNi44LTQuN2wuOC45Yy0yLS43LTQtMS02LjEtMS4yLS4zLS4xLS4zLS4xLS4xLjIgMS4xIDEuOCAyLjQgMy40IDMuOSA0LjhsLTEuMi0uM3MyLjcgNC41IDcuNCAzLjdsLTEuNS45YzEuOCAzIDUuNyAyLjcgNS43IDIuN3MtMS44LjctMS41LjhjMy41IDEuNyA3LjMgMi4yIDExIDEuNXoiIGZpbGw9IiMzOWI1NGEiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik02Mi45IDUwLjdjLS4zLTIuMS0yLjktNi43LTUuMi04LjktLjMtLjMtLjEgMS4zLS40IDEtMy40LTMuOS00LjktMy41LTUuOS0zLjJsLS4xIDEuOGMtMS41LTQuNS02LjgtNC43LTYuOC00LjdsLjguOWMtMi0uNy00LTEtNi4xLTEuMi0uMy0uMS0uMy0uMS0uMS4yIDEuMSAxLjggMi40IDMuNCAzLjkgNC44bC0xLjItLjNzMi43IDQuNSA3LjQgMy43bC0xLjUuOWMxLjggMyA1LjcgMi43IDUuNyAyLjdzLTEuOC43LTEuNS44YzMuNSAxLjcgNy4zIDIuMiAxMSAxLjV6Ii8+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTEyNC42IDgwLjdzMjAgLjMgMTguNi0xMi41YzAgMCA5LjYgMTEuMSAxIDIwLjlzLTI3LjMgNi4xLTI3LjMgNi4xbDcuNy0xNC41eiIgZmlsbD0iI2ZmZiIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTE0My4yIDY4LjJjLjMgMTMuNy0yMC4yIDEyLjEtMjAuMiAxMi4xbC0xLjIgNS43LTQuOSA5LjJzMTguNyAzLjYgMjcuMy02LjEtMS0yMC45LTEtMjAuOXoiIGZpbGw9IiNmZmYiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik0xNDMuMiA2OC4yYzguNCAyMi40LTIxLjcgMTkuNC0yMS43IDE5LjRsLjMtMS43LTQuOSA5LjJzMTguNyAzLjYgMjcuMy02LjEtMS0yMC44LTEtMjAuOHoiIG9wYWNpdHk9Ii4xIi8+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNMTE4LjUgNzVzNy4xIDEgNy4zIDExLjItMTEgMTEuOC0xMSAxMS44YTM5LjYgMzkuNiAwIDAwMy43LTIzek0zOC4yIDc4LjFsOS42LTRzOC42LjkgOS41IDExLjQtNS41IDEyLjktNS41IDEyLjlsLTEwLjMuMnMtNC41LTMuMS01LjItMTEuMyAxLjktOS4yIDEuOS05LjJ6Ii8+PGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMzguMiA3OC4xbDkuNi00YzUgMS41IDkgNC4zIDkuNSAxMS40LS44LTEuNi0yLjMtMi4zLTQuNS0yLjJMNDggODQuNGwtNS43IDEuNC01LjkgMS40Yy40LTUtLjEtNy4zIDEuOC05LjF6IiBvcGFjaXR5PSIuMSIvPjxlbGxpcHNlIHRyYW5zZm9ybT0icm90YXRlKC00LjYgNDIgODguMikiIGN4PSI0MiIgY3k9Ijg4LjIiIHJ4PSI0LjkiIHJ5PSI5LjEiIG9wYWNpdHk9Ii4xNiIvPjxwYXRoIGQ9Ik00MS43IDgwLjZzLTE1LjYgMi4xLTIwLTIuOS0uMi0xMy45LS4yLTEzLjktMTEuMSA2LjQtMTAgMTkgMjUgMTMuOCAzMC4zIDEyLjRjMCAwIDMuNi0xLjggMy4zLTcuNSAwLTUuOC0zLjQtNy4xLTMuNC03LjF6Ii8+PHBhdGggZD0iTTQxLjcgODAuNnMtMTUuNiAyLjEtMjAtMi45LS4yLTEzLjktLjItMTMuOS0xMS4xIDYuNC0xMCAxOSAyNSAxMy44IDMwLjMgMTIuNGMwIDAgMy42LTEuOCAzLjMtNy41IDAtNS44LTMuNC03LjEtMy40LTcuMXoiIG9wYWNpdHk9Ii4zIi8+PC9nPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTQ1IDg3LjdjLTE1LjkgMy44LTM5LjgtMi42LTIzLjUtMjMuOCAwIDAtMTEuMSA2LjQtMTAgMTlzMjUgMTMuOCAzMC4zIDEyLjRjMCAwIDMuNi0xLjggMy4yLTcuNnoiIG9wYWNpdHk9Ii4zIi8+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbD0iIzAxMDEwMSIgb3BhY2l0eT0iLjYiPjxwYXRoIGQ9Ik03NiA3N3MwLTEyIDYtMTIgNiAxMS42IDYgMTEuNlM4MyA2NSA3NiA3N3pNMTAwIDc2LjVzMC0xMSA1LjUtMTEgNS41IDEwLjYgNS41IDEwLjYtNC42LTEwLjYtMTEgLjR6Ii8+PC9nPjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgb3BhY2l0eT0iLjIiPjxwYXRoIGQ9Ik03NSA5MS4xYy0uMi0xLjUuNC0yLjkgMS40LTMuOSAwIDAgMTAuOCAwIDEzLTQuNnM0LjMtMTAuMSA3LjktNy44YzUuNyAzLjMgNSA3LjggOC42IDEwLjFzNy4yIDUuNyAxMi4yIDUuNyA1LjguNSA1LjggMi4xLTIuMiA0LjctNi41IDMuMS0xMC40LTQuMy0xOS44LS40LTUgNC43LTEwLjggMi4zYy00LjEtMS44LTgtNC0xMS44LTYuNnoiLz48cGF0aCBkPSJNNzcuOCA5Mi42bC0uNiAyLjkgMi4yIDMuNnM2LjUgMCA4LjcgMi4yIDEzLjcgNSAyMC45IDIuOSA2LjctOC42IDYuNy04LjYtMTIuNyA1LjQtMjIuMSAyLjFhOSA5IDAgMDEtMy4xIDEuNWMtMi4yLS43LTQuNC0xLjUtNi42LTIuNS0yLjMtMS00LjMtMi40LTYuMS00LjF6Ii8+PHBhdGggZD0iTTExNi4zIDk0LjVzLTUuOC0yLjItMTAuMS0xLjRjLTMuNC41LTYuNyAxLjMtOS45IDIuNiA0LjIgMS43IDEzLjYtMS4yIDIwLTEuMnoiLz48L2c+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNMTE2LjMgOTQuNXMtNS44LTIuMi0xMC4xLTEuNC05IDEuOC0xMS4zIDMuNGMwIDAgMi40IDEuNyA3LjIgMS4zczEyLjEtMS44IDE0LjItMy4zeiIgZmlsbD0iI2ViNTI3MyIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTc2IDkwLjlsMS40LTMuNnMxMC44IDAgMTMtNC4zIDQuMy05LjQgNy45LTcuMiA1IDcuMiA4LjYgOS40IDcuMiA0LjMgMTIuMiA0LjMgNS43IDEuNCA1LjcgMi45LTIuMiA0LjMtNi41IDIuOS0xMC40LTQtMTkuOC0uNC01IDQuMy0xMC44IDIuMmMtNC0xLjctNy45LTMuOC0xMS43LTYuMnoiIGZpbGw9IiNmYmRiMzEiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik03NiA5MC45bDEuNC0zLjZhNTAgNTAgMCAwMDE1LjEgNy4yYzQuMy01IDIxLjYtNSAzMi40LTIuMi4xIDEuNC0yLjIgNC4zLTYuNSAyLjlzLTEwLjQtNC0xOS44LS40LTUgNC4zLTEwLjggMi4yYy00LjEtMS42LTgtMy43LTExLjgtNi4xeiIgb3BhY2l0eT0iLjA1Ii8+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNOTEuOCA4M2wtLjcgMi4yIDUuMSA0LjNjLjQuNCAxIC40IDEuNCAwIC43LS43LTIuMi0zLjYtMi4yLTMuNkw5My4zIDgzYy0uNC0uNC0xLS40LTEuNSAwIC4xIDAgLjEgMCAwIDB6Ii8+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNNzguOCA5Mi42bC0uNiAxLjkgMi4yIDMuNnM2LjUgMCA4LjcgMi4yIDEzLjcgNSAyMC45IDIuOSA2LjctOC42IDYuNy04LjYtMTIuNyA1LjQtMjIuMSAyLjFhOSA5IDAgMDEtMy4xIDEuNWMtMi4yLS43LTQuNC0xLjUtNi42LTIuNS0zLjUtMS41LTYuMS0zLjEtNi4xLTMuMXoiIGZpbGw9IiNmYmRiMzEiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik03OC44IDkyLjZsLS42IDEuOSAyLjIgMy42czYuNSAwIDguNyAyLjIgMTMuNyA1IDIwLjkgMi45IDYuNy04LjYgNi43LTguNi0xMi43IDUuNC0yMi4xIDIuMWE5IDkgMCAwMS0zLjEgMS41Yy0yLjItLjctNC40LTEuNS02LjYtMi41LTMuNS0xLjUtNi4xLTMuMS02LjEtMy4xeiIgb3BhY2l0eT0iLjIiLz4KPHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNNDYuNCAxMDEuMXMtMS4zIDEuOS0xLjEgNS45Yy43IDkuNy0yLjEgMTkuNSAzLjUgMjYuNCA1LjYgNyAxNi43IDExLjggMjIuOSA4LjRzNS42LTE1LjMtMS40LTIwLjJhMjEuOCAyMS44IDAgMDEtNC40LTQuNyA0MCA0MCAwIDAxLTE5LjUtMTUuOHoiIGZpbGw9IiM5OTY3MWQiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik00Ni40IDEwMS4xcy0xLjMgMS45LTEuMSA1LjljLjcgOS43LTIuMSAxOS41IDMuNSAyNi40IDEyLjIgMTIuOSAyMi45IDguNCAyMi45IDguNC0xMC4xIDEuMS0yMS42LTM1LjgtMjEuNi0zNS44YTMwIDMwIDAgMDEtMy43LTQuOXoiIGZpbGw9IiM2ZDQ3MTYiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik01NC44IDExNS40Yy00IDAtNy4zLTMuMy03LjMtNy4zLjEtMS4zLjUtMi43IDEuMS0zLjguMS0uMiA3LjEgOC4xIDEwLjggOS41IDAtLjEtMS4zIDEuMi00LjYgMS42eiIgZmlsbD0iI2ZmZiIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTU4LjggMTEzLjNjLS44LjMtMS43LjUtMi42LjZhNiA2IDAgMDEtNS45LTYuM2wuMi0xLjhhMjQgMjQgMCAwMDguMyA3LjV6IiBvcGFjaXR5PSIuMiIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTk0IDEyNC41cy0yLjggNS41LTUuNSA3LjVjLTEuMi44LTIuMyAxLjgtMy40IDIuN3Y0LjRjMCAuNCAxMC4yLTMgOC45LTE0LjZ6IiBmaWxsPSIjNmQ0NzE2Ii8+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNOTQuNiAxMjQuNXMtNS40LTEuNC04LjkgMmMtMy40IDMuNC0zLjQgOC4yLTEuNCA4LjJzMi4yLjcgMTAuMy0xMC4yeiIgZmlsbD0iI2ZmZiIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTEyMC41IDEwOC44cy00LjgtOC4yLTE5LjEtLjdjLTE0LjMgNy41LTIuNyAyMy4yLTE1LjcgMzAuNyAwIDAgMy43IDMuNiA4LjQtNS45IDQuNi05LjMgNC42LTI0LjcgMjYuNC0yNC4xeiIgZmlsbD0iIzk5NjcxZCIvPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0iTTg1LjggMTM4LjhzNi4xIDIuNyAxMC4yLTEwLjkgOC45LTIxLjggMjAuNC0yMS4xYzEuNiAwIDMuMi42IDQuNCAxLjcgNS42IDUgMS4zIDE5LjYtNC40IDI0LjItNi44IDUuNC0yMS44IDEwLjktMjcuOSA4LjlzLTIuNy0yLjgtMi43LTIuOHoiIGZpbGw9IiM0NDQiLz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik04NC44IDExOS4ybDEgNy40YzEuOS0xLjQgMy42LTIuMyA1LTIuM2wtLjYtNi4yYy0xLjguNS0zLjYuOC01LjQgMS4xeiIgZmlsbD0iY3VycmVudENvbG9yIi8+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNMTE5LjIgMTEyLjZoLTExLjZjLS4zIDAtLjUtLjItLjUtLjV2LS4xYzAtLjMuMi0uNS41LS41aDExLjZjLjMgMCAuNS4yLjUuNXYuMWMwIC4zLS4yLjUtLjUuNXpNMTIwLjMgMTE1LjhoLTE0LjdjLS4zIDAtLjUtLjItLjUtLjV2LS4xYzAtLjMuMi0uNS41LS41aDE0LjdjLjMgMCAuNS4yLjUuNXYuMWMwIC4zLS4zLjUtLjUuNXpNMTIwLjMgMTE4LjloLTE3LjljLS4zIDAtLjUtLjItLjUtLjV2LS4xYzAtLjMuMi0uNS41LS41aDE3LjljLjMgMCAuNS4yLjUuNXYuMWMwIC4zLS4zLjUtLjUuNXpNMTE5LjIgMTIyLjFoLTE3LjljLS4zIDAtLjUtLjItLjUtLjV2LS4xYzAtLjMuMi0uNS41LS41aDE3LjljLjMgMCAuNS4yLjUuNXYuMWMwIC4yLS4yLjUtLjUuNXpNMTE4LjEgMTI1LjJoLTE3LjljLS4zIDAtLjUtLjItLjUtLjV2LS4xYzAtLjMuMi0uNS41LS41aDE3LjljLjMgMCAuNS4yLjUuNXYuMWMwIC4zLS4yLjUtLjUuNXpNMTE2LjEgMTI4LjRIOTguMmMtLjMgMC0uNS0uMi0uNS0uNXMuMi0uNS41LS41aDE3LjljLjMgMCAuNS4yLjUuNSAwIC4yLS4zLjUtLjUuNXpNMTE0IDEzMS41SDk4LjJjLS4zIDAtLjUtLjItLjUtLjVzLjItLjUuNS0uNUgxMTRjLjMgMCAuNS4yLjUuNXYuMWMwIC4yLS4zLjQtLjUuNHpNMTA5LjggMTM0LjdIOTYuMWMtLjMgMC0uNS0uMi0uNS0uNXYtLjFjMC0uMy4yLS41LjUtLjVoMTMuN2MuMyAwIC41LjIuNS41di4xYzAgLjItLjMuNS0uNS41ek0xMDQuNSAxMzcuOEg5NWMtLjMgMC0uNS0uMi0uNS0uNXYtLjFjMC0uMy4yLS41LjUtLjVoOS41Yy4zIDAgLjUuMi41LjV2LjFjMCAuMy0uMi41LS41LjV6Ii8+CjwvZz4KPC9nPjwvc3ZnPg==',
 ]
 
-const className = computed(() => {
-  switch (props.activeNumber) {
-    case 0:
-      return '.zero'
-    case 1:
-      return '.one'
-    case 2:
-      return '.two'
-    case 3:
-      return '.three'
-    case 4:
-      return '.four'
-    case 5:
-      return '.five'
-    case 6:
-      return '.six'
-    case 7:
-      return '.seven'
-    case 8:
-      return '.eight'
-    case 9:
-      return '.nine'
-    default:
-      return '.one'
-  }
-})
-
 let identiconImages: HTMLDivElement[] = []
 function addIdenticonsToPage() {
-  if (!group.value) {
+  if (!referenceHex.value) {
     return
   }
-  const pathsToAddIdention = group.value.querySelectorAll(className.value)
-  pathsToAddIdention.forEach((path: SVGPathElement) => {
+  const referenceCoords = referenceHex.value.getBoundingClientRect()
+  const positionIndices = preparePositionUpdate(referenceCoords)
+  positionIndices.forEach((index) => {
     const identicon = document.createElement('div')
-    const sizing = path.getBoundingClientRect()
-    identicon.style.top = `${sizing.top + window.scrollY - 2.75 + 2}px`
-    identicon.style.left = `${sizing.left - 1.5}px`
-    identicon.style.height = `${sizing.width + 0}px`
-    identicon.style.width = `${sizing.width + 0}px`
-    identicon.classList.add('clock-identicon-container')
+    positionIdenticon(identicon, index, referenceCoords)
     identicon.innerHTML = `<img class="clock-identicon imageReveal" src="${
-      identicons[Math.floor(Math.random() * 7)]
+      identicons[Math.floor(Math.random() * identicons.length)]
     }">`
     document.getElementById('clock')?.append(identicon)
     identiconImages.push(identicon)
@@ -80,21 +206,33 @@ function addIdenticonsToPage() {
 }
 
 function updateSizeAndPosition() {
-  if (!group.value) {
+  if (!referenceHex.value) {
     return
   }
-  const pathsToAddIdention = group.value.querySelectorAll(className.value)
-  pathsToAddIdention.forEach((path: SVGPathElement, index: number) => {
-    const identicon = identiconImages[index]
+  const referenceCoords = referenceHex.value.getBoundingClientRect()
+  const positionIndices = preparePositionUpdate(referenceCoords)
+  positionIndices.forEach((index, i) => {
+    const identicon = identiconImages[i]
     if (identicon) {
-      const sizing = path.getBoundingClientRect()
-      identicon.style.top = `${sizing.top + window.scrollY - 2.75 + 2}px`
-      identicon.style.left = `${sizing.left - 1.5}px`
-      identicon.style.height = `${sizing.width + 1}px`
-      identicon.style.width = `${sizing.width + 1}px`
-      identicon.classList.add('clock-identicon-container')
+      positionIdenticon(identicon, index, referenceCoords)
     }
   })
+}
+
+function preparePositionUpdate(referenceCoords: DOMRect) {
+  iconWidth.value = referenceCoords.width
+  iconHeight.value = referenceCoords.height
+  const activeNum = props.activeNumber.toString(10)
+  return GRID.map((nums, i) => nums.includes(activeNum) ? i : -1).filter(index => index !== -1)
+}
+
+function positionIdenticon(identicon: HTMLDivElement, index: number, referenceCoords: DOMRect) {
+  const coords = iconPosition(index)
+  identicon.style.left = `${referenceCoords.left + coords[0] - 2}px`
+  identicon.style.top = `${referenceCoords.top + coords[1] - 2}px`
+  identicon.style.width = `${iconWidth.value + 4}px`
+  identicon.style.height = `${iconHeight.value + 4}px`
+  identicon.classList.add('clock-identicon-container')
 }
 
 onMounted(() => {
@@ -113,20 +251,19 @@ onUnmounted(() => {
   // Clean up externally rendered DOM elements (important for hot-reloading during dev)
   for (const identicon of identiconImages) {
     identicon.remove()
-    identiconImages = []
   }
+  identiconImages = []
 })
 
 watch(() => props.activeNumber, () => {
-  if (initialLoad.value) {
-    identiconImages.forEach((ident) => {
-      ident.remove()
-    })
-    identiconImages = []
-    nextTick(() => {
-      addIdenticonsToPage()
-    })
+  if (!initialLoad.value)
+    return
+
+  for (const identicon of identiconImages) {
+    identicon.remove()
   }
+  identiconImages = []
+  addIdenticonsToPage()
 })
 
 const leftOffset = 58.5
@@ -157,343 +294,23 @@ const offsetX = computed(() => {
 const offsetY = computed(() => {
   switch (props.viewWidth) {
     case 1440:
-      return 223.9
+      return 224
     case 975:
       return 200
     case 505:
       return 170
-    default: return 600
+    default:
+      return 200
   }
 })
 </script>
 
 <template>
-  <g
-    :id="`clock-digit-${index}`"
-    ref="group"
-    class="hex-digit-group"
-    :data-active-number="activeNumber"
-    :transform="`translate(${offsetX}, ${offsetY})`"
-  >
-    <!-- 100 -->
-    <!-- 223.9 -->
+  <g :transform="`translate(${offsetX}, ${offsetY})`">
     <path
-      :id="`hex-${activeNumber}-53`"
-      class="one two four"
-      d="M182.456 228.75C183.158 229.957 183.158 231.443 182.456 232.65L177.92 240.45C177.219 241.657 175.922 242.4 174.518 242.4H165.447C164.043 242.4 162.746 241.657 162.045 240.45L157.509 232.65C156.807 231.443 156.807 229.957 157.509 228.75L162.045 220.95C162.746 219.743 164.043 219 165.447 219L174.518 219C175.922 219 177.219 219.743 177.92 220.95L182.456 228.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-52`"
-      class="one two three five six eight nine zero"
-      d="M130.456 228.75C131.158 229.957 131.158 231.443 130.456 232.65L125.92 240.45C125.219 241.657 123.922 242.4 122.518 242.4H113.447C112.043 242.4 110.746 241.657 110.045 240.45L105.509 232.65C104.807 231.443 104.807 229.957 105.509 228.75L110.045 220.95C110.746 219.743 112.043 219 113.447 219L122.518 219C123.922 219 125.219 219.743 125.92 220.95L130.456 228.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-51`"
-      class="one two three five six eight nine zero seven"
-      d="M78.4561 228.75C79.1579 229.957 79.1579 231.443 78.4561 232.65L73.9202 240.45C73.2185 241.657 71.9217 242.4 70.5183 242.4H61.4465C60.0431 242.4 58.7463 241.657 58.0446 240.45L53.5087 232.65C52.807 231.443 52.807 229.957 53.5087 228.75L58.0446 220.95C58.7463 219.743 60.0431 219 61.4465 219L70.5183 219C71.9217 219 73.2185 219.743 73.9202 220.95L78.4561 228.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-50`"
-      class="two"
-      d="M26.4561 228.75C27.1579 229.957 27.1579 231.443 26.4561 232.65L21.9202 240.45C21.2185 241.657 19.9217 242.4 18.5183 242.4H9.44652C8.04311 242.4 6.74631 241.657 6.0446 240.45L1.5087 232.65C0.806995 231.443 0.806995 229.957 1.5087 228.75L6.0446 220.95C6.74631 219.743 8.04311 219 9.44652 219L18.5183 219C19.9217 219 21.2185 219.743 21.9202 220.95L26.4561 228.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-49`"
-      class="one two three four five six eight nine zero"
-      d="M156.456 213.15C157.158 214.357 157.158 215.843 156.456 217.05L151.92 224.85C151.219 226.057 149.922 226.8 148.518 226.8H139.447C138.043 226.8 136.746 226.057 136.045 224.85L131.509 217.05C130.807 215.843 130.807 214.357 131.509 213.15L136.045 205.35C136.746 204.143 138.043 203.4 139.447 203.4L148.518 203.4C149.922 203.4 151.219 204.143 151.92 205.35L156.456 213.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-48`"
-      class="one two three five six seven eight nine zero"
-      d="M104.456 213.15C105.158 214.357 105.158 215.843 104.456 217.05L99.9202 224.85C99.2185 226.057 97.9217 226.8 96.5183 226.8H87.4465C86.0431 226.8 84.7463 226.057 84.0446 224.85L79.5087 217.05C78.807 215.843 78.807 214.357 79.5087 213.15L84.0446 205.35C84.7463 204.143 86.0431 203.4 87.4465 203.4L96.5183 203.4C97.9217 203.4 99.2185 204.143 99.9202 205.35L104.456 213.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-47`"
-      class="one two three five six eight nine zero"
-      d="M52.4561 213.15C53.1579 214.357 53.1579 215.843 52.4561 217.05L47.9202 224.85C47.2185 226.057 45.9217 226.8 44.5183 226.8H35.4465C34.0431 226.8 32.7463 226.057 32.0446 224.85L27.5087 217.05C26.807 215.843 26.807 214.357 27.5087 213.15L32.0446 205.35C32.7463 204.143 34.0431 203.4 35.4465 203.4L44.5183 203.4C45.9217 203.4 47.2185 204.143 47.9202 205.35L52.4561 213.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-46`"
-      class="one two three five six eight nine zero four"
-      d="M182.456 197.55C183.158 198.757 183.158 200.244 182.456 201.45L177.92 209.25C177.219 210.457 175.922 211.2 174.518 211.2H165.447C164.043 211.2 162.746 210.457 162.045 209.25L157.509 201.45C156.807 200.244 156.807 198.757 157.509 197.55L162.045 189.75C162.746 188.544 164.043 187.8 165.447 187.8L174.518 187.8C175.922 187.8 177.219 188.544 177.92 189.75L182.456 197.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-45`"
-      class="one two three five six eight nine zero"
-      d="M130.456 197.55C131.158 198.757 131.158 200.244 130.456 201.45L125.92 209.25C125.219 210.457 123.922 211.2 122.518 211.2H113.447C112.043 211.2 110.746 210.457 110.045 209.25L105.509 201.45C104.807 200.244 104.807 198.757 105.509 197.55L110.045 189.75C110.746 188.544 112.043 187.8 113.447 187.8L122.518 187.8C123.922 187.8 125.219 188.544 125.92 189.75L130.456 197.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-44`"
-      class="one two three five six seven eight nine zero"
-      d="M78.4561 197.55C79.1579 198.757 79.1579 200.244 78.4561 201.45L73.9202 209.25C73.2185 210.457 71.9217 211.2 70.5183 211.2H61.4465C60.0431 211.2 58.7463 210.457 58.0446 209.25L53.5087 201.45C52.807 200.244 52.807 198.757 53.5087 197.55L58.0446 189.75C58.7463 188.544 60.0431 187.8 61.4465 187.8L70.5183 187.8C71.9217 187.8 73.2185 188.544 73.9202 189.75L78.4561 197.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-43`"
-      class="two three five six eight nine zero"
-      d="M26.4561 197.55C27.1578 198.757 27.1578 200.244 26.4561 201.45L21.9202 209.25C21.2185 210.457 19.9217 211.2 18.5183 211.2H9.44652C8.04311 211.2 6.74631 210.457 6.0446 209.25L1.5087 201.45C0.806995 200.244 0.806995 198.757 1.5087 197.55L6.0446 189.75C6.74631 188.544 8.04311 187.8 9.44652 187.8L18.5183 187.8C19.9217 187.8 21.2185 188.544 21.9202 189.75L26.4561 197.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-42`"
-      class="one two three five six eight nine zero four"
-      d="M156.456 181.95C157.158 183.157 157.158 184.644 156.456 185.85L151.92 193.65C151.219 194.857 149.922 195.6 148.518 195.6H139.447C138.043 195.6 136.746 194.857 136.045 193.65L131.509 185.85C130.807 184.644 130.807 183.157 131.509 181.95L136.045 174.15C136.746 172.944 138.043 172.2 139.447 172.2L148.518 172.2C149.922 172.2 151.219 172.944 151.92 174.15L156.456 181.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-41`"
-      class="one seven"
-      d="M104.456 181.95C105.158 183.157 105.158 184.644 104.456 185.85L99.9202 193.65C99.2185 194.857 97.9217 195.6 96.5183 195.6H87.4465C86.0431 195.6 84.7463 194.857 84.0446 193.65L79.5087 185.85C78.807 184.644 78.807 183.157 79.5087 181.95L84.0446 174.15C84.7463 172.944 86.0431 172.2 87.4465 172.2L96.5183 172.2C97.9217 172.2 99.2185 172.944 99.9202 174.15L104.456 181.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-40`"
-      class="one two three five six eight nine zero"
-      d="M52.4561 181.95C53.1579 183.157 53.1579 184.644 52.4561 185.85L47.9202 193.65C47.2185 194.857 45.9217 195.6 44.5183 195.6H35.4465C34.0431 195.6 32.7463 194.857 32.0446 193.65L27.5087 185.85C26.807 184.644 26.807 183.157 27.5087 181.95L32.0446 174.15C32.7463 172.944 34.0431 172.2 35.4465 172.2L44.5183 172.2C45.9217 172.2 47.2185 172.944 47.9202 174.15L52.4561 181.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-39`"
-      class="three five six eight nine zero four"
-      d="M182.456 166.35C183.158 167.557 183.158 169.043 182.456 170.25L177.92 178.05C177.219 179.257 175.922 180 174.518 180H165.447C164.043 180 162.746 179.257 162.045 178.05L157.509 170.25C156.807 169.043 156.807 167.557 157.509 166.35L162.045 158.55C162.746 157.343 164.043 156.6 165.447 156.6L174.518 156.6C175.922 156.6 177.219 157.343 177.92 158.55L182.456 166.35Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-38`"
-      class="one"
-      d="M130.456 166.35C131.158 167.557 131.158 169.043 130.456 170.25L125.92 178.05C125.219 179.257 123.922 180 122.518 180H113.447C112.043 180 110.746 179.257 110.045 178.05L105.509 170.25C104.807 169.043 104.807 167.557 105.509 166.35L110.045 158.55C110.746 157.343 112.043 156.6 113.447 156.6L122.518 156.6C123.922 156.6 125.219 157.343 125.92 158.55L130.456 166.35Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-37`"
-      class="seven"
-      d="M78.4561 166.35C79.1579 167.557 79.1579 169.043 78.4561 170.25L73.9202 178.05C73.2185 179.257 71.9217 180 70.5183 180H61.4465C60.0431 180 58.7463 179.257 58.0446 178.05L53.5087 170.25C52.807 169.043 52.807 167.557 53.5087 166.35L58.0446 158.55C58.7463 157.343 60.0431 156.6 61.4465 156.6L70.5183 156.6C71.9217 156.6 73.2185 157.343 73.9202 158.55L78.4561 166.35Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-36`"
-      class="two three five six eight nine zero"
-      d="M26.4561 166.35C27.1579 167.557 27.1579 169.043 26.4561 170.25L21.9202 178.05C21.2185 179.257 19.9217 180 18.5183 180H9.44652C8.04311 180 6.74631 179.257 6.0446 178.05L1.5087 170.25C0.806995 169.043 0.806995 167.557 1.5087 166.35L6.0446 158.55C6.74631 157.343 8.04311 156.6 9.44652 156.6L18.5183 156.6C19.9217 156.6 21.2185 157.343 21.9202 158.55L26.4561 166.35Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-35`"
-      class="three five six eight nine zero four"
-      d="M156.456 150.75C157.158 151.957 157.158 153.443 156.456 154.65L151.92 162.45C151.219 163.657 149.922 164.4 148.518 164.4H139.447C138.043 164.4 136.746 163.657 136.045 162.45L131.509 154.65C130.807 153.443 130.807 151.957 131.509 150.75L136.045 142.95C136.746 141.743 138.043 141 139.447 141L148.518 141C149.922 141 151.219 141.743 151.92 142.95L156.456 150.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-34`"
-      class="one seven"
-      d="M104.456 150.75C105.158 151.957 105.158 153.443 104.456 154.65L99.9202 162.45C99.2185 163.657 97.9217 164.4 96.5183 164.4H87.4465C86.0431 164.4 84.7463 163.657 84.0446 162.45L79.5087 154.65C78.807 153.443 78.807 151.957 79.5087 150.75L84.0446 142.95C84.7463 141.743 86.0431 141 87.4465 141L96.5183 141C97.9217 141 99.2185 141.743 99.9202 142.95L104.456 150.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-33`"
-      class="two six eight zero"
-      d="M52.4561 150.75C53.1579 151.957 53.1579 153.443 52.4561 154.65L47.9202 162.45C47.2185 163.657 45.9217 164.4 44.5183 164.4H35.4465C34.0431 164.4 32.7463 163.657 32.0446 162.45L27.5087 154.65C26.807 153.443 26.807 151.957 27.5087 150.75L32.0446 142.95C32.7463 141.743 34.0431 141 35.4465 141L44.5183 141C45.9217 141 47.2185 141.743 47.9202 142.95L52.4561 150.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-32`"
-      class="three five six eight nine zero four"
-      d="M182.456 135.15C183.158 136.357 183.158 137.843 182.456 139.05L177.92 146.85C177.219 148.057 175.922 148.8 174.518 148.8H165.447C164.043 148.8 162.746 148.057 162.045 146.85L157.509 139.05C156.807 137.843 156.807 136.357 157.509 135.15L162.045 127.35C162.746 126.143 164.043 125.4 165.447 125.4L174.518 125.4C175.922 125.4 177.219 126.143 177.92 127.35L182.456 135.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-31`"
-      class="one two three five six seven eight nine four"
-      d="M130.456 135.15C131.158 136.357 131.158 137.843 130.456 139.05L125.92 146.85C125.219 148.057 123.922 148.8 122.518 148.8H113.447C112.043 148.8 110.746 148.057 110.045 146.85L105.509 139.05C104.807 137.843 104.807 136.357 105.509 135.15L110.045 127.35C110.746 126.143 112.043 125.4 113.447 125.4L122.518 125.4C123.922 125.4 125.219 126.143 125.92 127.35L130.456 135.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-30`"
-      class="two five six seven eight nine four"
-      d="M78.4561 135.15C79.1579 136.357 79.1579 137.843 78.4561 139.05L73.9202 146.85C73.2185 148.057 71.9217 148.8 70.5183 148.8H61.4465C60.0431 148.8 58.7463 148.057 58.0446 146.85L53.5087 139.05C52.807 137.843 52.807 136.357 53.5087 135.15L58.0446 127.35C58.7463 126.143 60.0431 125.4 61.4465 125.4L70.5183 125.4C71.9217 125.4 73.2185 126.143 73.9202 127.35L78.4561 135.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-29`"
-      class="two six eight zero"
-      d="M26.4561 135.15C27.1579 136.357 27.1579 137.843 26.4561 139.05L21.9202 146.85C21.2185 148.057 19.9217 148.8 18.5183 148.8H9.44652C8.04311 148.8 6.74631 148.057 6.0446 146.85L1.5087 139.05C0.806995 137.843 0.806995 136.357 1.5087 135.15L6.0446 127.35C6.74631 126.143 8.04311 125.4 9.44652 125.4L18.5183 125.4C19.9217 125.4 21.2185 126.143 21.9202 127.35L26.4561 135.15Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-28`"
-      class="two three five six seven eight nine zero four"
-      d="M156.456 119.55C157.158 120.757 157.158 122.244 156.456 123.45L151.92 131.25C151.219 132.457 149.922 133.2 148.518 133.2H139.447C138.043 133.2 136.746 132.457 136.045 131.25L131.509 123.45C130.807 122.244 130.807 120.757 131.509 119.55L136.045 111.75C136.746 110.544 138.043 109.8 139.447 109.8L148.518 109.8C149.922 109.8 151.219 110.544 151.92 111.75L156.456 119.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-27`"
-      class="one two five six seven eight nine four"
-      d="M104.456 119.55C105.158 120.757 105.158 122.244 104.456 123.45L99.9202 131.25C99.2185 132.457 97.9217 133.2 96.5183 133.2H87.4465C86.0431 133.2 84.7463 132.457 84.0446 131.25L79.5087 123.45C78.807 122.244 78.807 120.757 79.5087 119.55L84.0446 111.75C84.7463 110.544 86.0431 109.8 87.4465 109.8L96.5183 109.8C97.9217 109.8 99.2185 110.544 99.9202 111.75L104.456 119.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-26`"
-      class="two five six eight nine zero four"
-      d="M52.4737 119.55C53.1754 120.757 53.1754 122.244 52.4737 123.45L47.9378 131.25C47.2361 132.457 45.9393 133.2 44.5359 133.2H35.4641C34.0607 133.2 32.7639 132.457 32.0622 131.25L27.5263 123.45C26.8246 122.244 26.8246 120.757 27.5263 119.55L32.0622 111.75C32.7639 110.544 34.0607 109.8 35.4641 109.8L44.5359 109.8C45.9393 109.8 47.2361 110.544 47.9378 111.75L52.4737 119.55Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-25`"
-      class="two seven nine zero four"
-      d="M182.456 103.95C183.158 105.157 183.158 106.644 182.456 107.85L177.92 115.65C177.219 116.857 175.922 117.6 174.518 117.6H165.447C164.043 117.6 162.746 116.857 162.045 115.65L157.509 107.85C156.807 106.644 156.807 105.157 157.509 103.95L162.045 96.1502C162.746 94.9435 164.043 94.2002 165.447 94.2002L174.518 94.2002C175.922 94.2002 177.219 94.9435 177.92 96.1502L182.456 103.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-24`"
-      class="one two three five six seven eight nine four"
-      d="M130.456 103.95C131.158 105.157 131.158 106.644 130.456 107.85L125.92 115.65C125.219 116.857 123.922 117.6 122.518 117.6H113.447C112.043 117.6 110.746 116.857 110.045 115.65L105.509 107.85C104.807 106.644 104.807 105.157 105.509 103.95L110.045 96.1502C110.746 94.9435 112.043 94.2002 113.447 94.2002L122.518 94.2002C123.922 94.2002 125.219 94.9435 125.92 96.1502L130.456 103.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-23`"
-      class="two five six eight nine four"
-      d="M78.4737 103.95C79.1754 105.157 79.1754 106.644 78.4737 107.85L73.9378 115.65C73.2361 116.857 71.9393 117.6 70.5359 117.6H61.4641C60.0607 117.6 58.7639 116.857 58.0622 115.65L53.5263 107.85C52.8246 106.644 52.8246 105.157 53.5263 103.95L58.0622 96.1502C58.7639 94.9435 60.0607 94.2002 61.4641 94.2002L70.5359 94.2002C71.9393 94.2002 73.2361 94.9435 73.9378 96.1502L78.4737 103.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-22`"
-      class="five six nine zero four"
-      d="M26.4737 103.95C27.1754 105.157 27.1754 106.644 26.4737 107.85L21.9378 115.65C21.2361 116.857 19.9393 117.6 18.5359 117.6H9.4641C8.06069 117.6 6.76388 116.857 6.06218 115.65L1.52628 107.85C0.824573 106.644 0.824573 105.157 1.52628 103.95L6.06218 96.1502C6.76388 94.9435 8.06069 94.2002 9.4641 94.2002L18.5359 94.2002C19.9393 94.2002 21.2361 94.9435 21.9378 96.1502L26.4737 103.95Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-21`"
-      class="two three seven eight nine zero four"
-      d="M156.456 88.3501C157.158 89.5568 157.158 91.0434 156.456 92.2501L151.92 100.05C151.219 101.257 149.922 102 148.518 102H139.447C138.043 102 136.746 101.257 136.045 100.05L131.509 92.2501C130.807 91.0434 130.807 89.5568 131.509 88.3501L136.045 80.5501C136.746 79.3434 138.043 78.6001 139.447 78.6001L148.518 78.6001C149.922 78.6001 151.219 79.3434 151.92 80.5501L156.456 88.3501Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-20`"
-      class="one"
-      d="M104.456 88.3501C105.158 89.5568 105.158 91.0434 104.456 92.2501L99.9202 100.05C99.2185 101.257 97.9217 102 96.5183 102H87.4465C86.0431 102 84.7463 101.257 84.0446 100.05L79.5087 92.2501C78.807 91.0434 78.807 89.5568 79.5087 88.3501L84.0446 80.5501C84.7463 79.3434 86.0431 78.6001 87.4465 78.6001L96.5183 78.6001C97.9217 78.6001 99.2185 79.3434 99.9202 80.5501L104.456 88.3501Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-19`"
-      class="one five six eight nine zero four"
-      d="M52.4737 88.3501C53.1754 89.5568 53.1754 91.0434 52.4737 92.2501L47.9378 100.05C47.2361 101.257 45.9393 102 44.5359 102H35.4641C34.0607 102 32.7639 101.257 32.0622 100.05L27.5263 92.2501C26.8246 91.0434 26.8246 89.5568 27.5263 88.3501L32.0622 80.5501C32.7639 79.3434 34.0607 78.6001 35.4641 78.6001L44.5359 78.6001C45.9393 78.6001 47.2361 79.3434 47.9378 80.5501L52.4737 88.3501Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-18`"
-      class="two three six seven eight nine zero four"
-      d="M182.456 72.75C183.158 73.9567 183.158 75.4433 182.456 76.65L177.92 84.45C177.219 85.6567 175.922 86.4 174.518 86.4H165.447C164.043 86.4 162.746 85.6567 162.045 84.45L157.509 76.65C156.807 75.4433 156.807 73.9567 157.509 72.75L162.045 64.95C162.746 63.7433 164.043 63 165.447 63L174.518 63C175.922 63 177.219 63.7433 177.92 64.95L182.456 72.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-17`"
-      class="one"
-      d="M130.456 72.75C131.158 73.9567 131.158 75.4433 130.456 76.65L125.92 84.45C125.219 85.6567 123.922 86.4 122.518 86.4H113.447C112.043 86.4 110.746 85.6567 110.045 84.45L105.509 76.65C104.807 75.4433 104.807 73.9567 105.509 72.75L110.045 64.95C110.746 63.7433 112.043 63 113.447 63L122.518 63C123.922 63 125.219 63.7433 125.92 64.95L130.456 72.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-16`"
-      class="one"
-      d="M78.4561 72.75C79.1579 73.9567 79.1579 75.4433 78.4561 76.65L73.9202 84.45C73.2185 85.6567 71.9217 86.4 70.5183 86.4H61.4465C60.0431 86.4 58.7463 85.6567 58.0446 84.45L53.5087 76.65C52.807 75.4433 52.807 73.9567 53.5087 72.75L58.0446 64.95C58.7463 63.7433 60.0431 63 61.4465 63L70.5183 63C71.9217 63 73.2185 63.7433 73.9202 64.95L78.4561 72.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-15`"
-      class="two five six eight nine zero four"
-      d="M26.4561 72.75C27.1579 73.9567 27.1579 75.4433 26.4561 76.65L21.9202 84.45C21.2185 85.6567 19.9217 86.4 18.5183 86.4H9.44652C8.04311 86.4 6.74631 85.6567 6.0446 84.45L1.5087 76.65C0.806995 75.4433 0.806995 73.9567 1.5087 72.75L6.0446 64.95C6.74631 63.7433 8.04311 63 9.44652 63L18.5183 63C19.9217 63 21.2185 63.7433 21.9202 64.95L26.4561 72.75Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-14`"
-      class="two five six seven eight nine zero four"
-      d="M156.474 57.1499C157.175 58.3566 157.175 59.8432 156.474 61.0499L151.938 68.8499C151.236 70.0566 149.939 70.7999 148.536 70.7999H139.464C138.061 70.7999 136.764 70.0566 136.062 68.8499L131.526 61.0499C130.825 59.8432 130.825 58.3566 131.526 57.1499L136.062 49.3499C136.764 48.1432 138.061 47.3999 139.464 47.3999L148.536 47.3999C149.939 47.3999 151.236 48.1432 151.938 49.3499L156.474 57.1499Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-13`"
-      class="one"
-      d="M104.474 57.1499C105.175 58.3566 105.175 59.8432 104.474 61.0499L99.9378 68.8499C99.2361 70.0566 97.9393 70.7999 96.5359 70.7999H87.4641C86.0607 70.7999 84.7639 70.0566 84.0622 68.8499L79.5263 61.0499C78.8246 59.8432 78.8246 58.3566 79.5263 57.1499L84.0622 49.3499C84.7639 48.1432 86.0607 47.3999 87.4641 47.3999L96.5359 47.3999C97.9393 47.3999 99.2361 48.1432 99.9378 49.3499L104.474 57.1499Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-12`"
-      class="one two three five six seven eight nine zero four"
-      d="M52.4737 57.1499C53.1754 58.3566 53.1754 59.8432 52.4737 61.0499L47.9378 68.8499C47.2361 70.0566 45.9393 70.7999 44.5359 70.7999H35.4641C34.0607 70.7999 32.7639 70.0566 32.0622 68.8499L27.5263 61.0499C26.8246 59.8432 26.8246 58.3566 27.5263 57.1499L32.0622 49.3499C32.7639 48.1432 34.0607 47.3999 35.4641 47.3999L44.5359 47.3999C45.9393 47.3999 47.2361 48.1432 47.9378 49.3499L52.4737 57.1499Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-11`"
-      class="two three five six seven eight nine zero four"
-      d="M182.474 41.5503C183.175 42.757 183.175 44.2436 182.474 45.4503L177.938 53.2503C177.236 54.457 175.939 55.2003 174.536 55.2003H165.464C164.061 55.2003 162.764 54.457 162.062 53.2503L157.526 45.4503C156.825 44.2436 156.825 42.757 157.526 41.5503L162.062 33.7503C162.764 32.5436 164.061 31.8003 165.464 31.8003L174.536 31.8003C175.939 31.8003 177.236 32.5436 177.938 33.7503L182.474 41.5503Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-10`"
-      class="one two three five six seven eight nine zero"
-      d="M130.474 41.5503C131.175 42.757 131.175 44.2436 130.474 45.4503L125.938 53.2503C125.236 54.457 123.939 55.2003 122.536 55.2003H113.464C112.061 55.2003 110.764 54.457 110.062 53.2503L105.526 45.4503C104.825 44.2436 104.825 42.757 105.526 41.5503L110.062 33.7503C110.764 32.5436 112.061 31.8003 113.464 31.8003L122.536 31.8003C123.939 31.8003 125.236 32.5436 125.938 33.7503L130.474 41.5503Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-9`"
-      class="one two three five six seven eight nine zero"
-      d="M78.4737 41.5503C79.1754 42.757 79.1754 44.2436 78.4737 45.4503L73.9378 53.2503C73.2361 54.457 71.9393 55.2003 70.5359 55.2003H61.4641C60.0607 55.2003 58.7639 54.457 58.0622 53.2503L53.5263 45.4503C52.8246 44.2436 52.8246 42.757 53.5263 41.5503L58.0622 33.7503C58.7639 32.5436 60.0607 31.8003 61.4641 31.8003L70.5359 31.8003C71.9393 31.8003 73.2361 32.5436 73.9378 33.7503L78.4737 41.5503Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-8`"
-      class="two three five six seven eight nine zero four"
-      d="M26.4737 41.5503C27.1754 42.757 27.1754 44.2436 26.4737 45.4503L21.9378 53.2503C21.2361 54.457 19.9393 55.2003 18.5359 55.2003H9.4641C8.06069 55.2003 6.76388 54.457 6.06218 53.2503L1.52628 45.4503C0.824573 44.2436 0.824573 42.757 1.52628 41.5503L6.06218 33.7503C6.76388 32.5436 8.06069 31.8003 9.4641 31.8003L18.5359 31.8003C19.9393 31.8003 21.2361 32.5436 21.9378 33.7503L26.4737 41.5503Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-7`"
-      class="two three five six seven eight nine zero four"
-      d="M156.474 25.9502C157.175 27.1569 157.175 28.6435 156.474 29.8502L151.938 37.6502C151.236 38.8569 149.939 39.6002 148.536 39.6002H139.464C138.061 39.6002 136.764 38.8569 136.062 37.6502L131.526 29.8502C130.825 28.6435 130.825 27.1569 131.526 25.9502L136.062 18.1502C136.764 16.9435 138.061 16.2002 139.464 16.2002L148.536 16.2002C149.939 16.2002 151.236 16.9435 151.938 18.1502L156.474 25.9502Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-6`"
-      class="one two three five six seven eight nine zero"
-      d="M104.474 25.9502C105.175 27.1569 105.175 28.6435 104.474 29.8502L99.9378 37.6502C99.2361 38.8569 97.9393 39.6002 96.5359 39.6002H87.4641C86.0607 39.6002 84.7639 38.8569 84.0622 37.6502L79.5263 29.8502C78.8246 28.6435 78.8246 27.1569 79.5263 25.9502L84.0622 18.1502C84.7639 16.9435 86.0607 16.2002 87.4641 16.2002L96.5359 16.2002C97.9393 16.2002 99.2361 16.9435 99.9378 18.1502L104.474 25.9502Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-5`"
-      class="two three five six seven eight nine zero four"
-      d="M52.4737 25.9502C53.1754 27.1569 53.1754 28.6435 52.4737 29.8502L47.9378 37.6502C47.2361 38.8569 45.9393 39.6002 44.5359 39.6002H35.4641C34.0607 39.6002 32.7639 38.8569 32.0622 37.6502L27.5263 29.8502C26.8246 28.6435 26.8246 27.1569 27.5263 25.9502L32.0622 18.1502C32.7639 16.9435 34.0607 16.2002 35.4641 16.2002L44.5359 16.2002C45.9393 16.2002 47.2361 16.9435 47.9378 18.1502L52.4737 25.9502Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-4`"
-      class="three four five seven"
-      d="M182.456 10.3501C183.158 11.5568 183.158 13.0434 182.456 14.2501L177.92 22.0501C177.219 23.2568 175.922 24.0001 174.518 24.0001H165.447C164.043 24.0001 162.746 23.2568 162.045 22.0501L157.509 14.2501C156.807 13.0434 156.807 11.5568 157.509 10.3501L162.045 2.5501C162.746 1.34343 164.043 0.600098 165.447 0.600098L174.518 0.600098C175.922 0.600098 177.219 1.34343 177.92 2.5501L182.456 10.3501Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-3`"
-      class="one two three five six seven eight nine zero"
-      d="M130.456 10.3501C131.158 11.5568 131.158 13.0434 130.456 14.2501L125.92 22.0501C125.219 23.2568 123.922 24.0001 122.518 24.0001H113.447C112.043 24.0001 110.746 23.2568 110.045 22.0501L105.509 14.2501C104.807 13.0434 104.807 11.5568 105.509 10.3501L110.045 2.5501C110.746 1.34343 112.043 0.600098 113.447 0.600098L122.518 0.600098C123.922 0.600098 125.219 1.34343 125.92 2.5501L130.456 10.3501Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-2`"
-      class="two three five six seven eight nine zero"
-      d="M78.4561 10.3501C79.1579 11.5568 79.1579 13.0434 78.4561 14.2501L73.9202 22.0501C73.2185 23.2568 71.9217 24.0001 70.5183 24.0001H61.4465C60.0431 24.0001 58.7463 23.2568 58.0446 22.0501L53.5087 14.2501C52.807 13.0434 52.807 11.5568 53.5087 10.3501L58.0446 2.5501C58.7463 1.34343 60.0431 0.600098 61.4465 0.600098L70.5183 0.600098C71.9217 0.600098 73.2185 1.34343 73.9202 2.5501L78.4561 10.3501Z"
-      fill="#1F2348"
-    />
-    <path
-      :id="`hex-${activeNumber}-1`"
-      class="three four five seven"
+      ref="referenceHex"
       d="M26.4561 10.3501C27.1579 11.5568 27.1579 13.0434 26.4561 14.2501L21.9202 22.0501C21.2185 23.2568 19.9217 24.0001 18.5183 24.0001H9.44652C8.04311 24.0001 6.74631 23.2568 6.0446 22.0501L1.5087 14.2501C0.806995 13.0434 0.806995 11.5568 1.5087 10.3501L6.0446 2.5501C6.74631 1.34343 8.04311 0.600098 9.44652 0.600098L18.5183 0.600098C19.9217 0.600098 21.2185 1.34343 21.9202 2.5501L26.4561 10.3501Z"
-      fill="#1F2348"
+      fill="white" opacity="0"
     />
   </g>
 </template>
@@ -514,110 +331,4 @@ const offsetY = computed(() => {
 </style>
 
 <style scoped>
-g.hex-digit-group path {
-  position: relative;
-  transform-box: fill-box;
-  transform-origin: center;
-  /* fill-opacity: 0.5;
-  fill: red !important; */
-
-  /* animation: hide 0.5s cubic-bezier(0.25, 0, 0, 1) forwards; */
-  fill-opacity: 0;
-}
-
-.show {
-  animation: show 2s cubic-bezier(0.25, 0, 0, 1) both;
-}
-
-@keyframes show {
-  0% {
-    fill: #1f2348;
-    transform: rotateY(0deg);
-  }
-  30% {
-    opacity: 0.5;
-    transform: scale(1.3) rotateY(160deg);
-  }
-  40% {
-    fill: #e9b213;
-    fill-opacity: 1;
-    transform: scale(1) rotateY(180deg);
-  }
-  100% {
-    fill: #e9b213;
-    fill-opacity: 1;
-    transform: scale(1) rotateY(180deg);
-  }
-}
-
-@keyframes hide {
-  0% {
-    fill: #e9b213;
-    fill-opacity: 1;
-    transform: rotateY(180deg);
-  }
-  30% {
-    fill: #e9b213;
-    fill-opacity: 1;
-    transform: rotateY(180deg);
-  }
-  40% {
-    opacity: 0.5;
-    transform: rotateY(160deg);
-  }
-  100% {
-    fill: #1f2348;
-    transform: rotateY(0deg);
-  }
-}
-/* g[data-active-number='0'] {
-  path.zero {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='1'] {
-  path.one {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='2'] {
-  path.two {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='3'] {
-  path.three {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='4'] {
-  path.four {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='5'] {
-  path.five {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='6'] {
-  path.six {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='7'] {
-  path.seven {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='8'] {
-  path.eight {
-    fill-opacity: 0;
-  }
-}
-g[data-active-number='9'] {
-  path.nine {
-    fill-opacity: 0;
-  }
-} */
 </style>
