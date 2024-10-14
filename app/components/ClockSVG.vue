@@ -82,6 +82,8 @@ const offsetY = computed(() => {
     default: return 600
   }
 })
+
+const spriteSrc = `/img/clock/sprite-${Math.floor(Math.random() * 10)}.webp`
 </script>
 
 <template>
@@ -92,12 +94,46 @@ const offsetY = computed(() => {
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <ClockSVGDigit :view-width="viewWidth" :active-number="day.firstDigit ? day.firstDigit : 0" :index="0" />
-    <ClockSVGDigit :view-width="viewWidth" :active-number="day.secondDigit ? day.secondDigit : 0" :index="1" />
-    <ClockSVGDigit v-if="viewWidth >= 975" :view-width="viewWidth" :active-number="hour.firstDigit ? hour.firstDigit : 0" :index="2" />
-    <ClockSVGDigit v-if="viewWidth >= 975" :view-width="viewWidth" :active-number="hour.secondDigit ? hour.secondDigit : 0" :index="3" />
-    <ClockSVGDigit v-if="viewWidth >= 1440" :view-width="viewWidth" :active-number="minute.firstDigit ? minute.firstDigit : 0" :index="4" />
-    <ClockSVGDigit v-if="viewWidth >= 1440" :view-width="viewWidth" :active-number="minute.secondDigit ? minute.secondDigit : 0" :index="5" />
+    <ClockSVGDigit
+      :view-width="viewWidth"
+      :active-number="day.firstDigit ? day.firstDigit : 0"
+      :index="0"
+      :sprite-src="spriteSrc"
+    />
+    <ClockSVGDigit
+      :view-width="viewWidth"
+      :active-number="day.secondDigit ? day.secondDigit : 0"
+      :index="1"
+      :sprite-src="spriteSrc"
+    />
+    <ClockSVGDigit
+      v-if="viewWidth >= 975"
+      :view-width="viewWidth"
+      :active-number="hour.firstDigit ? hour.firstDigit : 0"
+      :index="2"
+      :sprite-src="spriteSrc"
+    />
+    <ClockSVGDigit
+      v-if="viewWidth >= 975"
+      :view-width="viewWidth"
+      :active-number="hour.secondDigit ? hour.secondDigit : 0"
+      :index="3"
+      :sprite-src="spriteSrc"
+    />
+    <ClockSVGDigit
+      v-if="viewWidth >= 1440"
+      :view-width="viewWidth"
+      :active-number="minute.firstDigit ? minute.firstDigit : 0"
+      :index="4"
+      :sprite-src="spriteSrc"
+    />
+    <ClockSVGDigit
+      v-if="viewWidth >= 1440"
+      :view-width="viewWidth"
+      :active-number="minute.secondDigit ? minute.secondDigit : 0"
+      :index="5"
+      :sprite-src="spriteSrc"
+    />
     <g
       transform="translate(-236,-102)"
     >
