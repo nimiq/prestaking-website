@@ -85,7 +85,7 @@ const iconHeight = computed(() => iconWidth.value)
 const iconUnevenOffsetX = computed(() => iconWidth.value)
 const iconUnevenOffsetY = computed(() => iconHeight.value / 3 * 2)
 const iconGapX = computed(() => iconWidth.value)
-const iconGapY = computed(() => iconHeight.value / 4)
+const iconGapY = computed(() => iconHeight.value / 5)
 
 function iconPosition(index: number): [number, number] {
   if (index <= 3) { // 1st row (4 slots)
@@ -244,15 +244,15 @@ function preparePositionUpdate(referenceCoords: DOMRect) {
 
 function positionIdenticon(identicon: HTMLDivElement, index: number, referenceCoords: DOMRect) {
   const coords = iconPosition(index)
-  identicon.style.left = `${referenceCoords.left + coords[0] - 2}px`
-  identicon.style.top = `${referenceCoords.top + window.scrollY + coords[1] - 2}px`
-  identicon.style.width = `${iconWidth.value + 4}px`
-  identicon.style.height = `${iconHeight.value + 4}px`
+  identicon.style.left = `${referenceCoords.left + coords[0]}px`
+  identicon.style.top = `${referenceCoords.top + window.scrollY + coords[1]}px`
+  identicon.style.width = `${iconWidth.value}px`
+  identicon.style.height = `${iconHeight.value}px`
 
   const x = Number.parseInt(identicon.dataset.x!)
   const y = Number.parseInt(identicon.dataset.y!)
-  identicon.style.backgroundSize = `${(iconWidth.value + 4) * 10}px`
-  identicon.style.backgroundPosition = `${x * (iconWidth.value + 4)}px ${y * (iconHeight.value + 4)}px`
+  identicon.style.backgroundSize = `${iconWidth.value * 10}px`
+  identicon.style.backgroundPosition = `${x * iconWidth.value}px ${y * iconHeight.value}px`
 
   identicon.classList.add('clock-identicon-container')
 }
