@@ -5,17 +5,32 @@ const OPEN_URLS = [
   '/api/healthcheck',
   '/api/auth/login',
   '/api/auth/logout',
-  '/api/share',
+]
+
+const OPEN_PREFIXES = [
+  '/api/share?',
+  '/api/_hub/',
 ]
 
 export default defineEventHandler(async (event) => {
-  if (!event.node.req.url)
+  const url = event.node.req.url
+
+  if (!url)
     throw notAcceptableError('Invalid URL')
 
-  // Only authenticate /api routes, but still allow certain endpoints
-  if (!event.node.req.url.startsWith('/api') || OPEN_URLS.includes(event.node.req.url.split('?')[0]))
+  // Only authenticate /api routes
+  if (!url.startsWith('/api'))
     return
 
+  // Allow certain endpoints
+  if (OPEN_URLS.includes(url))
+    return
+
+  // Allow certain prefixes
+  if (OPEN_PREFIXES.some(prefix => url.startsWith(prefix)))
+    return
+
+  // Require a valid user session (cookie)
   const { user } = await requireUserSession(event)
   const userObj = await userDb.get(user.id)
   if (!userObj)
