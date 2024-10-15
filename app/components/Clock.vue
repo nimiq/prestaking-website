@@ -26,7 +26,7 @@ onMounted(() => {
   <!-- Border edge fade out -->
   <div class="custom-radial-dark-blue absolute left-0 top-0 z-2 h-full w-full" />
   <!-- Hexagon Background -->
-  <NuxtImg src="/img/clock-bg.png" class="clock-hex-bg absolute top-1 z-10 w-[200vw] mix-blend-multiply -left-3 lg:w-screen" />
+  <NuxtImg src="/img/clock-bg.png" class="clock-hex-bg absolute top-1 z-10 w-[200vw] opacity-0 mix-blend-multiply -left-3 lg:w-screen" />
   <!-- Hexagon clock -->
   <div id="clock" class="relative z-20">
     <ClockSVG class="z-20" />
@@ -44,8 +44,8 @@ onMounted(() => {
 
 /* Classes to make hex background line up with the hex digits */
 .clock-hex-bg {
-  @apply top-9 left-0 min-w-[284vw]
-  sm:top-6 sm:-left-2 sm:min-w-[147.5vw]
-  lg:top-1 lg:-left-3 lg:w-[100vw];
+  @apply top-8 -left-1 min-w-[284vw]
+  sm:top-7 sm:-left-1 sm:min-w-[147.5vw]
+  lg:top-1 lg:-left-3 lg:w-[100vw] lg:min-w-auto;
 }
 </style>
