@@ -6,10 +6,23 @@ import { formatNumber } from '../lib/number-formatting'
 const store = useUserInfo()
 
 const isVisible = ref(false)
-onMounted(() => {
-  store.tryFetch().finally(() => {
+onMounted(async () => {
+  const isLoggedIn = await store.tryFetch().finally(() => {
     isVisible.value = true
   })
+
+  if (isLoggedIn && store.hasPendingPrestakingTransaction) {
+    const { pause } = useIntervalFn(async () => {
+      await store.updateStats({
+        id: store.userId!,
+        address: store.address!,
+        galxeUser: store.galxeUser,
+      })
+      if (!store.hasPendingPrestakingTransaction) {
+        pause()
+      }
+    }, 10e3)
+  }
 })
 
 const cardType = computed(() => {
@@ -103,13 +116,18 @@ async function claimPoints() {
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"
       >
         <!-- :class="store.loggedIn" -->
-        <div v-if="!store.address || !store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+        <div v-if="store.hasPendingPrestakingTransaction" class="tickets-pill relative flex-col px-32 py-12 text-white/60">
+          <span class="text-18 text-white/80 font-600">Scanning for points</span>
+          <span class="text-16 text-white/60 font-600">This may take a few minutes</span>
+          <i class="i-nimiq:spinner absolute right-24 size-20" />
+        </div>
+        <div v-else-if="!store.address || !store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           0
           <span class="text-17 font-600">Points</span>
         </div>
-        <div v-else-if="!store.hasClaimed" class="tickets-pill active px-32 py-24 text-white/60 leading-70%" @click="claimPoints">
+        <button v-else-if="!store.hasClaimed" class="tickets-pill active px-32 py-24 text-white/60 leading-70%" @click="claimPoints">
           <span class="text-24 text-white">Claim {{ formatNumber(store.totalPoints) }} points</span>
-        </div>
+        </button>
 
         <template v-else>
           <div v-if="store.stake < 10_000 * 1e5" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">

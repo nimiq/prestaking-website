@@ -24,6 +24,8 @@ export const useUserInfo = defineStore('userInfo', {
     address: null as string | null,
     galxeUser: null as GalxeUser | null,
 
+    hasPendingPrestakingTransaction: false,
+
     stake: 0,
     totalPoints: 0,
     hasClaimed: false,
@@ -54,10 +56,17 @@ export const useUserInfo = defineStore('userInfo', {
       }).catch(() => null)
 
       if (!stats) {
+        // Check for pending pre-staking transactions
+        const latestTx = (await $fetch('/api/pending-txs'))[0]
+        const hasPendingPrestakingTransaction = latestTx
+          && !latestTx.confirmations
+          && latestTx.receiver_address === 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000'
+
         this.$patch({
           userId: user.id,
           address: user.address,
           galxeUser: user.galxeUser,
+          hasPendingPrestakingTransaction,
         })
         return
       }
@@ -66,6 +75,8 @@ export const useUserInfo = defineStore('userInfo', {
         userId: user.id,
         address: user.address,
         galxeUser: user.galxeUser || null,
+
+        hasPendingPrestakingTransaction: false,
 
         hasClaimed: stats.hasClaimed,
         stake: stats.stake,
@@ -86,6 +97,8 @@ export const useUserInfo = defineStore('userInfo', {
       this.userId = null
       this.address = null
       this.galxeUser = null
+
+      this.hasPendingPrestakingTransaction = false
 
       this.stake = 0
       this.totalPoints = 0
