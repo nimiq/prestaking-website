@@ -17,22 +17,22 @@ export const validatorSchema = v.object({
 export type Validator = v.InferInput<typeof validatorSchema>
 
 export const useValidators = defineStore('validators', () => {
-  const { validatorsApiUrl } = useRuntimeConfig().public
+  // const { validatorsApiUrl } = useRuntimeConfig().public
 
-  const { data: validators, error: errorValidators, status: statusValidators } = useFetch<Validator[]>(validatorsApiUrl, {
-    query: { pools: true, active: true },
-    transform: data => data.map(({ name, address, icon, balance }) => ({ name, address, icon, balance: Math.floor(balance / 1e5) })),
-  })
+  // const { data: validators, error: errorValidators, status: statusValidators } = useFetch<Validator[]>(validatorsApiUrl, {
+  //   query: { pools: true, active: true },
+  //   transform: data => data.map(({ name, address, icon, balance }) => ({ name, address, icon, balance: Math.floor(balance / 1e5) })),
+  // })
 
-  watch(validators, (rawValidators) => {
-    const { success, issues } = v.safeParse(v.array(validatorSchema), rawValidators)
-    if (!success)
-      throw new Error(`The response from the validators API is invalid: ${issues}`)
-  })
+  // watch(validators, (rawValidators) => {
+  //   const { success, issues } = v.safeParse(v.array(validatorSchema), rawValidators)
+  //   if (!success)
+  //     throw new Error(`The response from the validators API is invalid: ${issues}`)
+  // })
 
   return {
-    validators,
-    errorValidators,
-    statusValidators,
+    validators: [],
+    errorValidators: undefined,
+    statusValidators: '',
   }
 })
