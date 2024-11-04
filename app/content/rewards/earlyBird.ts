@@ -19,12 +19,12 @@ export default {
       label: 'Second week',
       color: '#239987',
     },
-    // {
-    //   multiplier: 1.5,
-    //   min: '2024-11-04', // Inclusive
-    //   max: '2024-11-11', // Exclusive
-    //   label: 'Last minute',
-    //   color: '#21676C',
-    // },
+    {
+      multiplier: 1.5,
+      min: '2024-11-04', // Inclusive
+      max: '2024-11-11', // Exclusive
+      label: 'Last minute',
+      color: '#21676C',
+    },
   ],
 }
