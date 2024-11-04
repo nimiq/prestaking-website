@@ -12,5 +12,5 @@ interface ApiTransaction {
 
 export default defineEventHandler(async (event) => {
   const user = event.context.user
-  return $fetch<ApiTransaction[]>(`https://v2.nimiqwatch.com/api/v1/account-transactions/${user.address}/1`)
+  return $fetch<ApiTransaction[]>(`https://v2.nimiqwatch.com/api/v1/account-transactions/${user.address}?only=mempool`)
 })

@@ -57,10 +57,10 @@ export const useUserInfo = defineStore('userInfo', {
 
       if (!stats) {
         // Check for pending pre-staking transactions
-        const latestTx = (await $fetch('/api/pending-txs'))[0]
-        const hasPendingPrestakingTransaction = latestTx
-          && !latestTx.confirmations
-          && latestTx.receiver_address === 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000'
+        const latestTxs = await $fetch('/api/pending-txs')
+        const hasPendingPrestakingTransaction = latestTxs
+          .filter(tx => tx.receiver_address === 'NQ07 0000 0000 0000 0000 0000 0000 0000 0000')
+          .length > 0
 
         this.$patch({
           userId: user.id,
