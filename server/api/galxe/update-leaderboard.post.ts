@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
         query: `{
           space(id: 68465) {
             loyaltyPointsRanks(
-              first: ${pageSize},
+              first: ${pageSize}
               order: Points
               cursorAfter: "${cursorAfter}"
             ) {
@@ -68,6 +68,8 @@ export default defineEventHandler(async (event) => {
         }`,
       }),
     })
+
+    console.log({ data }) // eslint-disable-line no-console
 
     const { loyaltyPointsRanks } = data.space
 
