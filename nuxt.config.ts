@@ -86,6 +86,9 @@ export default defineNuxtConfig({
     routeRules: {
       '/prestaking': { redirect: { to: '/pre-staking', statusCode: 301 } },
     },
+    experimental: {
+      openAPI: true,
+    },
   },
 
   app: {
