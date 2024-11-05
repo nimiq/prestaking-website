@@ -9,7 +9,8 @@ const OPEN_URLS = [
 
 const OPEN_PREFIXES = [
   '/api/share?',
-  '/api/_hub/',
+  '/api/_hub/', // Used by NuxtHub
+  '/api/_auth/', // Used by nuxt-auth-utils
 ]
 
 export default defineEventHandler(async (event) => {
