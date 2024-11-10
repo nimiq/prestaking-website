@@ -40,10 +40,9 @@ const activateCard = computed(() => {
         <div class="small-body text-center text-white/60">
           Share the news with Galxe to multiply your points.
         </div>
-        <button v-if="!store.address" disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
+        <button disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
           Connect
         </button>
-        <a v-else href="/api/galxe/connect" class="mx-auto mt-24 cursor-pointer nq-pill-secondary">Connect</a>
       </template>
       <template v-else>
         <div class="icon-shadow mx-auto mb-8 w-fit object-contain object-center">

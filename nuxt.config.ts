@@ -27,10 +27,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     // eslint-disable-next-line node/prefer-global/process
-    galxeClientId: process.env.NUXT_GALXE_CLIENT_ID,
-    // eslint-disable-next-line node/prefer-global/process
-    galxeClientSecret: process.env.NUXT_GALXE_CLIENT_SECRET,
-    // eslint-disable-next-line node/prefer-global/process
     galxeUpdateLeaderboardPassword: process.env.NUXT_GALXE_UPDATE_LEADERBOARD_PASSWORD,
     public: {
       validatorsApiUrl: 'https://validators-api.pages.dev/api/v1', // Replaced by NUXT_PUBLIC_VALIDATORS_API_URL
