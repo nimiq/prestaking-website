@@ -49,17 +49,6 @@ function trackScroll(e: Event) {
     rewardTickets.value.scrollLeft = target.scrollLeft
   }
 }
-
-async function claimPoints() {
-  const { hasClaimed } = await $fetch('/api/claim-points', {
-    method: 'POST',
-  }).catch((err: Error) => {
-    window.alert(err.message) // eslint-disable-line no-alert
-    throw err
-  })
-
-  store.hasClaimed = hasClaimed
-}
 </script>
 
 <template>
@@ -125,7 +114,7 @@ async function claimPoints() {
           0
           <span class="text-17 font-600">Points</span>
         </div>
-        <button v-else-if="!store.hasClaimed" class="tickets-pill active px-32 py-24 text-white/60 leading-70%" @click="claimPoints">
+        <button v-else-if="!store.hasClaimed" disabled class="tickets-pill active px-32 py-24 text-white/60 leading-70%">
           <span class="text-24 text-white">Claim {{ formatNumber(store.totalPoints) }} points</span>
         </button>
 
