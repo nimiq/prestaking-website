@@ -91,7 +91,7 @@ export default defineEventHandler(async (event) => {
 
   await galxeLeaderboardDb.set(`${GALXE_SPACE_ID}`, {
     totalCount,
-    updatedAt: new Date().toJSON(),
+    updatedAt: new Date().toISOString(),
   })
 
   return {

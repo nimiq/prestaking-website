@@ -49,8 +49,8 @@ export default defineEventHandler(async (event): Promise<User> => {
       hasClaimed: false,
       totalPoints: 0,
       galxeUser: null,
-      createdAt: new Date().toJSON(),
-      updatedAt: new Date().toJSON(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     }
     await userDb.set(userId, user)
   }

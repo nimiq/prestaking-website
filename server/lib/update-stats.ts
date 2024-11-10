@@ -104,7 +104,7 @@ export async function updateStats(user: User, meta?: Record<string, any>) {
       if (apiTotalCount) {
         await galxeLeaderboardDb.set(`${GALXE_SPACE_ID}`, {
           totalCount: apiTotalCount,
-          updatedAt: new Date().toJSON(),
+          updatedAt: new Date().toISOString(),
         })
       }
       const totalCount = apiTotalCount || galxeLeaderboard.totalCount
@@ -135,7 +135,7 @@ export async function updateStats(user: User, meta?: Record<string, any>) {
     underdogMultiplier,
     galxeMultiplier,
   }
-  user.updatedAt = new Date().toJSON()
+  user.updatedAt = new Date().toISOString()
 
   await userDb.set(user.id, user, meta)
 
