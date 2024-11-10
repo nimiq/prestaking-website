@@ -13,7 +13,43 @@ interface Staker {
   }[]
 }
 
-export async function updateStats(user: User, meta?: Record<string, any>) {
+const prestakingCutoff = new Date('2024-11-11T00:00:00Z')
+
+export async function updateStats(user: User, meta?: Record<string, any>): Promise<{
+  stake: number
+  basePoints: number
+  earlyBirdPoints: number
+  underdogPoints: number
+  galxePoints: number
+
+  earlyBirdMultipliers: number[]
+  underdogMultiplier: number
+  galxeMultiplier: number
+  galxePercentile: number
+
+  delegation: string
+  hasClaimed: boolean
+  totalPoints: number
+}> {
+  if (user.basePoints !== undefined && user.stats && 'earlyBirdPoints' in user.stats) {
+    return {
+      stake: user.stake,
+      basePoints: user.basePoints,
+      earlyBirdPoints: user.stats.earlyBirdPoints,
+      underdogPoints: user.stats.underdogPoints,
+      galxePoints: user.stats.galxePoints,
+
+      earlyBirdMultipliers: user.stats.earlyBirdMultipliers,
+      underdogMultiplier: user.stats.underdogMultiplier,
+      galxeMultiplier: user.stats.galxeMultiplier,
+      galxePercentile: user.stats.galxePercentile,
+
+      delegation: user.delegation!,
+      hasClaimed: user.hasClaimed,
+      totalPoints: user.totalPoints,
+    }
+  }
+
   // Fetch staking events from block explorer
   const staker = await $fetch<Staker>(`https://v2.nimiqwatch.com/api/v2/prestaking/events/${user.address}`)
 
@@ -30,6 +66,11 @@ export async function updateStats(user: User, meta?: Record<string, any>) {
 
   // Calculate early-bird and underdog points
   for (const event of staker.events) {
+    const eventDate = new Date(event.date)
+    if (eventDate >= prestakingCutoff) {
+      continue
+    }
+
     // Add up the total stake
     stake += event.value
 
@@ -42,7 +83,7 @@ export async function updateStats(user: User, meta?: Record<string, any>) {
 
     // Calculate early-bird multiplier for this event
     const earlyBirdMultiplier = EARLY_BIRD_MULTIPLIERS.find((cfg) => {
-      return new Date(event.date) >= cfg.start && new Date(event.date) < cfg.end
+      return eventDate >= cfg.start && eventDate < cfg.end
     })?.multiplier || 0
     earlyBirdMultipliers.add(earlyBirdMultiplier)
     earlyBirdPoints += points * earlyBirdMultiplier
@@ -129,11 +170,16 @@ export async function updateStats(user: User, meta?: Record<string, any>) {
 
   user.delegation = staker.delegation
   user.stake = stake
+  user.basePoints = basePoints
   user.totalPoints = basePoints + earlyBirdPoints + underdogPoints + galxePoints
   user.stats = {
     earlyBirdMultipliers: Array.from(earlyBirdMultipliers),
+    earlyBirdPoints,
     underdogMultiplier,
+    underdogPoints,
     galxeMultiplier,
+    galxePercentile,
+    galxePoints,
   }
   user.updatedAt = new Date().toISOString()
 

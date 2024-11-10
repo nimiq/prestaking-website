@@ -8,6 +8,7 @@ export interface User {
   stake: Luna
   delegation: Address | null
   hasClaimed: boolean
+  basePoints?: number
   totalPoints: number
   galxeUser: {
     Avatar: string // URL
@@ -19,6 +20,14 @@ export interface User {
     earlyBirdMultipliers: number[]
     underdogMultiplier: number
     galxeMultiplier: number
+  } | {
+    earlyBirdMultipliers: number[]
+    earlyBirdPoints: number
+    underdogMultiplier: number
+    underdogPoints: number
+    galxeMultiplier: number
+    galxePercentile: number
+    galxePoints: number
   }
   createdAt: string
   updatedAt: string

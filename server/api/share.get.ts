@@ -26,8 +26,12 @@ export default defineEventHandler(async (event) => {
     const res = await updateStats(user)
     user.stats = {
       earlyBirdMultipliers: res.earlyBirdMultipliers,
+      earlyBirdPoints: res.earlyBirdPoints,
       underdogMultiplier: res.underdogMultiplier,
+      underdogPoints: res.underdogPoints,
       galxeMultiplier: res.galxeMultiplier,
+      galxePercentile: res.galxePercentile,
+      galxePoints: res.galxePoints,
     }
   }
 
@@ -35,6 +39,10 @@ export default defineEventHandler(async (event) => {
     stake: user.stake,
     totalPoints: user.totalPoints,
     identicon,
-    stats: user.stats,
+    stats: {
+      earlyBirdMultipliers: user.stats.earlyBirdMultipliers,
+      underdogMultiplier: user.stats.underdogMultiplier,
+      galxeMultiplier: user.stats.galxeMultiplier,
+    },
   }
 })

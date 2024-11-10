@@ -47,6 +47,7 @@ export default defineEventHandler(async (event): Promise<User> => {
       stake: 0,
       delegation: null,
       hasClaimed: false,
+      basePoints: 0,
       totalPoints: 0,
       galxeUser: null,
       createdAt: new Date().toISOString(),

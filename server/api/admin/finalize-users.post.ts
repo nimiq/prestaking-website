@@ -25,6 +25,7 @@ export default defineEventHandler(async (event) => {
 
   let countUpdated = 0
   let cursor: string | undefined
+  const start = Date.now()
 
   while (countUpdated < 100) {
     const keys = await kv.list<{ finalized?: string }>({
@@ -54,5 +55,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     countUpdated,
+    duration: `${(Date.now() - start) / 1000} seconds`,
   }
 })
