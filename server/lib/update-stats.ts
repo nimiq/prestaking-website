@@ -13,7 +13,7 @@ interface Staker {
   }[]
 }
 
-export async function updateStats(user: User) {
+export async function updateStats(user: User, meta?: Record<string, any>) {
   // Fetch staking events from block explorer
   const staker = await $fetch<Staker>(`https://v2.nimiqwatch.com/api/v2/prestaking/events/${user.address}`)
 
@@ -137,7 +137,7 @@ export async function updateStats(user: User) {
   }
   user.updatedAt = new Date().toJSON()
 
-  await userDb.set(user.id, user)
+  await userDb.set(user.id, user, meta)
 
   return {
     stake,

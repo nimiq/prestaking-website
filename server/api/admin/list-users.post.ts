@@ -1,6 +1,6 @@
 import type { KVNamespace } from '@cloudflare/workers-types'
 import { z } from 'zod'
-import { forbiddenError, internalServerError } from '../errors'
+import { forbiddenError, internalServerError } from '../../errors'
 
 const requestSchema = z.object({
   password: z.string(),
@@ -21,10 +21,9 @@ export default defineEventHandler(async (event) => {
   // eslint-disable-next-line node/prefer-global/process
   const kv: KVNamespace = process.env.KV || globalThis.__env__?.KV || globalThis.KV
 
-  const keys = await kv.list({
+  const keys = await kv.list<{ finalized?: string }>({
     prefix: 'user:',
-    // limit: 1000,
-    // cursor: '',
+    limit: 100,
   })
 
   return {
