@@ -54,7 +54,7 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
             <NuxtImg class="h-80" src="/img/200.svg" alt="" />
             <div class="flex flex-col">
               <p class="text-white/80">
-                Pre-stake and get a piece of the 200 Million NIM rewards.
+                Pre-stake and get a piece of the 200 Million NIM rewards (Ends Nov 10th).
               </p>
             </div>
           </div>
@@ -168,9 +168,9 @@ defineOgImage({ url: '/img/open-graph/pre-staking.jpg' })
       <WalletSetup :items="pageContent.walletSetup.instructions" />
       <Header
         class="mt-96"
-        title="Let's get going!"
+        title="Let’s get ready to stake!"
         title-tag="h3"
-        body="What are you waiting for? Go to the wallet and join the pre-stake!"
+        body="November 19 is just around the corner!"
         button
         button-link="https://wallet.nimiq.com"
         button-text="Go to wallet"

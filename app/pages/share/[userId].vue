@@ -38,7 +38,7 @@ const galxeActive = user.stats.galxeMultiplier > 0
 useHead({
   title: `I already have ${formatNumber(user.totalPoints)} points for the giveaway`,
   meta: [
-    { name: 'description', content: `Join the pre-stake for Nimiq's migration to Proof of Stake and win a share of 200 million NIM in rewards!` },
+    { name: 'description', content: `Join the pre-stake for Nimiq's migration to Proof of Stake and win a share of 200 million NIM in rewards! (Ends Nov 10th)` },
   ],
 })
 

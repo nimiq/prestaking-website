@@ -1,4 +1,4 @@
-<h1 align="center">Nimiq 2.0 Launch Site</h1>
+<h1 align="center">Nimiq 2.0 Migration Site</h1>
 
 ## Features
 

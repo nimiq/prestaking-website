@@ -1,7 +1,7 @@
 export default {
   hero: {
-    title: 'Pre-stake to earn your share of 200 Million NIM in rewards and bonus giveaways!',
-    body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
+    title: 'Pre-staking is closed. Get Ready for What’s Next!',
+    body: 'Thank you to everyone who supported the migration by pre-staking. Rewards will be sent directly to your wallet within 90 days of the official migration on Nov 19th.',
 
     prizes: [
       {
@@ -30,8 +30,8 @@ export default {
 
   communityGoals: {
     label: 'Community',
-    title: 'Join in and help secure the network',
-    body: 'The more people pre-stake, the more secure the young network will be. Join in, help reach the base goal and let’s smash the stretch goal right after.',
+    title: 'Get ready to start staking NIM!',
+    body: 'The official Proof of Stake migration begins November 19th. Earn rewards, support the network, and be part of the new Nimiq era. Help secure the network and start earning!',
     goalBar: {
       totalGoal: 11_800_000_000, // Chosen for visual balance (so that the 6B stretch goal is in the middle)
       milestones: [
@@ -75,17 +75,17 @@ export default {
     cards: [
       {
         title: 'Staking as much as possible',
-        description: 'The more NIM are pre-staked, the more secure the new network. ',
+        description: 'The more NIM are pre-staked, the more secure the new network.',
         icon: 'leaf',
       },
       {
         title: 'Choosing smaller validators',
-        description: 'Help create an even distribution of staked NIM by choosing smaller validators. ',
+        description: 'Help create an even distribution of staked NIM by choosing smaller validators.',
         icon: 'duck',
       },
       {
-        title: 'Promoting the prestake',
-        description: 'Spread the word about the launch and the pre-staking campaign. ',
+        title: 'Promote it by staking',
+        description: 'Spread the word about the migration and the new staking campaign feature.',
         icon: 'horn',
       },
     ],
@@ -97,7 +97,7 @@ export default {
   },
 
   walletSetup: {
-    title: 'Pre-staking is as easy as staking will be',
+    title: 'Pre-staking is now closed. Thank you for your support to all who pre-staked.',
     body: 'The process is the same. Go to your wallet, pick a validator pool and start staking.',
     instructions: [
       {

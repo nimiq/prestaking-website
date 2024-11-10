@@ -11,7 +11,7 @@
           Massive giveaways await - for example 10 x 3'000'000 NIM
         </h3>
         <p class="text-center text-white/80">
-          Win one of the 100 giveaways in NIM by joining the pre-stake and promoting the launch.
+          Win one of the 100 giveaways in NIM by joining the pre-stake and promoting the migration.
         </p>
       </div>
     </div>

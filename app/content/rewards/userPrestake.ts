@@ -1,7 +1,7 @@
 export default {
   modal: {
     title: 'Pre-stake your NIM and upgrade your Identicon',
-    body: 'Join in and support the network. Be among the first to earn, get a unique Identicon upgrade and win some NIM.',
+    body: 'Pre-staking is now closed. Thank you to everyone who pre-staked. Get Ready for the official migration Nov 19th!',
     label: '',
   },
   options: [

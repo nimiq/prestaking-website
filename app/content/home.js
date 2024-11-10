@@ -1,7 +1,7 @@
 export default {
   hero: {
     title: 'Countdown to Nimiq Proof-of-Stake',
-    body: 'Pre-stake now to participate for a share of 200 million NIM in rewards. Ends November 10.',
+    body: 'Get ready for the official migration to Proof of Stake on November 19th.',
     buttonLabel: 'Pre-staking',
     buttonLink: '/pre-staking',
   },
@@ -44,11 +44,11 @@ export default {
   },
   prestake: {
     label: 'Pre-stake',
-    title: 'Join the pre-stake, win big and make history',
-    body: 'Support the network, win a share of a 200 Million NIM giveaway and get a unique Identicon upgrade.',
+    title: 'Pre-staking is now closed. Thanks to all who pre-staked.',
+    body: 'Get ready for the final phase of the migration to Proof of Stake on November 19th!',
     bottomHeader: {
-      title: 'Nimiq needs you! Pre-stake your NIM and support the migration.',
-      body: 'Pre-stake from the wallet, join the campaign and earn substantial NIM rewards.',
+      title: 'Proof of Stake Begins on November 19th!',
+      body: 'Stake your NIM, support the network, and earn rewards in this chapter of Nimiq.',
       buttonLabel: 'Pre-staking',
       buttonLink: '/pre-staking',
     },

@@ -50,7 +50,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://prestaking.nimiq.network/',
     name: 'Nimiq Pre-staking',
-    description: 'Pre-stake now to participate for a share of 200 million NIM in rewards. Ends November 10.',
+    description: 'Pre-staking is now closed. Thank you to everyone who pre-staked. Get Ready for the official migration Nov 19th!',
     defaultLocale: 'en',
   },
 
