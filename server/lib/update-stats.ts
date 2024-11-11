@@ -15,7 +15,7 @@ interface Staker {
 
 const prestakingCutoff = new Date('2024-11-11T00:00:00Z')
 
-export async function updateStats(user: User, meta?: Record<string, any>): Promise<{
+export async function updateStats(user: User, metadata?: Record<string, any>): Promise<{
   stake: number
   basePoints: number
   earlyBirdPoints: number
@@ -183,7 +183,7 @@ export async function updateStats(user: User, meta?: Record<string, any>): Promi
   }
   user.updatedAt = new Date().toISOString()
 
-  await userDb.set(user.id, user, meta)
+  await userDb.set(user.id, user, { metadata })
 
   return {
     stake,
