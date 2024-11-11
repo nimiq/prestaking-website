@@ -24,6 +24,7 @@ export default defineEventHandler(async (event) => {
   const kv: KVNamespace = process.env.KV || globalThis.__env__?.KV || globalThis.KV
 
   let countUpdated = 0
+  let listComplete = false
   let cursor: string | undefined
   const start = Date.now()
 
@@ -40,21 +41,24 @@ export default defineEventHandler(async (event) => {
         continue
 
       const user = await kv.get<User>(key.name)
-      if (!user)
+      if (!user || !user.address || !user.hasClaimed)
         continue
 
       await updateStats(user, { finalized: new Date().toISOString() })
       countUpdated += 1
     }
 
-    if (keys.list_complete)
+    if (keys.list_complete) {
+      listComplete = true
       break
+    }
 
     cursor = keys.cursor
   }
 
   return {
     countUpdated,
+    listComplete,
     duration: `${(Date.now() - start) / 1000} seconds`,
   }
 })
