@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
       if (key.metadata?.finalized)
         continue
 
-      const user = await kv.get<User>(key.name)
+      const user = await kv.get<User>(key.name, 'json')
       users.push(user)
       if (!user || !user.address || !user.hasClaimed)
         continue
