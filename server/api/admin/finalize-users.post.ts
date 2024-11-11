@@ -27,20 +27,22 @@ export default defineEventHandler(async (event) => {
   let listComplete = false
   let cursor: string | undefined
   const start = Date.now()
+  const users = []
 
-  while (countUpdated < 100) {
-    const keys = await kv.list<{ finalized?: string }>({
+  while (countUpdated < 10) {
+    const list = await kv.list<{ finalized?: string }>({
       prefix: 'user:',
-      limit: 100,
+      limit: 10,
       cursor,
     })
 
-    for (const key of keys.keys) {
+    for (const key of list.keys) {
       // `finalized` is a ISO date string
       if (key.metadata?.finalized)
         continue
 
       const user = await kv.get<User>(key.name)
+      users.push(user)
       if (!user || !user.address || !user.hasClaimed)
         continue
 
@@ -48,15 +50,16 @@ export default defineEventHandler(async (event) => {
       countUpdated += 1
     }
 
-    if (keys.list_complete) {
+    if (list.list_complete) {
       listComplete = true
       break
     }
 
-    cursor = keys.cursor
+    cursor = list.cursor
   }
 
   return {
+    users,
     countUpdated,
     listComplete,
     duration: `${(Date.now() - start) / 1000} seconds`,
