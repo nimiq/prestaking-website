@@ -1,7 +1,7 @@
 import type { KVNamespace, KVNamespaceListKey } from '@cloudflare/workers-types'
-import type { User } from '../../kv'
 import { z } from 'zod'
 import { forbiddenError, internalServerError } from '../../errors'
+import { type User, userDb } from '../../kv'
 import { updateStats } from '../../lib/update-stats'
 
 const requestSchema = z.object({
@@ -29,7 +29,10 @@ export default defineEventHandler(async (event) => {
   const start = Date.now()
 
   while (updatedIds.length < 100) {
-    const list = await kv.list<{ finalized?: string }>({
+    const list = await kv.list<{
+      finalized?: string
+      claimed?: boolean
+    }>({
       prefix: 'user:',
       limit: 100,
       cursor,
@@ -41,8 +44,18 @@ export default defineEventHandler(async (event) => {
         continue
 
       const user = await kv.get<User>(key.name, 'json')
-      if (!user || !user.address || !user.hasClaimed)
+      if (!user) {
         continue
+      }
+      if (!user.hasClaimed) {
+        // Update metadata to prevent re-processing
+        await userDb.set(user.id, user, { metadata: {
+          finalized: new Date().toISOString(),
+          claimed: false,
+        } })
+        updatedIds.push(key)
+        continue
+      }
 
       await updateStats(user, { finalized: new Date().toISOString() })
       updatedIds.push(key)
