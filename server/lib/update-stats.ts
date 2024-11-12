@@ -32,6 +32,11 @@ export async function updateStats(user: User, metadata?: Record<string, any>): P
   totalPoints: number
 }> {
   if (user.basePoints !== undefined && user.stats && 'earlyBirdPoints' in user.stats) {
+    if (metadata) {
+      // Update metadata
+      await userDb.set(user.id, user, { metadata })
+    }
+
     return {
       stake: user.stake,
       basePoints: user.basePoints,
