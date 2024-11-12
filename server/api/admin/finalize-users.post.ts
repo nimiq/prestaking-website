@@ -1,4 +1,4 @@
-import type { KVNamespace } from '@cloudflare/workers-types'
+import type { KVNamespace, KVNamespaceListKey } from '@cloudflare/workers-types'
 import type { User } from '../../kv'
 import { z } from 'zod'
 import { forbiddenError, internalServerError } from '../../errors'
@@ -23,12 +23,12 @@ export default defineEventHandler(async (event) => {
   // eslint-disable-next-line node/prefer-global/process
   const kv: KVNamespace = process.env.KV || globalThis.__env__?.KV || globalThis.KV
 
-  let countUpdated = 0
+  const updatedIds: KVNamespaceListKey<any>[] = []
   let listComplete = false
   let cursor: string | undefined
   const start = Date.now()
 
-  while (countUpdated < 100) {
+  while (updatedIds.length < 100) {
     const list = await kv.list<{ finalized?: string }>({
       prefix: 'user:',
       limit: 100,
@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
         continue
 
       await updateStats(user, { finalized: new Date().toISOString() })
-      countUpdated += 1
+      updatedIds.push(key)
     }
 
     if (list.list_complete) {
@@ -57,7 +57,8 @@ export default defineEventHandler(async (event) => {
   }
 
   return {
-    countUpdated,
+    updatedCount: updatedIds.length,
+    updated: updatedIds,
     listComplete,
     duration: `${(Date.now() - start) / 1000} seconds`,
   }
