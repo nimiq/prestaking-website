@@ -12,12 +12,10 @@ const day = ref({
   secondDigit: 0,
 })
 
-const transitionDate = new Date('2024-11-19T16:19:00Z') // UTC
-
 let timeout: number
 
 function updateTime() {
-  const seconds = Math.floor((transitionDate.getTime() - Date.now()) / 1000)
+  const seconds = 0
   let minutes = Math.floor(seconds / 60)
   let hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
