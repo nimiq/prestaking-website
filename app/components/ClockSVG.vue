@@ -16,12 +16,15 @@ let timeout: number
 
 function updateTime() {
   const seconds = 0
-  let minutes = Math.floor(seconds / 60)
-  let hours = Math.floor(minutes / 60)
-  const days = Math.floor(hours / 24)
+  // let minutes = Math.floor(seconds / 60)
+  // let hours = Math.floor(minutes / 60)
+  // const days = Math.floor(hours / 24)
 
-  hours = Math.floor((hours - (days * 24)))
-  minutes = (minutes - (days * 24 * 60) - (hours * 60))
+  // hours = Math.floor((hours - (days * 24)))
+  // minutes = (minutes - (days * 24 * 60) - (hours * 60))
+  const hours = 0
+  const minutes = 0
+  const days = 0
 
   const daysAsString = days.toString(10).padStart(2, '0')
   day.value.firstDigit = Number.parseInt(daysAsString[0] as string)
