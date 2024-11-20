@@ -79,7 +79,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
 
     <hr>
 
-    <!-- <Section dark-mode>
+    <Section dark-mode>
       <Header
         dark-mode
         :label="pageContent.albatross.label"
@@ -91,7 +91,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
       <NimiqAlbatrossLiveview />
     </Section>
 
-    <hr class="border-white/10 bg-darkblue"> -->
+    <hr class="border-white/10 bg-darkblue">
 
     <Section dark-mode god-rays class="overflow-clip">
       <Header
