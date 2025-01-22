@@ -111,12 +111,11 @@ function trackScroll(e: Event) {
           <i class="i-nimiq:spinner absolute right-24 size-20" />
         </div>
         <div v-else-if="!store.address || !store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
-          0
-          <span class="text-17 font-600">Points</span>
+          <span class="text-17 font-600">Login to see points</span>
         </div>
-        <button v-else-if="!store.hasClaimed" disabled class="tickets-pill active px-32 py-24 text-white/60 leading-70%">
-          <span class="text-24 text-white">Claim {{ formatNumber(store.totalPoints) }} points</span>
-        </button>
+        <div v-else-if="!store.hasClaimed" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+          <span class="text-17 font-600">No Points claimed</span>
+        </div>
 
         <template v-else>
           <div v-if="store.stake < 10_000 * 1e5" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">
