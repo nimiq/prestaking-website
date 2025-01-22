@@ -43,12 +43,19 @@ export interface GalxeLeaderboard {
   updatedAt: string
 }
 
-type Namespace = 'user' | 'oauth-challenge' | 'galxe-leaderboard'
+export interface LotteryWinners {
+  3: string[]
+  1.5: string[]
+  0.5: string[]
+}
+
+type Namespace = 'user' | 'oauth-challenge' | 'galxe-leaderboard' | 'lottery'
 
 type ObjectType<NS> =
-    NS extends 'user' ? User :
-      NS extends 'oauth-challenge' ? OAuthChallenge :
-        NS extends 'galxe-leaderboard' ? GalxeLeaderboard :
+  NS extends 'user' ? User :
+    NS extends 'oauth-challenge' ? OAuthChallenge :
+      NS extends 'galxe-leaderboard' ? GalxeLeaderboard :
+        NS extends 'lottery' ? LotteryWinners :
           never
 
 class TypedDatabase<NS extends Namespace> {
@@ -86,6 +93,7 @@ class TypedDatabase<NS extends Namespace> {
 export const userDb = new TypedDatabase('user')
 export const oauthChallengeDb = new TypedDatabase('oauth-challenge')
 export const galxeLeaderboardDb = new TypedDatabase('galxe-leaderboard')
+export const lotteryDb = new TypedDatabase('lottery')
 
 export async function batch(ops: Promise<void>[]): Promise<void> {
   return Promise.all(ops).then(() => {})

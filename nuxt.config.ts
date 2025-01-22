@@ -52,6 +52,7 @@ export default defineNuxtConfig({
 
   hub: {
     kv: true,
+    cache: true,
   },
 
   security: {
