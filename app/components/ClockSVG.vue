@@ -1,53 +1,21 @@
 <script lang="ts" setup>
-const hour = ref({
-  firstDigit: 0,
-  secondDigit: 0,
-})
-const minute = ref({
-  firstDigit: 0,
-  secondDigit: 0,
-})
 const day = ref({
-  firstDigit: 0,
-  secondDigit: 0,
+  firstDigit: 1,
+  secondDigit: 9,
 })
-
-let timeout: number
-
-function updateTime() {
-  const seconds = 0
-  let minutes = Math.floor(seconds / 60)
-  let hours = Math.floor(minutes / 60)
-  const days = Math.floor(hours / 24)
-
-  hours = Math.floor((hours - (days * 24)))
-  minutes = (minutes - (days * 24 * 60) - (hours * 60))
-
-  const daysAsString = days.toString(10).padStart(2, '0')
-  day.value.firstDigit = Number.parseInt(daysAsString[0] as string)
-  day.value.secondDigit = Number.parseInt(daysAsString[1] as string)
-
-  const hoursAsString = hours.toString(10).padStart(2, '0')
-  hour.value.firstDigit = Number.parseInt(hoursAsString[0] as string)
-  hour.value.secondDigit = Number.parseInt(hoursAsString[1] as string)
-
-  const minutesAsString = minutes.toString(10).padStart(2, '0')
-  minute.value.firstDigit = Number.parseInt(minutesAsString[0] as string)
-  minute.value.secondDigit = Number.parseInt(minutesAsString[1] as string)
-
-  // Run again when the minute changes
-  timeout = window.setTimeout(updateTime, 60000 - (Date.now() % 60000))
-}
+const month = ref({
+  firstDigit: 1,
+  secondDigit: 1,
+})
+const year = ref({
+  firstDigit: 2,
+  secondDigit: 4,
+})
 
 useEventListener('resize', updateViewBoxWidth)
 
 onMounted(() => {
   updateViewBoxWidth()
-  updateTime()
-})
-
-onUnmounted(() => {
-  clearTimeout(timeout)
 })
 
 const { width: windowWidth } = useWindowSize()
@@ -81,11 +49,19 @@ const offsetY = computed(() => {
   switch (viewWidth.value) {
     case 1440:
       return 623.53
-    case 975:
-      return 580
     case 505:
       return 550
     default: return 600
+  }
+})
+
+const textOffsetX = computed(() => {
+  switch (viewWidth.value) {
+    case 975:
+      return 650
+    case 505:
+      return 415
+    default: return 895
   }
 })
 
@@ -115,37 +91,35 @@ const spriteSrc = `/img/clock/sprite-${Math.floor(Math.random() * 10)}.webp`
     <ClockSVGDigit
       v-if="viewWidth >= 975"
       :view-width="viewWidth"
-      :active-number="hour.firstDigit ? hour.firstDigit : 0"
+      :active-number="month.firstDigit ? month.firstDigit : 0"
       :index="2"
       :sprite-src="spriteSrc"
     />
     <ClockSVGDigit
       v-if="viewWidth >= 975"
       :view-width="viewWidth"
-      :active-number="hour.secondDigit ? hour.secondDigit : 0"
+      :active-number="month.secondDigit ? month.secondDigit : 0"
       :index="3"
       :sprite-src="spriteSrc"
     />
     <ClockSVGDigit
       v-if="viewWidth >= 1440"
       :view-width="viewWidth"
-      :active-number="minute.firstDigit ? minute.firstDigit : 0"
+      :active-number="year.firstDigit ? year.firstDigit : 0"
       :index="4"
       :sprite-src="spriteSrc"
     />
     <ClockSVGDigit
       v-if="viewWidth >= 1440"
       :view-width="viewWidth"
-      :active-number="minute.secondDigit ? minute.secondDigit : 0"
+      :active-number="year.secondDigit ? year.secondDigit : 0"
       :index="5"
       :sprite-src="spriteSrc"
     />
     <g
       transform="translate(-236,-102)"
     >
-      <text class="opacity-70" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="454.168" :y="offsetY">{{ day.firstDigit }}{{ day.secondDigit }} DAYS</tspan></text>
-      <text class="opacity-70" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="915.443" :y="offsetY">{{ hour.firstDigit }}{{ hour.secondDigit }} HOURS</tspan></text>
-      <text class="opacity-70" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan x="1378.44" :y="offsetY">{{ minute.firstDigit }}{{ minute.secondDigit }} MINUTES</tspan></text>
+      <text class="opacity-40" fill="#FFFFFF" xml:space="preserve" style="white-space: pre" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="0.8px"><tspan :x="textOffsetX" :y="offsetY">19 NOVEMBER 2024</tspan></text>
     </g>
   </svg>
 </template>
