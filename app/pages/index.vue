@@ -2,8 +2,6 @@
 import gsap from 'gsap'
 import pageContent from '~/content/home'
 
-const prestaking = false
-
 onMounted(() => {
   gsap.timeline()
     .fromTo('#hero', { translateY: '-40px', opacity: 0 }, { translateY: '0', opacity: 1, delay: 0.5, duration: 0.5 })
@@ -33,7 +31,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
         :button-link="pageContent.hero.buttonLink"
         :button-text="pageContent.hero.buttonLabel"
         dark-mode button force-centered-text
-        :pre-pre-staking="prestaking"
+        pre-pre-staking="Migration successful"
       />
     </div>
 
@@ -53,45 +51,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
           />
         </div>
       </div>
-
-      <div>
-        <SectionLabel :text="pageContent.prestakeCalculator.label" />
-        <div class="grid grid-cols-3 grid-rows-6 h-1024 w-full md:grid-rows-3 md:h-493">
-          <NimiqPrestakingCalculator class="z-3 col-span-3 row-span-3 h-full w-full rounded-8 md:col-span-2 md:row-span-3" />
-          <!-- Side Bar -->
-          <div class="relative col-span-3 row-span-3 flex flex-col md:col-span-1 md:row-span-3 md:h-auto">
-            <div class="border-b-1 border-darkblue/10 p-32">
-              <h3 class="mb-12 mt-0">
-                {{ pageContent.prestakeCalculator.sidePanel.title }}
-              </h3>
-              <p>{{ pageContent.prestakeCalculator.sidePanel.body }}</p>
-              <a :href="pageContent.prestakeCalculator.sidePanel.link" class="mt-16 block whitespace-nowrap text-blue font-bold nq-arrow text-lg" target="_blank">{{ pageContent.prestakeCalculator.sidePanel.linkText }}</a>
-            </div>
-            <div class="relative max-w-full overflow-y-scroll">
-              <NimiqPoolsList />
-            </div>
-            <!-- Borders -->
-            <div class="pointer-events-none absolute right-0 z-2 h-[calc(100%+10px)] w-full border-1 border-darkblue/10 rounded-b-8 -top-10 md:top-0 md:h-full md:w-[calc(100%+10px)] md:rounded-r-8" />
-          </div>
-        </div>
-      </div>
     </Section>
-
-    <hr>
-
-    <!-- <Section dark-mode>
-      <Header
-        dark-mode
-        :label="pageContent.albatross.label"
-        :title="pageContent.albatross.title"
-        :body="pageContent.albatross.body"
-      >
-        <NimiqAlbatrossDetails />
-      </Header>
-      <NimiqAlbatrossLiveview />
-    </Section>
-
-    <hr class="border-white/10 bg-darkblue"> -->
 
     <Section dark-mode god-rays class="overflow-clip">
       <Header
@@ -99,27 +59,16 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
         :label="pageContent.prestake.label"
         :title="pageContent.prestake.title"
         :body="pageContent.prestake.body"
-        :pre-pre-staking="prestaking"
+        pre-pre-staking="Pre-staking successful"
       />
       <TicketSection />
-      <Header
-        class="my-96"
-        dark-mode
-        :title="pageContent.prestake.bottomHeader.title"
-        :body="pageContent.prestake.bottomHeader.body"
-        button
-        :button-link="pageContent.prestake.bottomHeader.buttonLink"
-        :button-text="pageContent.prestake.bottomHeader.buttonLabel"
-      />
-      <div class="lg:h-35" />
-      <NuxtImg class="absolute left-1/2 w-800 scale-120 -bottom-[250px] -translate-x-1/2 md:-bottom-[425px] sm:-bottom-[320px]" src="/img/four-cards.png" alt="" />
-      <Ember class="absolute bottom-575 left-25 md:bottom-323 sm:bottom-460" />
+      <!-- <Ember class="absolute bottom-575 left-25 md:bottom-323 sm:bottom-460" />
       <Ember class="hide-glow absolute bottom-423 left-325 scale-70 opacity-40" />
       <Ember class="hide-glow absolute bottom-270 right-40 scale-60 opacity-30" />
-      <Ember class="absolute bottom-0 right-100 md:right-290" />
+      <Ember class="absolute bottom-0 right-100 md:right-290" /> -->
     </Section>
 
-    <Section id="faq" dark-mode class="border-t-1 border-t-white/10 !pb-0">
+    <!-- <Section id="faq" dark-mode class="border-t-1 border-t-white/10 !pb-0">
       <Header
         dark-mode
         title="What you need to know"
@@ -128,7 +77,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
         <SectionLabel :text="topic.label" dark-mode />
         <FAQ :faqs="topic.faqs" />
       </div>
-    </Section>
+    </Section> -->
   </main>
 </template>
 

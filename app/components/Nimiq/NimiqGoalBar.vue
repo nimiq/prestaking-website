@@ -7,11 +7,7 @@ interface Milestone {
 
 const props = defineProps<{ totalGoal: number, milestones: Milestone[] }>()
 
-const { nimiqwatchTotalStakeUrl } = useRuntimeConfig().public
-const { data: currentAmount } = useFetch(nimiqwatchTotalStakeUrl, {
-  transform: (stake: string) => Number.parseInt(stake) / 1e5,
-  default: () => -1,
-})
+const currentAmount = ref(5711364738.70995)
 
 const { width: windowWidth } = useWindowSize()
 
@@ -22,11 +18,8 @@ function calcBarsTotal() {
   if (windowWidth.value < 600) {
     return 75
   }
-  else if (windowWidth.value < 1000) {
-    return 100
-  }
   else {
-    return 125
+    return 100
   }
 }
 const noOfBars: number = calcBarsTotal()
@@ -71,21 +64,20 @@ onMounted(() => {
   <div>
     <div v-if="loaded" class="relative h-125 w-[calc(100%+32px)] border-1 border-darkblue/07 rounded-full md:mx-0 -ml-16 -mr-16 md:w-full">
       <!-- Bars -->
-      <div class="grid h-full w-full gap-x-3 overflow-hidden border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
+      <div class="grid h-full w-full gap-x-3 overflow-hidden border-8 border-transparent rounded-full bg-white/10" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
         <div
           v-for="barIndex in noOfBars" :key="barIndex"
           class="relative h-full w-full rounded-2"
           :class="{
             'bg-transparent !rounded-none !w-0 mx-auto border-dashed border-l-2 border-gold': isBarMilestone(barIndex),
-            'bg-gold': !isBarMilestone(barIndex) && barIndex <= relativeBars && barIndex >= relativeBars - 2,
-            'bg-gold/30': !isBarMilestone(barIndex) && barIndex <= relativeBars - 2,
-            'bg-darkblue/07': !isBarMilestone(barIndex) && barIndex > relativeBars,
+            'bg-gold': !isBarMilestone(barIndex) && barIndex <= relativeBars,
+            'bg-white/10': !isBarMilestone(barIndex) && barIndex > relativeBars,
           }"
         />
       </div>
 
       <!-- Info bubble -->
-      <div class="absolute left-20 top-1/2 -translate-y-1/2">
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div class="flex items-center gap-x-8 rounded-full bg-white px-32 py-24 text-44 color-gold font-600 leading-70% shadow">
           {{ formatter.format(currentAmount) }}
           <span class="text-18 color-darkblue/20 font-bold">/</span>
@@ -94,7 +86,7 @@ onMounted(() => {
       </div>
     </div>
     <!-- Milestone labels: based below in grid due to overflow issues when placed in the above div -->
-    <div v-if="loaded" class="grid mb-120 h-full w-full gap-x-3 border-4 border-white rounded-full" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
+    <div v-if="loaded" class="grid mt-4 h-full w-full gap-x-3" :style="`grid-template-columns: repeat(${noOfBars}, 1fr);`">
       <div
         v-for="barIndex in noOfBars" :key="barIndex"
         class="relative h-full w-full rounded-2"
@@ -106,7 +98,7 @@ onMounted(() => {
           <div class="mx-auto w-fit rounded-full bg-gold px-13 py-4.5 text-14 text-white leading-[100%]">
             {{ getRelativeMilestone(barIndex)?.label }}
           </div>
-          <div class="mt-4 whitespace-nowrap text-16 text-darkblue/40 leading-100%">
+          <div class="mt-4 w-[120px] text-center text-16 text-white/70 leading-100%">
             {{ getRelativeMilestone(barIndex)?.text }}
           </div>
         </div>

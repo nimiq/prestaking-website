@@ -99,7 +99,7 @@ function trackScroll(e: Event) {
     </div>
     <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/05 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
       <h4 class="w-full px-16 text-center text-28 text-white">
-        Earn points by pre-staking NIM
+        Log in to check if you’ve won a reward
       </h4>
       <div
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"
@@ -148,6 +148,9 @@ function trackScroll(e: Event) {
     <ModalWrapper :active="showLoginModal">
       <NimiqLoginModal @close="closeLoginModal" />
     </ModalWrapper>
+    <p class="col-span-3 mt-56 text-center text-[16px] text-white/80">
+      Rewards will be paid out directly to the pre-staking address.
+    </p>
   </div>
 </template>
 

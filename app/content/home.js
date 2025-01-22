@@ -1,14 +1,14 @@
 export default {
   hero: {
-    title: 'Countdown to Nimiq Proof-of-Stake',
-    body: 'Get ready for the official migration to Proof of Stake on November 19th.',
-    buttonLabel: 'Pre-staking',
-    buttonLink: '/pre-staking',
+    title: 'Nimiq Proof of Stake is finally here!',
+    body: 'On Nov 19th, 2024 Nimiq successfully migrated from Proof-of-Work to Proof-of-Stake, Nimiq’s second original peer-to-peer payment network.',
+    buttonLabel: 'Rewards page',
+    buttonLink: '/rewards',
   },
   cryptoStats: {
-    title: 'Made for crypto payments at sub-second speed',
-    body: 'Nimiq upgrades from Proof of Work to Proof of Stake on its very own Albatross Algorithm. Your wallet and exchanges keep their addresses. No action required.',
-    statBlockLabel: 'Adoption-GRade Performance',
+    title: 'A leap forward in every metric',
+    body: 'Almost instant transactions and capacity at magnitudes of payment giant PayPal – Nimiq has become a viable alternative to FIAT, both economically and ecologically.',
+    statBlockLabel: 'Adoption-Grade Performance',
     stats: [
       {
         value: '1000+',
@@ -27,31 +27,10 @@ export default {
       },
     ],
   },
-  prestakeCalculator: {
-    label: 'Competitive rewards',
-    sidePanel: {
-      title: 'Stake with pools',
-      body: 'The easy and secure way of staking your NIM: validator pools.',
-      linkText: 'Start a validator pool',
-      link: 'https://www.nimiq.com/developers/build/set-up-your-own-node/becoming-a-validator',
-    },
-  },
-  albatross: {
-    label: 'Albatross',
-    title: 'The powerhouse underneath',
-    body: 'Take a deep dive into Albatross, the optimistic consensus algo, developed by Nimiq and designed for single-chain performance and easy staking.',
-    techSpecLink: '',
-  },
   prestake: {
     label: 'Pre-stake',
-    title: 'Pre-staking is now closed. Thanks to all who pre-staked.',
-    body: 'Get ready for the final phase of the migration to Proof of Stake on November 19th!',
-    bottomHeader: {
-      title: 'Proof of Stake Begins on November 19th!',
-      body: 'Stake your NIM, support the network, and earn rewards in this chapter of Nimiq.',
-      buttonLabel: 'Pre-staking',
-      buttonLink: '/pre-staking',
-    },
+    title: 'A big ‘Thank you!’ to Nimiq’s community',
+    body: 'Close to 50% of the circulating supply were pre-staked, an amazing achievement by an amazing community.',
   },
   faqs: [{
     label: 'Pre-staking',

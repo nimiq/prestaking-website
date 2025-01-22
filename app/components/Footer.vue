@@ -71,7 +71,7 @@ const socialMedia = [
         </NuxtLink> -->
 
         <p md:mx-auto>
-          © Nimiq Foundation 2024
+          © Nimiq Foundation 2025
         </p>
       </div>
     </div>

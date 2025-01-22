@@ -8,44 +8,15 @@
       <NuxtImg class="max-h-370" src="/img/tickets.png" alt="" />
       <div class="mx-auto max-w-[480px]">
         <h3 class="mt-0 text-center text-white">
-          Massive giveaways await - for example 10 x 3'000'000 NIM
+          The winners of the massive give-away will soon be announced
         </h3>
         <p class="text-center text-white/80">
-          Win one of the 100 giveaways in NIM by joining the pre-stake and promoting the migration.
+          100 pre-stakers will win substantial NIM rewards,<br>like 10 x 3 Million NIM.
         </p>
-      </div>
-    </div>
-    <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg class="h-136" src="/img/200.svg" alt="" />
-      <div class="flex flex-col text-center">
-        <h4 class="my-0 text-white">
-          Rewards for all
-        </h4>
-        <p class="mt-8 text-balance text-white/80">
-          Prestake and get a piece of the 200&nbsp;Mil&nbsp;NIM rewards.
-        </p>
-      </div>
-    </div>
-    <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg class="h-136" src="/img/star-wreath.png" alt="" />
-      <div class="flex flex-col text-center">
-        <h4 class="my-0 text-white">
-          Earn bragging rights
-        </h4>
-        <p class="mt-8 text-balance text-white/80">
-          From Guardian to Hero of the Chain - earn a title and glory.
-        </p>
-      </div>
-    </div>
-    <div class="glass-card col-span-1 row-span-1">
-      <NuxtImg class="h-136" src="/img/hex-star.png" alt="" />
-      <div class="flex flex-col text-center">
-        <h4 class="my-0 text-white">
-          Glow up your wallet
-        </h4>
-        <p class="mt-8 text-balance text-white/80">
-          Get an optional upgrade of your identicon in the wallet.
-        </p>
+
+        <nuxt-link to="/rewards" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto">
+          Rewards page
+        </nuxt-link>
       </div>
     </div>
   </div>

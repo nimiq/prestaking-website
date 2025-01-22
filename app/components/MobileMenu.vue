@@ -39,8 +39,8 @@ useOutsideClick(root$, () => {
     <nav :class="{ visible: menuVisible }" class="menu-wrapper">
       <ul class="flex flex-col gap-12 transition-opacity duration-75" @click="menuVisible = false">
         <a href="https://nimiq.com" class="text-16px font-bold">About Nimiq</a>
-        <NuxtLink to="/pre-staking" class="text-16px font-bold">
-          Pre-staking
+        <NuxtLink to="/rewards" class="text-16px font-bold">
+          Rewards
         </NuxtLink>
         <div class="mt-16 flex gap-x-12">
           <div

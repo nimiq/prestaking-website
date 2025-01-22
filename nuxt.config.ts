@@ -28,11 +28,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // eslint-disable-next-line node/prefer-global/process
     galxeUpdateLeaderboardPassword: process.env.NUXT_GALXE_UPDATE_LEADERBOARD_PASSWORD,
-    public: {
-      validatorsApiUrl: 'https://validators-api.pages.dev/api/v1', // Replaced by NUXT_PUBLIC_VALIDATORS_API_URL
-      albatrossLiveviewUrl: 'https://nimiq-website-nimiq.nuxt.dev/iframes/albatross-liveview', // Replaced by NUXT_PUBLIC_ALBATROSS_LIVEVIEW_URL
-      nimiqwatchTotalStakeUrl: 'https://v2.nimiqwatch.com/api/v2/total-prestake', // Replaced by NUXT_PUBLIC_NIMIQWATCH_TOTAL_STAKE_URL
-    },
   },
 
   experimental: {
@@ -81,7 +76,8 @@ export default defineNuxtConfig({
       },
     },
     routeRules: {
-      '/prestaking': { redirect: { to: '/pre-staking', statusCode: 301 } },
+      '/prestaking': { redirect: { to: '/rewards', statusCode: 301 } },
+      '/pre-staking': { redirect: { to: '/rewards', statusCode: 301 } },
     },
     experimental: {
       openAPI: true,

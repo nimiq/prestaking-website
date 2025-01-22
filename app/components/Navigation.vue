@@ -85,12 +85,12 @@ onUnmounted(() => {
           }"
         >About Nimiq</a>
         <NuxtLink
-          to="/pre-staking" class="text-16 font-bold transition-color" :class="{
+          to="/rewards" class="text-16 font-bold transition-color" :class="{
             'hover:text-neutral-900': localState.isSticky,
             'hover:text-white/80': !localState.isSticky,
           }"
         >
-          Pre-staking
+          Rewards
         </NuxtLink>
         <div class="flex items-center gap-x-16">
           <a

@@ -34,15 +34,12 @@ const activateCard = computed(() => {
 
       <!-- Icon -->
       <template v-if="!store.galxeUser || !('Avatar' in store.galxeUser) || !('EVMAddress' in store.galxeUser)">
-        <div class="icon-shadow mx-auto mb-32 w-fit object-contain object-center">
+        <div class="icon-shadow mx-auto mb-48 mt-12 w-fit object-contain object-center">
           <div class="i-custom:galxe h-28 w-144" />
         </div>
         <div class="small-body text-center text-white/60">
           Share the news with Galxe to multiply your points.
         </div>
-        <button disabled class="mx-auto mt-24 cursor-pointer nq-pill-secondary">
-          Connect
-        </button>
       </template>
       <template v-else>
         <div class="icon-shadow mx-auto mb-8 w-fit object-contain object-center">
