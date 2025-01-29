@@ -16,7 +16,7 @@ export default {
       },
       {
         value: '500 k',
-        text: '60 winners',
+        text: '65 winners',
         color: 'blue',
       },
     ],

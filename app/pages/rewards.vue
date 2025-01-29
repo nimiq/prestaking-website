@@ -1,4 +1,5 @@
-<script  lang="ts" setup>
+<script lang="ts" setup>
+import type { Winner } from '../../server/api/winners.get'
 import pageContent from '@/content/prestaking'
 import gsap from 'gsap'
 
@@ -20,6 +21,24 @@ useHead({
 })
 
 defineOgImage({ url: '/img/open-graph/index.jpg' })
+
+const winners = ref<{
+  3: Winner[]
+  1.5: Winner[]
+  0.5: Winner[]
+}>({
+  3: [],
+  1.5: [],
+  0.5: [],
+})
+const { data, error } = await useFetch('/api/winners')
+
+if (error.value) {
+  console.error(error.value)
+}
+else {
+  winners.value = data.value!
+}
 </script>
 
 <template>
@@ -53,7 +72,9 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
         :milestones="pageContent.communityGoals.goalBar.milestones"
         class="mb-64"
       />
+    </Section>
 
+    <Section dark-mode>
       <Header
         id="competition-winners"
         label="Competition Winners"
@@ -72,6 +93,59 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
           :text="stat.text"
           :color="stat.color"
         />
+      </div>
+
+      <Header
+        id="hall-of-fame"
+        label="Hall of Fame"
+        title="Discover the champions"
+        body="Here’s our wall of fame for all the lucky winners. Browse through them, maybe you’ll find yourself or someone you know."
+        dark-mode
+      />
+      <div>
+        <div class="stat-block-container orange">
+          <div class="stat w-fit flex items-center gap-x-12 rounded-full px-24 py-20 text-32 text-white font-600 leading-100% md:mx-auto lg:px-32 lg:py-24 lg:text-44">
+            <span class="relative">3 Mio</span>
+            <span class="text-18 font-600">NIM</span>
+          </div>
+          <p class="mb-40 mt-20 text-16 text-white/60 leading-none lg:mb-48 lg:mt-24 md:text-center lg:text-18">
+            10 pre-stakers will get 3 Million NIM.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 mx-auto w-full gap-16 lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 md:gap-24">
+          <HallOfFame v-for="winner in winners[3]" :key="`winner-${winner.address}`" dark-mode :winner="winner" />
+          <HallOfFame v-for="i in 10 - winners[3].length" :key="`placeholder-${i}`" dark-mode />
+        </div>
+      </div>
+      <div>
+        <div class="stat-block-container red">
+          <div class="stat w-fit flex items-center gap-x-12 rounded-full px-24 py-20 text-32 text-white font-600 leading-100% md:mx-auto lg:px-32 lg:py-24 lg:text-44">
+            <span class="relative">1,5 Mio</span>
+            <span class="text-18 font-600">NIM</span>
+          </div>
+          <p class="mb-40 mt-20 text-16 text-white/60 leading-none lg:mb-48 lg:mt-24 md:text-center lg:text-18">
+            25 pre-stakers will get 1,5 Million NIM.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 mx-auto w-full gap-16 lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 md:gap-24">
+          <HallOfFame v-for="winner in winners[1.5]" :key="`winner-${winner.address}`" dark-mode :winner="winner" />
+          <HallOfFame v-for="i in 25 - winners[1.5].length" :key="`placeholder-${i}`" dark-mode />
+        </div>
+      </div>
+      <div>
+        <div class="stat-block-container blue">
+          <div class="stat w-fit flex items-center gap-x-12 rounded-full px-24 py-20 text-32 text-white font-600 leading-100% md:mx-auto lg:px-32 lg:py-24 lg:text-44">
+            <span class="relative">500 k</span>
+            <span class="text-18 font-600">NIM</span>
+          </div>
+          <p class="mb-40 mt-20 text-16 text-white/60 leading-none lg:mb-48 lg:mt-24 md:text-center lg:text-18">
+            65 pre-stakers will get 500k NIM.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 mx-auto w-full gap-16 lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 md:gap-24">
+          <HallOfFame v-for="winner in winners[0.5]" :key="`winner-${winner.address}`" dark-mode :winner="winner" />
+          <HallOfFame v-for="i in 65 - winners[0.5].length" :key="`placeholder-${i}`" dark-mode />
+        </div>
       </div>
     </Section>
 

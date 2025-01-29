@@ -5,7 +5,7 @@ const OPEN_URLS = [
   '/api/healthcheck',
   '/api/auth/login',
   '/api/auth/logout',
-  '/api/lottery-winners',
+  '/api/winners',
 ]
 
 const OPEN_PREFIXES = [

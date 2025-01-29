@@ -1,5 +1,11 @@
 import { lotteryDb, userDb } from '../kv'
 
+export interface Winner {
+  address: string
+  stake: number
+  totalPoints: number
+}
+
 export default defineCachedEventHandler(async () => {
   const winners = await lotteryDb.get('winners')
 
@@ -12,12 +18,6 @@ export default defineCachedEventHandler(async () => {
   }
 
   const encoder = new TextEncoder()
-
-  interface Winner {
-    address: string
-    stake: number
-    totalPoints: number
-  }
 
   const result = {
     3: [] as Winner[],
@@ -38,7 +38,7 @@ export default defineCachedEventHandler(async () => {
 
         const user = await userDb.get(userId).catch(() => null)
         if (!user)
-          return
+          return resolve()
 
         result[prize].push({
           address,

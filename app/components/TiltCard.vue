@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative overflow-hidden rounded-12 !h-478 !min-w-311 !w-311">
+  <div class="relative overflow-hidden rounded-12">
     <template v-if="cardType === 'platinum'">
       <NuxtImg src="/img/cards/platinum-card-backdrop.png" class="absolute left-0 top-0 z-0 h-full w-full" alt="" />
     </template>
@@ -45,8 +45,8 @@ onMounted(() => {
       <div class="absolute left-0 top-0 z-0 h-full w-full mix-blend-color" :style="`background-color: ${identiconColor};`" />
     </template>
     <NuxtImg :src="`/img/cards/${cardType}-card-frame.png`" class="relative z-1 h-full w-full" alt="" srcset="" />
-    <IdenticonCardHex class="left-1/2 top-78 z-4 !absolute -translate-x-1/2" :type="cardType" :color="identiconColor" />
-    <div ref="$identicon" class="absolute left-1/2 top-74 z-5 scale-75 -translate-x-1/2" />
+    <IdenticonCardHex class="left-1/2 top-[19%] z-4 h-fit w-1/2 !absolute -translate-x-1/2" :type="cardType" :color="identiconColor" />
+    <div ref="$identicon" class="identicon-box absolute left-1/2 top-[17%] z-5 w-1/2 scale-75 -translate-x-1/2" />
     <NuxtImg
       class="metal-grain absolute left-0 top-0 z-6 h-full w-full" src="/img/metal-grain.png" alt="" srcset=""
     />
@@ -54,6 +54,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.identicon-box :deep(svg) {
+  width: 100%;
+  height: 100%;
+}
+
 .metal-grain {
   mix-blend-mode: difference;
   filter: invert(1) brightness(1.1);
