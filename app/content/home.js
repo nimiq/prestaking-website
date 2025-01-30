@@ -101,6 +101,27 @@ export default {
         },
       ],
     },
+    footer: {
+      subtitle: 'Passing the torch to proof-of-Stake',
+      textStrings: [
+        {
+          text: '454703',
+          bold: true,
+        },
+        {
+          text: 'addresses and',
+          bold: false,
+        },
+        {
+          text: '3483880',
+          bold: true,
+        },
+        {
+          text: 'blocks to produce',
+          bold: false,
+        },
+      ],
+    },
   },
   prestake: {
     label: 'Pre-stake',

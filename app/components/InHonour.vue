@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="honour-wrapper relative w-full overflow-hidden rounded-12 bg-white -mt-[280px] md:-mt-[328px]">
     <!-- Background Rays -->
-    <svg class="absolute left-56 top-0 sm:left-1/2 -translate-x-1/2" width="1168" height="389" viewBox="0 0 1168 389" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="absolute left-[130%] top-0 sm:left-1/2 -translate-x-1/2" width="1168" height="389" viewBox="0 0 1168 389" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g opacity="0.3" clip-path="url(#clip0_604_63118)">
         <mask id="mask0_604_63118" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-145" y="-280" width="1460" height="738">
           <path d="M1315 457.601C707.646 457.601 302.254 457.601 -145 457.601C-145 50.5667 181.832 -279.399 585 -279.399C988.168 -279.399 1315 50.5667 1315 457.601Z" fill="url(#paint0_radial_604_63118)" />
@@ -138,11 +138,11 @@ defineProps({
         </clipPath>
       </defs>
     </svg>
-    <div class="relative px-24 pb-96 pt-200 lg:px-72 md:px-32">
+    <div class="relative px-24 pb-72 pt-160 lg:px-72 md:px-32 md:pt-200 sm:pb-96">
       <!-- Header -->
-      <div class="mb-30 size-120 sm:mx-auto" i-custom:medal />
+      <div class="mb-24 size-120 sm:mx-auto sm:mb-30" i-custom:medal />
       <Header
-        class="mb-96"
+        class="mb-72 sm:mb-96"
         :title="content.title"
         :body="content.subtitle"
         button
@@ -152,7 +152,7 @@ defineProps({
       />
       <!-- Timeline -->
       <SectionLabel :text="content.timeline.subtitle" />
-      <div class="honour-section mb-96 h-145 w-full overflow-hidden rounded-12">
+      <div class="honour-section mb-72 w-full overflow-x-auto rounded-12 pt-24 sm:mb-96">
         <Timeline />
       </div>
 
@@ -179,11 +179,20 @@ defineProps({
       </div>
     </div>
     <!-- Footer -->
-    <div class="purple-background mx-8 mb-8 flex flex-col items-center justify-center rounded-6 px-24 py-72 sm:py-96">
+    <div class="purple-gradient mx-8 mb-8 flex flex-col items-center justify-center rounded-6 px-24 py-72 sm:py-96">
       <div class="mx-auto mb-16 size-46" i-custom:flame />
       <SectionLabel dark-mode text="Passing the torch to proof-of-Stake" class="!mb-20 !sm:mb-32" />
-      <div class="text-center text-26 text-white font-bold sm:text-32">
-        454703 <span class="font-normal opacity-60">addresses and</span> 3483880 <span class="font-normal opacity-60">blocks to produce</span>
+      <div class="text-center text-26 text-white sm:text-32">
+        <span
+          v-for="(string, i) in content.footer.textStrings"
+          :key="string.text"
+          :class="[
+            string.bold ? 'font-bold ' : 'font-normal opacity-60',
+            { 'mr-[0.5ch]': i !== content.footer.textStrings.length - 1 },
+          ]"
+        >
+          {{ string.text }}
+        </span>
       </div>
     </div>
   </div>
@@ -200,7 +209,7 @@ defineProps({
     0px 0.337px 2px 0px rgba(0, 0, 0, 0.03);
 }
 
-.purple-background {
+.purple-gradient {
   background: radial-gradient(100% 100% at 100% 100%, #4d4c96 0%, #5f4b8b 100%);
 }
 
