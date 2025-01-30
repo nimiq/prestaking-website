@@ -74,11 +74,11 @@ export default {
             },
             {
               label: 'Blocktime avg',
-              value: '5 - 2',
+              value: '5-2',
             },
             {
               label: 'Transferred $ value',
-              value: '5 - 2',
+              value: '5-2',
             },
           ],
         },
@@ -91,11 +91,11 @@ export default {
             },
             {
               label: 'Contributors',
-              value: '5 - 2',
+              value: '5-2',
             },
             {
               label: 'Stars',
-              value: '5 - 2',
+              value: '5-2',
             },
           ],
         },

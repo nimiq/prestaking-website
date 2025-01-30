@@ -9,7 +9,8 @@ defineProps({
 
 <template>
   <div class="honour-wrapper relative w-full overflow-hidden rounded-12 bg-white -mt-[280px] md:-mt-[328px]">
-    <svg class="absolute left-1/2 top-0 -translate-x-1/2" width="1168" height="389" viewBox="0 0 1168 389" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Rays -->
+    <svg class="absolute left-56 top-0 sm:left-1/2 -translate-x-1/2" width="1168" height="389" viewBox="0 0 1168 389" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g opacity="0.3" clip-path="url(#clip0_604_63118)">
         <mask id="mask0_604_63118" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-145" y="-280" width="1460" height="738">
           <path d="M1315 457.601C707.646 457.601 302.254 457.601 -145 457.601C-145 50.5667 181.832 -279.399 585 -279.399C988.168 -279.399 1315 50.5667 1315 457.601Z" fill="url(#paint0_radial_604_63118)" />
@@ -137,8 +138,9 @@ defineProps({
         </clipPath>
       </defs>
     </svg>
-    <div class="relative px-72 pb-96 pt-200">
-      <div class="mx-auto mb-30 size-120" i-custom:medal />
+    <div class="relative px-24 pb-96 pt-200 lg:px-72 md:px-32">
+      <!-- Header -->
+      <div class="mb-30 size-120 sm:mx-auto" i-custom:medal />
       <Header
         class="mb-96"
         :title="content.title"
@@ -148,14 +150,16 @@ defineProps({
         :button-link="content.buttonLink"
         button-arrow
       />
+      <!-- Timeline -->
       <SectionLabel :text="content.timeline.subtitle" />
-      <div class="honour-section mb-96 h-145 w-full">
-        Timeline area
+      <div class="honour-section mb-96 h-145 w-full overflow-hidden rounded-12">
+        <Timeline />
       </div>
+
+      <!-- Grid -->
       <SectionLabel :text="content.grid.subtitle" />
-      <!-- grid grid-cols-2 grid-rows-2 w-full p-32 lg:grid-cols-6 lg:grid-rows-1 -->
       <div
-        class="honour-section honour-section__grid relative grid grid-cols-2 grid-rows-2 w-full items-stretch justify-between gap-40 p-24 lg:flex lg:gap-20 lg:p-32"
+        class="honour-section honour-section__grid relative w-full flex flex-col items-stretch justify-between gap-20 p-24 sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:flex lg:flex-row lg:gap-20 sm:gap-40 lg:p-32"
       >
         <template v-for="(item, i) in content.grid.items" :key="item.title">
           <div class="min-w-1/3 grow lg:min-w-auto">
@@ -169,15 +173,16 @@ defineProps({
               </div>
             </div>
           </div>
-          <div v-if="i !== content.grid.items.length - 1" class="hidden w-1 bg-darkblue/10 lg:block" />
+          <!-- Divider Lines -->
+          <div v-if="i !== content.grid.items.length - 1" class="block h-1 bg-darkblue/10 lg:block sm:hidden sm:h-auto sm:w-1" />
         </template>
       </div>
     </div>
-    <div class="purple-background mx-8 mb-8 flex flex-col items-center justify-center rounded-6 py-96">
+    <!-- Footer -->
+    <div class="purple-background mx-8 mb-8 flex flex-col items-center justify-center rounded-6 px-24 py-72 sm:py-96">
       <div class="mx-auto mb-16 size-46" i-custom:flame />
-
-      <SectionLabel dark-mode text="Passing the torch to proof-of-Stake" />
-      <div class="text-32 text-white font-bold">
+      <SectionLabel dark-mode text="Passing the torch to proof-of-Stake" class="!mb-20 !sm:mb-32" />
+      <div class="text-center text-26 text-white font-bold sm:text-32">
         454703 <span class="font-normal opacity-60">addresses and</span> 3483880 <span class="font-normal opacity-60">blocks to produce</span>
       </div>
     </div>
@@ -206,6 +211,7 @@ defineProps({
   box-shadow: 0px 9px 36px 0px rgba(31, 35, 72, 0.05) inset;
 }
 .honour-section__grid::before {
+  @apply hidden sm:block lg:hidden;
   content: '';
   position: absolute;
   top: calc(50% + 1px);
@@ -217,6 +223,7 @@ defineProps({
   width: calc(100% - 64px);
 }
 .honour-section__grid::after {
+  @apply hidden sm:block lg:hidden;
   content: '';
   position: absolute;
   left: calc(50% + 1px);
