@@ -27,6 +27,81 @@ export default {
       },
     ],
   },
+  inHonour: {
+    title: 'In Honor of Nimiq Proof-of-Work',
+    subtitle: 'Paragraph describing the Nimiq PoW network.',
+    buttonLabel: 'Original Whitepaper PDF',
+    buttonLink: 'https://www.ggooogl.com/rewards.pdf',
+    timeline: {
+      subtitle: 'Nimiq Proof of Work Timeline',
+    },
+    grid: {
+      subtitle: 'Nimiq Proof-of-work in Numbers',
+      items: [
+        {
+          title: 'Security',
+          stats: [{
+            label: 'Uptime',
+            value: '~99,99%',
+          }, {
+            label: 'Hacks and exploits',
+            value: '0',
+          }],
+        },
+        {
+          title: 'Blockchain',
+          stats: [
+            {
+              label: 'USD ATH',
+              value: '$1-5',
+            },
+            {
+              label: 'ATH Hashrate',
+              value: '10-15',
+            },
+            {
+              label: 'Total NIM mined',
+              value: '100B',
+            },
+          ],
+        },
+        {
+          title: 'Performance',
+          stats: [
+            {
+              label: 'Tx processed',
+              value: '2-20',
+            },
+            {
+              label: 'Blocktime avg',
+              value: '5 - 2',
+            },
+            {
+              label: 'Transferred $ value',
+              value: '5 - 2',
+            },
+          ],
+        },
+        {
+          title: 'GitHub stats',
+          stats: [
+            {
+              label: 'GitHub commits',
+              value: '2-20',
+            },
+            {
+              label: 'Contributors',
+              value: '5 - 2',
+            },
+            {
+              label: 'Stars',
+              value: '5 - 2',
+            },
+          ],
+        },
+      ],
+    },
+  },
   prestake: {
     label: 'Pre-stake',
     title: 'A big ‘Thank you!’ to Nimiq’s community',
