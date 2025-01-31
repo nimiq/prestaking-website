@@ -27,6 +27,102 @@ export default {
       },
     ],
   },
+  inHonour: {
+    title: 'In Honor of Nimiq Proof-of-Work',
+    subtitle: 'Nimiq launched its first NiPoPoW-based network in 2018, enabling browsers to act as peers on the blockchain — a major leap forward in decentralized payments.',
+    buttonLabel: 'Original Whitepaper PDF',
+    buttonLink: '/Nimiq_PoW_Whitepaper.pdf',
+    timeline: {
+      subtitle: 'Nimiq Proof-of-Work Timeline',
+    },
+    grid: {
+      subtitle: 'Nimiq Proof-of-Work in Numbers',
+      items: [
+        {
+          title: 'Security',
+          stats: [{
+            label: 'Uptime',
+            value: '>99.9%',
+          }, {
+            label: 'Hacks and exploits',
+            value: '0',
+          }],
+        },
+        {
+          title: 'Blockchain',
+          stats: [
+            {
+              label: 'ATH',
+              value: '$0.0142',
+            },
+            {
+              label: 'Max hashrate',
+              value: '18.9 GH/s',
+            },
+            {
+              label: 'Total mined',
+              value: '10.4B NIM',
+            },
+          ],
+        },
+        {
+          title: 'Performance',
+          stats: [
+            {
+              label: 'Tx processed',
+              value: '34.1M',
+            },
+            {
+              label: 'Blocktime avg',
+              value: '60.3s',
+            },
+            {
+              label: 'Transferred value',
+              value: '$307M',
+            },
+          ],
+        },
+        {
+          title: 'Code stats',
+          stats: [
+            {
+              label: 'Commits',
+              value: '2204',
+            },
+            {
+              label: 'Contributors',
+              value: '33',
+            },
+            {
+              label: 'Github Stars',
+              value: '989',
+            },
+          ],
+        },
+      ],
+    },
+    footer: {
+      subtitle: 'Passing the torch to proof-of-Stake',
+      textStrings: [
+        {
+          text: '1\'569\'963',
+          bold: true,
+        },
+        {
+          text: 'addresses and',
+          bold: false,
+        },
+        {
+          text: '3\'456\'000',
+          bold: true,
+        },
+        {
+          text: 'blocks produced',
+          bold: false,
+        },
+      ],
+    },
+  },
   prestake: {
     label: 'Pre-stake',
     title: 'A big ‘Thank you!’ to Nimiq’s community',

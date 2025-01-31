@@ -29,6 +29,8 @@ export default defineConfig({
           'galxe': () => readFile('./app/assets/svg/icons/galxe.svg', 'utf-8'),
           'hex': () => readFile('./app/assets/svg/icons/hex.svg', 'utf-8'),
           'lock': () => readFile('./app/assets/svg/icons/lock.svg', 'utf-8'),
+          'medal': () => readFile('./app/assets/svg/icons/medal.svg', 'utf-8'),
+          'flame': () => readFile('./app/assets/svg/icons/flame.svg', 'utf-8'),
           'lock-outline': () => readFile('./app/assets/svg/icons/lock-outline.svg', 'utf-8'),
           'timer': () => readFile('./app/assets/svg/icons/timer.svg', 'utf-8'),
           'gauge-chart': () => readFile('./app/assets/svg/icons/gauge-chart.svg', 'utf-8'),
@@ -51,6 +53,7 @@ export default defineConfig({
           'dots': () => readFile('./app/assets/svg/icons/dots.svg', 'utf-8'),
           'code': () => readFile('./app/assets/svg/icons/code.svg', 'utf-8'),
           'arrow': () => readFile('./app/assets/svg/icons/arrow.svg', 'utf-8'),
+          'arrow-circle-down': () => readFile('./app/assets/svg/icons/arrow-circle-down.svg', 'utf-8'),
           'plus': () => readFile('./app/assets/svg/icons/plus.svg', 'utf-8'),
 
           // Cards

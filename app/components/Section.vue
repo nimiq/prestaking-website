@@ -10,6 +10,11 @@ defineProps({
     default: false,
     required: false,
   },
+  overlapElement: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
   hexs: {
     type: Boolean,
     default: false,
@@ -19,7 +24,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="relative px-32 py-160 md:py-200" :class="{ 'bg-white': !darkMode }">
+  <div class="relative px-16 py-160 md:py-200 sm:px-32" :class="[{ 'bg-white': !darkMode, 'pb-[280px] md:pb-[328px]': overlapElement }]">
     <div v-if="darkMode && godRays" class="">
       <NuxtImg src="/img/glowing-hex-bg.webp" class="absolute bottom-0 left-0 size-full max-h-1000 object-cover object-top" />
     </div>

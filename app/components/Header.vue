@@ -31,6 +31,11 @@ defineProps({
     default: false,
     required: false,
   },
+  buttonArrowCircleDown: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
   buttonLink: {
     type: String,
     default: '',
@@ -39,6 +44,11 @@ defineProps({
   buttonText: {
     type: String,
     default: '',
+    required: false,
+  },
+  buttonStyle: {
+    type: String,
+    default: 'button',
     required: false,
   },
   forceCenteredText: {
@@ -89,21 +99,25 @@ defineProps({
       {{ body }}
     </p>
     <nuxt-link
-      v-if="button && !buttonLink.endsWith('.pdf')" :to="buttonLink" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
+      v-if="button && !buttonLink.endsWith('.pdf')" :to="buttonLink" class="mt-32 flex items-center gap-12 text-20 transition-all md:mx-auto"
       :class="{
+        'nq-pill-lg nq-pill-blue': buttonStyle === 'button',
+        'block w-fit text-blue font-bold': buttonStyle === 'link',
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
       }"
     >
-      {{ buttonText }}
+      {{ buttonText }}<i v-if="buttonArrowCircleDown" class="i-custom:arrow-circle-down inline-block h-32 w-32" />
     </nuxt-link>
     <a
-      v-else-if="button" :href="buttonLink" target="_blank" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto"
+      v-else-if="button" :href="buttonLink" target="_blank" class="mt-32 flex items-center gap-12 text-20 transition-all md:mx-auto"
       :class="{
+        'nq-pill-lg nq-pill-blue': buttonStyle === 'button',
+        'block w-fit text-blue font-bold': buttonStyle === 'link',
         'arrow': buttonArrow,
         'mx-auto': forceCenteredText,
       }"
-    >{{ buttonText }}</a>
+    >{{ buttonText }}<i v-if="buttonArrowCircleDown" class="i-custom:arrow-circle-down inline-block h-32 w-32" /></a>
     <slot />
   </div>
 </template>

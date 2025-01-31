@@ -35,7 +35,7 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
       />
     </div>
 
-    <Section>
+    <Section overlap-element>
       <Header
         :title="pageContent.cryptoStats.title"
         :body="pageContent.cryptoStats.body"
@@ -52,8 +52,10 @@ defineOgImage({ url: '/img/open-graph/index.jpg' })
         </div>
       </div>
     </Section>
-
-    <Section dark-mode god-rays class="overflow-clip">
+    <Section dark-mode>
+      <InHonour :content="pageContent.inHonour" />
+    </Section>
+    <Section dark-mode god-rays>
       <Header
         dark-mode
         :label="pageContent.prestake.label"
