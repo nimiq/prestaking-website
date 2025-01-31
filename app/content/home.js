@@ -29,9 +29,9 @@ export default {
   },
   inHonour: {
     title: 'In Honor of Nimiq Proof-of-Work',
-    // subtitle: 'Paragraph describing the Nimiq PoW network.',
+    subtitle: 'Nimiq launched its first NiPoPoW-based network in 2018, enabling browsers to act as peers on the blockchain — a major leap forward in decentralized payments.',
     buttonLabel: 'Original Whitepaper PDF',
-    buttonLink: 'https://www.ggooogl.com/rewards.pdf',
+    buttonLink: '/Nimiq_PoW_Whitepaper.pdf',
     timeline: {
       subtitle: 'Nimiq Proof-of-Work Timeline',
     },
@@ -52,16 +52,16 @@ export default {
           title: 'Blockchain',
           stats: [
             {
-              label: 'USD ATH',
-              value: '$0.01317',
+              label: 'ATH',
+              value: '$0.0142',
             },
             {
-              label: 'ATH Hashrate',
+              label: 'Max hashrate',
               value: '18.9 GH/s',
             },
             {
-              label: 'Total NIM mined',
-              value: '10.4B',
+              label: 'Total mined',
+              value: '10.4B NIM',
             },
           ],
         },
@@ -77,16 +77,16 @@ export default {
               value: '60.3s',
             },
             {
-              label: 'Transferred $ value',
-              value: 'TODO',
+              label: 'Transferred value',
+              value: '$307M',
             },
           ],
         },
         {
-          title: 'GitHub stats',
+          title: 'Code stats',
           stats: [
             {
-              label: 'GitHub commits',
+              label: 'Commits',
               value: '2204',
             },
             {
@@ -94,7 +94,7 @@ export default {
               value: '33',
             },
             {
-              label: 'Stars',
+              label: 'Github Stars',
               value: '989',
             },
           ],

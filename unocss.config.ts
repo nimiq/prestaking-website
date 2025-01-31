@@ -53,6 +53,7 @@ export default defineConfig({
           'dots': () => readFile('./app/assets/svg/icons/dots.svg', 'utf-8'),
           'code': () => readFile('./app/assets/svg/icons/code.svg', 'utf-8'),
           'arrow': () => readFile('./app/assets/svg/icons/arrow.svg', 'utf-8'),
+          'arrow-circle-down': () => readFile('./app/assets/svg/icons/arrow-circle-down.svg', 'utf-8'),
           'plus': () => readFile('./app/assets/svg/icons/plus.svg', 'utf-8'),
 
           // Cards

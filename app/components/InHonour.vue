@@ -148,7 +148,8 @@ defineProps({
         button
         :button-text="content.buttonLabel"
         :button-link="content.buttonLink"
-        button-arrow
+        button-style="link"
+        button-arrow-circle-down
       />
       <!-- Timeline -->
       <SectionLabel :text="content.timeline.subtitle" />
