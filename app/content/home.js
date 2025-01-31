@@ -42,7 +42,7 @@ export default {
           title: 'Security',
           stats: [{
             label: 'Uptime',
-            value: '~99,99%',
+            value: '>99.9%',
           }, {
             label: 'Hacks and exploits',
             value: '0',
@@ -53,15 +53,15 @@ export default {
           stats: [
             {
               label: 'USD ATH',
-              value: '$1-5',
+              value: '$0.01317',
             },
             {
               label: 'ATH Hashrate',
-              value: '10-15',
+              value: '18.9 GH/s',
             },
             {
               label: 'Total NIM mined',
-              value: '100B',
+              value: '10.4B',
             },
           ],
         },
@@ -70,15 +70,15 @@ export default {
           stats: [
             {
               label: 'Tx processed',
-              value: '2-20',
+              value: '34.1M',
             },
             {
               label: 'Blocktime avg',
-              value: '5-2',
+              value: '60.3s',
             },
             {
               label: 'Transferred $ value',
-              value: '5-2',
+              value: 'TODO',
             },
           ],
         },
@@ -87,15 +87,15 @@ export default {
           stats: [
             {
               label: 'GitHub commits',
-              value: '2-20',
+              value: '2204',
             },
             {
               label: 'Contributors',
-              value: '5-2',
+              value: '33',
             },
             {
               label: 'Stars',
-              value: '5-2',
+              value: '989',
             },
           ],
         },
@@ -105,7 +105,7 @@ export default {
       subtitle: 'Passing the torch to proof-of-Stake',
       textStrings: [
         {
-          text: '454703',
+          text: '1\'569\'963',
           bold: true,
         },
         {
@@ -113,11 +113,11 @@ export default {
           bold: false,
         },
         {
-          text: '3483880',
+          text: '3\'456\'000',
           bold: true,
         },
         {
-          text: 'blocks to produce',
+          text: 'blocks produced',
           bold: false,
         },
       ],
