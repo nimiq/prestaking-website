@@ -29,14 +29,14 @@ export default {
   },
   inHonour: {
     title: 'In Honor of Nimiq Proof-of-Work',
-    subtitle: 'Paragraph describing the Nimiq PoW network.',
+    // subtitle: 'Paragraph describing the Nimiq PoW network.',
     buttonLabel: 'Original Whitepaper PDF',
     buttonLink: 'https://www.ggooogl.com/rewards.pdf',
     timeline: {
-      subtitle: 'Nimiq Proof of Work Timeline',
+      subtitle: 'Nimiq Proof-of-Work Timeline',
     },
     grid: {
-      subtitle: 'Nimiq Proof-of-work in Numbers',
+      subtitle: 'Nimiq Proof-of-Work in Numbers',
       items: [
         {
           title: 'Security',
