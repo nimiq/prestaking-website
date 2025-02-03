@@ -106,22 +106,9 @@ onMounted(() => {
       </div>
       <div class="mt-32 flex items-center gap-16">
         <div class="text-48 text-white font-bold">
-          {{ formatNumber(user.totalPoints) }} Points
+          {{ formatNumber(user.totalPoints) }}
         </div>
         <div i-custom:tickets class="h-35 w-40" />
-      </div>
-      <!-- <div class="mx-auto text-white/80">
-        Join the frey and pre-stake your NIM.
-      </div> -->
-      <div class="mx-auto mt-32 flex items-center gap-16">
-        <a href="/" class="h-40 scale-105 cursor-pointer nq-pill-lg nq-pill-blue">
-          Join the pre-stake
-        </a>
-        <!-- <div class="relative min-h-40 min-w-40 flex cursor-pointer items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/20" @click="openDropdown">
-          <svg class="" width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill="white" d="M12.433 10.4649V14.6941L20.1663 7.46827L12.433 0.266602V4.37493C4.91718 5.4141 1.92051 10.5616 0.833008 15.7333C3.51551 12.1083 7.06801 10.4649 12.433 10.4649Z" />
-          </svg>
-        </div> -->
       </div>
     </div>
   </div>

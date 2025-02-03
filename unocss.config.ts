@@ -55,6 +55,7 @@ export default defineConfig({
           'arrow': () => readFile('./app/assets/svg/icons/arrow.svg', 'utf-8'),
           'arrow-circle-down': () => readFile('./app/assets/svg/icons/arrow-circle-down.svg', 'utf-8'),
           'plus': () => readFile('./app/assets/svg/icons/plus.svg', 'utf-8'),
+          'trophy': () => readFile('./app/assets/svg/icons/trophy.svg', 'utf-8'),
 
           // Cards
           'time-card': () => readFile('./app/assets/svg/cards/time-active.svg', 'utf-8'),

@@ -6,6 +6,7 @@ import { formatNumber } from '../lib/number-formatting'
 const store = useUserInfo()
 
 const isVisible = ref(false)
+
 onMounted(async () => {
   const isLoggedIn = await store.tryFetch().finally(() => {
     isVisible.value = true
@@ -49,6 +50,39 @@ function trackScroll(e: Event) {
     rewardTickets.value.scrollLeft = target.scrollLeft
   }
 }
+
+const winner = computed(() => {
+  if (!store.address)
+    return null
+
+  const winners = useWinners()
+
+  const Winner3Mil = winners.$state[3].find(winner => winner.address === store.address)
+  if (Winner3Mil) {
+    return {
+      ...Winner3Mil,
+      reward: '3 Mio NIM',
+    }
+  }
+
+  const Winner1_5Mil = winners.$state[1.5].find(winner => winner.address === store.address)
+  if (Winner1_5Mil) {
+    return {
+      ...Winner1_5Mil,
+      reward: '1.5 Mio NIM',
+    }
+  }
+
+  const Winner500k = winners.$state[0.5].find(winner => winner.address === store.address)
+  if (Winner500k) {
+    return {
+      ...Winner500k,
+      reward: '500k NIM',
+    }
+  }
+
+  return null
+})
 </script>
 
 <template>
@@ -99,23 +133,34 @@ function trackScroll(e: Event) {
     </div>
     <div class="relative col-start-1 col-end-6 h-full w-full border-1 border-white/10 bg-white/05 pb-66 pt-50 lg:col-end-4 lg:rounded-b-16">
       <h4 class="w-full px-16 text-center text-28 text-white">
-        Log in to check if you’ve won a reward
+        <template v-if="!store.address">
+          Log in to check if you’ve won a reward
+        </template>
+        <template v-else-if="winner">
+          You won! Congratulations!
+        </template>
+        <template v-else>
+          The next round of winners will be announced on the 10th of February.
+        </template>
       </h4>
       <div
         class="absolute bottom-0 left-1/2 w-fit translate-y-1/2"
       >
-        <!-- :class="store.loggedIn" -->
-        <div v-if="store.hasPendingPrestakingTransaction" class="tickets-pill relative flex-col px-32 py-12 text-white/60">
-          <span class="text-18 text-white/80 font-600">Scanning for points</span>
-          <span class="text-16 text-white/60 font-600">This may take a few minutes</span>
-          <i class="i-nimiq:spinner absolute right-24 size-20" />
-        </div>
-        <div v-else-if="!store.address || !store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
+        <div v-if="!store.address || !store.stake" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           <span class="text-17 font-600">Login to see points</span>
         </div>
         <div v-else-if="!store.hasClaimed" class="tickets-pill px-32 py-24 text-white/60 leading-70%">
           <span class="text-17 font-600">No Points claimed</span>
         </div>
+
+        <template v-else-if="winner">
+          <a href="https://wallet.nimiq.com" class="tickets-pill active relative whitespace-nowrap px-32 py-24 pl-40 text-white leading-70% !min-w-fit !gap-32">
+            <div class="flex grow items-center justify-center gap-x-12 text-24">
+              <i class="i-custom:trophy h-36 w-47 -my-4" />
+              Your reward: {{ winner.reward }}!
+            </div>
+          </a>
+        </template>
 
         <template v-else>
           <div v-if="store.stake < 10_000 * 1e5" class="tickets-pill relative px-32 py-24 pl-40 text-white/60 leading-70% !min-w-fit !gap-32">

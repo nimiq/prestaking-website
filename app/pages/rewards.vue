@@ -38,6 +38,7 @@ if (error.value) {
 }
 else {
   winners.value = data.value!
+  useWinners().$patch(data.value!)
 }
 </script>
 

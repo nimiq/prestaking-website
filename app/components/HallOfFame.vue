@@ -12,6 +12,8 @@ defineProps({
     required: false,
   },
 })
+
+const user = useUserInfo()
 </script>
 
 <template>
@@ -32,10 +34,16 @@ defineProps({
               silver: 'bg-[#D0CECD]',
               gold: 'bg-[#FFC31F]',
               platinum: 'bg-[#D0CECD]',
-            }[getUserPrestakeCardType(winner.stake) || 'bronze']"
+              blue: 'bg-[#3A8DFF]',
+            }[user.address === winner.address ? 'blue' : (getUserPrestakeCardType(winner.stake) || 'bronze')]"
           >
-            {{ winner.totalPoints }}
-            <div class="i-custom:tickets-dark inline-block size-20 opacity-70" />
+            <template v-if="user.address === winner.address">
+              <i class="i-custom:trophy mx-24 h-28 w-36 -my-2" title="You won!" />
+            </template>
+            <template v-else>
+              {{ winner.totalPoints }}
+              <div class="i-custom:tickets-dark inline-block size-20 opacity-70" />
+            </template>
           </div>
           <div class="mt-12 text-16 text-white font-semibold leading-none md:mt-16 md:text-16">
             {{ winner.address.substring(0, 4) }}&hellip;{{ winner.address.substring(40) }}

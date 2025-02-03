@@ -20,7 +20,9 @@ export default defineEventHandler(async (event) => {
     throw notAcceptableError('Cannot share below 10K NIM pre-stake')
   }
 
-  const identicon: string = await Identicons.svg(user.address)
+  const identicon: string = import.meta.dev
+    ? await Identicons.default.svg(user.address)
+    : await Identicons.svg(user.address)
 
   if (!user.stats) {
     const res = await updateStats(user)
