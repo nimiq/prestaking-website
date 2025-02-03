@@ -8,10 +8,10 @@
       <NuxtImg class="max-h-370" src="/img/tickets.png" alt="" />
       <div class="mx-auto max-w-[480px]">
         <h3 class="mt-0 text-center text-white">
-          The winners of the massive give-away will soon be announced
+          The winners of the massive give-away are being announced
         </h3>
         <p class="text-center text-white/80">
-          100 pre-stakers will win substantial NIM rewards,<br>like 10 x 3 Million NIM.
+          100 pre-stakers are winning substantial NIM rewards,<br>like 10 x 3 Million NIM.
         </p>
 
         <nuxt-link to="/rewards" class="mt-32 text-20 transition-all nq-pill-lg nq-pill-blue md:mx-auto">

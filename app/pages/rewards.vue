@@ -79,8 +79,12 @@ else {
         id="competition-winners"
         label="Competition Winners"
         title="100 lucky winners!"
-        body="The randomly selected winners will be announced in 3 rounds."
-        dark-mode
+        body="The randomly selected winners are being announced in 3 rounds. Checkout the Nimiq GitHub to see the process behind the scenes."
+
+        button-link="https://github.com/nimiq/prestaking-giveaway-script"
+        button-text="Learn more"
+        button-style="link"
+        dark-mode button button-arrow
       />
       <div class="grid grid-cols-1 mx-auto w-full gap-24 lg:grid-cols-3 md:grid-cols-2">
         <StatBlock
