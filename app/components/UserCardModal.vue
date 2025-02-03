@@ -21,7 +21,7 @@ async function logOut() {
 
 <template>
   <div class="group relative flex flex-col">
-    <TiltCardWrapper class="mx-auto">
+    <TiltCardWrapper class="mx-auto max-w-[calc(100vw-64px)] w-420">
       <TiltCard :card-type="getUserPrestakeCardType(store.stake)" :address="store.address!" />
     </TiltCardWrapper>
     <div class="mt-32 flex items-center justify-center gap-16">
